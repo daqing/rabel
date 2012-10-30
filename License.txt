@@ -1,6 +1,6 @@
 Rabel
 -----
-Copyright (c) 2011 ForkGeek, All rights reserved.
+Rabel is released under the [MIT License](http://opensource.org/licenses/MIT).
 
 Project Babel 2
 ---------------
