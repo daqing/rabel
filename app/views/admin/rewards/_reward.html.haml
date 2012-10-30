@@ -1,0 +1,16 @@
+%tr.highlight
+  %td.d
+    %small.gray= l reward.created_at, :format => :long
+  %td.d
+    %strong= user_profile_link(reward.user)
+  %td.d
+    - if reward.amount > 0
+      %strong.green.quantity= reward.amount
+    - else
+      %strong.red.quantity= reward.amount
+  %td.d
+    = reward.balance
+  %td.d
+    = user_profile_link(reward.admin_user)
+  %td.d.last
+    .gray= reward.reason

@@ -1,0 +1,5 @@
+.box
+  .cell
+    = build_admin_navigation([link_to('广告位', admin_advertisements_path), @title])
+  .inner
+    = render 'form', :ad => @ad

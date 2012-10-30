@@ -1,0 +1,6 @@
+- if nav.content.start_with?('http')
+  = link_to nav.title, nav.content, :class => 'dark nav', :target => :_blank
+- elsif nav.content.start_with?('/')
+  = link_to nav.title, nav.content, :class => 'dark nav'
+- else
+  = link_to nav.title, page_path(nav.key), :class => 'dark nav'

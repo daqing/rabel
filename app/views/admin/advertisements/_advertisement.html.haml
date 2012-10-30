@@ -1,0 +1,22 @@
+.advertisement
+  .fr
+    = admin_edit_button('修改', advertisement)
+  = render 'shared/ad', :ad => advertisement
+  .inner
+    %span.fade 开始日期
+    = advertisement.start_date
+    .sep5
+    %span.fade 结束日期
+    = advertisement.expire_date
+    .sep5
+    %span.fade 持续时间
+    %strong= advertisement.duration
+    %span.fade 天
+    .sep10
+    - if advertisement.showing?
+      %strong.green 展示中
+    - elsif advertisement.expire_date < today
+      %em.red 已过期
+    - else
+      %em 已预约
+    = admin_delete_button(advertisement)

@@ -1,0 +1,58 @@
+= form_for [:admin, ad], :html => {:multipart => true} do |f|
+  %table
+    %tr
+      %td
+        = f.label :title, '广告标题'
+        %small.smaller 尽可能简短 (必填)
+    %tr
+      %td
+        = f.text_field :title, :class => :sl
+        .sep10
+    %tr
+      %td
+        = f.label :words, '广告语'
+        %small.smaller 最好为一句话 (必填)
+    %tr
+      %td
+        = f.text_area :words, :class => :mlt
+        .sep10
+    %tr
+      %td
+        = f.label :link, '广告链接'
+        %small.smaller (必填)
+    %tr
+      %td
+        = f.text_field :link, :class => :sll
+        .sep10
+    %tr
+      %td
+        = f.label :banner, '宣传图片'
+        %small.smaller (必填)
+    %tr
+      %td
+        = image_tag f.object.banner.url
+    %tr
+      %td
+        = f.file_field :banner
+        .sep10
+    %tr
+      %td
+        = f.label :start_date, '开始日期'
+        %small.smaller (必填)
+    %tr
+      %td
+        = f.text_field :start_date, :class => 'sls datepicker'
+        .sep10
+    %tr
+      %td
+        = f.label :duration, '持续时间'
+        %small.smaller (必填)
+    %tr
+      %td
+        = f.text_field :duration, :class => :sls, :style => 'text-align: right; width: 4em;'
+        %small.smaller 天
+        .sep10
+    %tr
+      %td
+        = f.submit '保存', :class => 'super normal button'
+

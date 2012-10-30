@@ -1,0 +1,26 @@
+= form_for [:admin, @user, @reward], :remote => true do |f|
+  %h3
+    - if @reward_type == Reward::TYPE_GRANT
+      奖励给
+      = @user.nickname
+    - else
+      从
+      = @user.nickname
+      帐户中扣除
+
+  = f.text_field :amount_str, :class => 'sls quantity', :autofocus => true, :placeholder => '必填'
+  = Siteconf.reward_title
+  - if @reward_type == Reward::TYPE_REVOKE
+    %small
+      (可用余额:
+      %span.red= @user.reward
+      )
+  .sep3
+  = f.label :reason, '理由'
+  = f.text_area :reason, :class => :ml, :placeholder => '必填'
+  .sep3
+  = f.hidden_field :reward_type
+  - if @reward_type == 'grant'
+    = f.submit '发放奖励', :class => 'super normal button'
+  - else
+    = f.submit "扣除#{Siteconf.reward_title}", :class => 'super normal button'

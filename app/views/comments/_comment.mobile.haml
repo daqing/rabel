@@ -1,0 +1,19 @@
+.cell
+  %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
+    %tr
+      %td.avatar_mini{:valign => :top}
+        = mini_avatar(comment.user)
+      %td{:style => 'padding-left: 5px;', :valign => :top}
+        .fr
+          %span.ago
+            - _num = comment_counter + 1
+            - if @total_pages > 1
+              = "##{Siteconf.pagination_comments.to_i * (@page_num.to_i - 1) + _num} -"
+            - else
+              = "##{_num} -"
+            = time_ago_in_words(comment.created_at)
+        = user_profile_link(comment.user)
+        = show_posting_device(comment)
+        .sep5
+        = format_comment comment.content
+

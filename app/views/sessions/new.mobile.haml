@@ -1,0 +1,24 @@
+- @title = '登入'
+- add_breadcrumb @title
+.cell
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    = devise_error_messages!
+    %table{:cellpadding => 5, :cellspacing => 0, :border => 0}
+      %tr
+        %td{:width => 80, :align => :right} 用户名
+        %td{:width => 200, :align => :left}
+          = f.text_field :nickname, :class => :sl, :autofocus => true
+      %tr
+        %td{:width => 80, :align => :right} 密码
+        %td{:width => 200, :align => :left}
+          = f.password_field :password, :class => :sl
+      %tr
+        %td{:width => 80, :align => :right}
+        %td{:width => 200, :align => :left}
+          - if devise_mapping.rememberable?
+            .hide= f.check_box :remember_me, :checked => true
+          = f.submit '登入', :class => 'super normal button'
+      %tr
+        %td{:width => 80, :align => :right}
+        %td{:width => 200, :align => :left}
+          %span.fade 登录后 cookie 会被记住一年

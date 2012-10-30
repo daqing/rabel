@@ -1,0 +1,35 @@
+- content_for :nav_right do
+  第
+  = @user.id
+  号会员，于
+  = @user.created_at.strftime("%Y-%m-%d")
+  加入
+
+.cell
+  %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
+    %tr
+      %td.avatar{:valign => :top}
+        = medium_avatar(@user)
+      %td{:style => 'padding-left: 8px;', :valign => :top}
+        %h1= @user.nickname
+        .sep10
+        - if @personal_website.present?
+          个人网站
+          = link_to @personal_website, @personal_website, :target => '_blank'
+        .sep10
+        - if @twitter_id.present?
+          Twitter
+          = "@#{@twitter_id}"
+
+- if user_signed_in? and current_user != @user
+  .cell
+    - if current_user.following?(@user)
+      .fr
+        = link_to '取消特别关注', unfollow_user_path(@user.nickname), :method => :post
+      %strong.fade
+        已关注
+    - else
+      = link_to '加入特别关注', follow_user_path(@user.nickname), :method => :post
+
+= render :partial => 'topics/profile_topic', :collection => @user.latest_created_topics, :as => :topic
+

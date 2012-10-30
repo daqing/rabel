@@ -1,0 +1,12 @@
+.section 置顶话题
+#sticky_topics= render @sticky_topics
+.section 最新讨论
+#topics_index= render @topics
+
+- if current_user
+  .section 我的收藏
+  %table{:cellpadding => 10, :cellspacing => 0, :border => 0, :width => '100%'}
+    = render :partial => 'shared/my_fav', :formats => :html
+
+.section 节点导航
+= render @planes

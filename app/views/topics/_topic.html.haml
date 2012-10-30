@@ -1,0 +1,5 @@
+- topic_user = topic.cached_assoc_object(:user)
+- topic_node = topic.cached_assoc_object(:node)
+- comments_count = topic.comments_count
+= render "topics/#{Siteconf.topic_list_style}_topic", :topic_user => topic_user, :topic_node => topic_node, :topic => topic
+

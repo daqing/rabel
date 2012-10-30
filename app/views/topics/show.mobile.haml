@@ -1,0 +1,52 @@
+- add_breadcrumb link_to(@node.name, go_path(@node.key), :class => :black)
+.cell
+  %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
+    %tr
+      %td.avatar{:valign => :top}
+        = user_profile_avatar_link(@topic.user, :medium)
+      %td{:valign => :top, :style => 'padding-left: 5px;'}
+        %h1= @topic.title
+        .sep5
+        %span.fade
+          By
+          = user_profile_link(@topic.user)
+          = time_ago_in_words(@topic.created_at)
+          - if @topic.hit > 0
+            = " - #{@topic.hit}次点击"
+        .sep10
+        = format_topic @topic.content
+.cell
+  .fr
+    - if @total_bookmarks > 0
+      %small.fade= "已有 #{@total_bookmarks} 人收藏"
+      &nbsp;
+    - if current_user
+      - if current_user.bookmarked?(@topic)
+        = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete
+        &nbsp;
+        = image_tag 'heart.png', :align => :top
+      - else
+        = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post
+
+  %strong.fade
+    - if @topic.comments_closed?
+      = t('tips.comments_closed')
+    - else
+      共收到
+      = @topic.comments_count
+      条回复
+
+#replies
+  = render @comments
+  - if @total_pages > 1
+    .cell{:align => :center}
+      = paginate @comments, :param_name => :p, :window => 2
+
+- if user_signed_in? and not @topic.comments_closed?
+  .cell
+    %span.fade 现在就添加一条回复
+    = form_for [@topic, @new_comment] do |f|
+      .sep5
+      = f.text_area :content, :class => :mll
+      .sep5
+      = f.submit '发送'

@@ -1,0 +1,33 @@
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  - f.object.captcha = ''
+  %table{:cellpadding => 5, :cellspacing => 0, :border => 0}
+    %tr
+      %td{:width => 80, :align => :right} 用户名
+      %td{:width => 200, :align => :left}
+        = f.text_field :nickname, :class => :sl, :autofocus => true
+    %tr
+      %td{:width => 80, :align => :right} 电子邮件
+      %td{:width => 200, :align => :left}
+        = f.email_field :email, :class => :sl
+    %tr
+      %td{:width => 80, :align => :right} 密码
+      %td{:width => 200, :align => :left}
+        = f.password_field :password, :class => :sl
+    %tr
+      %td{:width => 80, :align => :right} 密码确认
+      %td{:width => 200, :align => :left}
+        = f.password_field :password_confirmation, :class => :sl
+
+    - if Siteconf.show_captcha?
+      %tr
+        %td{:width => 80, :align => :right} 验证码
+        %td{:width => 200, :align => :left}
+          = image_tag captcha_path(:format => :gif), :class => :captcha
+      %tr
+        %td{:width => 80, :align => :right}
+        %td{:width => 200, :align => :left}
+          = f.text_field :captcha, :class => 'sls captcha'
+    %tr
+      %td{:width => 80, :align => :right}
+      %td{:width => 200, :align => :left}
+        = f.submit '注册', :class => 'super normal button'

@@ -1,0 +1,22 @@
+= f.fields_for :account do |fields|
+  %tr
+    %td{:width => 120, :align => :right} 个人网站
+    %td{:width => 200, :align => :left}
+      = fields.text_field :personal_website, :class => :sl
+  %tr
+    %td{:width => 120, :align => :right} 所在地
+    %td{:width => 200, :align => :left}
+      = fields.text_field :location, :class => :sl
+  %tr
+    %td{:width => 120, :align => :right} 签名
+    %td{:width => 200, :align => :left}
+      = fields.text_field :signature, :class => :sl
+  %tr
+    %td{:width => 120, :align => :right} 个人简介
+    %td{:width => 200, :align => :left}
+      = fields.text_area :introduction, :class => :ml
+  %tr
+    %td{:width => 120, :align => :right} 微博地址
+    %td{:width => 200, :align => :left}
+      = fields.text_field :weibo_link, :class => :sl
+

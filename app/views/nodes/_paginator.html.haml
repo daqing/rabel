@@ -1,0 +1,18 @@
+- if @total_pages > 1
+  %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
+    %tr
+      %td{:width => 100, :align => :left}
+        - if @prev_page_num > 0
+          .sep5
+          = link_to '上一页', go_path(@node.key) + "?p=#{@prev_page_num}", :class => 'super normal button'
+          .sep5
+
+      %td{:width => :auto, :align => :center, :valign => :middle}
+        %strong{:style => 'font-size: 13px;'}
+          %span.fade= "#{@page_num}/#{@total_pages}"
+          %span.snow= "- #{@total_topics} Topics"
+      %td{:width => 100, :align => :right}
+        - if @next_page_num > 0
+          .sep5
+          = link_to '下一页', go_path(@node.key) + "?p=#{@next_page_num}", :class => 'super normal button'
+          .sep5

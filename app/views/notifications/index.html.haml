@@ -1,0 +1,6 @@
+.box
+  .cell
+    = build_navigation([@title])
+  .inner
+    %table{:cellpadding => 0, :cellspacing => 0, :border => 0}
+      = render :partial => 'shared/notification', :collection => @notifications

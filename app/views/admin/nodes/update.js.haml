@@ -1,0 +1,6 @@
+- target_id = '#' + @node.html_id
+$.facebox.close()
+$("#{target_id}").replaceWith("#{escape_javascript(render @node)}");
+setTimeout(function() {
+$("#{target_id}").effect('highlight')
+}, 500)

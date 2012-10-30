@@ -1,0 +1,5 @@
+.box
+  .cell
+    = build_admin_navigation([link_to('云硬盘', admin_cloud_files_path), @title])
+  .inner
+    = render 'form'

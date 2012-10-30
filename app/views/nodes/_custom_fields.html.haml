@@ -1,0 +1,13 @@
+- if node.custom_css.present?
+  - content_for :final_head do
+    %style{:type => 'text/css'}
+      = node.custom_css.html_safe
+
+- if node.custom_html.present?
+  - content_for :rightbar do
+    .box
+      .inner
+        = node.custom_html.html_safe
+    .sep20
+
+

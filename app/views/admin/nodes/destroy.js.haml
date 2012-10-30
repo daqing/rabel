@@ -1,0 +1,4 @@
+$("##{@node.html_id}").hide()
+- if @node.plane.can_delete?
+  $("##{@node.plane.html_id}").replaceWith("#{escape_javascript render(@node.plane)}")
+

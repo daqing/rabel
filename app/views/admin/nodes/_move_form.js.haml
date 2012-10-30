@@ -1,0 +1,6 @@
+= form_for [:admin, @node], :url => move_to_admin_node_path(@node), :remote => true do |f|
+  = f.label :plane_id, '移动到新位面'
+  = f.select :plane_id, options_from_collection_for_select(Plane.all - [@node.plane], :id, :name)
+  .sep5
+  = f.submit '开始移动', :class => 'super normal button'
+

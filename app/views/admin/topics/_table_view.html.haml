@@ -1,0 +1,32 @@
+%table.topics
+  %thead
+    %tr
+      %th.w50 ID
+      %th.auto{:align => :left} 节点
+      %th.auto{:align => :left} 标题
+      %th.auto{:align => :left} 作者
+      %th.auto{:align => :right} 回复数
+      %th.auto{:align => :right} 浏览量
+      %th.auto{:align => :right} 创建时间
+      %th.w100 操作
+  %tbody
+    - topics.each do |topic|
+      %tr.highlight
+        %td.w50
+          %strong.green
+            = topic.id
+        %td.auto
+          = link_to topic.node.name, go_path(topic.node.key)
+        %td.auto
+          = link_to topic.title, t_path(topic.id)
+        %td.auto
+          = user_profile_link(topic.user)
+        %td.auto{:align => :right}
+          = topic.comments_count
+        %td.auto{:align => :right}
+          = topic.hit
+        %td.auto{:align => :right}
+          %small.fade= time_ago_in_words(topic.created_at)
+        %td.w100
+          = link_to '编辑', edit_node_topic_path(topic.node, topic), :class => :op
+          = link_to '删除', admin_topic_path(topic), :class => 'op op_danger', :method => :delete, :data => {:confirm => t(:delete_confirm)}

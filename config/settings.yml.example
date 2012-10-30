@@ -1,0 +1,16 @@
+default: &default
+  system_email: "no-reply@example.com"
+  memcached:
+    servers: ["127.0.0.1:11211"]
+    namespace: "example"
+
+production:
+  <<: *default
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  default_password: 'project_rabel'
+

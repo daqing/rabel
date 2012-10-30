@@ -1,0 +1,15 @@
+.box
+  .inner{:align => :center}
+    %div{:style => 'width: 240px; text-align: left'}
+      %span{:style => 'font-weight: bold; font-size: 10px; color: #e2e2e2;'} Promotion
+      .sep10
+      / TODO: Record outbound ad link
+      = link_to ad.link, :class => :track_event, :target => '_blank', :data => {:category => :ad, :action => :click, :label => ad.title} do
+        = image_tag ad.banner.url, :border => 0, :width => 120, :height => 90
+      .sep5
+      %span{:style => 'font-size: 11px; color: #666;'}
+        %strong{:style => 'color: #000;'}
+          = link_to ad.title, ad.link, :target => '_blank', :class => 'black track_event', :data => {:category => :ad, :action => :click, :label => ad.title}
+      .sep3
+      %span{:style => 'font-size: 12px;'}= ad.words
+.sep20

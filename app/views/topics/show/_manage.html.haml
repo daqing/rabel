@@ -1,0 +1,19 @@
+- if can? :update, @topic
+  - content_for :rightbar do
+    .box
+      .cell
+        %span.fade 话题管理
+      .cell
+        = link_to '修改标题', edit_title_node_topic_path(@node, @topic), :remote => true, :class => 'op admin_op'
+        = link_to '编辑全部', edit_node_topic_path(@node, @topic), :class => 'op admin_op'
+      .cell
+        = link_to '移动到新节点', move_node_topic_path(@node, @topic), :remote => true, :class => 'op admin_op'
+      - if current_user.can_manage_site?
+        .cell
+          - toggle_comments_closed_tip = @topic.comments_closed? ? '允许回复' : '禁止回复'
+          = link_to toggle_comments_closed_tip, topic_toggle_comments_closed_path(@topic), :method => :put, :class => 'op admin_op'
+          - toggle_sticky_tip = @topic.sticky? ? '取消置顶' : '置顶此话题'
+          = link_to toggle_sticky_tip, topic_toggle_sticky_path(@topic), :method => :put, :class => 'op admin_op'
+      .inner
+        = link_to '删除此话题', node_topic_path(@node, @topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'op admin_op op_danger'
+    .sep20

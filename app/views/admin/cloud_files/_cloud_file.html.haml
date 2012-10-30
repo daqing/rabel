@@ -1,0 +1,9 @@
+%tr.highlight
+  %td= cloud_file.name
+  %td{:align => :center}
+    = text_field_tag '', cloud_file.asset.url, :class => :sl
+    = link_to '下载', cloud_file.asset.url, :target => :_blank, :class => 'op admin_op'
+  %td{:align => :right}= number_to_human_size(cloud_file.file_size)
+  %td{:align => :right}= cloud_file.content_type
+  %td{:align => :center}
+    = admin_delete_button(cloud_file)

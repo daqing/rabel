@@ -1,0 +1,5 @@
+.box
+  .cell
+    = build_admin_navigation([link_to('页面管理', admin_pages_path), @title])
+  .inner
+    = render 'form', :page => @page

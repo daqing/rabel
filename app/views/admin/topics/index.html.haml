@@ -1,0 +1,8 @@
+.box
+  .cell
+    = build_admin_navigation([@title])
+  .cell
+    = render 'table_view', :topics => @topics
+  .inner{:align => :center}
+    = paginate @topics
+

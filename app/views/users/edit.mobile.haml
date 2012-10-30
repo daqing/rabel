@@ -1,0 +1,8 @@
+- add_breadcrumb @title
+= show_mobile_messages
+.cell
+  = render :partial => 'users/account_form', :formats => :html, :locals => {:btn_class => ''}
+.section 安全
+.cell
+  = render :partial => 'users/password_form', :formats => :html, :locals => {:btn_class => ''}
+= show_mobile_messages

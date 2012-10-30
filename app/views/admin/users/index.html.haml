@@ -1,0 +1,23 @@
+.box
+  .cell
+    .fr
+      = form_for '', :url => admin_users_path, :method => :get do
+        = label_tag :nickname, '用户昵称', :class => :small
+        = text_field_tag :nickname, params[:nickname], :class => :sls
+        = submit_tag '搜索', :class => 'super normal button'
+
+    = build_admin_navigation([@title])
+  .cell
+    %table{:cellpadding => 5, :cellspacing => 0, :border => 0, :width => '100%'}
+      %thead
+        %tr
+          %th{:align => :right} ID
+          %th.w50{:align => :left} 昵称
+          %th.auto{:align => :left} 角色
+          %th.auto{:align => :left} Email
+          %th.auto{:align => :right}= Siteconf.reward_title
+          %th 操作
+      %tbody
+        = render @users
+  .inner{:align => :center}
+    = paginate @users

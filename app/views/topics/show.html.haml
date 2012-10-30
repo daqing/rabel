@@ -1,0 +1,56 @@
+= render 'nodes/custom_fields', :node => @node
+= render 'topics/show/bookmarked_users'
+= render 'topics/show/manage'
+
+- content_for :template_js do
+  :plain
+    var creating_comment = false;
+
+    $("textarea.mll").keydown(function(e) {
+      if (e.ctrlKey && e.keyCode == 13) {
+        if (creating_comment) return;
+        creating_comment = true
+        $("input[type=submit]").click();
+      }
+    });
+
+- topic_user = @topic.cached_assoc_object(:user)
+
+.box
+  %article
+    %div{:class => @topic.content.present? ? 'header' : 'inner'}
+      .fr
+        = user_profile_avatar_link(topic_user, :large)
+      = build_navigation([link_to(@node.name, go_path(@node.key))], 'bigger')
+      .sep10
+      %h1#topic_title
+        = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe
+      %small.fade
+        By
+        = user_profile_link(topic_user, :class => :dark)
+        at
+        = time_ago_in_words(@topic.created_at)
+        ,
+        = @topic.hit
+        次浏览
+    - if @topic.content.present?
+      .inner
+        .content.topic_content= format_topic(@topic.content)
+    - if user_signed_in?
+      .inner
+        .fr{:align => :right}
+          - if current_user.bookmarked?(@topic)
+            = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'op unbookmark'
+          - else
+            = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'op bookmark'
+        &nbsp;&nbsp;
+.sep20
+= render 'topics/show/comments' if @comments.any?
+
+- if @topic.comments_closed?
+  .sep20
+  = render 'shared/box_tip', :tip => t('tips.comments_closed')
+- elsif @comments.empty?
+  = render 'shared/box_tip', :tip => '目前尚无回复'
+
+= render 'topics/show/comment_form' unless @topic.comments_closed?

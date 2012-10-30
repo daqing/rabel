@@ -1,0 +1,27 @@
+%table{:cellpadding => 5, :cellspacing => 0, :border => 0, :width => '100%', :class => :topics}
+  %tr
+    %th{:align => :right, :width => 50} 回复
+    %th{:align => :left, :width => :auto} 标题
+    %th{:align => :left, :width => 200, :colspan => 2} 最后回复时间
+  - i = 1
+  - topics.each do |topic|
+    - class_name = (i % 2 == 0) ? 'even' : 'odd'
+    - i += 1
+    %tr
+      %td{:align => :right, :width => 50, :class => "#{class_name} lend"}
+        - comments_count = topic.comments_count
+        - if comments_count > 0
+          %strong
+            %span.green= comments_count
+        - else
+          %span.snow 0
+      %td{:align => :left, :width => :auto, :class => class_name}
+        = link_to topic.title, t_path(topic.id)
+      - last_comment = topic.last_comment
+      - last_comment = topic if last_comment.nil?
+      %td{:align => :left, :width => 80, :class => class_name}
+        = user_profile_link(last_comment.user, :class => :dark)
+      %td{:align => :left, :width => 120, :class => "#{class_name} rend"}
+        %small.fade= last_comment.created_at.strftime("%Y-%m-%d %H:%M:%S")
+
+

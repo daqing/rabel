@@ -1,0 +1,19 @@
+- if Siteconf.nav_position_sidebar?
+  - content_for :rightbar do
+    = render 'rightbar_planes'
+
+- if Siteconf.show_community_stats?
+  - content_for :rightbar do
+    = render 'shared/community_stats'
+
+- if Siteconf.nav_position_top?
+  = render 'home_planes'
+  .sep20
+  = render 'home_topics'
+- elsif Siteconf.nav_position_bottom?
+  = render 'home_topics'
+  .sep20
+  = render 'home_planes'
+- elsif Siteconf.nav_position_sidebar?
+  = render 'home_topics'
+

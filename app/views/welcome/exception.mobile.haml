@@ -1,0 +1,7 @@
+- add_breadcrumb('页面不存在')
+.cell
+  %h2.fade= @title
+  - unless Rails.env.production?
+    %p{:align => :left}
+      = @exception.message
+      = @exception.backtrace.join('<br/>').html_safe

@@ -1,0 +1,15 @@
+.box
+  .cell
+    = build_navigation([@title], 'bigger')
+  .cell{:align => :center}
+    %h1.fade= @note
+    - unless Rails.env.production?
+      %p{:align => :left}
+        = @exception.message
+        = @exception.backtrace.join('<br/>').html_safe
+  .inner
+    %span.fade
+      %span.chevron &nbsp;‹&nbsp;
+      返回
+      = link_to '首页', root_path
+      .sep5

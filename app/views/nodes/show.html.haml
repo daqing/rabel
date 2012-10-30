@@ -1,0 +1,44 @@
+- if user_signed_in?
+  - content_for :template_js do
+    $("a.super").click(function() { $("textarea.mll:first").focus() });
+
+- if user_signed_in? and current_user.can_manage_site?
+  - content_for :rightbar do
+    .box
+      .cell
+        %strong 节点管理
+      .cell
+        = link_to "修改 #{@node.name} 节点", admin_planes_path + "#!/click/edit_#{@node.html_id}", :class => 'op admin_op'
+      - if @node.quiet
+        .inner
+          = image_tag 'ghost.png', :align => :top, :title => t('tips.quiet_node')
+          = t('tips.quiet_node')
+    .sep20
+
+= render 'custom_fields', :node => @node
+
+.box
+  .header
+    .fr.f12
+      %span.snow 话题总数
+      %strong.gray= @total_topics
+    = build_navigation([@node.name], 'bigger')
+    - if @node.introduction.present?
+      .sep10
+      %span.fade= @node.introduction
+    - if user_signed_in?
+      .sep10
+      = link_to '创建新话题', '#new_topic', :class => 'super normal button'
+      .sep5
+  = render @topics
+  .inner
+    = render 'paginator'
+
+- if user_signed_in?
+  .sep20
+  .box
+    .inner
+      %h3 创建新话题
+      = render 'topics/form', :node => @node, :topic => @node.topics.new, :comments_closed => false
+
+

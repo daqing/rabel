@@ -1,0 +1,13 @@
+= form_for [:admin, plane], :remote => true do |f|
+  %table
+    %tr
+      %td
+        = f.label :name, '名称'
+        %small.smaller
+          (必填)
+    %tr
+      %td
+        = f.text_field :name, :class => :sl, :autofocus => true
+    %tr
+      %td
+        = f.submit '保存', :class => 'super normal button'

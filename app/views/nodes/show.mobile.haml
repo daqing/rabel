@@ -1,0 +1,16 @@
+- content_for :nav_right do
+  = @total_topics
+  个主题
+
+- if user_signed_in?
+  .cell
+    = link_to new_node_topic_path(@node), :class => :btn do
+      %input{:type => :button, :value => '创建新主题'}
+
+= render @topics
+- if @total_pages > 1
+  .cell{:align => :center}
+    = render :partial => 'paginator', :formats => :html
+
+- if @node.custom_html.present?
+  .cell= @node.custom_html.html_safe

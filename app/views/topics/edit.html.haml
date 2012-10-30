@@ -1,0 +1,32 @@
+- unless @topic.locked? or current_user.can_manage_site?
+  .box
+    .cell
+      %span.fade 修改功能指南
+    .inner
+      在新主题创建后的
+      = Siteconf.topic_editable_period_str
+      分钟内，可以自由编辑。
+      .sep5
+      %strong
+        距离本主题的编辑权限关闭还有&nbsp;
+        %span.orange= (@topic.created_at + Siteconf.topic_editable_period - Time.now).round
+        &nbsp;秒
+  .sep20
+  - content_for :template_js do
+    :plain
+      var second = parseInt($("span.orange").text());
+      var countdown_id = setInterval(function() {
+        if (second == 0) {
+          $('#Rightbar strong').text('此主题编辑权限已经关闭');
+          clearInterval(countdown_id);
+          return;
+        }
+        second = second - 1;
+        $("span.orange").text(second);
+        }, 1000);
+.box
+  .cell= edit_topic_navigation(@node, @topic)
+  .cell
+    %h3 更新话题
+    = render 'form', :node => @node, :topic => @topic, :comments_closed => @topic.comments_closed?
+  .inner= render 'back_to_node', :node => @node

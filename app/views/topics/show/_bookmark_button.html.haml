@@ -1,0 +1,8 @@
+- if user_signed_in?
+  .inner
+    .fr{:align => :right}
+      - if current_user.bookmarked?(@topic)
+        = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'op cancel'
+      - else
+        = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => :op
+    &nbsp;&nbsp;

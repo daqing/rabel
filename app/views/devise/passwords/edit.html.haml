@@ -1,0 +1,24 @@
+- @title = '重新设置密码'
+.box
+  .cell
+    = build_navigation([@title])
+  .inner
+    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+      = devise_error_messages!
+      = f.hidden_field :reset_password_token
+      %table.form
+        %tr
+          %td.left
+            = f.label :password, '新密码'
+          %td.right
+            = f.password_field :password, :class => :sl
+        %tr
+          %td.left
+            = f.label :password_confirmation, '请再输入一次'
+          %td.right
+            = f.password_field :password_confirmation, :class => :sl
+        %tr
+          %td.left
+          %td.right
+            = f.submit '继续', :class => 'super normal button'
+

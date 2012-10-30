@@ -1,0 +1,11 @@
+.cell
+  %table{:cellpadding => 5, :cellspacing => 0, :border => 0}
+    %tr
+      %td{:width => 80, :align => :right}
+        = link_to topic.node.name, go_path(topic.node.key)
+      %td{:align => :left}
+        = link_to topic.title, t_path(topic.id)
+        %small.fade
+          收到
+          = topic.comments_count
+          回复

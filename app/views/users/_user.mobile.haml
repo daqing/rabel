@@ -1,0 +1,9 @@
+.cell
+  %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
+    %tr
+      %td.avatar{:valign => :top}
+        = user_profile_avatar_link(user, :medium)
+      %td{:style => 'padding-left: 8px;', :valign => :top}
+        %h1= user_profile_link(user)
+        .sep5
+        %p= user.account.signature

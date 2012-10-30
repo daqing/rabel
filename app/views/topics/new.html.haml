@@ -1,0 +1,6 @@
+.box
+  .cell
+    = build_navigation [link_to(@node.name, go_path(@node.key))]
+  .inner
+    %h2 创建新话题
+    = render 'form', :node => @node, :topic => @topic, :comments_closed => false

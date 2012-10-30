@@ -1,0 +1,38 @@
+!!! 5
+%html{:lang => 'zh-CN'}
+  %head
+    = render :partial => 'shared/meta', :formats => :html
+    = stylesheet_link_tag "i_mobile"
+    = javascript_include_tag "application"
+  %body
+    #Top
+      #Member
+        - if user_signed_in?
+          %span.nickname= current_user.nickname
+          = user_profile_avatar_link(current_user, :mini, :class => :icon)
+          &nbsp;
+          = link_to settings_path, :class => :icon do
+            #GearIcon
+          &nbsp;
+          = link_to destroy_user_session_path, :method => :delete, :class => :icon do
+            #EjectIcon
+        - else
+          = link_to '登入', new_user_session_path, :class => :white
+          &nbsp;|&nbsp;
+          = link_to '注册', new_user_registration_path, :class => :white
+      = link_to Siteconf.site_name, root_path, :id => :Logo
+    #Main
+      - if @unread_count > 0 and @show_notification_count
+        .section 提醒
+        .cell
+          = image_tag 'dot_orange.png', :class => :dot_icon, :align => :absmiddle
+          %strong
+            = link_to "#{@unread_count} 条未读提醒", notifications_path, :class => :notification
+      - if @breadcrumbs.length > 1
+        .section
+          .fr= yield :nav_right
+          = build_breadcrumbs
+      = yield
+    .cell_bottom
+      = Siteconf.mobile_footer.html_safe
+    = render :partial => 'shared/google_analytics', :formats => :html

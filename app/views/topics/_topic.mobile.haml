@@ -1,0 +1,24 @@
+- topic_user = topic.user
+- comment_count = topic.comments_count
+.cell
+  %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
+    %tr
+      %td.avatar{:valign => :top}
+        = user_profile_avatar_link(topic_user, :medium)
+      %td{:valign => :top, :style => 'padding-left: 8px;'}
+        %span.fade
+          = user_profile_link(topic_user)
+          &nbsp;in&nbsp;
+          = link_to topic.node.name, go_path(topic.node.key)
+          - if comment_count > 0
+            %small
+              收到
+              = comment_count
+              回复
+        .sep5
+        %span.bigger
+          = link_to topic.title, t_path(topic.id)
+        %span.created
+          = time_ago_in_words(topic.created_at)
+
+

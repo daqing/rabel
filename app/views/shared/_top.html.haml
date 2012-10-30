@@ -1,0 +1,21 @@
+#TopMain
+  - if Siteconf.custom_logo.present?
+    = link_to root_path, :class => 'logo custom_logo' do
+      = image_tag Siteconf.custom_logo, :alt => :logo
+  - else
+    = link_to Siteconf.site_name, root_path, :class => 'logo text_logo'
+  #Navigation
+    %ul
+      %li= link_to '首页', root_path, :class => link_class
+      - if user_signed_in?
+        %li= user_profile_link(current_user, :class => link_class)
+        %li= link_to '个人设置', settings_path, :class => link_class
+        - if current_user.can_manage_site?
+          %li= link_to '管理后台', admin_root_path, :class => link_class
+        %li= link_to '登出', destroy_user_session_path, :method => :delete, :class => link_class
+      - else
+        %li= link_to '注册', new_user_registration_path, :class => link_class
+        %li= link_to '登入', new_user_session_path, :class => link_class
+  #Search
+    .search_input
+      %input#q{:type => 'text', :maxlength => 40, :name => 'q', :data => {:domain => Siteconf.site_host}}

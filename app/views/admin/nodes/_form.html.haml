@@ -1,0 +1,49 @@
+%h2= "修改 #{node.name} 节点"
+= form_for [:admin, plane, node], :remote => true do |f|
+  %table
+    %tr
+      %td
+        = f.label :key, '英文标识'
+        %small.smaller (必填)
+    %tr
+      %td{:style => 'position: relative;'}
+        = f.text_field :key, :class => :sl, :autofocus => true
+        %small.fade= t('tips.node_key_format')
+    %tr
+      %td
+        = f.label :name, '名称'
+        %small.smaller
+          例如, Ruby on Rails
+        %small.smaller (必填)
+    %tr
+      %td
+        = f.text_field :name, :class => :sl
+    %tr
+      %td
+        = f.label :introduction, '一句话简介'
+    %tr
+      %td
+        = f.text_field :introduction, :class => :sll
+    %tr
+      %td
+        = f.label :custom_html, '自定义CSS'
+    %tr
+      %td
+        %small.fade &lt;style type=&quot;text/css&quot;&gt;
+        = f.text_area :custom_css, :class => :mle
+        %small.fade &lt;style&gt;
+    %tr
+      %td
+        = f.label :custom_html, '自定义内容'
+        %small.smaller
+          显示在右侧边栏的内容，支持html。
+    %tr
+      %td
+        = f.text_area :custom_html, :class => :mle
+    %tr
+      %td
+        = f.check_box :quiet
+        = f.label :quiet, '禁止本节点话题出现在首页', :class => :small
+    %tr
+      %td
+        = f.submit '保存', :class => 'super normal button'

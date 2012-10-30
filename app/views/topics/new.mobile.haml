@@ -1,0 +1,14 @@
+- add_breadcrumb link_to(@node.name, go_path(@node.key), :class => :black)
+- add_breadcrumb '新建主题'
+.cell
+  = form_for [@node, @topic] do |f|
+    = f.text_field :title, :class => :sll
+    .sep5
+    = f.text_area :content, :class => :mll
+    .sep5
+    - if current_user.can_manage_site?
+      = check_box_tag :comments_closed
+      = label_tag :comments_closed, '禁止回复'
+    .sep5
+    = f.submit '创建新主题', :class => :btn
+

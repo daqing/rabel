@@ -1,0 +1,5 @@
+%h3.fade 修改回复
+= form_for @comment, :remote => true do |f|
+  = f.text_area :content, :class => :mll, :autofocus => true
+  .sep5
+  = f.submit '保存', :class => 'super normal button'

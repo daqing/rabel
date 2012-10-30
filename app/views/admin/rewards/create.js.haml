@@ -1,0 +1,8 @@
+:plain
+  var balance = $("#reward_balance")
+  if (balance.length > 0) {
+    balance.html("#{@user.reward}");
+    $.facebox.close();
+  } else {
+    window.location.reload();
+  }
