@@ -31,4 +31,12 @@ class WelcomeController < ApplicationController
       }
     end
   end
+
+  def sitemap
+    respond_to do |f|
+      f.xml {
+        @topics = Topic.select('id, comments_count, updated_at').order('created_at DESC').limit(50000)
+      }
+    end
+  end
 end

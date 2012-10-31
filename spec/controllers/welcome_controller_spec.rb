@@ -23,4 +23,11 @@ describe WelcomeController do
       should respond_with(:success)
     end
   end
+
+  describe "Get #sitemap" do
+    it "should output sitemap" do
+      get :sitemap, :format => :xml
+      should respond_with(:success)
+    end
+  end
 end

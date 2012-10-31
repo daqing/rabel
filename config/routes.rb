@@ -17,6 +17,8 @@ Rabel::Application.routes.draw do
   get 'page/:key' => 'pages#show', :as => :page
   get 'goodbye' => 'welcome#goodbye'
   get 'captcha' => 'welcome#captcha'
+  get 'sitemap' => 'welcome#sitemap'
+
   resources :nodes do
     resources :topics do
       member do
