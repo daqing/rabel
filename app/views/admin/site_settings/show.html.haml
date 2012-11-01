@@ -110,14 +110,6 @@
 
         %tr
           %td
-            = label_tag 'settings[seo_keywords_str]', 'SEO 关键字'
-          %td
-            = text_area_tag 'settings[seo_keywords_str]', @settings.seo_keywords_str, :class => :ml
-            %small.smaller 用英文逗号(,)隔开
-            .sep10
-
-        %tr
-          %td
             = label_tag 'settings[seo_description]', 'SEO 描述'
           %td
             = text_area_tag 'settings[seo_description]', @settings.seo_description, :class => :ml

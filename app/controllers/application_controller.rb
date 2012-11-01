@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
     count_unread_notification
     initialize_breadcrumbs_and_title
 
-    @seo_description = Siteconf.seo_description
+    @seo_description = ''
     ActionMailer::Base.default_url_options[:host] = Siteconf.site_host
   end
 

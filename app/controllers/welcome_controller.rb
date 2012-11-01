@@ -5,6 +5,7 @@ class WelcomeController < ApplicationController
     @sticky_topics = Topic.sticky_topics
     @canonical_path = '/'
     @full_title = site_intro
+    @seo_description = Siteconf.seo_description
 
     respond_to do |format|
       format.html
