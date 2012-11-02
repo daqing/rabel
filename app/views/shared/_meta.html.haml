@@ -7,3 +7,5 @@
 = Siteconf.custom_head_tags.html_safe
 = favicon_link_tag
 = auto_discovery_link_tag :atom, topics_path(:atom)
+- if @canonical_path.present?
+  %link{:rel => :canonical, :href => "http://#{Settings.canonical_host}#{@canonical_path}"}

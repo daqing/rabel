@@ -1,4 +1,5 @@
 default: &default
+  canonical_host: "www.example.com"
   system_email: "no-reply@example.com"
   memcached:
     servers: ["127.0.0.1:11211"]

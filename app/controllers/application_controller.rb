@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
     initialize_breadcrumbs_and_title
 
     @seo_description = ''
-    ActionMailer::Base.default_url_options[:host] = Siteconf.site_host
+    ActionMailer::Base.default_url_options[:host] = Settings.canonical_host
   end
 
   def initialize_breadcrumbs_and_title

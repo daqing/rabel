@@ -49,7 +49,7 @@ class TopicsController < ApplicationController
     @total_bookmarks = @topic.bookmarks.count
 
     @canonical_path = "/t/#{params[:id]}"
-    @canonical_path += "?p=#{@current_page}" if @total_pages > 1 and @current_page != @total_pages
+    @canonical_path += "?p=#{@current_page}" if @current_page > 1
     @seo_description = "#{@node.name} - #{@topic.user.nickname} - #{@topic.title}"
 
     respond_to do |format|

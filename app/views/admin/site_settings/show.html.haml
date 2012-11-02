@@ -17,15 +17,6 @@
 
         %tr
           %td
-            = label_tag 'settings[site_host]', '域名'
-            %small.smaller (必填)
-          %td
-            = text_field_tag 'settings[site_host]', @settings.site_host, :class => :sl
-            %small.fade 不需要加 http://
-            .sep10
-
-        %tr
-          %td
             = label_tag 'settings[welcome_tip]', '欢迎信息'
             %small.smaller (必填)
           %td

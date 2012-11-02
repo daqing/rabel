@@ -9,7 +9,8 @@ class NodesController < ApplicationController
     @prev_page_num = (@page_num > 1) ? @page_num - 1 : 0
     @topics = @node.cached_assoc_pagination(:topics, @page_num, Siteconf.pagination_topics.to_i, 'updated_at')
 
-    @canonical_path = "/go/#{params[:key]}?p=#{@page_num}"
+    @canonical_path = "/go/#{params[:key]}"
+    @canonical_path += "?p=#{@page_num}" if @page_num > 1
     @seo_description = "#{@node.name} - #{@node.introduction}"
 
     respond_to do |format|

@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 Siteconf.defaults[:site_name] = 'Rabel' # 站点名称，如: Rabel
-Siteconf.defaults[:site_host] = 'example.com' # 网站域名，例如: www.rabelapp.com, 不需要加http://
 Siteconf.defaults[:welcome_tip] = '欢迎访问<strong>Rabel</strong>' # 网站欢迎语, 支持html标签
 Siteconf.defaults[:splash] = '<div class="hero_unit"><h1>Rabel</h1><p>新一代简洁社区软件</p></div>'
 Siteconf.defaults[:ga_id] = '' # Google Analytics ID

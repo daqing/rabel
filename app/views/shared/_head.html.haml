@@ -1,9 +1,9 @@
 = render 'shared/meta'
 = stylesheet_link_tag "application"
-= javascript_include_tag "application"
 = yield :head
 - if Siteconf.theme != 'default'
   = stylesheet_link_tag "#{Siteconf.theme}/i_theme"
 - if Siteconf.custom_css.present?
   %style{:type => 'text/css'}= Siteconf.custom_css.html_safe
+= javascript_include_tag "application"
 = yield :final_head
