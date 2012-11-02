@@ -50,8 +50,7 @@ class TopicsController < ApplicationController
 
     @canonical_path = "/t/#{params[:id]}"
     @canonical_path += "?p=#{@current_page}" if @total_pages > 1 and @current_page != @total_pages
-    @seo_description = @topic.content.present? ? @topic.content.slice(0, 50) : @topic.title
-    @seo_description += " - #{@topic.user.nickname}"
+    @seo_description = "#{@node.name} - #{@topic.user.nickname} - #{@topic.title}"
 
     respond_to do |format|
       format.html

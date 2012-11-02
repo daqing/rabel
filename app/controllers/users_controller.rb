@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @introduction = @user.account.introduction
 
     @nickname_tip = (@user == current_user) ? '我' : @user.nickname
+    @seo_description = "#{@user.nickname} - #{@signature}"
 
     respond_to do |format|
       format.html

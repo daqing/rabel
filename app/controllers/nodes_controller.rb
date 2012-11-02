@@ -10,6 +10,7 @@ class NodesController < ApplicationController
     @topics = @node.cached_assoc_pagination(:topics, @page_num, Siteconf.pagination_topics.to_i, 'updated_at')
 
     @canonical_path = "/go/#{params[:key]}?p=#{@page_num}"
+    @seo_description = "#{@node.name} - #{@node.introduction}"
 
     respond_to do |format|
       format.html
