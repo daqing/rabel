@@ -4,7 +4,10 @@
       %td{:width => 100, :align => :left}
         - if @prev_page_num > 0
           .sep5
-          = link_to '上一页', go_path(@node.key) + "?p=#{@prev_page_num}", :class => 'super normal button'
+          - if @prev_page_num == 1
+            = link_to '上一页', go_path(@node.key), :class => 'super normal button'
+          - else
+            = link_to '上一页', go_path(@node.key) + "?p=#{@prev_page_num}", :class => 'super normal button'
           .sep5
 
       %td{:width => :auto, :align => :center, :valign => :middle}

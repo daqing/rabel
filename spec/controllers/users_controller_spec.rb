@@ -18,6 +18,15 @@ describe UsersController do
     response.should be_success
   end
 
+  it "should display user's all topics" do
+    create(:user, :nickname => 'devin')
+    get :topics, :nickname => 'devin'
+
+    should respond_with(:success)
+    should assign_to(:title)
+    should assign_to(:seo_description)
+  end
+
   context "authenticated user" do
     login_user(:devin)
     it "allows editing profile" do

@@ -1,8 +1,16 @@
+# encoding: utf-8
 class NodesController < ApplicationController
   def show
     @node = Node.find_by_attr_cached!(:key, params[:key])
     @title = @node.name
-    @page_num = params[:p].nil? ? 1 : params[:p].to_i
+
+    if params[:p].present?
+      @page_num = params[:p].to_i
+      @title += " (第 #{@page_num} 页)"
+    else
+      @page_num = 1
+    end
+
     @total_topics = @node.topics_count
     @total_pages = (@total_topics * 1.0 / Siteconf.pagination_topics.to_i).ceil
     @next_page_num = (@page_num < @total_pages) ? @page_num + 1 : 0

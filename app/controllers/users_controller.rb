@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @topics = @user.cached_assoc_pagination(:topics, @current_page, 20, 'created_at')
 
     @title = "#{@user.nickname} 创建的所有主题"
+    @seo_description = "#{@title} - #{Siteconf.site_name}"
   end
 
   def edit

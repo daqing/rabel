@@ -39,6 +39,7 @@ describe TopicsController do
     should respond_with(:success)
     should assign_to(:topics)
     should assign_to(:title)
+    should assign_to(:seo_description)
   end
 
   it "should show atom feed" do

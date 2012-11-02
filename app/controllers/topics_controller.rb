@@ -12,11 +12,24 @@ class TopicsController < ApplicationController
     respond_to do |format|
       format.html {
         per_page = Siteconf::HOMEPAGE_TOPICS
-        current_page = params[:page].present? ? params[:page].to_i : 1
+        @title = '全站最新更改记录'
+        if params[:page].present?
+          current_page = params[:page].to_i
+          @title += " (第 #{current_page} 页)"
+        else
+          current_page = 1
+        end
+
+
+
         total_pages = (Topic.cached_count * 1.0 / per_page).ceil
         @topics = Topic.cached_pagination(current_page, per_page, 'updated_at')
         @topics.pagination_ready(current_page, total_pages, per_page)
-        @title = '全站最新更改记录'
+
+        @canonical_path = topics_path
+        @canonical_path += "?page=#{current_page}" if current_page > 1
+
+        @seo_description = @title
       }
       format.atom {
         @feed_items = Topic.recent_topics(Siteconf::HOMEPAGE_TOPICS)
@@ -49,7 +62,7 @@ class TopicsController < ApplicationController
     @total_bookmarks = @topic.bookmarks.count
 
     @canonical_path = "/t/#{params[:id]}"
-    @canonical_path += "?p=#{@current_page}" if @current_page > 1
+    @canonical_path += "?p=#{@current_page}" if @total_pages > 1
     @seo_description = "#{@node.name} - #{@topic.user.nickname} - #{@topic.title}"
 
     respond_to do |format|
