@@ -2,6 +2,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
+  include BootstrapHelper
+
+  layout 'bootstrap'
 
   rescue_from CanCan::AccessDenied do |exception|
     exception.default_message = t('tips.no_permission')

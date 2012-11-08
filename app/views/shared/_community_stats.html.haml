@@ -5,17 +5,17 @@
     %table{:cellpadding => 3, :cellspacing => 0, :border => 0, :width => '100%'}
       %tr
         %td{:align => :right, :width => 50}
-          %span.fade 注册会员
+          %span.gray 注册会员
         %td{:align => :left}
           %strong= User.cached_count
       %tr
         %td{:align => :right, :width => 50}
-          %span.fade 话题
+          %span.gray 话题
         %td{:align => :left}
           %strong= Topic.cached_count
       %tr
         %td{:align => :right, :width => 50}
-          %span.fade 回复
+          %span.gray 回复
         %td{:align => :left}
           %strong= Comment.cached_count
 .sep20

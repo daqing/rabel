@@ -1,4 +1,4 @@
 .cell
-  %span.fade.label= plane.name
+  %span.gray= plane.name
   .sep5
   = render plane.cached_assoc_collection(:nodes, Node.default_order_str, 20)

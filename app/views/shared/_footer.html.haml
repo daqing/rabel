@@ -1,5 +1,6 @@
-#Bottom
-  #BottomMain
+#footer
+  .container#footer-main
+    .sep10
     %strong
       = render :partial => 'pages/nav', :collection => Page.only_published.default_order, :spacer_template => 'pages/nav_ruler'
     = Siteconf.footer.html_safe
