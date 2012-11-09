@@ -2,7 +2,7 @@
   .cell
     = build_navigation(['设置'])
   .inner
-    = render 'account_form', :btn_class => 'super normal button'
+    = render 'account_form', :btn_class => 'btn btn-small'
 .sep20
 
 %a{:name => :avatar} &nbsp;
@@ -31,12 +31,12 @@
         %tr
           %td{:width => 80, :align => :right}
           %td{:width => 200, :align => :left}
-            = f.submit '上传新头像', :class => 'super normal button'
+            = f.submit '上传新头像', :class => 'btn btn-small'
 
 .sep20
 .box
   .cell
     %span.fade 安全
   .inner
-    = render 'users/password_form', :btn_class => 'super normal button'
+    = render 'users/password_form', :btn_class => 'btn btn-small'
 

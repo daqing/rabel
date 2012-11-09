@@ -9,21 +9,22 @@
           %td{:width => :auto, :valign => :left}
             %span.bigger= user_profile_link(current_user)
             .sep5
-            %span.fade= current_user.account.signature
+            %span.gray= current_user.account.signature
       .sep10
-      %table
+      %table{:width => '100%'}
         = render 'shared/my_fav'
+    - unless current_user.has_avatar?
+      .cell
+        .alert.alert-warn{:style => 'margin-bottom: 0;'}
+          %span.gray
+            头像不够个性？
+            %a{:href => settings_path + "#avatar"} 立刻上传 →
     .inner
       - if @unread_count > 0
         = image_tag 'dot_orange.png', :class => :icon, :align => :top
-        = link_to "#{@unread_count} 条未读提醒", notifications_path, :class => :fade
+        = link_to "#{@unread_count} 条未读提醒", notifications_path, :class => :gray
       - else
-        %span.fade 暂无提醒
-    - unless current_user.has_avatar?
-      .yellow
-        %span.fade
-          头像不够个性？
-          %a{:href => settings_path + "#avatar"} 立刻上传 →
+        %span.gray 暂无提醒
 - else
   .box
     .cell
@@ -31,7 +32,7 @@
     .inner
       .sep5
       .center
-        = link_to '现在注册', new_user_registration_path, :class => 'super normal button'
+        = link_to '现在注册', new_user_registration_path, :class => 'btn btn-small'
         .sep5
         .sep10
         已注册用户请

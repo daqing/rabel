@@ -11,7 +11,7 @@ Feature: Homepage
       And I am on the home page
       Then I should see devin
         And I should see 设置
-        And I should see 登出
+        And I should see 退出
         And it should not display link 注册
         And I should not see 登入
 

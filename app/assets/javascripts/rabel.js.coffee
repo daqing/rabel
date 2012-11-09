@@ -20,12 +20,13 @@ jQuery ($) ->
   .mouseleave ->
     $(this).css('background', '')
   $("textarea").elastic()
-  $("#Search input").keyup (ev) ->
-    if ev.which == 13
-      query = $(this).val()
+  $("form.navbar-search").submit () ->
+      search_input = $("#q");
+      query = search_input.val()
       return if query.length == 0
-      domain = $(this).data('domain')
-      window.open "#{window.rabel.search_engine_url}site:#{domain}%20#{query}"
+      domain = search_input.data('domain')
+      window.open window.rabel.search_engine_url + "site:#{domain}%20#{query}"
+      false
 
   focus_comment_box = ->
     $("#comment_content").focus()

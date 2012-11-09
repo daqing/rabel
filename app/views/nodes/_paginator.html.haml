@@ -5,9 +5,9 @@
         - if @prev_page_num > 0
           .sep5
           - if @prev_page_num == 1
-            = link_to '上一页', go_path(@node.key), :class => 'super normal button'
+            = link_to '上一页', go_path(@node.key), :class => 'btn btn-small'
           - else
-            = link_to '上一页', go_path(@node.key) + "?p=#{@prev_page_num}", :class => 'super normal button'
+            = link_to '上一页', go_path(@node.key) + "?p=#{@prev_page_num}", :class => 'btn btn-small'
           .sep5
 
       %td{:width => :auto, :align => :center, :valign => :middle}
@@ -17,5 +17,5 @@
       %td{:width => 100, :align => :right}
         - if @next_page_num > 0
           .sep5
-          = link_to '下一页', go_path(@node.key) + "?p=#{@next_page_num}", :class => 'super normal button'
+          = link_to '下一页', go_path(@node.key) + "?p=#{@next_page_num}", :class => 'btn btn-small'
           .sep5

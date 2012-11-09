@@ -8,7 +8,7 @@ html
     = csrf_meta_tags
     = yield :head
   body#rabel
-    .navbar.navbar-static-top
+    .navbar.navbar-inverse.navbar-static-top
       .navbar-inner
         .container
           a.btn.btn-navbar.collapsed(
@@ -19,13 +19,13 @@ html
            span.icon-bar
           = link_to Siteconf.site_name, root_path, class: :brand
           .nav-collapse.collapse
-            form.navbar-search.pull-left#Search
-              .search_input
-                input.search-query type='text' name='q' maxlength=40 data-domain=Siteconf.site_host placeholder=t(:search)
+            form.navbar-search.pull-left
+              input#q.search-query type='text' name='q' maxlength=40 data-domain=Settings.canonical_host placeholder=t(:search)
             ul.nav.pull-right
               = nav_item(t(:homepage), root_path)
               - if user_signed_in?
                 li= nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
+                li= nav_item '个人设置', settings_path
                 - if current_user.can_manage_site?
                   li= nav_item t(:dashboard), admin_root_path
                 li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
@@ -37,6 +37,7 @@ html
       .container#page-main
         .row
           .span9
+            .sep20
             - if flash[:notice].present?
               p.alert.alert-info= notice
             - if flash[:success].present?
@@ -45,12 +46,9 @@ html
               p.alert.alert-error = alert
             = content_for?(:content) ? yield(:content) : yield
           .span3#Rightbar
+            .sep20
+            = render 'shared/sidebar_box'
             = yield :rightbar
       .sep20
     = render 'shared/footer'
 
-    = yield :body
-    javascript:
-      jQuery(function($) {
-        #{yield :doc_ready}
-      });

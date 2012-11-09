@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
   include BootstrapHelper
 
-  layout 'bootstrap'
+  layout :find_layout
 
   rescue_from CanCan::AccessDenied do |exception|
     exception.default_message = t('tips.no_permission')
@@ -88,6 +88,14 @@ class ApplicationController < ActionController::Base
     # Overwriting the sign_out redirect path method
     def after_sign_out_path_for(resource_or_scope)
       goodbye_path
+    end
+
+    def find_layout
+      if mobile_device?
+        'application'
+      else
+        'bootstrap'
+      end
     end
 
     def count_unread_notification

@@ -14,4 +14,4 @@
     = f.check_box :comments_closed
     = f.label :comments_closed, '禁止回复', :class => :small
   .sep5
-  = f.submit (topic.new_record? ? '创建' : '提交修改'), :class => 'super normal button', :data => {:disable_with => t('tips.submitting')}
+  = f.submit (topic.new_record? ? '创建' : '提交修改'), :class => 'btn btn-small', :data => {:disable_with => t('tips.submitting')}

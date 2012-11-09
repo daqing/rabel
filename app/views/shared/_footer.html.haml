@@ -3,18 +3,19 @@
     .sep10
     %strong
       = render :partial => 'pages/nav', :collection => Page.only_published.default_order, :spacer_template => 'pages/nav_ruler'
+    .sep20
     = Siteconf.footer.html_safe
     .sep10
     %small
       Powered by
-      = link_to 'Rabel', 'http://rabelapp.com', :style => 'color: #E2E2E2', :target => '_blank'
+      = link_to 'Rabel', 'http://rabelapp.com', :class => :gray, :target => '_blank'
       = Rabel.version
 
 = render 'shared/google_analytics'
 
 :javascript
+  window.rabel.search_engine_url = "#{search_engine_url}";
   jQuery(function($) {
-    window.rabel.search_engine_url = "#{search_engine_url}";
     #{yield :template_js}
   });
 

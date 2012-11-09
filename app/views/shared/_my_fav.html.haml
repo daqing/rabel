@@ -3,9 +3,9 @@
     = link_to my_topics_path, :class => :dark, :style => 'display: block;' do
       %span.bigger= current_user.bookmarked_topics_count
       .sep3
-      %span.fade 话题收藏
+      %span.gray 话题收藏
   %td{:width => '33%', :align => :center}
     = link_to my_following_path, :class => :dark, :style => 'display: block;' do
       %span.bigger= current_user.followed_user_count
       .sep3
-      %span.fade 特别关注
+      %span.gray 特别关注
