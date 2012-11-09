@@ -12,8 +12,7 @@
 
       %td{:width => :auto, :align => :center, :valign => :middle}
         %strong{:style => 'font-size: 13px;'}
-          %span.fade= "#{@page_num}/#{@total_pages}"
-          %span.snow= "- #{@total_topics} Topics"
+          %span.gray= "#{@page_num}/#{@total_pages}"
       %td{:width => 100, :align => :right}
         - if @next_page_num > 0
           .sep5

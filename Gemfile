@@ -70,4 +70,6 @@ gem 'thin', '= 1.5.0'
 gem 'default_value_for', '~> 2.0.1'
 gem 'less-rails-bootstrap', '~> 2.2.0'
 gem 'slim-rails', '~> 1.0.3'
+gem 'simple_form', '~> 2.0.4'
+
 

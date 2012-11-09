@@ -38,6 +38,4 @@ Feature: Homepage
   Scenario: search
     Given I am on the home page
       Then it should display the search form
-      When I search for rails
-        Then it will use configured search engine
 

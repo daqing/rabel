@@ -3,16 +3,6 @@ body {
   font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
 }
 
-a:link, a:visited, a:active {
-  color: #778087;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #4d5256;
-  text-decoration: underline;
-}
-
 .box {
   background: white;
   border-radius: 3px;
@@ -85,6 +75,11 @@ td.avatar {
 
 .fr {
   float: right;
+  text-align: right;
+}
+
+.f12 {
+  font-size: 12px;
 }
 
 a.count {
@@ -120,6 +115,18 @@ a.node:hover {
   color: #777;
   text-decoration: none;
 }
+
+a.rabel:link, a.rabel:visited, a.rabel:active {
+  color: #778087;
+  text-decoration: none;
+}
+
+a.rabel:hover {
+  color: #4d5256;
+  text-decoration: underline;
+}
+
+
 
 a.dark:link, a.dark:visited, a.dark:active {
   color: gray;
@@ -181,3 +188,21 @@ td.with_separator {
 .center {
   text-align: center;
 }
+
+.header {
+  padding: 10px;
+  font-size: 14px;
+  line-height: 120%;
+  text-align: left;
+  border-bottom: 1px solid #E2E2E2;
+}
+
+a.action_label {
+  border: 1px solid #CCC;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding: 5px 8px 2px;
+  color: #333;
+  border-bottom: none;
+}
+

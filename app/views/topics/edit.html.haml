@@ -25,8 +25,8 @@
         $("span.orange").text(second);
         }, 1000);
 .box
-  .cell= edit_topic_navigation(@node, @topic)
   .cell
-    %h3 更新话题
+    = edit_topic_navigation(@node, @topic)
+  .cell
     = render 'form', :node => @node, :topic => @topic, :comments_closed => @topic.comments_closed?
   .inner= render 'back_to_node', :node => @node

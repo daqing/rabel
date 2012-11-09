@@ -18,7 +18,7 @@
         .alert.alert-warn{:style => 'margin-bottom: 0;'}
           %span.gray
             头像不够个性？
-            %a{:href => settings_path + "#avatar"} 立刻上传 →
+            %a{:href => settings_path + "#avatar", :class => :rabel} 立刻上传 →
     .inner
       - if @unread_count > 0
         = image_tag 'dot_orange.png', :class => :icon, :align => :top
