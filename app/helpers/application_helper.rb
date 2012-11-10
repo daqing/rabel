@@ -99,9 +99,7 @@ module ApplicationHelper
     begin
       nl_to_br(Rabel::Base.decode_symbols(
         Rabel::Base.make_mention_links(
-          MarkdownConverter.convert(
-            Rabel::Base.protect_at_symbol(text)
-          )
+          MarkdownConverter.convert(text)
         )
       )).html_safe
     rescue Exception => e

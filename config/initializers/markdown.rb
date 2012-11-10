@@ -68,7 +68,7 @@ module Redcarpet
         when :url
           Rabel::Base.smart_url(link)
         when :email
-          Rabel::Base.email_link(link)
+          Rabel::Base.email_link(Rabel::Base.protect_at_symbol(link))
         end
       end
 

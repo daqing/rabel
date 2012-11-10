@@ -152,8 +152,14 @@ class TopicsController < ApplicationController
   end
 
   def preview
-    type = ['topic', 'comment', 'page'].delete params[:type]
-    render :text => send("format_#{type}".to_sym, params[:content]) if type.present?
+    @type = ['topic', 'comment', 'page'].delete params[:type]
+    respond_to do |f|
+      if @type.present?
+        f.text { @content = params[:content] }
+      else
+        render :text => :error, :status => :unprocessable_entity
+      end
+    end
   end
 
   def toggle_comments_closed

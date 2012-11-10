@@ -55,7 +55,7 @@ jQuery ($) ->
       return
 
     type = $(this).data('type')
-    $.post("/topics/preview", {content: preview_content, type: type}, (data) ->
+    $.post("/topics/preview.text", {content: preview_content, type: type}, (data) ->
       ref_obj.hide()
       $("#preview").html(data).show()
       $("#preview").css('border', '1px dotted #ccc')

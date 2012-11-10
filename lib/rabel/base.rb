@@ -35,7 +35,11 @@ module Rabel
     end
 
     def self.protect_at_symbol(text)
-      text.gsub("@", "%AT%")
+      begin
+        text.gsub("@", "%AT%")
+      rescue
+        text
+      end
     end
 
     def self.decode_symbols(text)
