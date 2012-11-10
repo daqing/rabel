@@ -1,16 +1,8 @@
 .box
-  .cell= build_navigation(['我的特别关注'])
+  .cell
+    = build_navigation(['我的特别关注'])
+  = render @followed_topic_timeline
   .inner
-    %table{:cellspacing => 0, :cellpadding => 0, :border => 0, :width => '100%'}
-      %tr
-        %td.fix_cell{:align => :left, :valign => :top, :width => :auto}
-          = render @followed_topic_timeline
-        %td{:align => :left, :valign => :top, :width => 180, :class => :with_background}
-          .fr
-            %strong.snow= current_user.followed_user_count
-          %span.fade 我的特别关注
-          .sep10
-          %table{:cellspacing => 0, :cellpadding => 0, :border => 0, :width => '100%'}
-            = render :partial => 'users/followed_user', :collection => @my_followed_users, :spacer_template => 'users/followed_ruler'
+    %ul.thumbnails
+      = render :partial => 'users/followed_user', :collection => @my_followed_users, :spacer_template => 'users/followed_ruler'
 
- 

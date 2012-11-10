@@ -1,13 +1,8 @@
-%tr
-  %td{:align => :left, :valign => :top, :width => 24}
-    = mini_avatar(followed_user)
-  %td{:align => :left, :valign => :top, :width => :auto, :style => 'padding-left: 10px;'}
-    = user_profile_link(followed_user)
-    - if followed_user.account.signature.present?
-      .sep3
-      %small.fade= followed_user.account.signature
-    .sep3
-    %small.fade
-      = followed_user.follower_count
-      followers
-
+- nickname = followed_user.nickname
+%li
+  .thumbnail
+    = link_to member_path(url_encode(nickname)), :title => nickname do
+      = large_avatar(followed_user)
+  .sep5
+  .caption.center
+    .label.label-inverse= nickname
