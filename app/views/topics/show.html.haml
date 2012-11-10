@@ -21,11 +21,11 @@
     %div{:class => @topic.content.present? ? 'header' : 'inner'}
       .fr
         = user_profile_avatar_link(topic_user, :large)
-      = build_navigation([link_to(@node.name, go_path(@node.key))], 'bigger')
+      = build_navigation([link_to(@node.name, go_path(@node.key), :class => :rabel)], 'bigger')
       .sep10
       %h1#topic_title
         = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe
-      %small.fade
+      %small.gray
         By
         = user_profile_link(topic_user, :class => :dark)
         at
@@ -40,9 +40,9 @@
       .inner
         .fr{:align => :right}
           - if current_user.bookmarked?(@topic)
-            = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'op unbookmark'
+            = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-mini unbookmark'
           - else
-            = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'op bookmark'
+            = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'btn btn-mini bookmark'
         &nbsp;&nbsp;
 .sep20
 = render 'topics/show/comments' if @comments.any?

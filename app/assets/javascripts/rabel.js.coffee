@@ -76,9 +76,6 @@ jQuery ($) ->
   $(".track_event").click ->
     window.rabel.trackEvent($(this).data('category'), $(this).data('action'), $(this).data('label'))
 
-  $.datepicker.setDefaults($.datepicker.regional['zh-CN'])
-  $(".datepicker").datepicker({showButtonPanel: true})
-
   $(".hoverable").mouseenter ->
     $(this).find('.hover_action').fadeIn()
   .mouseleave ->

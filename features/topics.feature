@@ -83,7 +83,7 @@ Feature: Topics
     Given a topic exists with title: 那继续晒一下韩国电影吧
       And the topic has comments of 3 pages (2 per page)
       And I am on the topic page
-      Then it should display the nagination links
+      Then it should display the pagination links
         And the current page is the last page
         When I click the second page
         Then the current page should be the second page

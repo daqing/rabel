@@ -71,16 +71,16 @@ Feature: Base features
     Given a topic under the node exists with title: 那继续晒一下韩国电影吧
       And the topic has comments of 3 pages (2 per page)
       And I am on the topic page
-      Then it should display the nagination links
+      Then it should display the mobile pagination links
         And it should not display a comment form
         And I should see 电影传奇
         And I should see 那继续晒一下韩国电影吧
         And I should see 共收到
-        And the current page is the last page
+        And the current mobile page is the last page
         When I click the second page
-        Then the current page should be the second page
+        Then the current mobile page should be the second page
         When I click the first page
-        Then the current page should be the first page
+        Then the current mobile page should be the first page
 
   @mobile
   Scenario: visit topic page as authenticated user

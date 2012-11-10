@@ -1,16 +1,15 @@
 %section
   .box
     .cell
-      .fr.fade
+      .fr.gray
         - if @topic.comments_closed?
           回复权限关闭
         - else
           ⬇
           = link_to '跳到回复', 'javascript:void(0);', :class => 'dark jump_to_comment'
-      %span.fade
+      %span.gray
         = "#{@total_comments} 回复"
     #replies{:class => "#{'fix_cell' if @total_pages == 1}"}
       = render @comments
     - if @total_pages > 1
-      .inner{:align => :center}
-        = paginate @comments, :param_name => :p, :window => 3
+      = paginate @comments, :param_name => :p, :window => 3

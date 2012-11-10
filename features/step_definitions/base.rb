@@ -181,8 +181,8 @@ end
 Then /^it should display personal homepage of (.*)$/ do |nickname|
   steps %Q(Then page title should contain #{nickname})
   steps %Q(Then I should see #{nickname})
-  steps %Q(Then I should see 最近创建主题)
-  steps %Q(Then I should see 最近参与主题)
+  steps %Q(Then I should see 最近创建的话题)
+  steps %Q(Then I should see 最近的回复)
 end
 
 Then /^it should display button (.*)$/ do |text|

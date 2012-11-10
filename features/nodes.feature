@@ -37,10 +37,10 @@ Feature: Nodes
       Then I should see 下一页
         And I should not see 上一页
         And it should display one page topics
-      When I click the link 下一页
+      When I click the link 下一页 →
         Then I should see 上一页
         And I should not see 下一页
-        When I click the link 上一页
+        When I click the link ← 上一页
         Then I should see 下一页
 
   Scenario: show custom html on node page
