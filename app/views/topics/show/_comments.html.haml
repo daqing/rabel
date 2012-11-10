@@ -12,4 +12,4 @@
     #replies{:class => "#{'fix_cell' if @total_pages == 1}"}
       = render @comments
     - if @total_pages > 1
-      = paginate @comments, :param_name => :p, :window => 3
+      = paginate @comments, :param_name => :p
