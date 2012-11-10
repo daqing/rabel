@@ -34,6 +34,11 @@ Feature: Homepage
       And I am on the home page
       Then 3 page nav links shold be shown
 
+  Scenario: show ad on homepage
+    Given an advertisement exists with title: Rabel is cool
+      And I am on the home page
+      Then I should see Rabel is cool
+
   @javascript
   Scenario: search
     Given I am on the home page

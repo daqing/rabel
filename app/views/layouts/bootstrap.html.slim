@@ -52,6 +52,7 @@ html
             .sep20
             = render 'shared/sidebar_box'
             = yield :rightbar
+            = render :partial => 'shared/ad', :collection => Advertisement.available, :as => :ad
       .sep20
     = render 'shared/footer'
 
