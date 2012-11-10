@@ -1,12 +1,15 @@
 doctype html
 html
   head
-    title = title
-    meta name='viewport' content='width=device-width, initial-scale=1.0'
+    = render 'shared/meta'
     = stylesheet_link_tag  'i_bootstrap', :media => 'all'
-    = javascript_include_tag 'i_bootstrap'
-    = csrf_meta_tags
     = yield :head
+    - if Siteconf.theme != 'default'
+      = stylesheet_link_tag "#{Siteconf.theme}/i_theme"
+    - if Siteconf.custom_css.present?
+      style type='text/css' = Siteconf.custom_css.html_safe
+    = javascript_include_tag 'i_bootstrap'
+    = yield :final_head
   body#rabel
     .navbar.navbar-inverse.navbar-static-top
       .navbar-inner

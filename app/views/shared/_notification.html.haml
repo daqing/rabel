@@ -3,7 +3,7 @@
   %td{:width => 32, :align => :left, :valign => :top}
     = user_profile_avatar_link(action_user, :mini)
   %td{:valign => :top}
-    %span.fade
+    %span.gray
       %strong= user_profile_link(action_user)
       - if notification.action == Notification::ACTION_REWARD
         - if notification.notifiable.amount > 0
@@ -14,7 +14,7 @@
         = Siteconf.reward_title
       - else
         = notification.action_info_prefix
-        = link_to notification.notifiable.notifiable_title, read_notification_path(notification)
+        = link_to notification.notifiable.notifiable_title, read_notification_path(notification), :class => :rabel
         = notification.action_info_suffix + '了你'
     %span.snow
       = time_ago_in_words(notification.created_at)
