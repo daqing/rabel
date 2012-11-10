@@ -4,7 +4,7 @@
   .inner
     - if current_user && current_user.can_manage_site?
       .fr
-        = link_to '修改', edit_admin_page_path(@page), :class => :op
+        = link_to '修改', edit_admin_page_path(@page), :class => 'btn btn-small'
     .page
       %article
         %h1
