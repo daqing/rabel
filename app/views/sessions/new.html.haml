@@ -9,7 +9,6 @@
         .hide= f.check_box :remember_me, :checked => true
       .form-actions
         = f.submit '登入', :class => 'btn btn-small btn-primary'
-        .sep20
         %small
           .gray 登录后 cookie 会被记住一年
           = render :partial => "devise/shared/links"

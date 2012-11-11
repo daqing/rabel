@@ -7,7 +7,6 @@
       .inner
         - @user.recent_followers.each do |follower|
           = user_profile_avatar_link(follower, :mini)
-    .sep20
 
 .box
   %div{:class => (@introduction.length > 0) ? 'cell' : 'inner'}
@@ -77,9 +76,7 @@
             = link_to "奖励#{Siteconf.reward_title}", new_admin_user_reward_path(@user), :class => 'btn btn-mini', :remote => true
             = link_to "扣除#{Siteconf.reward_title}", new_admin_user_reward_path(@user) + "?reward_type=#{Reward::TYPE_REVOKE}", :class => 'btn btn-mini', :remote => true
             = link_to '管理此用户', admin_users_path + "?nickname=#{url_encode(@user.nickname)}", :class => 'btn btn-mini'
-      .sep20
 
-.sep20
 .box
   .cell
     %span.gray
@@ -91,7 +88,6 @@
       %span.chevron »
       = link_to "#{@user.nickname} 创建的更多主题", member_topics_path(@user.nickname), :class => :rabel
 
-.sep20
 .box
   .cell
     %span.gray
@@ -110,5 +106,4 @@
         %p 与该会员相关的所有信息，也会一并删除。
       .inner
         = link_to '删除此会员', admin_user_path(@user), :method => :delete, :data => {:confirm => t('delete_confirm')}, :class => 'btn btn-small btn-danger'
-    .sep20
 

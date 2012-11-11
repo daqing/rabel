@@ -1,11 +1,9 @@
 #footer
   .container#footer-main
-    .sep10
-    %strong
+    .page-links
       = render :partial => 'pages/nav', :collection => Page.only_published.default_order, :spacer_template => 'pages/nav_ruler'
-    .sep20
-    = Siteconf.footer.html_safe
-    .sep10
+    .copywrite
+      = Siteconf.footer.html_safe
     %small
       Powered by
       = link_to 'Rabel', 'http://rabelapp.com', :class => :gray, :target => '_blank'

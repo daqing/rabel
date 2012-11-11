@@ -13,7 +13,7 @@ Given /^(\d+) pages exist$/ do |n|
 end
 
 Then /^(\d+) page nav links shold be shown$/ do |n|
-  page.all('#footer strong a.nav').size.should == n.to_i
+  page.all('#footer .page-links a.nav').size.should == n.to_i
 end
 
 Given /^a page exists with title: (.*)$/ do |title|
@@ -33,5 +33,5 @@ Given /^a page is in draft with title: (.*)$/ do |title|
 end
 
 Then /^it should only display (\d+) page$/ do |num|
-  all("#footer strong a.nav").size.should == num.to_i
+  all("#footer .page-links a.nav").size.should == num.to_i
 end

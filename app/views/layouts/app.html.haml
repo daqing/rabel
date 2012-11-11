@@ -1,12 +1,10 @@
 - content_for :content do
   .span9
-    .sep20
     = render 'shared/alert'
     = yield
 
 - content_for :sidebar do
   .span3#Rightbar
-    .sep20
     = render 'shared/sidebar_box'
     = yield :rightbar
     = render :partial => 'shared/ad', :collection => Advertisement.available, :as => :ad

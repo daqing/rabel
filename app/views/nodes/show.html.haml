@@ -13,7 +13,6 @@
         .inner
           = image_tag 'ghost.png', :align => :top, :title => t('tips.quiet_node')
           = t('tips.quiet_node')
-    .sep20
 
 = render 'custom_fields', :node => @node
 
@@ -38,7 +37,6 @@
     = render 'paginator'
 
 - if user_signed_in?
-  .sep20
   .box
     .inner
       %legend 创建新话题

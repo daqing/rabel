@@ -10,7 +10,7 @@
           .fr
             = link_to comments_count, t_path(topic.id), :class => :count
         .sep3
-        %span.bigger{:style => 'font-size: 16px; line-height: 130%'}
+        %h2.topic_title
           = link_to topic.title, t_path(topic.id), :class => 'rabel topic'
         .sep5
         %span.created

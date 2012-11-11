@@ -1,5 +1,5 @@
 .box
-  .cell
+  .cell.muted
     社区运行状态
   .inner
     %table{:cellpadding => 3, :cellspacing => 0, :border => 0, :width => '100%'}
@@ -18,4 +18,3 @@
           %span.gray 回复
         %td{:align => :left}
           %strong= Comment.cached_count
-.sep20

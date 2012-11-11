@@ -44,11 +44,9 @@
           - else
             = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'btn btn-mini bookmark'
         &nbsp;&nbsp;
-.sep20
 = render 'topics/show/comments' if @comments.any?
 
 - if @topic.comments_closed?
-  .sep20
   = render 'shared/box_tip', :tip => t('tips.comments_closed')
 - elsif @comments.empty?
   = render 'shared/box_tip', :tip => '目前尚无回复'

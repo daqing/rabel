@@ -3,7 +3,6 @@
     = build_navigation(['设置'])
   .inner
     = render 'account_form', :btn_class => 'btn btn-small'
-.sep20
 
 %a{:name => :avatar} &nbsp;
 .box
@@ -23,10 +22,8 @@
       = f.input :avatar, :label => '选择图片文件'
       .form-actions
         = f.submit '上传新头像', :class => 'btn btn-small btn-primary'
-        .sep20
         %span.help-block 推荐使用正方形的透明 PNG 图片以获得最佳效果。
 
-.sep20
 .box
   .cell
     %span.gray 修改密码
