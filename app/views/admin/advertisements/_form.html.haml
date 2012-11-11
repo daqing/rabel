@@ -1,7 +1,7 @@
 = simple_form_for [:admin, ad], :html => {:multipart => true, :class => 'form-horizontal'} do |f|
-  = f.input :title, :label => '广告标题'
-  = f.input :words, :label => '广告语', :input_class => {:class => :span4, :rows => 2}
-  = f.input :link, :label => '广告链接'
+  = f.input :title, :label => '广告标题', :input_html => {:class => :span4}
+  = f.input :words, :as => :text, :label => '广告语', :input_html => {:class => :span4, :rows => 2}
+  = f.input :link, :label => '广告链接', :input_html => {:class => :span6}
   .control-group
     .controls
       = image_tag f.object.banner.url
