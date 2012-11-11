@@ -81,6 +81,7 @@
             = link_to "奖励#{Siteconf.reward_title}", new_admin_user_reward_path(@user), :class => 'btn btn-mini', :remote => true
             = link_to "扣除#{Siteconf.reward_title}", new_admin_user_reward_path(@user) + "?reward_type=#{Reward::TYPE_REVOKE}", :class => 'btn btn-mini', :remote => true
             = link_to '管理此用户', admin_users_path + "?nickname=#{url_encode(@user.nickname)}", :class => 'btn btn-mini'
+      .sep20
 
 .sep20
 .box
@@ -103,13 +104,15 @@
   = render :partial => 'comments/profile_comment', :collection => @user.latest_comments, :as => :comment
 
 - if user_signed_in? and current_user.can_manage_site? and (not @user.root?) and @user != current_user
-  .sep20
-  .box
-    .cell
-      %a{:name => :spam}
-      %strong.danger SPAM 处理
-    .inner
-      %p 如果该用户违反了社区行为准则，您可以删除此会员。
-      %p 与该会员相关的所有信息，也会一并删除。
-    .inner
-      = link_to '删除此会员', admin_user_path(@user), :method => :delete, :data => {:confirm => t('delete_confirm')}, :class => 'super danger button'
+  - content_for :rightbar do
+    .box
+      .cell
+        %a{:name => :spam}
+        %strong.danger SPAM 处理
+      .inner
+        %p 如果该用户违反了社区行为准则，您可以删除此会员。
+        %p 与该会员相关的所有信息，也会一并删除。
+      .inner
+        = link_to '删除此会员', admin_user_path(@user), :method => :delete, :data => {:confirm => t('delete_confirm')}, :class => 'btn btn-small btn-danger'
+    .sep20
+

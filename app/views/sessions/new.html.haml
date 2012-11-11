@@ -1,28 +1,16 @@
 .box
   .cell= build_navigation(['登入'])
   .inner
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'}) do |f|
       = devise_error_messages!
-      %table{:cellpadding => 5, :cellspacing => 0, :border => 0}
-        %tr
-          %td{:width => 80, :align => :right} 用户名
-          %td{:width => 200, :align => :left}
-            = f.text_field :nickname, :class => :sl, :autofocus => true
-        %tr
-          %td{:width => 80, :align => :right} 密码
-          %td{:width => 200, :align => :left}
-            = f.password_field :password, :class => :sl
-        %tr
-          %td{:width => 80, :align => :right}
-          %td{:width => 200, :align => :left}
-            - if devise_mapping.rememberable?
-              .hide= f.check_box :remember_me, :checked => true
-            = f.submit '登入', :class => 'btn btn-small'
-        %tr
-          %td{:width => 80, :align => :right}
-          %td{:width => 200, :align => :left}
-            %span.fade 登录后 cookie 会被记住一年
-        %tr
-          %td{:width => 80, :align => :right}
-          %td{:width => 200, :align => :left}
-            = render :partial => "devise/shared/links"
+      = f.input :nickname, :label => '用户名', :input_html => {:autofocus => true}
+      = f.input :password, :label => '密码'
+      - if devise_mapping.rememberable?
+        .hide= f.check_box :remember_me, :checked => true
+      .form-actions
+        = f.submit '登入', :class => 'btn btn-small btn-primary'
+        .sep20
+        %small
+          .gray 登录后 cookie 会被记住一年
+          = render :partial => "devise/shared/links"
+

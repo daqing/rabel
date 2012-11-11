@@ -7,7 +7,7 @@
 <%# end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to "我忘记密码了", new_password_path(resource_name) %>
+  <%= link_to "找回登录密码", new_password_path(resource_name) %>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

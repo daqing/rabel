@@ -1,9 +1,9 @@
 .box#topics_index
   .cell{:align => 'left'}
-    .pull-right
+    .pull-right.marketing
       %span.gray{:style => 'font-size: 110%'}
         = Siteconf.marketing.join('&nbsp;<span class="snow">&nbsp;•&nbsp;</span>&nbsp;').html_safe
-    %span.bigger= Siteconf.welcome_tip.html_safe
+    .bigger.welcome= Siteconf.welcome_tip.html_safe
     .sep10
     = Siteconf.splash.html_safe
   - if @sticky_topics.any?

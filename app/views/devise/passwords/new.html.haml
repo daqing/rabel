@@ -3,25 +3,11 @@
   .cell
     = build_navigation([@title])
   .inner
-    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-      = devise_error_messages!
-      %table.form
-        %tr
-          %td.left
-            = f.label :nickname, '用户名'
-          %td.right
-            = f.text_field :nickname, :class => :sl
-        %tr
-          %td.left
-            = f.label :email, '注册邮箱'
-          %td.right
-            = f.email_field :email, :class => :sl
-        %tr
-          %td.left
-          %td.right
-            = f.submit @title, :class => 'btn btn-small'
-        %tr
-          %td.left
-          %td.right
-            %span.fade 24 小时内，至多可以重新设置密码 2 次。
+    = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }) do |f|
+      = f.input :nickname, :label => '用户名', :input_html => {:autofocus => true}
+      = f.input :email, :label => '注册邮箱'
+      .form-actions
+        = f.submit @title, :class => 'btn btn-small btn-primary'
+        .sep20
+        %small.gray 24 小时内，至多可以重新设置密码 2 次。
 

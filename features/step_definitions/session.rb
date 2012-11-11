@@ -9,7 +9,7 @@ Then /^it should display the login form$/ do
   page.should have_content('登入')
   page.should have_content('用户名')
   page.should have_content('密码')
-  page.should have_content('我忘记密码了')
+  page.should have_content('找回登录密码')
 end
 
 When /^I fill in (.*)\'s credentials$/ do |nickname|
