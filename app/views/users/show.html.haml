@@ -85,7 +85,7 @@
   - if @user.topics.any?
     .inner
       %span.chevron »
-      = link_to "#{@user.nickname} 创建的更多主题", member_topics_path(@user.nickname), :class => :rabel
+      %small= link_to "#{@user.nickname} 创建的更多主题", member_topics_path(@user.nickname), :class => :rabel
 
 .box
   .box-header
