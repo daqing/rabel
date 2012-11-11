@@ -131,8 +131,16 @@ a.black:link, a.black:visited, a.black:active {
   text-decoration: none;
 }
 
-a.black:hover {
-  text-decoration: underline;
+.muted a {
+  &:link, &:visited, &:active {
+    color: @muted;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: black;
+    text-decoration: underline;
+  }
 }
 
 a.dark:link, a.dark:visited, a.dark:active {

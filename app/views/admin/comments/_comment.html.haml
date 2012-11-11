@@ -2,7 +2,7 @@
 .cell.comment_header
   .fr
     %span.gray= time_ago_in_words(comment.created_at)
-  .gray
+  .muted
     = comment.user.nickname
     回复了
     = user_profile_link commentable.user
@@ -10,5 +10,6 @@
     %span.chevron ›
     = link_to commentable.notifiable_title, commentable.notifiable_path, :class => :rabel
 .inner
-  .reply_content= comment.content
+  .reply_content
+    = format_content comment.content
 

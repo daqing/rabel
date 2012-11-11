@@ -42,7 +42,7 @@ jQuery ($) ->
       new_content = mention + ' '
     focus_comment_box().val(new_content)
   $(".jump_to_comment").click ->
-    $.smoothScroll({speed: 700, scrollTarget: '.reply_content:last'})
+    $.smoothScroll({speed: 800, scrollTarget: '#comment_content'})
     focus_comment_box()
   $(".back_to_top").click ->
     $.smoothScroll({speed: 700, scrollTarget: '#Top'})

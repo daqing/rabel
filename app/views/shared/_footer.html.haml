@@ -4,9 +4,9 @@
       = render :partial => 'pages/nav', :collection => Page.only_published.default_order, :spacer_template => 'pages/nav_ruler'
     .copywrite
       = Siteconf.footer.html_safe
-    %small
+    %small.muted
       Powered by
-      = link_to 'Rabel', 'http://rabelapp.com', :class => :gray, :target => '_blank'
+      = link_to 'Rabel', 'http://rabelapp.com', :target => '_blank'
       = Rabel.version
 
 = render 'shared/google_analytics'
