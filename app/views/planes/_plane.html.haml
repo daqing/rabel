@@ -1,7 +1,7 @@
 .cell
   %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
     %tr
-      %td{:align => :right, :width => 80}
-        %span.gray= plane.name
+      %td{:align => :right, :width => 100}
+        = plane.name
       %td{:style => 'line-height: 200%; padding-left: 15px;'}
         = render plane.cached_assoc_collection(:nodes, Node.default_order_str, 20)

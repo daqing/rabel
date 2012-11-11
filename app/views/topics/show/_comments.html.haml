@@ -1,14 +1,13 @@
 %section
   .box
-    .cell
-      .fr.gray
+    .box-header
+      .fr
         - if @topic.comments_closed?
           回复权限关闭
         - else
           ⬇
           = link_to '跳到回复', 'javascript:void(0);', :class => 'dark jump_to_comment'
-      %span.gray
-        = "#{@total_comments} 回复"
+      = "#{@total_comments} 回复"
     #replies{:class => "#{'fix_cell' if @total_pages == 1}"}
       = render @comments
     - if @total_pages > 1

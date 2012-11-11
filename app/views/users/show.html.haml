@@ -1,7 +1,7 @@
 - if @user.follower_count > 0
   - content_for :rightbar do
     .box
-      .cell
+      .box-header
         = "关注#{@nickname_tip}的人"
         %span.gray= "(#{@user.follower_count})"
       .inner
@@ -69,7 +69,7 @@
   - if user_signed_in? and current_user.can_manage_site?
     - content_for :rightbar do
       .box
-        .cell
+        .box-header
           管理
         .inner
           .btn-group
@@ -78,10 +78,9 @@
             = link_to '管理此用户', admin_users_path + "?nickname=#{url_encode(@user.nickname)}", :class => 'btn btn-mini'
 
 .box
-  .cell
-    %span.gray
-      = @user.nickname
-      最近创建的话题
+  .box-header
+    = @user.nickname
+    最近创建的话题
   = render :partial => 'topics/profile_topic', :collection => @user.latest_created_topics, :as => :topic, :locals => {:topic_user => @user}
   - if @user.topics.any?
     .inner
@@ -89,18 +88,17 @@
       = link_to "#{@user.nickname} 创建的更多主题", member_topics_path(@user.nickname), :class => :rabel
 
 .box
-  .cell
-    %span.gray
-      = @user.nickname
-      最近的回复
+  .box-header
+    = @user.nickname
+    最近的回复
   = render :partial => 'comments/profile_comment', :collection => @user.latest_comments, :as => :comment
 
 - if user_signed_in? and current_user.can_manage_site? and (not @user.root?) and @user != current_user
   - content_for :rightbar do
     .box
-      .cell
+      .box-header
         %a{:name => :spam}
-        %strong.danger SPAM 处理
+        SPAM 处理
       .inner
         %p 如果该用户违反了社区行为准则，您可以删除此会员。
         %p 与该会员相关的所有信息，也会一并删除。

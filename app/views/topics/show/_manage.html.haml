@@ -1,8 +1,8 @@
 - if can? :update, @topic
   - content_for :rightbar do
     .box
-      .cell
-        %span.gray 话题管理
+      .box-header
+        话题管理
       .cell
         = link_to '修改标题', edit_title_node_topic_path(@node, @topic), :remote => true, :class => 'btn btn-mini'
         = link_to '编辑全部', edit_node_topic_path(@node, @topic), :class => 'btn btn-mini'

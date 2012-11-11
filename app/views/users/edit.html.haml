@@ -6,8 +6,8 @@
 
 %a{:name => :avatar} &nbsp;
 .box
-  .cell
-    %span.gray 头像
+  .box-header
+    头像
   = simple_form_for @user, :url => update_avatar_path, :html => {:multipart => true, :class => 'edit_user form-horizontal'} do |f|
     .cell
       .control-group
@@ -25,8 +25,8 @@
         %span.help-block 推荐使用正方形的透明 PNG 图片以获得最佳效果。
 
 .box
-  .cell
-    %span.gray 修改密码
+  .box-header
+    修改密码
   .inner
     = render 'users/password_form', :btn_class => 'btn btn-small'
 

@@ -5,8 +5,8 @@
 - if user_signed_in? and current_user.can_manage_site?
   - content_for :rightbar do
     .box
-      .cell
-        %strong 节点管理
+      .box-header
+        节点管理
       .cell
         = link_to "修改 #{@node.name} 节点", admin_planes_path + "#!/click/edit_#{@node.html_id}", :class => 'btn btn-small btn-info'
       - if @node.quiet
@@ -17,9 +17,9 @@
 = render 'custom_fields', :node => @node
 
 .box
-  .header
-    .fr.f12
-      %span.gray 话题总数
+  .box-header
+    .fr
+      话题总数
       .label
         &nbsp;
         = @total_topics
@@ -38,8 +38,9 @@
 
 - if user_signed_in?
   .box
+    .box-header
+      创建新话题
     .inner
-      %legend 创建新话题
       = render 'topics/form', :node => @node, :topic => @node.topics.new, :comments_closed => false
 
 

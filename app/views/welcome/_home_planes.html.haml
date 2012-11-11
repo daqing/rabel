@@ -1,6 +1,5 @@
 .box.fix_cell#planes
-  .cell
-    %span.gray
-      %Strong= Siteconf.site_name
-      \/ 节点导航
+  .box-header
+    %Strong= Siteconf.site_name
+    \/ 节点导航
   = render Plane.cached_all(Plane.default_order_str)

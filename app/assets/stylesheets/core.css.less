@@ -1,3 +1,5 @@
+@muted : #999;
+
 body {
   background: #FFF;
   font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
@@ -11,9 +13,13 @@ body {
   margin-bottom: 20px;
 }
 
-.cell {
+.cell, .box-header {
   padding: 10px;
   border-bottom: 1px solid #F0F0F0;
+}
+
+.box-header {
+  color: @muted;
 }
 
 #wrap {
@@ -23,12 +29,11 @@ body {
 
 .topic {
   .meta {
-    color: #999;
+    color: @muted;
     font-size: 12px;
   }
 }
 
-.gray { color: #999; }
 .snow { color: #E2E2E2; }
 
 .bigger {
@@ -97,7 +102,7 @@ a.count {
 
 a.node:link, a.node:visited, a.node:active {
   background-color: #F5F5F5;
-  color: #999999;
+  color: @muted;
   display: inline-block;
   font-size: 10px;
   line-height: 10px;
@@ -172,13 +177,17 @@ a.dark:hover {
 #footer {
   border-top: 1px solid #CCCCCC;
 
-  color: #999999;
+  color: @muted;
   font-size: 12px;
 
   #footer-main {
     line-height: 150%;
     padding: 10px;
   }
+}
+
+.marketing {
+  color: @muted;
 }
 
 @media (max-width: 767px) {
@@ -302,4 +311,18 @@ h2.topic_title {
   .copywrite {
     margin-bottom: 15px;
   }
+}
+
+.topic-meta {
+  font-size: 11px;
+  color: @muted;
+}
+
+.profile-link {
+  font-size: 16px;
+}
+
+.signature {
+  color: @muted;
+  margin: 5px 0;
 }
