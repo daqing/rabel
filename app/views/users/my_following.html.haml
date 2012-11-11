@@ -2,6 +2,10 @@
   .cell
     = build_navigation(['我的特别关注'])
   = render @followed_topic_timeline
+.sep20
+.box
+  .cell
+    我关注的社区成员
   .inner
     %ul.thumbnails
       = render :partial => 'users/followed_user', :collection => @my_followed_users, :spacer_template => 'users/followed_ruler'

@@ -47,7 +47,7 @@ When /^I provide new password$/ do
   fill_in 'user[current_password]', :with => Settings.default_password
   fill_in 'user[password]', :with => new_password
   fill_in 'user[password_confirmation]', :with => new_password
-  click_button '更改密码'
+  click_button '修改密码'
 end
 
 Given /^(.*) has followed (.*)$/ do |who, nicknames|
