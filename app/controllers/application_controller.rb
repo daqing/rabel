@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :init
-  before_filter :detect_mobile_client
+  #before_filter :detect_mobile_client
 
   def custom_path(model)
     if model.is_a? Topic
