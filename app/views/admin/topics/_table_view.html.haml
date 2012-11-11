@@ -1,4 +1,4 @@
-%table.topics
+%table.topics.table
   %thead
     %tr
       %th.w50 ID
@@ -28,5 +28,5 @@
         %td.auto{:align => :right}
           %small.fade= time_ago_in_words(topic.created_at)
         %td.w100
-          = link_to '编辑', edit_node_topic_path(topic.node, topic), :class => :op
-          = link_to '删除', admin_topic_path(topic), :class => 'op op_danger', :method => :delete, :data => {:confirm => t(:delete_confirm)}
+          = link_to '编辑', edit_node_topic_path(topic.node, topic), :class => 'btn btn-small'
+          = link_to '删除', admin_topic_path(topic), :class => 'btn btn-small btn-danger', :method => :delete, :data => {:confirm => t(:delete_confirm)}

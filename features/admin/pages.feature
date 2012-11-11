@@ -16,7 +16,6 @@ Feature: Manage Pages
         Then page title should contain 创建新页面
           And I should see 页面管理
           And I should see 创建新页面
-          And I should see 必填
           And I should see 发布状态
           And I should see 立刻发布
           And I should see 保存为草稿

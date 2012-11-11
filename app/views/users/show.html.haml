@@ -1,7 +1,3 @@
-- content_for :template_js do
-  $(document).bind('keydown', 'f', function() { $("a.follow").click() });
-  $(document).bind('keydown', 'shift+f', function() { $("a.unfollow").click() });
-
 - if @user.follower_count > 0
   - content_for :rightbar do
     .box

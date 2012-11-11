@@ -39,20 +39,8 @@ html
     #wrap
       .container#page-main
         .row
-          .span9
-            .sep20
-            - if flash[:notice].present?
-              p.alert.alert-info= notice
-            - if flash[:success].present?
-              p.alert.alert-success= flash[:success]
-            - if flash[:alert].present?
-              p.alert.alert-error = alert
-            = content_for?(:content) ? yield(:content) : yield
-          .span3#Rightbar
-            .sep20
-            = render 'shared/sidebar_box'
-            = yield :rightbar
-            = render :partial => 'shared/ad', :collection => Advertisement.available, :as => :ad
+          = content_for?(:content) ? yield(:content) : yield
+          = yield :sidebar
       .sep20
     = render 'shared/footer'
 

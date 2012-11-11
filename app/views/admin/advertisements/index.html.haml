@@ -1,13 +1,12 @@
 .box
-  .cell
+  .inner
     .fr
       = admin_create_button('添加新广告', :advertisement)
     = build_admin_navigation([@title])
-  .cell{:align => :center}
-    = paginate @ads
-  .cell
-    = render @ads, :today => Time.zone.today
-    .c
-  .inner{:align => :center}
-    = paginate @ads
+.sep20
+
+.row
+  = render @ads, :today => Time.zone.today
+
+= paginate @ads
 

@@ -1,28 +1,18 @@
-!!! 5
-%html{:lang => 'zh-CN'}
-  %head
-    = render 'shared/head'
-    = stylesheet_link_tag "admin/i_base"
-  %body
-    #Top
-      = render 'shared/top', :link_class => :white
-    #Wrapper
-      #Content
-        .sep20
-        #Sidebar
-        #AdminMenu
-          - dashboard_menu.each do |m|
-            .box.fix_cell
-              .cell
-                %strong.fade= m[:name]
-              - m[:items].each do |item|
-                .cell
-                  = image_tag "admin/#{item.second}.png", :align => :absmiddle, :valign => :middle
-                  &nbsp;
-                  = link_to item.first, item.last, :class => (:current_item if @title == item.first)
-            = yield :rightbar
-        #AdminContent
-          = render 'shared/content'
-        .c
-        .sep20
-    = render 'shared/footer'
+- content_for :content do
+  .sep20
+  .span2
+    - dashboard_menu.each do |m|
+      .box.fix_cell
+        .cell
+          %strong.gray= m[:name]
+        - m[:items].each do |item|
+          .cell
+            = image_tag "admin/#{item.second}.png", :align => :absmiddle, :valign => :middle
+            &nbsp;
+            = link_to item.first, item.last, :class => (:current_item if @title == item.first)
+      = yield :rightbar
+  .span10
+    = render 'shared/alert'
+    = yield
+
+= render :template => 'layouts/bootstrap'

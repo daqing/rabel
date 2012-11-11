@@ -1,55 +1,67 @@
-.box{:style => 'float: right; width: 330px;'}
-  .cell
-    最新用户
-  .inner
-    %table.topics
-      %thead
-        %tr
-          %th.w50 ID
-          %th.auto{:align => :left} 用户名
-          %th.w100 注册时间
-      %tbody
-        - User.order('created_at DESC').limit(5).each do |user|
+.row
+  .box.span4
+    .cell
+      最新用户
+    .inner
+      %table.topics.table
+        %thead
           %tr
-            %td.w50
-              %strong.green
+            %th.w50 ID
+            %th.auto{:align => :left} 用户名
+            %th.auto{:align => :left} Email
+            %th.w100 注册时间
+        %tbody
+          - User.order('created_at DESC').limit(5).each do |user|
+            %tr
+              %td.w50
                 = user.id
-            %td.auto
-              = user_profile_link(user)
-            %td.w100
-              %small.fade= time_ago_in_words(user.created_at)
+              %td.auto
+                = user.nickname
+              %td.auto
+                = user.email
+              %td.w100
+                %small.gray= time_ago_in_words(user.created_at)
 
-.box{:style => 'width: 390px;'}
-  .cell
-    社区运行状态
-  .inner
-    %table{:cellpadding => 3, :cellspacing => 0, :border => 0, :width => '100%'}
-      %tr
-        %td{:align => :right, :width => '40%'}
-          %span.fade 注册会员总数
-        %td{:align => :left}
-          %strong= User.cached_count
-      %tr
-        %td{:align => :right, :width => '40%'}
-          %span.fade 主题总数
-        %td{:align => :left}
-          %strong= Topic.cached_count
-      %tr
-        %td{:align => :right, :width => '40%'}
-          %span.fade 回复总数
-        %td{:align => :left}
-          %strong= Comment.cached_count
+  .box.span4
+    .cell
+      社区运行状态
+    .inner
+      %table{:cellpadding => 3, :cellspacing => 0, :border => 0, :width => '100%'}
+        %tr
+          %td{:align => :right, :width => '40%'}
+            %span.gray 注册会员总数
+          %td{:align => :left}
+            %strong= User.cached_count
+        %tr
+          %td{:align => :right, :width => '40%'}
+            %span.gray 主题总数
+          %td{:align => :left}
+            %strong= Topic.cached_count
+        %tr
+          %td{:align => :right, :width => '40%'}
+            %span.gray 回复总数
+          %td{:align => :left}
+            %strong= Comment.cached_count
+
+  .box.span4
+    .cell
+      系统清理
+    .inner
+      %table.table.table-bordered
+        %tr
+          %td{:align => :right, :width => '40%'}
+            %span.gray 可清理提醒
+          %td{:align => :left}
+            .pull-right= link_to '删除已读提醒', clear_admin_notifications_path, :method => :delete, :class => 'btn btn-mini btn-info' if @notifications_to_clear > 0
+            %strong= @notifications_to_clear
+
 
 .sep20
-.box{:style => 'width: 390px;'}
-  .cell
-    系统清理
-  .inner
-    %table{:cellpadding => 3, :cellspacing => 0, :border => 0, :width => '100%'}
-      %tr
-        %td{:align => :right, :width => '40%'}
-          %span.fade 可清理提醒
-        %td{:align => :left}
-          %strong= @notifications_to_clear
-        %td{:align => :left}
-          = link_to '删除已读提醒', clear_admin_notifications_path, :method => :delete, :class => 'op admin_op op_danger' if @notifications_to_clear > 0
+.row
+  .box.span8
+    .cell
+      最新回复
+    .inner
+      = render Comment.order('created_at DESC').limit(5)
+
+

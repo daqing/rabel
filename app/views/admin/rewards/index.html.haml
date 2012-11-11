@@ -1,16 +1,17 @@
 .box
   .cell
     = build_admin_navigation([@title])
-  %table.data{:cellpadding => 5, :cellspacing => 0, :border => 0, :width => '100%'}
-    %tr
-      %td.h{:width => 110} 时间
-      %td.h{:width => 80} 帐户
-      %td.h{:width => 60} 数额
-      %td.h{:width => 60} 当前余额
-      %td.h{:width => 80} 管理员
-      %td.h.last{:width => :auto} 理由
+  .cell
+    %table.table.table-bordered
+      %tr
+        %td.h{:width => 110} 时间
+        %td.h{:width => 80} 帐户
+        %td.h{:width => 60} 数额
+        %td.h{:width => 60} 当前余额
+        %td.h{:width => 80} 管理员
+        %td.h.last{:width => :auto} 理由
 
-    = render @rewards
+      = render @rewards
   .inner
     = paginate @rewards
 

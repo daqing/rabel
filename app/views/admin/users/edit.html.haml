@@ -1,38 +1,16 @@
 .box
   .cell
+    .pull-right= link_to '返回用户管理', admin_users_path + "?nickname=#{url_encode @user.nickname}", :class => :btn
     = build_admin_navigation([@title])
   .cell
-    &lt;
-    = link_to '返回用户管理', admin_users_path + "?nickname=#{url_encode @user.nickname}"
 
-    = form_for [:admin, @user] do |f|
-      %table{:cellpadding => 5, :cellspacing => 0, :border => 0}
-        %tr
-          %td{:width => 120, :align => :right} 用户名
-          %td{:width => 200, :align => :left}
-            = f.text_field :nickname, :class => :sls
-        %tr
-          %td{:width => 120, :align => :right} 电子邮件
-          %td{:width => 200, :align => :left}
-            = f.email_field :email, :class => :sl
-        %tr
-          %td{:width => 120, :align => :right} 新密码
-          %td{:width => 200, :align => :left}
-            = f.password_field :password, :class => :sl
-        %tr
-          %td{:width => 120, :align => :right} 确认新密码
-          %td{:width => 200, :align => :left}
-            = f.password_field :password_confirmation, :class => :sl
-
-        = render 'users/account_detail_form', :f => f
-
-        %tr
-          %td{:width => 120, :align => :right}= Siteconf.reward_title
-          %td{:width => 200, :align => :left}
-            = f.text_field :reward, :class => :sls
-
-        %tr
-          %td{:align => :right}
-          %td{:width => 200, :align => :left}
-            = f.submit '更新用户信息', :class => 'super normal button'
+    = simple_form_for [:admin, @user], :html => {:class => 'form-horizontal'} do |f|
+      = f.input :nickname, :label => '用户名'
+      = f.input :email
+      = f.input :password, :label => '新密码'
+      = f.input :password_confirmation, :label => '确认新密码'
+      = render 'users/account_detail_form', :f => f
+      = f.input :reward, :label => Siteconf.reward_title
+      .form-actions
+        = f.submit '更新用户信息', :class => 'btn btn-small btn-primary'
 

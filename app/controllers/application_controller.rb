@@ -94,7 +94,7 @@ class ApplicationController < ActionController::Base
       if mobile_device?
         'application'
       else
-        'bootstrap'
+        'app'
       end
     end
 
