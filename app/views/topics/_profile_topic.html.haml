@@ -19,4 +19,4 @@
             &nbsp;&nbsp;•&nbsp;&nbsp;
             = time_ago_in_words(topic.created_at)
       %td{:valign => :middle, :width => 40, :align => :right}
-        = link_to comments_count, t_path(topic.id), :class => :count
+        .badge.badge-info= comments_count

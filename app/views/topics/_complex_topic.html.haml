@@ -8,7 +8,7 @@
       %td{:valign => :top, :style => 'padding-left: 12px'}
         - if comments_count > 0
           .fr
-            = link_to comments_count, t_path(topic.id), :class => :count
+            .badge.badge-info= comments_count
         .sep3
         %h2.topic_title
           = link_to topic.title, t_path(topic.id), :class => 'rabel topic'
