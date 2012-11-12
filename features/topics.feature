@@ -9,7 +9,7 @@ Feature: Topics
         And I should see 那继续晒一下韩国电影吧
         And I should see 大叔
         And it should display a comment form
-        And I should not see 编辑
+        And I should not see 编辑全部
         And I should see Ctrl + Enter
 
   @javascript
@@ -38,7 +38,7 @@ Feature: Topics
     Given I have logged in as devin
     And a topic of me exists with title: 那继续晒一下韩国电影吧
     And I am on the topic page
-      Then I should see 编辑
+      Then I should see 编辑全部
 
   Scenario: edit topic
     Given a root exists
@@ -46,8 +46,8 @@ Feature: Topics
       And I have logged in as devin
     And a topic of devin exists with title: Hi
     And I am on the topic page
-    Then I should see 编辑
-    When I click the link 编辑
+    Then I should see 编辑全部
+    When I click the link 编辑全部
     Then it should display a topic edit form
 
   Scenario: normal user can't edit locked topics
@@ -56,14 +56,14 @@ Feature: Topics
       And I have logged in as devin
     And a locked topic of devin exists with title: Hi
     And I am on the topic page
-    Then it should not display link 编辑
+    Then it should not display link 编辑全部
 
   Scenario: admin can edit locked topics
     Given a locked_topic exists
       And as an admin, I have logged in as devin
       When I am on the topic page
-      Then it should display link 编辑
-        When I click the link 编辑
+      Then it should display link 编辑全部
+        When I click the link 编辑全部
         Then it should display a topic edit form
 
   Scenario: admin can move or delete topics

@@ -61,8 +61,8 @@ jQuery ($) ->
       $("#preview").css('border', '1px dotted #ccc')
       $("#preview").css('background', 'lightyellow')
       $("#preview").css('padding', '10px')
-      $("a.preview").hide()
-      $(".cancel_preview").show()
+      $("a.preview").addClass('current_label')
+      $(".cancel_preview").removeClass('current_label')
     )
   $("a.cancel_preview").click ->
     content_id = $(this).data('ref')
@@ -70,8 +70,8 @@ jQuery ($) ->
     $("#preview").hide()
     ref_obj.show()
     ref_obj.focus()
-    $("a.preview").show()
-    $(this).hide()
+    $(this).addClass('current_label')
+    $("a.preview").removeClass('current_label')
 
   $(".track_event").click ->
     window.rabel.trackEvent($(this).data('category'), $(this).data('action'), $(this).data('label'))
