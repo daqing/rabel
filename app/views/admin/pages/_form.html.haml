@@ -1,46 +1,27 @@
-= form_for [:admin, page] do |f|
-  %table
-    %tr
-      %td
-        = f.label :title, '页面标题'
-        %small.smaller (必填)
-    %tr
-      %td
-        = f.text_field :title, :class => :sl
-        .sep10
-    %tr
-      %td
-        = f.label :key, '英文标题'
-        %small.smaller (必填)
-    %tr
-      %td
-        = f.text_field :key, :class => :sls
-        %small.smaller 只允许英文字符和下划线
-        .sep10
-    %tr
-      %td
-        = f.label :content, '页面内容'
-        %small.smaller (必填)
-        .sep5
-    %tr
-      %td
-        = render 'shared/preview_widget', :ref => :page_content, :type => :page
-        = f.text_area :content, :class => :mle
-        - if Siteconf.allow_markdown_in_pages?
-          .sep3
-          %span.fade 支持 Markdown 格式
-        .sep5
-    %tr
-      %td
-        = f.label :published, '发布状态'
-    %tr
-      %td
+= simple_form_for [:admin, page], :html => {:class => 'form-horizontal'} do |f|
+  = f.input :title, :label => '标题'
+  .control-group
+    = f.label :key, '英文标题', :class => 'control-label'
+    .controls
+      .input-prepend
+        %span.add-on /page/
+        = f.text_field :key, :class => 'input-small'
+      %small.help-inline 只允许英文字符和下划线
+
+  .control-group
+    = f.label :content, '页面内容', :class => 'control-label'
+    .controls
+      = render 'shared/preview_widget', :ref => :page_content, :type => :page
+      = f.text_area :content, :class => :span7, :rows => 5
+  .control-group
+    = f.label :published, '发布状态', :class => 'control-label'
+    .controls
+      %label.radio.inline
         = f.radio_button 'published', true
         %span.published 立刻发布
+      %label.radio.inline
         = f.radio_button 'published', false
         %span.draft 保存为草稿
-        .sep10
-    %tr
-      %td
-        = f.submit '保存', :class => 'super normal button'
+  .form-actions
+    = f.submit '保存', :class => 'btn btn-small btn-primary'
 

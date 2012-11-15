@@ -19,8 +19,8 @@ module ApplicationHelper
     @title_items.unshift item unless request.format.to_sym == :js
   end
 
-  def build_navigation(items, class_name='fade')
-    items.unshift(link_to(Siteconf.site_name, root_path))
+  def build_navigation(items, class_name='gray')
+    items.unshift(link_to(Siteconf.site_name, root_path, :class => :rabel))
     items.join(' <span class="chevron">&nbsp;›&nbsp;</span> ').html_safe
   end
 
@@ -102,7 +102,7 @@ module ApplicationHelper
           MarkdownConverter.convert(text)
         )
       )).html_safe
-    rescue
+    rescue Exception => e
       h(text)
     end
   end
@@ -159,7 +159,7 @@ module ApplicationHelper
 
   def nickname_profile_link(nickname, options={})
     options[:title] = nickname
-    hash_key_append(options, :class, 'profile_link')
+    hash_key_append(options, :class, 'rabel profile_link')
 
     link_to nickname, member_path(url_encode(nickname)), options
   end

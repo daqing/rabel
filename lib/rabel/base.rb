@@ -7,7 +7,7 @@ module Rabel
     def self.make_mention_links(text)
       text.gsub(Notifiable::MENTION_REGEXP) do
         if $1.present?
-          %(@<a href="/member/#{$1}">#{$1}</a>)
+          %(@<a class="rabel" href="/member/#{$1}">#{$1}</a>)
         else
           "@#{$1}"
         end
@@ -35,7 +35,11 @@ module Rabel
     end
 
     def self.protect_at_symbol(text)
-      text.gsub("@", "%AT%")
+      begin
+        text.gsub("@", "%AT%")
+      rescue
+        text
+      end
     end
 
     def self.decode_symbols(text)

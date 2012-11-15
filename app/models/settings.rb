@@ -4,7 +4,7 @@ class Settings < Settingslogic
   namespace Rails.env
 
   def self.themes
-    {:default => '默认', :ruby_china => 'Ruby China'}
+    {:pb2 => '默认', :default => 'Bootstrap 原生', :ruby_china => 'Ruby China'}
   end
 
   def self.topic_list_styles

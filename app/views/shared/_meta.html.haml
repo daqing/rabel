@@ -2,10 +2,10 @@
 %meta{:charset => 'UTF-8'}
 %meta{:name => 'HandheldFriendly', :content => 'True'}
 %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1.0'}
-= csrf_meta_tags
 %title= title
 = Siteconf.custom_head_tags.html_safe
 = favicon_link_tag
 = auto_discovery_link_tag :atom, topics_path(:atom)
 - if @canonical_path.present?
   %link{:rel => :canonical, :href => "http://#{Settings.canonical_host}#{@canonical_path}"}
+= csrf_meta_tags

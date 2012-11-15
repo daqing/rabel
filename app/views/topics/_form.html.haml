@@ -1,17 +1,10 @@
-%p.fade 提示: 如果标题已经包含你想说的话，内容可以留空。
-= form_for [node, topic] do |f|
-  %a{:name => 'new_topic'}
-  = f.label :title, '标题'
-  .sep5
-  = f.text_area :title, :class => :mll, :style => 'height: 10px;', :maxlength => 150
-  .sep10
+.alert.alert-info 如果标题已经包含你想说的话，内容可以留空。
+= simple_form_for [node, topic], :html => {:class => 'form-vertical'} do |f|
+  %a{:name => 'new_topic'}/
+  = f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span8}
   = render 'shared/preview_widget', :ref => :topic_content, :type => :topic
-  = f.text_area :content, :class => :mll
-  .sep5
+  = f.input :content, :input_html => {:rows => 10, :class => :span8}, :label => false, :placeholder => '话题内容'
   - if current_user.can_manage_site?
-    = f.check_box :sticky
-    = f.label :sticky, '保持置顶', :class => :small
-    = f.check_box :comments_closed
-    = f.label :comments_closed, '禁止回复', :class => :small
-  .sep5
-  = f.submit (topic.new_record? ? '创建' : '提交修改'), :class => 'super normal button', :data => {:disable_with => t('tips.submitting')}
+    = f.input :sticky, :inline_label => '保持置顶', :label => false
+    = f.input :comments_closed, :inline_label => '禁止回复', :label => false
+  = f.submit (topic.new_record? ? '创建' : '提交修改'), :class => 'btn btn-primary btn-inverse', :data => {:disable_with => t('tips.submitting')}

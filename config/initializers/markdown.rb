@@ -31,7 +31,7 @@ module Redcarpet
       end
 
       def hrule()
-        %(<div class="hrule"></div>)
+        %(<hr class="hrule"></hr>)
       end
 
       def list(contents, list_type)
@@ -52,7 +52,7 @@ module Redcarpet
       end
 
       def table(header, body)
-        %(<table class="reply"><thead>#{header.gsub('td', 'th')}</thead><tbody>#{body}</tbody></table>)
+        %(<table class="table table-bordered"><thead>#{header.gsub('td', 'th')}</thead><tbody>#{body}</tbody></table>)
       end
 
       def table_row(content)

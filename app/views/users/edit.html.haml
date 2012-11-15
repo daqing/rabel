@@ -2,41 +2,31 @@
   .cell
     = build_navigation(['设置'])
   .inner
-    = render 'account_form', :btn_class => 'super normal button'
-.sep20
+    = render 'account_form', :btn_class => 'btn btn-small'
 
 %a{:name => :avatar} &nbsp;
 .box
-  .cell
-    %span.fade 头像
-  .cell
-    %table{:cellpadding => 5, :cellspacing => 0, :border => 0}
-      %tr
-        %td{:width => 120, :align => :right} 当前头像
-        %td{:align => :left}
+  .box-header
+    头像
+  = simple_form_for @user, :url => update_avatar_path, :html => {:multipart => true, :class => 'edit_user form-horizontal'} do |f|
+    .cell
+      .control-group
+        .control-label 当前头像
+        .controls
           = large_avatar(current_user)
           &nbsp;
           = medium_avatar(current_user)
           &nbsp;
           = mini_avatar(current_user)
-  .inner
-    = form_for @user, :url => update_avatar_path, :html => {:multipart => true} do |f|
-      %span.fade 支持 1MB 以内的 PNG / GIF / JPG 图片文件作为头像，推荐使用正方形的透明 PNG 图片以获得最佳效果。
-      .sep5
-      %table{:cellpadding => 5, :cellspacing => 0, :border => 0}
-        %tr
-          %td{:width => 80, :align => :right} 选择图片文件
-          %td{:width => 200, :align => :left}
-            = f.file_field :avatar
-        %tr
-          %td{:width => 80, :align => :right}
-          %td{:width => 200, :align => :left}
-            = f.submit '上传新头像', :class => 'super normal button'
+    .inner
+      = f.input :avatar, :label => '选择图片文件'
+      .form-actions
+        = f.submit '上传新头像', :class => 'btn btn-small btn-primary'
+        %span.help-block 推荐使用正方形的透明 PNG 图片以获得最佳效果。
 
-.sep20
 .box
-  .cell
-    %span.fade 安全
+  .box-header
+    修改密码
   .inner
-    = render 'users/password_form', :btn_class => 'super normal button'
+    = render 'users/password_form', :btn_class => 'btn btn-small'
 

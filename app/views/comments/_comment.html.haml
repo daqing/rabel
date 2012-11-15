@@ -10,21 +10,18 @@
           .fr
             - if user_signed_in? and current_user.can_manage_site?
               %small.hover_action
-                = link_to 'EDIT', edit_comment_path(comment), :class => :edit, :remote => :true
-                = link_to 'DEL', comment_path(comment), :method => :delete, :data => {:confirm => I18n.t(:delete_confirm)}, :class => :op_danger, :remote => true
-            %strong
-              %small.snow
-                - _num = comment_counter + 1
-                - if @total_pages > 1
-                  = "##{Siteconf.pagination_comments.to_i * (@current_page.to_i - 1) + _num} -"
-                - else
-                  = "##{_num} -"
-                = time_ago_in_words(comment.created_at)
-                - if user_signed_in?
-                  = image_tag 'reply_button.png', :align => :absmiddle, :border => 0, :class => 'clickable mention_button', :data => {:mention => "@#{comment_user.nickname}"}
-          .sep3
-          %strong
-            = user_profile_link(comment_user, :class => :dark)
+                = link_to 'EDIT', edit_comment_path(comment), :class => 'rabel edit', :remote => :true
+                = link_to 'DEL', comment_path(comment), :method => :delete, :data => {:confirm => I18n.t(:delete_confirm)}, :class => 'rabel', :remote => true
+            %small.snow
+              - _num = comment_counter + 1
+              - if @total_pages > 1
+                = "##{Siteconf.pagination_comments.to_i * (@current_page.to_i - 1) + _num} -"
+              - else
+                = "##{_num} -"
+              = time_ago_in_words(comment.created_at)
+              - if user_signed_in?
+                = image_tag 'reply_button.png', :align => :absmiddle, :border => 0, :class => 'clickable mention_button', :data => {:mention => "@#{comment_user.nickname}"}
+          = user_profile_link(comment_user, :class => :dark)
           = show_posting_device(comment)
           .sep5
           .content.reply_content= format_comment comment.content

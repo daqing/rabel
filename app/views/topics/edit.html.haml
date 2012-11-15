@@ -11,7 +11,6 @@
         距离本主题的编辑权限关闭还有&nbsp;
         %span.orange= (@topic.created_at + Siteconf.topic_editable_period - Time.now).round
         &nbsp;秒
-  .sep20
   - content_for :template_js do
     :plain
       var second = parseInt($("span.orange").text());
@@ -25,8 +24,8 @@
         $("span.orange").text(second);
         }, 1000);
 .box
-  .cell= edit_topic_navigation(@node, @topic)
   .cell
-    %h3 更新话题
+    = edit_topic_navigation(@node, @topic)
+  .cell
     = render 'form', :node => @node, :topic => @topic, :comments_closed => @topic.comments_closed?
   .inner= render 'back_to_node', :node => @node

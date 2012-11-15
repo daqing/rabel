@@ -22,10 +22,10 @@ Feature: Comments
   Scenario: normal user can't manage comments
     Given I am not authenticated
       And I am on the topic page
-      Then it should not display link 编辑
-        And it should not display link 删除
+      Then it should not display link EDIT
+        And it should not display link DEL
       Given I have logged in as devin
       And I am on the topic page
-      Then it should not display link 编辑
-        And it should not display link 删除
+      Then it should not display link EDIT
+        And it should not display link DEL
 

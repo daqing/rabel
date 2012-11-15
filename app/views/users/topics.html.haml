@@ -2,8 +2,6 @@
   .cell
     = build_navigation([@title])
   .cell
-    = render :partial => 'topics/table_view', :locals => { :topics => @topics }
-  .inner
-    .center
-      = paginate @topics if @topics.any?
+    = render :partial => 'topics/profile_topic', :collection => @topics, :as => :topic, :locals => {:topic_user => @user}
+  = paginate @topics if @topics.any?
 

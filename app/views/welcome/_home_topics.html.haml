@@ -1,9 +1,9 @@
 .box#topics_index
   .cell{:align => 'left'}
-    .fr
-      %span.fade{:style => 'font-size: 110%'}
+    .pull-right.marketing
+      %span.gray{:style => 'font-size: 110%'}
         = Siteconf.marketing.join('&nbsp;<span class="snow">&nbsp;•&nbsp;</span>&nbsp;').html_safe
-    %span.bigger= Siteconf.welcome_tip.html_safe
+    .bigger.welcome= Siteconf.welcome_tip.html_safe
     .sep10
     = Siteconf.splash.html_safe
   - if @sticky_topics.any?
@@ -16,8 +16,8 @@
 
   = render @topics
   .inner
-    .fr= render 'shared/rss'
+    .pull-right= render 'shared/rss'
     &nbsp;
     - if Topic.cached_count > Siteconf::HOMEPAGE_TOPICS
       %span.chevron »
-      = link_to '更多新主题', topics_path + '?page=2'
+      = link_to '更多新主题', topics_path + '?page=2', :class => :rabel

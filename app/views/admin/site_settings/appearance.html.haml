@@ -2,66 +2,47 @@
   .cell
     = build_admin_navigation([@title])
   .inner
-    = form_for :site_settings, :url => admin_site_settings_path, :method => :put do |f|
-      %table
-        %tr
-          %td
-          %td
-            = f.submit '保存', :class => 'super normal button'
-        %tr
-          %td
-            = label_tag 'settings[theme]', '设计风格'
-          %td
-            = select_tag 'settings[theme]', options_for_select(Settings.themes.invert.to_a, @settings.theme)
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[nav_position]', '节点导航位置'
-          %td
-            = select_tag 'settings[nav_position]', options_for_select([['头部', 'top'], ['侧边栏', 'sidebar'], ['底部', 'bottom']], @settings.nav_position)
-            .sep10
+    = form_for :site_settings, :url => admin_site_settings_path, :method => :put, :html => {:class => 'form-horizontal'} do |f|
+      .control-group
+        = label_tag 'settings[theme]', '设计风格', :class => 'control-label'
+        .controls
+          = select_tag 'settings[theme]', options_for_select(Settings.themes.invert.to_a, @settings.theme)
 
-        %tr
-          %td
-            = label_tag 'settings[topic_list_style]', '帖子列表风格'
-          %td
-            = select_tag 'settings[topic_list_style]', options_for_select(Settings.topic_list_styles.invert.to_a, @settings.topic_list_style)
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[custom_logo]', '自定义Logo'
-          %td
-            = text_field_tag 'settings[custom_logo]', @settings.custom_logo, :class => :sl, :placeholder => t('tips.cloud_file_url')
-            %small.smaller 推荐尺寸: 100 x 40
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[global_banner]', '自定义Banner'
-          %td
-            = text_field_tag 'settings[global_banner]', @settings.global_banner, :class => :sl, :placeholder => t('tips.cloud_file_url')
-            %small.smaller 推荐尺寸: 960 x 145
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[custom_css]', '自定义CSS'
-          %td
-            %span.fade &lt;style type="text/css"&gt;
-            .sep3
-            = text_area_tag 'settings[custom_css]', @settings.custom_css, :class => :ml
-            .sep3
-            %span.fade &lt;/style&gt;
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[custom_js]', '自定义JavaScript'
-          %td
-            %span.fade &lt;script type="text/javascript"&gt;
-            .sep3
-            = text_area_tag 'settings[custom_js]', @settings.custom_js, :class => :ml
-            .sep3
-            %span.fade &lt;/script&gt;
-            .sep10
-        %tr
-          %td
-          %td
-            = f.submit '保存', :class => 'super normal button'
+      .control-group
+        = label_tag 'settings[nav_position]', '节点导航位置', :class => 'control-label'
+        .controls
+          = select_tag 'settings[nav_position]', options_for_select([['头部', 'top'], ['侧边栏', 'sidebar'], ['底部', 'bottom']], @settings.nav_position)
+
+      .control-group
+        = label_tag 'settings[topic_list_style]', '帖子列表风格', :class => 'control-label'
+        .controls
+          = select_tag 'settings[topic_list_style]', options_for_select(Settings.topic_list_styles.invert.to_a, @settings.topic_list_style)
+
+      .control-group
+        = label_tag 'settings[custom_logo]', '自定义Logo', :class => 'control-label'
+        .controls
+          = text_field_tag 'settings[custom_logo]', @settings.custom_logo, :class => :sl, :placeholder => t('tips.cloud_file_url')
+          %small.help-inline 推荐尺寸: 100 x 40
+
+      .control-group
+        = label_tag 'settings[global_banner]', '自定义Banner', :class => 'control-label'
+        .controls
+          = text_field_tag 'settings[global_banner]', @settings.global_banner, :class => :sl, :placeholder => t('tips.cloud_file_url')
+          %small.help-inline 推荐尺寸: 960 x 145
+
+      .control-group
+        = label_tag 'settings[custom_css]', '自定义CSS', :class => 'control-label'
+        .controls
+          %span.gray.help-block &lt;style type="text/css"&gt;
+          = text_area_tag 'settings[custom_css]', @settings.custom_css, :class => :span6, :rows => 5
+          .gray &lt;/style&gt;
+
+      .control-group
+        = label_tag 'settings[custom_js]', '自定义JavaScript', :class => 'control-label'
+        .controls
+          %span.gray.help-block &lt;script type="text/javascript"&gt;
+          = text_area_tag 'settings[custom_js]', @settings.custom_js, :class => :span6, :rows => 5
+          .gray &lt;/script&gt;
+
+      .form-actions
+        = f.submit '保存', :class => 'btn btn-small btn-primary'

@@ -8,6 +8,7 @@ class Admin::PlanesController < Admin::BaseController
   end
 
   def new
+    @title = '添加位面'
     @plane = Plane.new
     respond_to do |format|
       format.js { render :show_form }
@@ -27,7 +28,10 @@ class Admin::PlanesController < Admin::BaseController
 
   def edit
     respond_to do |format|
-      format.js { render :show_form }
+      format.js {
+        @title = '修改位面'
+        render :show_form
+      }
     end
   end
 

@@ -1,16 +1,5 @@
-= form_for [:admin, @file], :multipart => true do |f|
-  %table
-    %tr
-      %td
-      %td
-        = f.file_field :asset
-    %tr
-      %td
-        = f.label :name, '简要描述'
-      %td
-        = f.text_field :name, :class => :sl
-        %small.smaller (必填)
-    %tr
-      %td
-      %td
-        = f.submit '上传', :class => 'super normal button'
+= simple_form_for [:admin, @file], :multipart => true, :html => {:class => 'form-horizontal'} do |f|
+  = f.input :asset, :label => '选择要上传的文件'
+  = f.input :name, :label => '简要描述', :input_html => {:class => :span4}
+  .form-actions
+    = f.submit '上传', :class => 'btn btn-small btn-primary'

@@ -7,23 +7,22 @@
             = user_profile_avatar_link(current_user, :medium)
           %td{:width => 10, :valign => :top}
           %td{:width => :auto, :valign => :left}
-            %span.bigger= user_profile_link(current_user)
-            .sep5
-            %span.fade= current_user.account.signature
+            .profile-link= user_profile_link(current_user)
+            .signature= current_user.account.signature
       .sep10
-      %table
+      %table{:width => '100%'}
         = render 'shared/my_fav'
-    .inner
+    - unless current_user.has_avatar?
+      .cell
+        .muted.alert.alert-warn{:style => 'margin-bottom: 0;'}
+          头像不够个性？
+          %a{:href => settings_path + "#avatar", :class => :rabel} 立刻上传 →
+    .inner.muted
       - if @unread_count > 0
         = image_tag 'dot_orange.png', :class => :icon, :align => :top
-        = link_to "#{@unread_count} 条未读提醒", notifications_path, :class => :fade
+        = link_to "#{@unread_count} 条未读提醒", notifications_path
       - else
-        %span.fade 暂无提醒
-    - unless current_user.has_avatar?
-      .yellow
-        %span.fade
-          头像不够个性？
-          %a{:href => settings_path + "#avatar"} 立刻上传 →
+        暂无提醒
 - else
   .box
     .cell
@@ -31,12 +30,11 @@
     .inner
       .sep5
       .center
-        = link_to '现在注册', new_user_registration_path, :class => 'super normal button'
+        = link_to '现在注册', new_user_registration_path, :class => 'btn btn-small'
         .sep5
         .sep10
         已注册用户请
-        = link_to '登入', new_user_session_path
-.sep20
+        = link_to '登入', new_user_session_path, :class => :rabel
 
 - content_for :rightbar do
   = Siteconf.global_sidebar_block.html_safe

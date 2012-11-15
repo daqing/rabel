@@ -1,24 +1,26 @@
 - action_user = notification.action_user
-%tr
-  %td{:width => 32, :align => :left, :valign => :top}
-    = user_profile_avatar_link(action_user, :mini)
-  %td{:valign => :top}
-    %span.fade
-      %strong= user_profile_link(action_user)
-      - if notification.action == Notification::ACTION_REWARD
-        - if notification.notifiable.amount > 0
-          %span.green 奖励给你
-        - else
-          %span.red 从你的帐户中扣除了
-        %strong= notification.notifiable.amount.abs
-        = Siteconf.reward_title
-      - else
-        = notification.action_info_prefix
-        = link_to notification.notifiable.notifiable_title, read_notification_path(notification)
-        = notification.action_info_suffix + '了你'
-    %span.snow
-      = time_ago_in_words(notification.created_at)
-    .sep5
-    - if notification.content.present?
-      .payload= parse_markdown(notification.content)
+.cell
+  %table{:width => '100%'}
+    %tr
+      %td{:width => 32, :align => :left, :valign => :top}
+        = user_profile_avatar_link(action_user, :mini)
+      %td{:valign => :top}
+        %span.gray
+          %strong= user_profile_link(action_user)
+          - if notification.action == Notification::ACTION_REWARD
+            - if notification.notifiable.amount > 0
+              %span.green 奖励给你
+            - else
+              %span.red 从你的帐户中扣除了
+            %strong= notification.notifiable.amount.abs
+            = Siteconf.reward_title
+          - else
+            = notification.action_info_prefix
+            = link_to notification.notifiable.notifiable_title, read_notification_path(notification), :class => :rabel
+            = notification.action_info_suffix + '了你'
+        %span.snow
+          = time_ago_in_words(notification.created_at)
+        .sep5
+        - if notification.content.present?
+          .payload= parse_markdown(notification.content)
 

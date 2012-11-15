@@ -43,9 +43,8 @@ class User < ActiveRecord::Base
     self.topics.order('created_at DESC').limit(10)
   end
 
-  def latest_replied_topics
-    @topic_ids ||= self.comments.where(:commentable_type => 'Topic').order('created_at DESC').limit(10).pluck(:commentable_id)
-    Topic.find(@topic_ids)
+  def latest_comments
+    self.comments.order('created_at DESC').limit(10)
   end
 
   def bookmarked?(bookmarkable)

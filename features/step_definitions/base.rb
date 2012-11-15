@@ -77,8 +77,8 @@ When /^debug$/ do
 end
 
 Given /^I logout$/ do
-  within('#Top') do
-    click_link '登出'
+  within('.navbar') do
+    click_link '退出'
   end
 end
 
@@ -88,7 +88,7 @@ end
 
 Given /^I am not authenticated$/ do
   steps %Q(Given I am on the home page)
-  steps %Q(Then I should not see 登出)
+  steps %Q(Then I should not see 退出)
 end
 
 Given /^an? (.*) exists with nickname: (.*)$/ do |type, nickname|
@@ -181,8 +181,8 @@ end
 Then /^it should display personal homepage of (.*)$/ do |nickname|
   steps %Q(Then page title should contain #{nickname})
   steps %Q(Then I should see #{nickname})
-  steps %Q(Then I should see 最近创建主题)
-  steps %Q(Then I should see 最近参与主题)
+  steps %Q(Then I should see 最近创建的话题)
+  steps %Q(Then I should see 最近的回复)
 end
 
 Then /^it should display button (.*)$/ do |text|
@@ -212,7 +212,7 @@ When /^I confirm the alert message$/ do
 end
 
 Then /^it should display the search form$/ do
-  page.should have_css("#Search input")
+  page.should have_css("input#q")
 end
 
 When /^I search for (.*)$/ do |query|
@@ -229,7 +229,7 @@ Then /^it will use configured search engine$/ do
 end
 
 Then /^it should display (\d+) notification(s?)$/ do |n, i|
-  page.all("#Main table tr").size.should == n.to_i
+  page.all("#page-main .span9 table tr").size.should == n.to_i
 end
 
 Given /^a notification exists with user: (.*)$/ do |nickname|

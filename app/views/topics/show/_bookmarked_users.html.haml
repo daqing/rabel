@@ -1,9 +1,8 @@
 - if @total_bookmarks > 0
   - content_for :rightbar do
     .box
-      .cell
-        %span.fade 收藏此话题的成员
+      .box-header
+        收藏此话题的成员
       .inner
         - @topic.bookmarks.each do |b|
           = user_profile_avatar_link(b.user, :mini)
-    .sep20

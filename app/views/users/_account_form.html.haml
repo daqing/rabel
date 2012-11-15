@@ -1,16 +1,7 @@
-= form_for @user, :url => update_account_path do |f|
-  %table{:cellpadding => 5, :cellspacing => 0, :border => 0}
-    %tr
-      %td{:width => 120, :align => :right} 用户名
-      %td{:width => 200, :align => :left}
-        = @user.nickname
-    %tr
-      %td{:width => 120, :align => :right} 电子邮件
-      %td{:width => 200, :align => :left}
-        = f.email_field :email, :class => :sl
-    = render :partial => 'account_detail_form', :locals => {:f => f}, :formats => :html
+= simple_form_for @user, :url => update_account_path, :html => {:class => 'form-horizontal'} do |f|
+  = f.input :nickname, :disabled => true
+  = f.input :email
+  = render :partial => 'account_detail_form', :locals => {:f => f}, :formats => :html
 
-    %tr
-      %td{:align => :right}
-      %td{:width => 200, :align => :left}
-        = f.submit '保存设置', :class => btn_class
+  .form-actions
+    = f.submit '保存设置', :class => 'btn btn-small btn-primary'

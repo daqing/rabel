@@ -1,14 +1,14 @@
 .box
   .cell
     .fr
-      = form_for '', :url => admin_users_path, :method => :get do
-        = label_tag :nickname, '用户昵称', :class => :small
-        = text_field_tag :nickname, params[:nickname], :class => :sls
-        = submit_tag '搜索', :class => 'super normal button'
+      = form_for '', :url => admin_users_path, :method => :get, :html => {:class => 'form-search'} do
+        .input-append
+          = text_field_tag :nickname, params[:nickname], :class => 'span2 search-query', :placeholder => '用户昵称'
+          = submit_tag '搜索', :class => :btn
 
     = build_admin_navigation([@title])
   .cell
-    %table{:cellpadding => 5, :cellspacing => 0, :border => 0, :width => '100%'}
+    %table.table
       %thead
         %tr
           %th{:align => :right} ID
