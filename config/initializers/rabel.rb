@@ -30,5 +30,5 @@ Siteconf.defaults[:topic_editable_period_str] = '5'
 Siteconf.defaults[:reward_title] = '银币'
 Siteconf.defaults[:sticky_topics_heading] = '置顶话题'
 Siteconf.defaults[:latest_topics_heading] = '最新讨论'
-Siteconf.defaults[:topic_list_style] = 'simple'
+Siteconf.defaults[:topic_list_style] = 'complex'
 
