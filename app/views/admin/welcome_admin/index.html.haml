@@ -1,5 +1,5 @@
 .row
-  .box.span5
+  .box.span8
     .cell
       最新用户
     .inner
@@ -22,6 +22,7 @@
               %td.w100
                 %small.gray= time_ago_in_words(user.created_at)
 
+.row
   .box.span4
     .cell
       社区运行状态
@@ -54,7 +55,6 @@
           %td{:align => :left}
             .pull-right= link_to '删除已读提醒', clear_admin_notifications_path, :method => :delete, :class => 'btn btn-mini btn-info' if @notifications_to_clear > 0
             %strong= @notifications_to_clear
-
 
 .row
   .box.span8
