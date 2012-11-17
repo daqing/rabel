@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :init
-  #before_filter :detect_mobile_client
+  before_filter :detect_mobile_client
 
   def custom_path(model)
     if model.is_a? Topic
@@ -111,19 +111,6 @@ class ApplicationController < ActionController::Base
     def detect_mobile_client
       ua = request.env['HTTP_USER_AGENT']
       session[:posting_device] = ua[/(iPod|iPad|iPhone|Android)/i] if ua.present?
-
-      if [:html, :mobile].include?(request.format.try(:to_sym)) and session[:format]
-        # Format has been forced by Sessions#change_format
-        request.format = session[:format].to_sym
-      else
-        # We should autodetect mobile clients and redirect if they ask for html
-        mobile_regex = /(iPod|iPhone|Android|Opera mini|Opera mobi|Blackberry|Palm|UCWEB|Windows CE|PSP|Blazer|iemobile|webOS)/i
-        mobile =   ua && ua[mobile_regex]
-        mobile ||= request.env["HTTP_PROFILE"] || request.env["HTTP_X_WAP_PROFILE"]
-        if mobile and request.format == :html
-          request.format = :mobile
-        end
-      end
     end
 
     def store_location

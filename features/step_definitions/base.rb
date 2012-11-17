@@ -255,6 +255,10 @@ Then /^I should be able to post a new comment$/ do
   steps %Q(And I should see 我爱北京天安门)
 end
 
+Given /^my user agent is: (.*)$/ do |ua|
+  page.driver.header('USER_AGENT', ua)
+end
+
 Then /^it should display a record not found message$/ do
   steps %Q(Then I should see 404)
 end
