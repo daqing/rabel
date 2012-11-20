@@ -3,3 +3,6 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-Agent: *
 # Disallow: /
+
+# Add sitemap here:
+# Sitemap: http://www.example.com/sitemap.xml
