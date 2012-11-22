@@ -21,7 +21,7 @@ module Rabel
     def self.smart_url(link)
       if link =~ /http:\/\/v.youku.com\/v_show\/id_(.*)\.html/
         self.embed_video("http://player.youku.com/player.php/sid/#{$1}/v.swf")
-      elsif link =~ /http:\/\/www.tudou.com\/programs\/view\/([a-zA-Z0-9-]+)\/?/
+      elsif link =~ /http:\/\/www.tudou.com\/programs\/view\/([a-zA-Z0-9-_]+)\/?/
         self.embed_video("http://www.tudou.com/v/#{$1}/v.swf")
       elsif link =~ /xiami\.com\/widget\/?(.*)\/albumPlayer/
         embed_music(link, 235, 346)
