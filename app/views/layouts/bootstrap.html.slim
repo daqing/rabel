@@ -9,6 +9,8 @@ html
     - if Siteconf.custom_css.present?
       style type='text/css' = Siteconf.custom_css.html_safe
     = javascript_include_tag 'i_bootstrap'
+    link rel='apple-touch-icon' href='/apple-touch-icon.png'
+
     = yield :final_head
   body#rabel
     .navbar.navbar-inverse.navbar-static-top
