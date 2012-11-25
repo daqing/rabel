@@ -71,12 +71,16 @@ class UsersController < ApplicationController
 
   def update_avatar
     @user = current_user
-    if @user.update_without_password(params[:user])
-      flash[:success] = '头像更新成功'
-      redirect_to settings_path
+    if params[:user].present?
+      if @user.update_without_password(params[:user])
+        flash[:success] = '头像更新成功'
+        redirect_to settings_path + '#avatar'
+      else
+        flash[:error] = '头像更新失败'
+        render :edit
+      end
     else
-      flash[:error] = '头像更新失败'
-      render :edit
+      redirect_to settings_path + '#avatar', :notice => '请选择要上传的头像'
     end
   end
 
