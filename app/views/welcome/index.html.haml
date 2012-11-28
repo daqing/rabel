@@ -2,6 +2,9 @@
   - content_for :rightbar do
     = render 'rightbar_planes'
 
+- if not user_signed_in?
+  = render 'shared/community_intro'
+
 - if Siteconf.show_community_stats?
   - content_for :rightbar do
     = render 'shared/community_stats'
