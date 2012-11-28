@@ -1,3 +1,11 @@
+- content_for :rightbar do
+  .box
+    .box-header
+      所在节点
+    .inner
+      = link_to @node.name, go_path(@node.key), :class => 'rabel item_node'
+
+
 = render 'nodes/custom_fields', :node => @node
 = render 'topics/show/bookmarked_users'
 = render 'topics/show/manage'
@@ -19,10 +27,8 @@
 .box
   %article
     %div{:class => @topic.content.present? ? 'header' : 'inner'}
-      .fr
+      .pull-right
         = user_profile_avatar_link(topic_user, :large)
-      = build_navigation([link_to(@node.name, go_path(@node.key), :class => :rabel)], 'bigger')
-      .sep10
       %h1#topic_title
         = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe
       %small.topic-meta

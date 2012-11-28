@@ -16,16 +16,10 @@
           %small.help-inline 支持 HTML
 
       .control-group
-        = label_tag 'settings[short_intro]', '简短介绍', :class => 'control-label'
+        = label_tag 'settings[short_intro]', '一句话介绍', :class => 'control-label'
         .controls
           = text_field_tag 'settings[short_intro]', @settings.short_intro, :class => :span4
-          %small.help-inline 网站简短介绍, 显示在右侧边栏
 
-      .control-group
-        = label_tag 'settings[marketing_str]', '市场宣传关键字', :class => 'control-label'
-        .controls
-          = text_field_tag 'settings[marketing_str]', @settings.marketing_str, :class => :span4
-          %small.help-inline 用英文逗号(,)隔开
 
       .control-group
         = label_tag 'settings[ga_id]', 'Google Analytics ID', :class => 'control-label'
@@ -85,6 +79,14 @@
           %label.radio.inline
             = radio_button_tag 'settings[allow_markdown_in_pages]', 'off', !@settings.allow_markdown_in_pages?
             关闭
+
+      .control-group
+        = label_tag 'settings[full_intro]', '社区简介', :class => 'control-label'
+        .controls
+          = text_area_tag 'settings[full_intro]', @settings.full_intro, :class => :span6, :rows => 5
+          %br
+          %small.help-inline 网站简短介绍, 显示在右侧边栏
+
       .control-group
         = label_tag 'settings[custom_head_tags]', '自定义Head标签', :class => 'control-label'
         .controls
@@ -94,35 +96,20 @@
         = label_tag 'settings[seo_description]', 'SEO 描述', :class => 'control-label'
         .controls
           = text_area_tag 'settings[seo_description]', @settings.seo_description, :class => :span6
+          %br
           %small.help-inline 用于HTML meta标签
-      .control-group
-        = label_tag 'settings[splash]', 'Hero Unit', :class => 'control-label'
-        .controls
-          = text_area_tag 'settings[splash]', @settings.splash, :class => :span6, :rows => 5
-          %small.help-inline 支持HTML
       .control-group
         = label_tag 'settings[global_sidebar_block]', '全局侧边栏', :class => 'control-label'
         .controls
           = text_area_tag 'settings[global_sidebar_block]', @settings.global_sidebar_block, :class => :span6, :rows => 5
-          %small.help-inline 支持HTML
       .control-group
         = label_tag 'settings[footer]', '页面底部 [普通版]', :class => 'control-label'
         .controls
-          = text_area_tag 'settings[footer]', @settings.footer, :class => :span6, :rows => 5
-          %small.help-inline 支持HTML
+          = text_area_tag 'settings[footer]', @settings.footer, :class => :span6, :rows => 2
       .control-group
         = label_tag 'settings[mobile_footer]', '页面底部 [移动版]', :class => 'control-label'
         .controls
-          = text_area_tag 'settings[mobile_footer]', @settings.mobile_footer, :class => :span6, :rows => 5
-          %small.help-inline 支持HTML
-      .control-group
-        = label_tag 'settings[sticky_topics_heading]', '置顶话题提示', :class => 'control-label'
-        .controls
-          = text_field_tag 'settings[sticky_topics_heading]', @settings.sticky_topics_heading
-      .control-group
-        = label_tag 'settings[latest_topics_heading]', '最新话题提示', :class => 'control-label'
-        .controls
-          = text_field_tag 'settings[latest_topics_heading]', @settings.latest_topics_heading
+          = text_area_tag 'settings[mobile_footer]', @settings.mobile_footer, :class => :span6, :rows => 2
       .control-group
         = label_tag 'settings[reward_title]', '奖励名称', :class => 'control-label'
         .controls
