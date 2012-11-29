@@ -1,5 +1,9 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery_ui_core
+//= require jquery_ui_widget
+//= require jquery_ui_mouse
+//= require jquery_ui_sortable
 //= require twitter/bootstrap
 //= require jquery_elastic
 //= require jquery.facebox
