@@ -20,8 +20,6 @@ class TopicsController < ApplicationController
           current_page = 1
         end
 
-
-
         total_pages = (Topic.cached_count * 1.0 / per_page).ceil
         @topics = Topic.cached_pagination(current_page, per_page, 'updated_at')
         @topics.pagination_ready(current_page, total_pages, per_page)
