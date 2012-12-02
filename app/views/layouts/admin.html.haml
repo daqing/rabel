@@ -10,7 +10,7 @@
             &nbsp;
             = link_to item.first, item.last, :class => (:current_item if @title == item.first)
       = yield :rightbar
-  .span10
+  .span8
     = render 'shared/alert'
     = yield
 
