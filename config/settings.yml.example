@@ -4,6 +4,11 @@ default: &default
   memcached:
     servers: ["127.0.0.1:11211"]
     namespace: "example"
+  upyun:
+    operator_name: ''
+    operator_password: ''
+    bucket: ''
+    bucket_domain: ''
 
 production:
   <<: *default

@@ -50,6 +50,9 @@ GEM
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    carrierwave-upyun (0.1.6)
+      carrierwave (>= 0.5.7)
+      rest-client (>= 1.6.7)
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
     coderay (1.0.7)
@@ -166,6 +169,8 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     redcarpet (2.1.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rmagick (2.13.1)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
@@ -239,6 +244,7 @@ DEPENDENCIES
   cancan
   capybara!
   carrierwave (~> 0.6.2)
+  carrierwave-upyun (~> 0.1.6)
   coderay
   coffee-rails (~> 3.2.1)
   cucumber-rails

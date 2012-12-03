@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120727092241) do
+ActiveRecord::Schema.define(:version => 20121203081304) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -189,6 +189,12 @@ ActiveRecord::Schema.define(:version => 20120727092241) do
   add_index "topics", ["node_id"], :name => "index_topics_on_node_id"
   add_index "topics", ["sticky"], :name => "index_topics_on_sticky"
   add_index "topics", ["user_id"], :name => "index_topics_on_user_id"
+
+  create_table "upyun_images", :force => true do |t|
+    t.string   "asset"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
