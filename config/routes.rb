@@ -35,8 +35,9 @@ Rabel::Application.routes.draw do
     put :toggle_comments_closed
     put :toggle_sticky
   end
-  resources :comments
-  resources :bookmarks
+
+  resources :comments, :bookmarks, :upyun_images
+
   resources :notifications do
     get :read, :on => :member
   end

@@ -74,6 +74,12 @@ a.action_label {
   padding: 5px 8px 2px;
   color: #666;
   border-bottom: none;
+  text-decoration: none;
+}
+
+a.action_label:hover {
+  background-color: #ccc;
+  color: #333;
 }
 
 .topic-meta {
@@ -180,5 +186,20 @@ a.current_label {
 
 img.external {
   max-width: 570px;
+}
+
+.fileupload-btn {
+  position: relative;
+
+  input#fileupload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    font-size: 23px;
+    direction: ltr;
+    cursor: pointer;
+
+  }
 }
 
