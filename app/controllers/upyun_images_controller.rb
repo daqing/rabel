@@ -2,6 +2,8 @@ class UpyunImagesController < ApplicationController
   before_filter :authenticate_user!
 
   def create
+    redirect_to root_path if Settings.upyun.switch != 'on'
+
     respond_to do |f|
       f.json {
         result = []
