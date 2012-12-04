@@ -9,6 +9,8 @@
         dataType: 'json',
         autoUpload: true,
         url: '/upyun_images.json',
+        maxFileSize: 1024 * 1024 * 5,
+        acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
         start: function(e) {
           _tip.html('图片上传中&nbsp;&middot;&middot;&middot;');
         },
@@ -16,9 +18,11 @@
             $.each(data.result, function (index, file) {
               new_pic = "\n" + file.url;
               textarea.atCaret('insert', new_pic);
-              _tip.html("上传图片");
             });
-        }
+        },
+        always: function(e) {
+          _tip.html("上传图片");
+        },
     });
 
 .pull-right
