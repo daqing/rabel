@@ -6,8 +6,7 @@
       .control-group
         = label_tag 'settings[theme]', '设计风格', :class => 'control-label'
         .controls
-          =# select_tag 'settings[theme]', options_for_select(Settings.themes.invert.to_a, @settings.theme)
-          = text_field_tag 'settings[theme]', Settings.themes.first.second, :disabled => true
+          = select_tag 'settings[theme]', options_for_select(Settings.themes.invert.to_a, @settings.theme)
 
       .control-group
         = label_tag 'settings[nav_position]', '节点导航位置', :class => 'control-label'
