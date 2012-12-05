@@ -1,11 +1,10 @@
 %tr.highlight
   %td= cloud_file.name
-  %td{:align => :center}
-    .input-append.input-prepend
-      %span.add-on= Settings.canonical_host
+  %td
+    .input-append
       = text_field_tag '', cloud_file.asset.url, :class => :span4
-      = link_to '下载', cloud_file.asset.url, :target => :_blank, :class => :btn
-  %td{:align => :right}= number_to_human_size(cloud_file.file_size)
-  %td{:align => :right}= cloud_file.content_type
-  %td{:align => :center}
+      = link_to '查看', cloud_file.asset.url, :target => :_blank, :class => :btn
+  %td= number_to_human_size(cloud_file.file_size)
+  %td= cloud_file.content_type
+  %td
     = admin_delete_button(cloud_file)
