@@ -27,7 +27,7 @@ Given /^the node has topics of (\d+) pages$/ do |page_count|
 end
 
 Then /^it should display one page topics$/ do
-  page.should have_css("td.avatar", :count => Siteconf.pagination_topics.to_i)
+  page.should have_css(".avatar", :count => Siteconf.pagination_topics.to_i)
 end
 
 Given /^a node exists with introduction: (.*)$/ do |intro|
