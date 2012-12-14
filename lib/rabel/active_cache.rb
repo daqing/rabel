@@ -45,8 +45,7 @@ module Rabel
         send(assoc).order("#{order_column} #{order_type}").page(current_page).per(per_page).all
       end
 
-      result.pagination_ready(current_page, (total * 1.0 / per_page).ceil, per_page)
-      result
+      Kaminari.paginate_array(result, :total_count => total).page(current_page).per(per_page)
     end
 
     def cached_assoc_object(assoc)
@@ -98,9 +97,11 @@ module Rabel
           "#{total}-#{ts}",
         ]
 
-        Rails.cache.fetch(cache_keys.join('/')) do
+        result = Rails.cache.fetch(cache_keys.join('/')) do
           order("#{order_column} #{order_type}").page(page).per(per_page).all
         end
+
+        Kaminari.paginate_array(result, :total_count => total).page(page).per(per_page)
       end
 
       def cached_count

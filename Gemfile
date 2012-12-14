@@ -1,6 +1,6 @@
 source 'http://ruby.taobao.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -34,7 +34,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test, :development do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.12.0'
   gem 'debugger'
 end
 
@@ -43,7 +43,7 @@ group :test do
   gem 'factory_girl_rails', '~> 3.5.0'
   gem 'cucumber-rails'
   gem 'database_cleaner'
-  gem 'capybara', :git => 'https://github.com/jnicklas/capybara.git'
+  gem 'capybara', '~> 2.0.1'
 end
 
 group :development do

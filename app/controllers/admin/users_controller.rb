@@ -10,7 +10,7 @@ class Admin::UsersController < Admin::BaseController
       else
         @users = []
       end
-      @users.pagination_ready(1, @users.size, 10)
+      @users = Kaminari.paginate_array(@users).page(params[:page])
     else
       @users = User.order('created_at DESC, id DESC').page(params[:page])
     end
