@@ -91,6 +91,14 @@ class Topic < ActiveRecord::Base
     mentioned_names.map { |name| User.find_by_nickname(name) }.compact
   end
 
+  def prev_topic(node)
+    node.topics.where(['id < ?', self.id]).order('created_at ASC').first
+  end
+
+  def next_topic(node)
+    node.topics.where(['id > ?', self.id]).order('created_at ASC').first
+  end
+
   private
 
     def send_notifications
