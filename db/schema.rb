@@ -181,7 +181,6 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
     t.boolean  "comments_closed", :default => false, :null => false
     t.boolean  "sticky",          :default => false
     t.string   "last_replied_by", :default => ""
-    t.integer  "flag",            :default => 0,     :null => false
     t.datetime "last_replied_at"
   end
 
