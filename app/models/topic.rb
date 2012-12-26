@@ -92,7 +92,7 @@ class Topic < ActiveRecord::Base
   end
 
   def prev_topic(node)
-    node.topics.where(['id < ?', self.id]).order('created_at ASC').first
+    node.topics.where(['id < ?', self.id]).order('created_at DESC').first
   end
 
   def next_topic(node)
