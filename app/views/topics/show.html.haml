@@ -36,22 +36,23 @@
       .clearfix
     .inner
       .content.topic_content= format_topic(@topic.content)
-    .inner.relative-container
+      - if user_signed_in?
+        .pull-right
+          - if current_user.bookmarked?(@topic)
+            = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-mini unbookmark'
+          - else
+            = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'btn btn-mini bookmark'
+      .clearfix
+    .inner
       - if @next_topic.present?
         .pull-right
-          = link_to @next_topic.title, t_path(@next_topic.id), :class => :rabel, :rel => :prev
+          = link_to proper_length(@next_topic.title, 15), t_path(@next_topic.id), :class => :rabel, :rel => :prev
           %span.guillemet.right-guillemet »
 
       - if @prev_topic.present?
         .pull-left
           %span.guillemet.left-guillemet «
-          = link_to @prev_topic.title, t_path(@prev_topic.id), :class => :rabel, :rel => :next
-      - if user_signed_in?
-        %span.centered
-          - if current_user.bookmarked?(@topic)
-            = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-mini unbookmark'
-          - else
-            = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'btn btn-mini bookmark'
+          = link_to proper_length(@prev_topic.title, 15), t_path(@prev_topic.id), :class => :rabel, :rel => :next
       .clearfix
 
 = render 'topics/show/comments' if @comments.any?

@@ -209,4 +209,12 @@ module ApplicationHelper
       'twitter'
     end
   end
+
+  def proper_length(str, len)
+    if str.size > len
+      str[0..len] + ' ...'
+    else
+      str
+    end
+  end
 end
