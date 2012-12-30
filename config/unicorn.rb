@@ -34,7 +34,7 @@ listen "#{APP_HOME}/tmp/sockets/unicorn.sock", :backlog => 64, :tcp_nopush => tr
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid "#{APP_HOME}/tmp/pids/unicorn.pid"
+# pid "#{APP_HOME}/tmp/pids/unicorn.pid"
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
