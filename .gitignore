@@ -12,7 +12,10 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/tmp
+/tmp/cache/
+/tmp/sessions/
+/tmp/pids/*.pid
+/tmp/sockets/*.sock
 
 .DS_Store
 .cache_rake_t

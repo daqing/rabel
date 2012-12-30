@@ -25,7 +25,7 @@ gem 'jquery-rails'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -67,9 +67,9 @@ gem 'dalli'
 gem 'acts_as_list'
 gem 'rails-settings-cached', '= 0.2.1'
 gem 'facebox-rails', '~> 0.1.2'
-gem 'thin', '= 1.5.0'
 gem 'default_value_for', '~> 2.0.1'
 gem 'less-rails-bootstrap', '~> 2.2.0'
 gem 'slim-rails', '~> 1.0.3'
 gem 'simple_form', '~> 2.0.4'
+gem 'foreman', '~> 0.60.2'
 
