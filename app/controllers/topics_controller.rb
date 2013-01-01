@@ -70,6 +70,7 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+    @current_nav_item = t('创建新话题')
 
     respond_to do |format|
       format.html

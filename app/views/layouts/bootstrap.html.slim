@@ -31,9 +31,9 @@ html
             form.navbar-search.pull-left
               input#q.search-query.span2 type='text' name='q' maxlength=40 data-domain=Settings.canonical_host placeholder=t(:search)
             ul.nav.pull-right
+              = nav_item '创建新话题', new_topic_path
+              li.divider-vertical
               - if user_signed_in?
-                = nav_item '创建新话题', new_topic_path
-                li.divider-vertical
                 li.dropdown.position-relative
                   = link_to '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} do
                     = current_user.nickname

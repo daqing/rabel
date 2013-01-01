@@ -58,14 +58,8 @@ class Topic < ActiveRecord::Base
   def self.home_topics(num)
     ts = select('updated_at').order('updated_at DESC').first.try(:updated_at)
     return Rabel::Model::EMPTY_DATASET unless ts.present?
-    node_ts = Node.select('updated_at').order('updated_at DESC').first.try(:updated_at)
-    Rails.cache.fetch("topics/homepage/#{self.count}/#{num}-#{ts}/#{node_ts}") do
-      excluded_nodes = Node.where(:quiet => true).pluck(:id)
-      if excluded_nodes.any?
-        where("node_id NOT in (?)", excluded_nodes).with_sticky(false).latest_involved_topics(num)
-      else
-        with_sticky(false).latest_involved_topics(num)
-      end
+    Rails.cache.fetch("topics/homepage/#{self.count}/#{num}-#{ts}") do
+      with_sticky(false).latest_involved_topics(num)
     end
   end
 
