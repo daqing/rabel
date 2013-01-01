@@ -10,7 +10,7 @@ Rabel::Application.routes.draw do
   put 'users/update_avatar' => 'users#update_avatar', :as => :update_avatar
   get 'go/:key' => 'nodes#show', :as => :go
   get 't/:id' => 'topics#show', :as => :t
-  match '/topics/:id' => redirect('/t/%{id}'), :constraints => { :id => /\d+/ }
+  get '/topics/:id' => redirect('/t/%{id}'), :constraints => { :id => /\d+/ }
 
   get 'my/topics' => 'users#my_topics', :as => :my_topics
   get 'my/following' => 'users#my_following', :as => :my_following
