@@ -1,7 +1,6 @@
 .cell.node{:id => node.html_id}
   .fr
-    = admin_edit_button('修改节点', [node.plane, node], {:remote => true, :id => "edit_#{node.html_id}"})
-    = link_to '移动', move_admin_node_path(node), :remote => true, :class => 'btn btn-small'
+    = admin_edit_button('修改节点', node, :remote => true)
     = admin_delete_button(node, :remote => true) if node.can_delete?
   = link_to node.name, go_path(node.key)
   - if node.quiet

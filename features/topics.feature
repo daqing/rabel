@@ -66,12 +66,11 @@ Feature: Topics
         When I click the link 编辑全部
         Then it should display a topic edit form
 
-  Scenario: admin can move or delete topics
+  Scenario: admin can delete topics
     Given a locked_topic exists
       And as an admin, I have logged in as devin
       When I am on the topic page
-      Then it should display link 移动
-        And it should display link 删除
+      Then it should display link 删除
 
   Scenario: admin can close comments for topic
     Given as an admin, I have logged in as devin
@@ -109,12 +108,6 @@ Feature: Topics
       And I am on the topic page
       Then I should see #1
         And I should see #2
-
-  Scenario: show custom rightbar widget
-    Given a node exists with custom html: <strong class="heading">认识电影</strong>
-      And a topic under the node exists with title: Hi
-      And I am on the topic page
-      Then it should display custom widget: 认识电影
 
   @javascript
   Scenario: mention someone using mention button as authenticated user

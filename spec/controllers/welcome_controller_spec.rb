@@ -13,7 +13,6 @@ describe WelcomeController do
     it "should display mobile version" do
       get :index, :format => :mobile
       should respond_with(:success)
-      should assign_to(:planes)
     end
   end
 

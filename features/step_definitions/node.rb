@@ -22,7 +22,8 @@ Given /^the node has topics of (\d+) pages$/ do |page_count|
   node = Node.first
   topic_count = Siteconf.pagination_topics.to_i * page_count.to_i
   topic_count.times do
-    FactoryGirl.create(:topic, :node => node)
+    topic = FactoryGirl.create(:topic)
+    node.topics << topic
   end
 end
 

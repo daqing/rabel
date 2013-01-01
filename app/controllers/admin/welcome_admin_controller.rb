@@ -3,5 +3,7 @@ class Admin::WelcomeAdminController < Admin::BaseController
   def index
     @title = '运行状态'
     @notifications_to_clear = Notification.where(:unread => false).count
+
+    @current_nav_item = t(:dashboard)
   end
 end

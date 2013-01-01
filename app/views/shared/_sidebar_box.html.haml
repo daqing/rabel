@@ -23,6 +23,12 @@
         = link_to "#{@unread_count} 条未读提醒", notifications_path
       - else
         暂无提醒
+- else
+  = render 'shared/community_intro'
 
 - content_for :rightbar do
   = Siteconf.global_sidebar_block.html_safe
+
+- if Siteconf.show_community_stats?
+  - content_for :rightbar do
+    = render 'shared/community_stats'

@@ -43,11 +43,6 @@ Feature: Nodes
         When I click the link ← 上一页
         Then I should see 下一页
 
-  Scenario: show custom html on node page
-    Given a node exists with custom html: <strong class="heading">认识电影</strong>
-      And I am on the node page
-        Then I should see 认识电影
-
   Scenario: show node introduction
     Given a node exists with introduction: A cool node
       And I am on the node page

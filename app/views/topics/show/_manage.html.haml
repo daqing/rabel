@@ -4,10 +4,8 @@
       .box-header
         话题管理
       .cell
-        = link_to '修改标题', edit_title_node_topic_path(@node, @topic), :remote => true, :class => 'btn btn-mini'
-        = link_to '编辑全部', edit_node_topic_path(@node, @topic), :class => 'btn btn-mini'
-      .cell
-        = link_to '移动到新节点', move_node_topic_path(@node, @topic), :remote => true, :class => 'btn btn-mini'
+        = link_to '修改标题', edit_title_topic_path(@topic), :remote => true, :class => 'btn btn-mini'
+        = link_to '编辑全部', edit_topic_path(@topic), :class => 'btn btn-mini'
       - if current_user.can_manage_site?
         .cell
           - toggle_comments_closed_tip = @topic.comments_closed? ? '允许回复' : '禁止回复'
@@ -15,4 +13,4 @@
           - toggle_sticky_tip = @topic.sticky? ? '取消置顶' : '置顶此话题'
           = link_to toggle_sticky_tip, topic_toggle_sticky_path(@topic), :method => :put, :class => 'btn btn-mini'
       .inner
-        = link_to '删除此话题', node_topic_path(@node, @topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'btn btn-mini btn-danger'
+        = link_to '删除此话题', t_path(@topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'btn btn-mini btn-danger'

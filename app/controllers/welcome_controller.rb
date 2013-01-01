@@ -6,10 +6,10 @@ class WelcomeController < ApplicationController
     @canonical_path = '/'
     @full_title = site_intro
     @seo_description = Siteconf.seo_description
+    @current_nav_item = t(:homepage)
 
     respond_to do |format|
       format.html
-      format.mobile { @planes = Plane.all }
     end
   end
 

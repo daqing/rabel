@@ -14,7 +14,10 @@
 :javascript
   window.rabel.search_engine_url = "#{search_engine_url}";
   jQuery(function($) {
+    $('a[rel*=facebox]').facebox();
+
     #{yield :template_js}
+
   });
 
 :javascript

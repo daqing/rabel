@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/daqing/facebox-rails.git
+  revision: 607e9476504f362421169e6c44e16d0ad66e7b2c
+  specs:
+    facebox-rails (0.1.2)
+      railties (~> 3.0)
+      thor (~> 0.14)
+
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -90,9 +98,6 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    facebox-rails (0.1.2)
-      railties (~> 3.0)
-      thor (~> 0.14)
     factory_girl (3.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (3.5.0)
@@ -255,7 +260,7 @@ DEPENDENCIES
   debugger
   default_value_for (~> 2.0.1)
   devise
-  facebox-rails (~> 0.1.2)
+  facebox-rails!
   factory_girl_rails (~> 3.5.0)
   foreman (~> 0.60.2)
   haml

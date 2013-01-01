@@ -1,20 +1,22 @@
-- if Siteconf.nav_position_sidebar?
-  - content_for :rightbar do
-    = render 'rightbar_planes'
+.box#topics_index
+  .cell{:align => 'left'}
+    .pull-right.marketing
+      = Siteconf.short_intro
+    .welcome= Siteconf.welcome_tip.html_safe
+  - if @sticky_topics.any?
+    = render @sticky_topics
 
-- if not user_signed_in?
-  = render 'shared/community_intro'
+  = render @topics
+  .inner
+    .pull-right= render 'shared/rss'
+    &nbsp;
+    - if Topic.cached_count > Siteconf::HOMEPAGE_TOPICS
+      %span.chevron »
+      = link_to '更多新主题', topics_path + '?page=2', :class => :rabel
 
-- if Siteconf.show_community_stats?
-  - content_for :rightbar do
-    = render 'shared/community_stats'
-
-- if Siteconf.nav_position_top?
-  = render 'home_planes'
-  = render 'home_topics'
-- elsif Siteconf.nav_position_bottom?
-  = render 'home_topics'
-  = render 'home_planes'
-- elsif Siteconf.nav_position_sidebar?
-  = render 'home_topics'
+.box
+  .cell
+    节点导航
+  .inner
+    = render Node.order(Node.default_order_str).all
 

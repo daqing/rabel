@@ -15,25 +15,34 @@ html
   body#rabel
     .navbar.navbar-inverse.navbar-static-top
       .navbar-inner
-        .container
-          a.btn.btn-navbar.collapsed(
-           data-toggle='collapse'
-           data-target='.nav-collapse')
-           span.icon-bar
-           span.icon-bar
-           span.icon-bar
-          = link_to Siteconf.site_name, root_path, class: :brand
+        .container.position-relative
+          a.btn.btn-navbar.collapsed(data-toggle='collapse' data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+
+          ul.nav
+            = nav_item(t(:homepage), root_path)
+            - if user_signed_in? and current_user.can_manage_site?
+              = nav_item t(:dashboard), admin_root_path
+
+          span.topbar-centered= Siteconf.site_name
           .nav-collapse.collapse
             form.navbar-search.pull-left
-              input#q.search-query type='text' name='q' maxlength=40 data-domain=Settings.canonical_host placeholder=t(:search)
+              input#q.search-query.span2 type='text' name='q' maxlength=40 data-domain=Settings.canonical_host placeholder=t(:search)
             ul.nav.pull-right
-              = nav_item(t(:homepage), root_path)
               - if user_signed_in?
-                li= nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
-                li= nav_item '个人设置', settings_path
-                - if current_user.can_manage_site?
-                  li= nav_item t(:dashboard), admin_root_path
-                li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+                = nav_item '创建新话题', new_topic_path
+                li.divider-vertical
+                li.dropdown.position-relative
+                  = link_to '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} do
+                    = current_user.nickname
+                    b.caret
+                  ul.dropdown-menu role="menu" aria-labelledby="dLabel"
+                    = nav_item '个人主页', member_path(url_encode(current_user.nickname))
+                    = nav_item '设置', settings_path
+                    li.divider
+                    li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
               - else
                 = nav_item(t(:sign_up), new_user_registration_path)
                 = nav_item(t(:sign_in), new_user_session_path)

@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :topic do
     user
-    node
     title 'Hello'
     content 'Hello, world'
     comments_closed false

@@ -9,16 +9,20 @@ class Topic < ActiveRecord::Base
     Time.zone.now
   end
 
-  belongs_to :node, :touch => true, :counter_cache => true
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :bookmarks, :as => :bookmarkable, :dependent => :destroy
   has_many :notifications, :as => :notifiable, :dependent => :destroy
 
-  validates :node_id, :user_id, :title, :presence => true
+  has_many :node_topic_mappings
+  has_many :nodes, :through => :node_topic_mappings
 
-  attr_accessible :title, :content
-  attr_accessible :title, :content, :comments_closed, :sticky, :as => :admin
+  accepts_nested_attributes_for :nodes
+
+  validates :user_id, :title, :presence => true
+
+  attr_accessible :title, :content, :node_ids
+  attr_accessible :title, :content, :node_ids, :comments_closed, :sticky, :as => :admin
 
   after_create :send_notifications
 
@@ -91,12 +95,12 @@ class Topic < ActiveRecord::Base
     mentioned_names.map { |name| User.find_by_nickname(name) }.compact
   end
 
-  def prev_topic(node)
-    node.topics.where(['id < ?', self.id]).order('created_at DESC').first
+  def prev_topic(author)
+    author.topics.where(['id < ?', self.id]).order('created_at DESC').first
   end
 
-  def next_topic(node)
-    node.topics.where(['id > ?', self.id]).order('created_at ASC').first
+  def next_topic(author)
+    author.topics.where(['id > ?', self.id]).order('created_at ASC').first
   end
 
   private
