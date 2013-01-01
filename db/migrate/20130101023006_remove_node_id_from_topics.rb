@@ -1,7 +1,8 @@
 class RemoveNodeIdFromTopics < ActiveRecord::Migration
   def up
     Topic.find_each do |topic|
-      topic.node.topics << topic
+      node = Node.find(topic.node_id)
+      node.topics << topic
     end
 
     remove_index :topics, :column => :node_id
