@@ -1,4 +1,4 @@
-source 'http://ruby.taobao.org'
+source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
 
@@ -66,7 +66,7 @@ gem 'kgio'
 gem 'dalli'
 gem 'acts_as_list'
 gem 'rails-settings-cached', '= 0.2.1'
-gem 'facebox-rails', '~> 0.1.2'
+gem 'facebox-rails', '~> 0.1.3'
 gem 'default_value_for', '~> 2.0.1'
 gem 'less-rails-bootstrap', '~> 2.2.0'
 gem 'slim-rails', '~> 1.0.3'
