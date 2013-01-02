@@ -23,8 +23,9 @@
         = @total_topics
         &nbsp;
     = build_navigation([@node.name], 'bigger')
-  .cell
-    = @node.introduction
+  - if @node.introduction.present?
+    .cell
+      = @node.introduction
 .box
   .box-header
     最新话题

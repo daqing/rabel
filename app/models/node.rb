@@ -8,7 +8,7 @@ class Node < ActiveRecord::Base
 
   has_many :bookmarks, :as => :bookmarkable, :dependent => :destroy
 
-  validates :name, :key, :introduction, :presence => true
+  validates :name, :key, :presence => true
   validates :key, :uniqueness => true, :format => {:with => /[a-zA-Z0-9_-]+/, :message => I18n.t('tips.node_key_format')}
   validate :node_key_should_not_contain_slash
 
