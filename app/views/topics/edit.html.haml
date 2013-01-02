@@ -1,7 +1,7 @@
 - unless @topic.locked? or current_user.can_manage_site?
   .box
-    .cell
-      %span.fade 修改功能指南
+    .box-header
+      修改权限提示
     .inner
       在新主题创建后的
       = Siteconf.topic_editable_period_str
@@ -11,6 +11,7 @@
         距离本主题的编辑权限关闭还有&nbsp;
         %span.orange= (@topic.created_at + Siteconf.topic_editable_period - Time.now).round
         &nbsp;秒
+
   - content_for :template_js do
     :plain
       var second = parseInt($("span.orange").text());

@@ -13,4 +13,4 @@
           - toggle_sticky_tip = @topic.sticky? ? '取消置顶' : '置顶此话题'
           = link_to toggle_sticky_tip, topic_toggle_sticky_path(@topic), :method => :put, :class => 'btn btn-mini'
       .inner
-        = link_to '删除此话题', t_path(@topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'btn btn-mini btn-danger'
+        = link_to '删除此话题', @topic, :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'btn btn-mini btn-danger'
