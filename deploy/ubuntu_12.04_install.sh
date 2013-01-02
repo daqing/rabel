@@ -1,7 +1,10 @@
+DIR=$( cd "$( dirname "$0" )" && pwd )
+source $DIR/shared.sh
+
 if [ -z "$1" -o -z "$2" ]; then
-  echo -e "\033[1;31mUSAGE: $0 [mysql_password] [domain] \033[0m"
-  echo -e "\033[1;32m--- example ---"
-  echo -e "$0 e17c92a rabelapp.com \033[0m"
+  log_error "USAGE: $0 [mysql_password] [domain]"
+  log_info "--- example ---"
+  log_info "$0 e17c92a rabelapp.com"
   exit
 fi
 
