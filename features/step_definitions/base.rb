@@ -101,7 +101,7 @@ Given /^I have logged in as (.*)$/ do |nickname|
   visit new_user_session_path
   fill_in 'user_nickname', :with => nickname
   fill_in 'user_password', :with => Settings.default_password
-  click_button '登入'
+  click_button I18n.t(:sign_in)
 end
 
 Then /^I should not see (.*)$/ do |text|

@@ -42,6 +42,7 @@ end
 When /^I try to provide node info with name: (.*)$/ do |name|
   fill_in "node[key]", :with => 'node_key_1'
   fill_in "node[name]", :with => name
+  fill_in "node[introduction]", :with => 'good node introduction'
   click_button '保存'
 end
 

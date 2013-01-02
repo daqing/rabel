@@ -4,7 +4,7 @@ Feature: Homepage
     Given I am not authenticated
       And I am on the home page
       Then I should see 注册
-        And I should see 登入
+        And I should see 帐号登录
 
   Scenario: I should not see sign in and register links when logged in
     Given I have logged in as devin
@@ -13,7 +13,7 @@ Feature: Homepage
         And I should see 设置
         And I should see 退出
         And it should not display link 注册
-        And I should not see 登入
+        And I should not see 帐号登录
 
   Scenario: browse homepage as authenticated user
     Given I have logged in as devin

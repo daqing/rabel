@@ -74,8 +74,8 @@ Feature: Topics
 
   Scenario: admin can close comments for topic
     Given as an admin, I have logged in as devin
-      And a node exists
-      When I am on the node page
+      And a topic exists
+      When I am on the topic page
       Then I should see 禁止回复
 
   Scenario: topic comments pagination

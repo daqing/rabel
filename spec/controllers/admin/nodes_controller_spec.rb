@@ -17,7 +17,7 @@ describe Admin::NodesController do
 
     it "should create node via ajax" do
       expect {
-        post :create, :node => {:key => 'rails', :name => 'Ruby on Rails'}, :format => :js
+        post :create, :node => {:key => 'rails', :name => 'Ruby on Rails', :introduction => 'Ruby on Rails is the most popular Web framework'}, :format => :js
       }.to change{Node.count}.by(1)
       should respond_with(:success)
       should assign_to(:node)

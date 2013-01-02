@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 Then /^it should display a topic creation form$/ do
-  page.should have_css('form.form-vertical')
+  page.should have_css('form#new_topic')
   page.should have_css('input#topic_title')
   page.should have_css('textarea#topic_content')
 end
