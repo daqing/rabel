@@ -41,8 +41,8 @@ def path_to(page)
     admin_users_path
   when 'the admin topics'
     admin_topics_path
-  when 'the admin planes'
-    admin_planes_path
+  when 'the admin nodes'
+    admin_nodes_path
   when 'the admin ads'
     admin_advertisements_path
   when 'the admin page creation'
@@ -101,7 +101,7 @@ Given /^I have logged in as (.*)$/ do |nickname|
   visit new_user_session_path
   fill_in 'user_nickname', :with => nickname
   fill_in 'user_password', :with => Settings.default_password
-  click_button '登入'
+  click_button I18n.t(:sign_in)
 end
 
 Then /^I should not see (.*)$/ do |text|
@@ -126,7 +126,8 @@ end
 
 Given /^a topic under the node exists with title:(.*)$/ do |title|
   node = Node.first
-  FactoryGirl.create(:topic, :node => node, :title => title)
+  topic = FactoryGirl.create(:topic, :title => title)
+  node.topics << topic
 end
 
 Given /^a topic of (.*) exists with title:(.*)$/ do |nickname, title|

@@ -1,5 +1,12 @@
 # encoding: utf-8
 class RegistrationsController < Devise::RegistrationsController
+  def new
+
+    @title = t(:sign_up)
+    @current_nav_item = @title
+    super
+  end
+
   def create
     build_resource
 

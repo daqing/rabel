@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204032057) do
+ActiveRecord::Schema.define(:version => 20130101024225) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -88,6 +88,14 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
   add_index "followings", ["user_id", "followed_user_id"], :name => "index_followings_on_user_id_and_followed_user_id", :unique => true
   add_index "followings", ["user_id"], :name => "index_followings_on_user_id"
 
+  create_table "node_topic_mappings", :force => true do |t|
+    t.integer "node_id"
+    t.integer "topic_id"
+  end
+
+  add_index "node_topic_mappings", ["node_id"], :name => "index_node_topic_mappings_on_node_id"
+  add_index "node_topic_mappings", ["topic_id"], :name => "index_node_topic_mappings_on_topic_id"
+
   create_table "nodes", :force => true do |t|
     t.string   "name"
     t.string   "key"
@@ -95,7 +103,6 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
     t.text     "custom_html"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-    t.integer  "plane_id"
     t.integer  "position"
     t.integer  "topics_count", :default => 0,     :null => false
     t.boolean  "quiet",        :default => false, :null => false
@@ -103,7 +110,6 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
   end
 
   add_index "nodes", ["key"], :name => "index_nodes_on_key", :unique => true
-  add_index "nodes", ["plane_id"], :name => "index_nodes_on_plane_id"
   add_index "nodes", ["position"], :name => "index_nodes_on_position"
   add_index "nodes", ["quiet"], :name => "index_nodes_on_quiet"
   add_index "nodes", ["updated_at"], :name => "index_nodes_on_updated_at"
@@ -138,15 +144,6 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
   add_index "pages", ["position"], :name => "index_pages_on_position"
   add_index "pages", ["published"], :name => "index_pages_on_published"
 
-  create_table "planes", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "position",   :default => 0, :null => false
-  end
-
-  add_index "planes", ["updated_at"], :name => "index_planes_on_updated_at"
-
   create_table "rewards", :force => true do |t|
     t.integer  "admin_user_id", :default => 0
     t.integer  "user_id",       :default => 0
@@ -169,7 +166,6 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
   add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
 
   create_table "topics", :force => true do |t|
-    t.integer  "node_id"
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
@@ -185,7 +181,6 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
   end
 
   add_index "topics", ["involved_at"], :name => "index_topics_on_involved_at"
-  add_index "topics", ["node_id"], :name => "index_topics_on_node_id"
   add_index "topics", ["sticky"], :name => "index_topics_on_sticky"
   add_index "topics", ["user_id"], :name => "index_topics_on_user_id"
 

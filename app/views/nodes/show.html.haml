@@ -8,13 +8,11 @@
       .box-header
         节点管理
       .cell
-        = link_to "修改 #{@node.name} 节点", admin_planes_path + "#!/click/edit_#{@node.html_id}", :class => 'btn btn-small btn-info'
+        = link_to "修改 #{@node.name} 节点", edit_admin_node_path(@node), :class => 'btn btn-small btn-info'
       - if @node.quiet
         .inner
           = image_tag 'ghost.png', :align => :top, :title => t('tips.quiet_node')
           = t('tips.quiet_node')
-
-= render 'custom_fields', :node => @node
 
 .box
   .box-header
@@ -25,22 +23,12 @@
         = @total_topics
         &nbsp;
     = build_navigation([@node.name], 'bigger')
-    - if @node.introduction.present?
-      .sep10
-      %span.gray= @node.introduction
-    - if user_signed_in?
-      .sep10
-      = link_to '创建新话题', '#new_topic', :class => 'btn btn-normal'
-      .sep5
+  .cell
+    = @node.introduction
+.box
+  .box-header
+    最新话题
   = render @topics
   .inner
     = render 'paginator'
-
-- if user_signed_in?
-  .box
-    .box-header
-      创建新话题
-    .inner
-      = render 'topics/form', :node => @node, :topic => @node.topics.new, :comments_closed => false
-
 

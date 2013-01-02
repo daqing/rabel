@@ -1,8 +1,8 @@
 # encoding: utf-8
 class SessionsController < Devise::SessionsController
   def new
-    @title = '登入'
-    @seo_description = @title
+    @title = t(:sign_in)
+    @current_nav_item = @title
 
     super
   end

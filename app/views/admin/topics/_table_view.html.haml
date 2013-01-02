@@ -16,7 +16,8 @@
           %strong.green
             = topic.id
         %td.auto
-          = link_to topic.node.name, go_path(topic.node.key)
+          - topic.nodes.each do |node|
+            = link_to node.name, go_path(node.key)
         %td.auto
           = link_to topic.title, t_path(topic.id)
         %td.auto
@@ -28,5 +29,6 @@
         %td.auto{:align => :right}
           %small.fade= time_ago_in_words(topic.created_at)
         %td.w100
-          = link_to '编辑', edit_node_topic_path(topic.node, topic), :class => 'btn btn-small'
+          = link_to '编辑', edit_topic_path(topic), :class => 'btn btn-small'
           = link_to '删除', admin_topic_path(topic), :class => 'btn btn-small btn-danger', :method => :delete, :data => {:confirm => t(:delete_confirm)}
+

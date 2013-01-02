@@ -1,7 +1,6 @@
 # encoding: utf-8
 class TopicsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :find_node, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky]
   before_filter :find_topic_and_auth, :only => [:edit_title,:update_title,
     :edit, :update, :move, :destroy]
   before_filter :only => [:toggle_comments_closed, :toggle_sticky] do |c|
@@ -46,7 +45,6 @@ class TopicsController < ApplicationController
     ActiveRecord::Base.connection.execute("UPDATE topics SET hit = hit + 1 WHERE topics.id = #{@topic.id}")
 
     @title = @topic.title
-    @node = @topic.cached_assoc_object(:node)
 
     @total_comments = @topic.comments_count
     @total_pages = (@total_comments * 1.0 / Siteconf.pagination_comments.to_i).ceil
@@ -59,10 +57,10 @@ class TopicsController < ApplicationController
 
     @canonical_path = "/t/#{params[:id]}"
     @canonical_path += "?p=#{@current_page}" if @total_pages > 1
-    @seo_description = "#{@node.name} - #{@topic.user.nickname} - #{@topic.title}"
+    @seo_description = "#{@topic.user.nickname} - #{@topic.title}"
 
-    @prev_topic = @topic.prev_topic(@node)
-    @next_topic = @topic.next_topic(@node)
+    @prev_topic = @topic.prev_topic(@topic.user)
+    @next_topic = @topic.next_topic(@topic.user)
 
     respond_to do |format|
       format.html
@@ -71,7 +69,8 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = @node.topics.new
+    @topic = Topic.new
+    @current_nav_item = t('创建新话题')
 
     respond_to do |format|
       format.html
@@ -80,7 +79,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = @node.topics.new(params[:topic], :as => current_user.permission_role)
+    @topic = Topic.new(params[:topic], :as => current_user.permission_role)
     @topic.user = current_user
     if @topic.save
       redirect_to t_path(@topic.id)
@@ -109,30 +108,11 @@ class TopicsController < ApplicationController
   end
 
   def update
-    if params[:new_node_id].present?
-      # move to new node
-      @new_node = Node.find(params[:new_node_id])
-      respond_to do |format|
-        format.js {
-          if @new_node.present?
-            @topic.node = @new_node
-            if @topic.save
-              render :js => "window.location.reload()"
-            else
-              render :js => "$.facebox('移动帖子失败')"
-            end
-          else
-            render :js => "$.facebox('节点不存在')"
-          end
-        }
-      end
+    if @topic.update_attributes(params[:topic], :as => current_user.permission_role)
+      redirect_to t_path(@topic.id)
     else
-      if @topic.update_attributes(params[:topic], :as => current_user.permission_role)
-        redirect_to t_path(@topic.id)
-      else
-        flash[:error] = '之前的更新有误，请编辑后再提交'
-        render :edit
-      end
+      flash[:error] = '之前的更新有误，请编辑后再提交'
+      render :edit
     end
   end
 
@@ -176,12 +156,8 @@ class TopicsController < ApplicationController
   end
 
   private
-    def find_node
-      @node = Node.find(params[:node_id])
-    end
-
     def find_topic_and_auth
-      @topic = @node.topics.find(params[:id])
+      @topic = Topic.find(params[:id])
       authorize! :update, @topic, :message => '你没有权限管理此主题'
     end
 end

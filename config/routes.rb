@@ -19,21 +19,18 @@ Rabel::Application.routes.draw do
   get 'captcha' => 'welcome#captcha'
   get 'sitemap' => 'welcome#sitemap'
 
-  resources :nodes do
-    resources :topics do
-      member do
-        get :move
-        get :edit_title
-        put :update_title
-      end
-    end
-  end
   resources :topics do
     resources :comments
     resources :bookmarks
     post :preview, :on => :collection
     put :toggle_comments_closed
     put :toggle_sticky
+
+    member do
+      get :move
+      get :edit_title
+      put :update_title
+    end
   end
 
   resources :comments, :bookmarks, :upyun_images
@@ -43,16 +40,8 @@ Rabel::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :planes do
-      resources :nodes
-      post :sort, :on => :collection
-      get :sort, :on => :collection
-    end
-
     resources :nodes do
       post :sort, :on => :collection
-      get :move, :on => :member
-      put :move_to, :on => :member
     end
 
     resources :users do
@@ -69,7 +58,7 @@ Rabel::Application.routes.draw do
 
     resource :site_settings
     resources :topics, :advertisements, :cloud_files, :rewards
-    
+
     resources :notifications do
       delete :clear, :on => :collection
     end

@@ -7,6 +7,6 @@ FactoryGirl.define do
     introduction('this is a small node')
     custom_html(%(<span class="fade">hi</span>))
     quiet false
-    plane
   end
 end
+

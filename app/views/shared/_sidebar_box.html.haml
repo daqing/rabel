@@ -24,17 +24,11 @@
       - else
         暂无提醒
 - else
-  .box
-    .cell
-      = "#{Siteconf.site_name} — #{Siteconf.short_intro}"
-    .inner
-      .sep5
-      .center
-        = link_to '现在注册', new_user_registration_path, :class => 'btn btn-small'
-        .sep5
-        .sep10
-        已注册用户请
-        = link_to '登入', new_user_session_path, :class => :rabel
+  = render 'shared/community_intro'
 
 - content_for :rightbar do
   = Siteconf.global_sidebar_block.html_safe
+
+- if Siteconf.show_community_stats?
+  - content_for :rightbar do
+    = render 'shared/community_stats'

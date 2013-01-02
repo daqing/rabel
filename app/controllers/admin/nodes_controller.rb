@@ -1,10 +1,14 @@
 # encoding: utf-8
 class Admin::NodesController < Admin::BaseController
-  before_filter :find_parent_plane, :except => [:sort, :destroy, :move, :move_to]
   before_filter :find_node, :only => [:move, :move_to, :destroy]
 
+  def index
+    @nodes = Node.order(Node.default_order_str).all
+    @title = '节点'
+  end
+
   def new
-    @node = @plane.nodes.new
+    @node = Node.new
     respond_to do |format|
       format.js {
         @title = '添加节点'
@@ -14,7 +18,7 @@ class Admin::NodesController < Admin::BaseController
   end
 
   def create
-    @node = @plane.nodes.build(params[:node])
+    @node = Node.new(params[:node])
     respond_to do |format|
       if @node.save
         format.js
@@ -25,7 +29,7 @@ class Admin::NodesController < Admin::BaseController
   end
 
   def edit
-    @node = @plane.nodes.find(params[:id])
+    @node = Node.find(params[:id])
     respond_to do |format|
       format.js {
         @title = '修改节点'
@@ -35,7 +39,7 @@ class Admin::NodesController < Admin::BaseController
   end
 
   def update
-    @node = @plane.nodes.find(params[:id])
+    @node = Node.find(params[:id])
     respond_to do |format|
       if @node.update_attributes(params[:node])
         format.js

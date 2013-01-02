@@ -22,7 +22,8 @@ Given /^the node has topics of (\d+) pages$/ do |page_count|
   node = Node.first
   topic_count = Siteconf.pagination_topics.to_i * page_count.to_i
   topic_count.times do
-    FactoryGirl.create(:topic, :node => node)
+    topic = FactoryGirl.create(:topic)
+    node.topics << topic
   end
 end
 
@@ -41,6 +42,7 @@ end
 When /^I try to provide node info with name: (.*)$/ do |name|
   fill_in "node[key]", :with => 'node_key_1'
   fill_in "node[name]", :with => name
+  fill_in "node[introduction]", :with => 'good node introduction'
   click_button '保存'
 end
 

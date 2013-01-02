@@ -1,4 +1,4 @@
-= form_for [@node, @topic], :url => update_title_node_topic_path(@node, @topic), :remote => true do |f|
+= form_for @topic, :url => update_title_topic_path(@topic), :remote => true do |f|
   %a{:name => 'new_topic'}
   = f.label :title, '标题'
   .sep5

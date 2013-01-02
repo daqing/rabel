@@ -1,0 +1,7 @@
+.box
+  .inner
+    .pull-right
+      = link_to '添加节点', new_admin_node_path, :class => 'btn btn-info btn-small', :remote => true
+    = build_admin_navigation([@title])
+.box
+  = render @nodes
