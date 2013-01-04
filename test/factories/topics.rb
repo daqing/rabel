@@ -8,6 +8,12 @@ FactoryGirl.define do
     comments_closed false
     sticky false
 
+    before(:create) do |topic|
+      node = FactoryGirl.create(:node)
+
+      topic.nodes << node
+    end
+
     factory :locked_topic do
       created_at Time.now - Siteconf.topic_editable_period
     end

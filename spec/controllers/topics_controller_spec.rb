@@ -3,7 +3,8 @@ require 'spec_helper'
 describe TopicsController do
   before(:each) do
     @topic = create(:topic)
-    @topic_params = {:title => 'hi', :content => 'Rails is cool'}
+    @node = create(:node)
+    @topic_params = {:title => 'hi', :content => 'Rails is cool', :node_ids => [@node.id]}
   end
 
   it "should show topic" do
@@ -88,6 +89,7 @@ describe TopicsController do
     login_user(:devin)
     before(:each) do
       @current_user = User.find_by_nickname(:devin)
+      @node = create(:node)
       @my_topic = create(:topic, :user => @current_user)
     end
 
@@ -100,7 +102,7 @@ describe TopicsController do
 
     it "can create topic without content" do
       expect {
-        post :create, :topic => {:title => 'hi'}
+        post :create, :topic => {:title => 'hi', :node_ids => [@node.id]}
       }.to change{Topic.count}.by(1)
       should respond_with(:redirect)
     end

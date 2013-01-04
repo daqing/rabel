@@ -25,4 +25,24 @@ describe Topic do
     topic = create(:topic, :title => "@#{user.nickname} hello")
     user.unread_notification_count.should be > 0
   end
+
+  it "should not create topic if any node's present" do
+    node = create(:node)
+    user = create(:user)
+
+    topic = Topic.new(:title => 'Hello, world')
+    topic.user = user
+    result = topic.save
+    result.should_not == true
+  end
+
+  it "should create topic if no nodes are present" do
+    Node.destroy_all
+    user = create(:user)
+
+    topic = Topic.new(:title => 'Hello, world')
+    topic.user = user
+    result = topic.save
+    result.should == true
+  end
 end

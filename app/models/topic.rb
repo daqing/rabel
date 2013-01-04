@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Topic < ActiveRecord::Base
   include Notifiable
   include Rabel::ActiveCache
@@ -20,6 +21,7 @@ class Topic < ActiveRecord::Base
   accepts_nested_attributes_for :nodes
 
   validates :user_id, :title, :presence => true
+  validate :require_node_id_if_any_nodes
 
   attr_accessible :title, :content, :node_ids
   attr_accessible :title, :content, :node_ids, :comments_closed, :sticky, :as => :admin
@@ -108,6 +110,12 @@ class Topic < ActiveRecord::Base
           Notification::ACTION_TOPIC,
           self.content
         )
+      end
+    end
+
+    def require_node_id_if_any_nodes
+      if Node.any? and self.nodes.empty?
+        self.errors.add(:nodes, '请至少选择一个节点')
       end
     end
 
