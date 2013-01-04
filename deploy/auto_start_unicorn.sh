@@ -32,7 +32,6 @@ respawn limit 3 10
 
 exec $HOME/.rvm/bin/bootup_unicorn -c $app_home/config/unicorn.rb -E production
 
-respawn
 EOF
 
 sudo mv $tmp_file /etc/init/
