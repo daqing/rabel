@@ -11,6 +11,7 @@
     .control-group
       %label.control-label
         所属节点
+        %small.muted (至少选择一个)
       - Node.all.each do |node|
         %label.checkbox
           - if topic.nodes.include?(node) or Node.count == 1
