@@ -52,8 +52,6 @@ module Rabel
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.assets.paths += %W(#{config.root}/themes/images #{config.root}/themes/stylesheets #{config.root}/themes/javascripts)
-
     # enable whitelist mass assignment protection by default
     config.active_record.whitelist_attributes = true
 
