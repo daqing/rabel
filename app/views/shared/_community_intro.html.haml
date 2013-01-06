@@ -2,6 +2,9 @@
   .box
     .box-header
       = Siteconf.site_name
-    .inner
+    .cell
       = Siteconf.full_intro.html_safe
+    .inner.keep-center
+      = link_to t(:sign_up), new_user_registration_path, :class => 'btn btn-info btn-small'
+      .clearfix
 

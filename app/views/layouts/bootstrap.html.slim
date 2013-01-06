@@ -29,30 +29,20 @@ html
 
           ul.nav
             = nav_item(t(:homepage), root_path)
-            - if user_signed_in?
-              - if current_user.can_manage_site?
-                = nav_item t(:dashboard), admin_root_path
-            - else
-              = nav_item(t(:sign_in), new_user_session_path)
+            - if user_signed_in? and current_user.can_manage_site?
+              = nav_item t(:dashboard), admin_root_path
 
           .nav-collapse.collapse
             form.navbar-search.pull-left
               input#q.search-query.span2 type='text' name='q' maxlength=40 data-domain=Settings.canonical_host placeholder=t(:search)
             ul.nav.pull-right
-              = nav_item '创建新话题', new_topic_path
-              li.divider-vertical
               - if user_signed_in?
-                li.dropdown.position-relative
-                  = link_to '#', :class => 'dropdown-toggle', :data => {:toggle => 'dropdown'} do
-                    = current_user.nickname
-                    b.caret
-                  ul.dropdown-menu role="menu" aria-labelledby="dLabel"
-                    = nav_item '个人主页', member_path(url_encode(current_user.nickname))
-                    = nav_item '设置', settings_path
-                    li.divider
-                    li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+                = nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
+                = nav_item '帐号设置', settings_path
+                li.divider-vertical
+                li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
               - else
-                = nav_item(t(:sign_up), new_user_registration_path)
+                = nav_item(t(:sign_in), new_user_session_path)
 
     #wrap
       .container#page-main
