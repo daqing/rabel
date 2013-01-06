@@ -4,7 +4,7 @@ class Settings < Settingslogic
   namespace Rails.env
 
   def self.themes
-    {:rabel => 'Rabel', :default => 'Bootstrap 原生'}
+    {:rabel => 'Rabel'}
   end
 
   def self.topic_list_styles
