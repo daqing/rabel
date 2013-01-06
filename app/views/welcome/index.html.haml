@@ -14,9 +14,10 @@
       %span.chevron »
       = link_to '更多新主题', topics_path + '?page=2', :class => :rabel
 
-.box
-  .cell
-    节点导航
-  .inner
-    = render Node.order(Node.default_order_str).all
+- if Node.any?
+  .box
+    .cell
+      节点导航
+    .inner
+      = render Node.order(Node.default_order_str).all
 

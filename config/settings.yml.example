@@ -6,10 +6,10 @@ default: &default
     namespace: "example"
   upyun:
     switch: 'off' # to support file upload, change this to 'on'
-    operator_name: ''
-    operator_password: ''
-    bucket: ''
-    bucket_domain: ''
+    operator_name: 'example'
+    operator_password: 'example'
+    bucket: 'example'
+    bucket_domain: 'example.b0.upaiyun.com'
 
 production:
   <<: *default
