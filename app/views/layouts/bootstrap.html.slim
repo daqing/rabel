@@ -27,20 +27,25 @@ html
 
           ul.nav
             = nav_item(t(:homepage), root_path)
-            - if user_signed_in? and current_user.can_manage_site?
-              = nav_item t(:dashboard), admin_root_path
+            - if user_signed_in?
+              - if current_user.can_manage_site?
+                = nav_item t(:dashboard), admin_root_path
+            - else
+              = nav_item(t(:sign_in), new_user_session_path)
+
 
           .nav-collapse.collapse
-            form.navbar-search.pull-left
-              input#q.search-query.span2 type='text' name='q' maxlength=40 data-domain=Settings.canonical_host placeholder=t(:search)
-            ul.nav.pull-right
-              - if user_signed_in?
+            - if user_signed_in?
+              form.navbar-search.pull-left
+                input#q.search-query.span2 type='text' name='q' maxlength=40 data-domain=Settings.canonical_host placeholder=t(:search)
+              ul.nav.pull-right
                 = nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
                 = nav_item '帐号设置', settings_path
                 li.divider-vertical
                 li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
-              - else
-                = nav_item(t(:sign_in), new_user_session_path)
+            - else
+              form.navbar-search.pull-right
+                input#q.search-query.span2 type='text' name='q' maxlength=40 data-domain=Settings.canonical_host placeholder=t(:search)
 
     #wrap
       .container#page-main
