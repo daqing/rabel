@@ -25,8 +25,6 @@ description "$site_name running on Nginx/Unicorn"
 start on runlevel [2]
 stop on runlevel [016]
 
-kill signal QUIT
-
 respawn
 respawn limit 3 10
 
