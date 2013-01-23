@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
     @nickname_tip = (@user == current_user) ? '我' : @user.nickname
     @seo_description = "#{@user.nickname} - #{@signature}"
+    @current_nav_item = @user.nickname
 
     respond_to do |format|
       format.html
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.build_account unless @user.account.present?
     @title = '设置'
+    @current_nav_item = t(:account_settings)
 
     respond_to do |format|
       format.html

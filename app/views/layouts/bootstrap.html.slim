@@ -37,7 +37,7 @@ html
                 input#q.search-query.span2 type='text' name='q' maxlength=40 data-domain=Settings.canonical_host placeholder=t(:search)
               ul.nav.pull-right
                 = nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
-                = nav_item '帐号设置', settings_path
+                = nav_item t(:account_settings), settings_path
                 li.divider-vertical
                 li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
             - else
