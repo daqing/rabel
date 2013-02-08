@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(params[:comment])
     @comment.user = current_user
     @comment.posting_device = session[:posting_device] if session[:posting_device].present?
-    flash[:else] = '添加回复失败' unless @comment.save
+    flash[:error] = '添加回复失败' unless @comment.save
     redirect_to custom_path(@commentable)
   end
 
