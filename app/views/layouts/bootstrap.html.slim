@@ -2,11 +2,11 @@ doctype html
 html
   head
     = render 'shared/meta'
-    = stylesheet_link_tag  'i_bootstrap', :media => 'all'
+    = stylesheet_link_tag  'application', :media => 'all'
     = yield :head
     - if Siteconf.custom_css.present?
       style type='text/css' = Siteconf.custom_css.html_safe
-    = javascript_include_tag 'i_bootstrap'
+    = javascript_include_tag 'application'
     link rel='apple-touch-icon' href='/apple-touch-icon.png'
 
     = yield :final_head
