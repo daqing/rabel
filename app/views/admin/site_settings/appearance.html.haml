@@ -9,26 +9,10 @@
           = select_tag 'settings[theme]', options_for_select(Settings.themes.invert.to_a, @settings.theme)
 
       .control-group
-        = label_tag 'settings[nav_position]', '节点导航位置', :class => 'control-label'
-        .controls
-          = select_tag 'settings[nav_position]', options_for_select([['头部', 'top'], ['侧边栏', 'sidebar'], ['底部', 'bottom']], @settings.nav_position)
-
-      .control-group
-        = label_tag 'settings[topic_list_style]', '帖子列表风格', :class => 'control-label'
-        .controls
-          = select_tag 'settings[topic_list_style]', options_for_select(Settings.topic_list_styles.invert.to_a, @settings.topic_list_style)
-
-      .control-group
         = label_tag 'settings[custom_logo]', '自定义Logo', :class => 'control-label'
         .controls
           = text_field_tag 'settings[custom_logo]', @settings.custom_logo, :class => :sl, :placeholder => t('tips.cloud_file_url')
           %small.help-inline 推荐尺寸: 100 x 40
-
-      .control-group
-        = label_tag 'settings[global_banner]', '自定义Banner', :class => 'control-label'
-        .controls
-          = text_field_tag 'settings[global_banner]', @settings.global_banner, :class => :sl, :placeholder => t('tips.cloud_file_url')
-          %small.help-inline 推荐尺寸: 960 x 145
 
       .control-group
         = label_tag 'settings[custom_css]', '自定义CSS', :class => 'control-label'

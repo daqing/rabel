@@ -14,10 +14,8 @@ Siteconf.defaults[:custom_js] = '' # 全局自定义JavaScript
 Siteconf.defaults[:custom_head_tags] = '' # 自定义Head标签
 Siteconf.defaults[:pagination_topics] = "25"
 Siteconf.defaults[:pagination_comments] = "100"
-Siteconf.defaults[:nav_position] = 'bottom'
 Siteconf.defaults[:show_captcha] = 'off'
 Siteconf.defaults[:custom_logo] = ''
-Siteconf.defaults[:global_banner] = ''
 Siteconf.defaults[:global_sidebar_block] = ''
 Siteconf.defaults[:show_community_stats] = 'on'
 Siteconf.defaults[:allow_markdown_in_topics] = 'off'
@@ -25,5 +23,4 @@ Siteconf.defaults[:allow_markdown_in_comments] = 'off'
 Siteconf.defaults[:allow_markdown_in_pages] = 'on'
 Siteconf.defaults[:topic_editable_period_str] = '5'
 Siteconf.defaults[:reward_title] = '银币'
-Siteconf.defaults[:topic_list_style] = 'complex'
 

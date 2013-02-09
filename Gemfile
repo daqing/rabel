@@ -53,6 +53,7 @@ end
 group :development do
   gem 'quiet_assets', '~> 1.0.1'
   gem 'awesome_print'
+  gem 'puma'
 end
 
 gem 'haml'
