@@ -19,8 +19,11 @@ html
             span.icon-bar
             span.icon-bar
 
-          = link_to root_path, :class => :custom_brand do
-            = image_tag 'logo.png', :class => :custom_logo, :alt => Siteconf.site_name
+          - if Siteconf.custom_logo.present?
+            = link_to root_path, :class => :custom_brand do
+              = image_tag Siteconf.custom_logo, :class => :custom_logo
+          - else
+            = link_to Siteconf.site_name, root_path, :class => :brand
 
           ul.nav
             = nav_item(t(:homepage), root_path)
@@ -29,7 +32,6 @@ html
                 = nav_item t(:dashboard), admin_root_path
             - else
               = nav_item(t(:sign_in), new_user_session_path)
-
 
           .nav-collapse.collapse
             - if user_signed_in?
