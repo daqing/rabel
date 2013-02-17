@@ -4,8 +4,8 @@ FactoryGirl.define do
   factory :user do
     sequence(:nickname) { |n| "Rabel_#{n}" }
     sequence(:email) { |n| "rabel_#{n}@rabel.com" }
-    password ENV["DEFAULT_PASSWORD"]
-    password_confirmation ENV["DEFAULT_PASSWORD"]
+    password Settings.default_password
+    password_confirmation Settings.default_password
     after(:create) {|u| u.account = FactoryGirl.create(:account, :user => u)}
 
     factory :admin do

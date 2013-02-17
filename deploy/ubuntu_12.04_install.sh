@@ -27,7 +27,7 @@ sudo apt-get install -y graphicsmagick-libmagick-dev-compat
 sudo apt-get install -y libmagickwand-dev
 ~/.rvm/bin/rvm install ruby-1.9.3-p327
 echo "$source_rvm" | bash
-rvm use 1.9.3-p327 --default
+rvm use 1.9.3 --default
 sudo aptitude install -y memcached imagemagick nodejs nginx
 
 cat <<MYSQL_PRESEED | sudo su -c debconf-set-selections

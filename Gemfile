@@ -58,6 +58,7 @@ end
 
 gem 'haml'
 gem 'devise'
+gem 'settingslogic'
 gem 'cancan'
 gem 'kaminari'
 gem 'carrierwave', "~> 0.6.2"

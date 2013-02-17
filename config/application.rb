@@ -56,7 +56,8 @@ module Rabel
     config.active_record.whitelist_attributes = true
 
     config.before_configuration do
-      config.cache_store = :dalli_store, ['127.0.0.1:11211'], {:namespace => ENV['MEMCACHED_NAMESPACE']}
+      APP_CONFIG = YAML.load_file(Rails.root.join('config', 'settings.yml'))[Rails.env]
+      config.cache_store = :dalli_store, *APP_CONFIG['memcached']['servers'], {:namespace => APP_CONFIG['memcached']['namespace']}
     end
   end
 end
