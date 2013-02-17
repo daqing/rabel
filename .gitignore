@@ -20,7 +20,6 @@
 .DS_Store
 .cache_rake_t
 /config/database.yml
-/config/settings.yml
 /.sass-cache
 /public/uploads/
 /public/assets/
@@ -28,3 +27,6 @@ chromedriver.log
 /vendor/bundle/
 /*.sh
 .rvmrc
+
+# Ignore application configuration
+/config/application.yml
