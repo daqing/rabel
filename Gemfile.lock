@@ -139,8 +139,11 @@ GEM
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
+    puma (1.6.3)
+      rack (~> 1.2)
     quiet_assets (1.0.1)
       railties (~> 3.1)
+    rabel-meta (0.0.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -265,7 +268,9 @@ DEPENDENCIES
   less-rails-bootstrap (~> 2.2.0)
   mime-types
   mysql2
+  puma
   quiet_assets (~> 1.0.1)
+  rabel-meta
   rails (= 3.2.9)
   rails-settings-cached (= 0.2.1)
   redcarpet

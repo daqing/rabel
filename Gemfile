@@ -33,6 +33,10 @@ gem 'unicorn'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :production do
+  gem 'rabel-meta'
+end
+
 group :test, :development do
   gem 'rspec-rails', '~> 2.12.0'
   gem 'debugger'
@@ -49,6 +53,7 @@ end
 group :development do
   gem 'quiet_assets', '~> 1.0.1'
   gem 'awesome_print'
+  gem 'puma'
 end
 
 gem 'haml'
