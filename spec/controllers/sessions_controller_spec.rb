@@ -7,7 +7,7 @@ describe SessionsController do
 
   it "should allow signing in on mobile platform" do
     user = create(:user)
-    post :create, :user => {:nickname => user.nickname, :password => Settings.default_password}, :format => :mobile
+    post :create, :user => {:nickname => user.nickname, :password => ENV['RABEL_TEST_DEFAULT_PASSWORD']}, :format => :mobile
     should respond_with(:redirect)
     should redirect_to(root_path)
   end

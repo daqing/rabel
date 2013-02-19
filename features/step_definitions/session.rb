@@ -14,7 +14,7 @@ end
 
 When /^I fill in (.*)\'s credentials$/ do |nickname|
   fill_in 'user_nickname', :with => nickname
-  fill_in 'user_password', :with => Settings.default_password
+  fill_in 'user_password', :with => ENV['RABEL_TEST_DEFAULT_PASSWORD']
   click_button '登入'
 end
 

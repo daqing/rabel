@@ -7,7 +7,7 @@
           = link_to '回到顶部', 'javascript:void(0);', :class => 'dark back_to_top'
         现在就添加一条回复
       .inner
-        = render 'shared/fileupload_widget', :textarea_selector => "textarea#comment_content" if Settings.upyun.switch == 'on'
+        = render 'shared/fileupload_widget', :textarea_selector => "textarea#comment_content"
         = render 'shared/preview_widget', :ref => :comment_content, :type => :comment
         = f.text_area :content, :rows => 5, :style => 'width: 98%;'
         .sep10

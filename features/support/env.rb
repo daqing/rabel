@@ -4,6 +4,7 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 ENV['RAILS_ENV'] = 'test'
+ENV['RABEL_TEST_DEFAULT_PASSWORD'] = '123456'
 require 'cucumber/rails'
 require 'ruby-debug'
 

@@ -17,10 +17,10 @@ class UpyunImageUploader < CarrierWave::Uploader::Base
   # storage :fog
   storage :upyun
 
-  self.upyun_username = Settings.upyun.operator_name
-  self.upyun_password = Settings.upyun.operator_password
-  self.upyun_bucket = Settings.upyun.bucket
-  self.upyun_bucket_domain = Settings.upyun.bucket_domain
+  self.upyun_username = ENV['RABEL_UPYUN_OP_NAME']
+  self.upyun_password = ENV['RABEL_UPYUN_OP_PASSWORD']
+  self.upyun_bucket = ENV['RABEL_UPYUN_BUCKET']
+  self.upyun_bucket_domain = ENV['RABEL_UPYUN_BUCKET_DOMAIN']
 
   process :resize_to_limit => [570, 0]
 

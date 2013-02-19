@@ -25,7 +25,7 @@ html
           = link_to Siteconf.site_name, root_path, class: :brand
           .nav-collapse.collapse
             form.navbar-search.pull-left
-              input#q.search-query type='text' name='q' maxlength=40 data-domain=Settings.canonical_host placeholder=t(:search)
+              input#q.search-query type='text' name='q' maxlength=40 data-domain=ENV['RABEL_HOST_NAME'] placeholder=t(:search)
             ul.nav.pull-right
               = nav_item(t(:homepage), root_path)
               - if user_signed_in?

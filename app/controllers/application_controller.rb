@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
     initialize_breadcrumbs_and_title
 
     @seo_description = ''
-    ActionMailer::Base.default_url_options[:host] = Settings.canonical_host
+    ActionMailer::Base.default_url_options[:host] = ENV['RABEL_HOST_NAME']
   end
 
   def initialize_breadcrumbs_and_title

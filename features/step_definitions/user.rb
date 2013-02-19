@@ -10,8 +10,8 @@ end
 
 When /^I provide the necessary registration infomation$/ do
   fill_in 'user_nickname', :with => 'Rabel_1'
-  fill_in 'user_password', :with => Settings.default_password
-  fill_in 'user_password_confirmation', :with => Settings.default_password
+  fill_in 'user_password', :with => ENV['RABEL_TEST_DEFAULT_PASSWORD']
+  fill_in 'user_password_confirmation', :with => ENV['RABEL_TEST_DEFAULT_PASSWORD']
   fill_in 'user_email', :with => 'rabel_1@rabel.com'
   click_button '注册'
 end
@@ -43,8 +43,8 @@ When /^I provide account info$/ do
 end
 
 When /^I provide new password$/ do
-  new_password = "new_#{Settings.default_password}"
-  fill_in 'user[current_password]', :with => Settings.default_password
+  new_password = "new_#{ENV['RABEL_TEST_DEFAULT_PASSWORD']}"
+  fill_in 'user[current_password]', :with => ENV['RABEL_TEST_DEFAULT_PASSWORD']
   fill_in 'user[password]', :with => new_password
   fill_in 'user[password_confirmation]', :with => new_password
   click_button '修改密码'

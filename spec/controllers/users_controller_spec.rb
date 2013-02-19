@@ -50,7 +50,7 @@ describe UsersController do
     end
 
     it "allows update password" do
-      post :update_password, :user => {:current_password => Settings.default_password, :password => 'foobar', :password_confirmation => 'foobar'}
+      post :update_password, :user => {:current_password => ENV['RABEL_TEST_DEFAULT_PASSWORD'], :password => 'foobar', :password_confirmation => 'foobar'}
       should respond_with(:redirect)
       should assign_to(:user)
       flash[:error].should be_nil

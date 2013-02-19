@@ -54,11 +54,11 @@ group :development do
   gem 'quiet_assets', '~> 1.0.1'
   gem 'awesome_print'
   gem 'puma'
+  gem 'better_errors'
 end
 
 gem 'haml'
 gem 'devise'
-gem 'settingslogic'
 gem 'cancan'
 gem 'kaminari'
 gem 'carrierwave', "~> 0.6.2"
