@@ -54,7 +54,10 @@ module Rabel
 
     config.assets.paths += %W(#{config.root}/themes/images #{config.root}/themes/stylesheets #{config.root}/themes/javascripts)
 
-    # enable whitelist mass assignment protection by default
+    # Enable whitelist mass assignment protection by default
     config.active_record.whitelist_attributes = true
+
+    # Don't access the DB when precompiling the assets
+    config.assets.initialize_on_precompile = false
   end
 end
