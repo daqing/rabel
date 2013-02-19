@@ -56,9 +56,5 @@ module Rabel
 
     # enable whitelist mass assignment protection by default
     config.active_record.whitelist_attributes = true
-
-    config.before_configuration do
-      config.cache_store = :dalli_store, ["127.0.0.1:11211"], {:namespace => ENV['RABEL_MEMCACHED_NAMESPACE']}
-    end
   end
 end
