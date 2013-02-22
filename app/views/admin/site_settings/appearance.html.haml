@@ -6,7 +6,7 @@
       .control-group
         = label_tag 'settings[theme]', '设计风格', :class => 'control-label'
         .controls
-          = select_tag 'settings[theme]', options_for_select(Settings.themes.invert.to_a, @settings.theme)
+          = select_tag 'settings[theme]', options_for_select([['默认风格', :rabel]], @settings.theme)
 
       .control-group
         = label_tag 'settings[nav_position]', '节点导航位置', :class => 'control-label'
@@ -16,7 +16,7 @@
       .control-group
         = label_tag 'settings[topic_list_style]', '帖子列表风格', :class => 'control-label'
         .controls
-          = select_tag 'settings[topic_list_style]', options_for_select(Settings.topic_list_styles.invert.to_a, @settings.topic_list_style)
+          = select_tag 'settings[topic_list_style]', options_for_select([['极简', :simple], ['丰富', :complex]], @settings.topic_list_style)
 
       .control-group
         = label_tag 'settings[custom_logo]', '自定义Logo', :class => 'control-label'
