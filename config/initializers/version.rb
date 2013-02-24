@@ -2,7 +2,7 @@ module Rabel
   module VERSION #:nodoc:
     MAJOR = 1
     MINOR = 5
-    TINY  = 0
+    TINY  = 1
     PRE   = ''
 
     STRING = [MAJOR, MINOR, TINY, PRE].compact.join('.')
