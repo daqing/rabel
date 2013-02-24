@@ -28,3 +28,4 @@ chromedriver.log
 /vendor/bundle/
 /*.sh
 .rvmrc
+/logfile

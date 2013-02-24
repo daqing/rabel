@@ -54,7 +54,6 @@ end
 group :development do
   gem 'quiet_assets', '~> 1.0.1'
   gem 'awesome_print'
-  gem 'puma'
   gem 'better_errors'
 end
 
@@ -78,4 +77,5 @@ gem 'less-rails-bootstrap', '~> 2.2.0'
 gem 'slim-rails', '~> 1.0.3'
 gem 'simple_form', '~> 2.0.4'
 gem 'foreman', '~> 0.61.0'
+gem 'thin', '~> 1.5.0'
 
