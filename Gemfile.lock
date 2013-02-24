@@ -113,6 +113,9 @@ GEM
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.0.1)
+      jquery-rails
+      railties (>= 3.1.0)
     json (1.7.7)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
@@ -263,6 +266,7 @@ DEPENDENCIES
   foreman (~> 0.61.0)
   haml
   jquery-rails
+  jquery-ui-rails
   kaminari
   kgio
   less-rails-bootstrap (~> 2.2.0)
