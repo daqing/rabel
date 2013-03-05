@@ -8,7 +8,6 @@ gem 'rails', '3.2.12'
 # gem 'pg'
 gem 'mysql2'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -35,12 +34,12 @@ gem 'unicorn'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :production do
-  gem 'rabel-meta'
+  gem 'rabel-meta', '1.5'
 end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.12.0'
-  gem 'debugger'
+  # gem 'debugger'
 end
 
 group :test do
