@@ -32,6 +32,7 @@ Rabel::Application.routes.draw do
     resources :comments
     resources :bookmarks
     post :preview, :on => :collection
+    post :hit, :on => :collection
     put :toggle_comments_closed
     put :toggle_sticky
   end

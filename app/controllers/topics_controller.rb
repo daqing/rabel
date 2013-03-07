@@ -1,7 +1,7 @@
 # encoding: utf-8
 class TopicsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :find_node, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky]
+  before_filter :authenticate_user!, :except => [:show, :index, :hit]
+  before_filter :find_node, :except => [:show, :index, :hit, :preview, :toggle_comments_closed, :toggle_sticky]
   before_filter :find_topic_and_auth, :only => [:edit_title,:update_title,
     :edit, :update, :move, :destroy]
   before_filter :only => [:toggle_comments_closed, :toggle_sticky] do |c|
@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
     # NOTE
     # We can't use @topic.increment!(:hit) here,
     # because updated_at is part of the cache key
-    ActiveRecord::Base.connection.execute("UPDATE topics SET hit = hit + 1 WHERE topics.id = #{@topic.id}")
+    #ActiveRecord::Base.connection.execute("UPDATE topics SET hit = hit + 1 WHERE topics.id = #{@topic.id}")
 
     @title = @topic.title
     @node = @topic.cached_assoc_object(:node)
@@ -68,6 +68,13 @@ class TopicsController < ApplicationController
       format.html
       format.mobile
     end
+  end
+
+
+  def hit
+    @topic = Topic.find(params[:id])
+    ActiveRecord::Base.connection.execute("UPDATE topics SET hit = hit + 1 WHERE topics.id = #{@topic.id}")
+    render :json => @topic.hit
   end
 
   def new

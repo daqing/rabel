@@ -25,7 +25,7 @@
       .sep10
       %h1#topic_title
         = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe
-      %small.topic-meta
+      %small.topic-meta#topic-hit{ 'data-id' => @topic.id }
         By
         = user_profile_link(topic_user, :class => :dark)
         at
