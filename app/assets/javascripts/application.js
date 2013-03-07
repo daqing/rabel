@@ -10,3 +10,13 @@
 //= require jquery_at_caret
 //= require jquery_smooth_scroll
 //= require rabel
+
+$(document).ready(function() {
+  if ($('#topic-hit').attr("data-id")){
+    $.ajax({
+        type: "POST",
+        url: "/topics/hit",
+        data: { id: $('#topic-hit').attr("data-id"), authenticity_token: $('meta[name=csrf-token]').attr('content') }
+    });
+  }
+});
