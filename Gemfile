@@ -34,12 +34,12 @@ gem 'unicorn'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :production do
-  gem 'rabel-meta', '~> 0.0.1'
+  gem 'rabel-meta', '2.0'
 end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.12.0'
-  gem 'debugger'
+  # gem 'debugger'
 end
 
 group :test do
