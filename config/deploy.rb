@@ -24,18 +24,19 @@ set :scm, 'git'
 set :scm_verbose, false
 
 set :deploy_via, :remote_cache
-set :deploy_to, "/srv/http/wenyi.me"
 
 set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
 prompt_with_default(:domain, 'rabelapp.com')
+prompt_with_default(:deploy_to, "/srv/http/#{domain}")
+
 prompt_with_default(:user, ENV['USER'])
 set :use_sudo, false
 
 set :rails_env, 'production'
 
-set :repository, "git@github.com:dotnil/#{application}.git"
-prompt_with_default(:branch, 'v1.5')
+set :repository, "git@github.com:daqing/#{application}.git"
+prompt_with_default(:branch, 'master')
 
 role :web, fetch(:domain)
 role :app, fetch(:domain)
@@ -44,7 +45,7 @@ role :db, fetch(:domain), :primary => true
 namespace :deploy do
   desc "启动服务"
   task :start, :roles => :app do
-    run "cd #{current_path}; bundle exec unicorn_rails --port 5050 --env #{rails_env} --daemonize"
+    run "cd #{current_path}; bundle exec unicorn -c ./config/unicorn.rb -E production -D"
   end
 
   desc "停止服务"
