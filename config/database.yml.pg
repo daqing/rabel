@@ -16,7 +16,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: postgres
+  username:
   password:
   host: localhost
   port: 5432
@@ -32,7 +32,11 @@ default: &default
 
 development:
   <<: *default
+  adapter: postgresql
+  host: localhost
   database: rabel_development
+  username: ge
+  password: sprucelearning
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -40,8 +44,14 @@ development:
 test:
   <<: *default
   database: rabel_test
+  username: ge
+  password: sprucelearning
 
 production:
-  <<: *default
-  database: rabel_production
-
+  #<<: *default
+  adapter: postgresql
+  host: ec2-54-225-84-29.compute-1.amazonaws.com
+  port: 5342
+  database: d271fnaokobhu3
+  username: spdbktrckogjxe
+  password: in6RqSoyNTLPeWF67uwuRrDAvF
