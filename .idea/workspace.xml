@@ -3,14 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9a151949-0b26-44b5-86a5-1a69018960b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml.pg" afterPath="$PROJECT_DIR$/config/database.yml.pg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rabel.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="9a151949-0b26-44b5-86a5-1a69018960b2" time="1366597838419" ignored="false" />
     <file path="/Gemfile" changelist="9a151949-0b26-44b5-86a5-1a69018960b2" time="1366598670417" ignored="false" />
     <file path="/database.yml" changelist="9a151949-0b26-44b5-86a5-1a69018960b2" time="1366607830569" ignored="false" />
-    <file path="/database.yml.pg" changelist="9a151949-0b26-44b5-86a5-1a69018960b2" time="1366607877245" ignored="false" />
+    <file path="/database.yml.pg" changelist="9a151949-0b26-44b5-86a5-1a69018960b2" time="1366608066993" ignored="false" />
     <file path="$PROJECT_DIR$/log/development.log" changelist="9a151949-0b26-44b5-86a5-1a69018960b2" time="1366607789735" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +42,7 @@
       <file leaf-file-name="database.yml.pg" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/database.yml.pg">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="3" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.69283277">
+            <state line="55" column="25" selection-start="1400" selection-end="1401" vertical-scroll-proportion="0.82081914">
               <folding />
             </state>
           </provider>
@@ -342,7 +341,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/database.yml.pg">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="3" selection-start="1251" selection-end="1251" vertical-scroll-proportion="0.69283277">
+        <state line="55" column="25" selection-start="1400" selection-end="1401" vertical-scroll-proportion="0.82081914">
           <folding />
         </state>
       </provider>

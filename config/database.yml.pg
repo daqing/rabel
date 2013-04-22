@@ -49,8 +49,9 @@ test:
 
 production:
   #<<: *default
+  adapter: postgresql
   host: ec2-54-225-84-29.compute-1.amazonaws.com
+  port: 5342
   database: d271fnaokobhu3
   username: spdbktrckogjxe
-  port: 5342
   password: in6RqSoyNTLPeWF67uwuRrDAvF
