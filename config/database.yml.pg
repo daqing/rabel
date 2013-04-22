@@ -32,11 +32,11 @@ default: &default
 
 development:
   <<: *default
-  host: ec2-54-225-84-29.compute-1.amazonaws.com
-  database: d271fnaokobhu3
-  username: spdbktrckogjxe
-  port: 5342
-  password: in6RqSoyNTLPeWF67uwuRrDAvF
+  adapter: postgresql
+  host: localhost
+  database: rabel_development
+  username: ge
+  password: sprucelearning
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
