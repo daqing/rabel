@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a151949-0b26-44b5-86a5-1a69018960b2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml.pg" afterPath="$PROJECT_DIR$/config/database.yml.pg" />
     </list>
     <ignored path="rabel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,19 +37,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.yml.pg" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="database.yml.pg" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/database.yml.pg">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="18" column="10" selection-start="460" selection-end="460" vertical-scroll-proportion="0.3047404">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.yml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="database.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="38" selection-start="999" selection-end="999" vertical-scroll-proportion="0.6433409">
+            <state line="17" column="14" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -77,6 +75,7 @@
       <list>
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/database.yml" />
+        <option value="$PROJECT_DIR$/config/database.yml.pg" />
       </list>
     </option>
   </component>
@@ -363,16 +362,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.yml.pg">
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="17" column="14" selection-start="449" selection-end="449" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.yml">
+    <entry file="file://$PROJECT_DIR$/config/database.yml.pg">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="38" selection-start="999" selection-end="999" vertical-scroll-proportion="0.6433409">
+        <state line="18" column="10" selection-start="460" selection-end="460" vertical-scroll-proportion="0.3047404">
           <folding />
         </state>
       </provider>
