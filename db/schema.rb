@@ -152,9 +152,9 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
     t.integer  "user_id",       :default => 0
     t.integer  "amount",        :default => 0
     t.integer  "balance",       :default => 0
-    t.text     "reason"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.text     "reason",        :default => ""
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "settings", :force => true do |t|
