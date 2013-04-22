@@ -48,7 +48,7 @@ test:
   password: sprucelearning
 
 production:
-  <<: *default
+  #<<: *default
   host: ec2-54-225-84-29.compute-1.amazonaws.com
   database: d271fnaokobhu3
   username: spdbktrckogjxe
