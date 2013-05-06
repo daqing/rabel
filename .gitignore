@@ -29,3 +29,5 @@ chromedriver.log
 /*.sh
 .rvmrc
 /logfile
+config/application.yml
+
