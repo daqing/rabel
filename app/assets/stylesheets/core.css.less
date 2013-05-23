@@ -1,6 +1,7 @@
 #wrap {
   background-color: #E0E0E0;
   padding-top: 20px;
+  border-bottom: 1px solid #CCC;
 }
 
 #page-main { padding-bottom: 20px; }
@@ -42,8 +43,6 @@ td.avatar {
 .fr { float: right; }
 
 #footer {
-  border-top: 1px solid #CCCCCC;
-
   #footer-main {
     line-height: 150%;
     padding: 10px;
@@ -98,8 +97,17 @@ a.action_label:hover {
 }
 
 @media (max-width: 767px) {
-  body { padding: 0; }
-  #wrap { padding-left: 10px; padding-right: 10px; }
+  #wrap {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+
+  #Rightbar {
+    width: 100%;
+  }
+
   .marketing { display: none; }
   .welcome { text-align: center; }
   .timeago { display: none; }
@@ -214,5 +222,9 @@ span.right-guillemet {
 
 ol li {
   margin: 5px 0;
+}
+
+ul.nav li {
+  list-style-type: none;
 }
 
