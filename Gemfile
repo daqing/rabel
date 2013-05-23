@@ -46,7 +46,7 @@ group :test do
   gem 'rspec'
   gem 'shoulda-matchers', '~> 1.5.2'
   gem 'factory_girl_rails', '~> 3.5.0'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara', '~> 2.0.1'
 end
@@ -72,7 +72,7 @@ gem 'dalli'
 gem 'acts_as_list'
 gem 'rails-settings-cached', '= 0.2.1'
 gem 'facebox-rails', '~> 0.1.3'
-gem 'default_value_for', git: 'git://github.com/FooBarWidget/default_value_for.git'
+gem 'default_value_for', '~> 2.0.2'
 gem 'less-rails-bootstrap', '~> 2.2.0'
 gem 'slim-rails', '~> 1.0.3'
 gem 'simple_form', '~> 2.0.4'

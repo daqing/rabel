@@ -8,9 +8,6 @@ describe PagesController do
   it "should display page" do
     get :show, :key => @page.key
     should respond_with(:success)
-    should assign_to(:page)
-    should assign_to(:title)
-    should assign_to(:seo_description)
   end
 
   it "should not show draft page" do

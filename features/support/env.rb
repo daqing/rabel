@@ -14,7 +14,7 @@ require 'cucumber/rails'
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome, :switches => %w(--disable-translate --disable-popup-blocking))
+  Capybara::Selenium::Driver.new(app, :browser => :firefox)
 end
 
 Capybara.register_driver :mobile do |app|

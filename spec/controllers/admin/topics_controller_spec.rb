@@ -8,8 +8,6 @@ describe Admin::TopicsController do
     it "should show all topics" do
       get :index
       should respond_with(:success)
-      should assign_to(:topics)
-      should assign_to(:title)
     end
   end
 end

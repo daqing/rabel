@@ -16,7 +16,5 @@ describe SessionsController do
     get :new
 
     should respond_with(:success)
-    should assign_to(:title)
-    should assign_to(:seo_description)
   end
 end

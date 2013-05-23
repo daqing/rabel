@@ -12,8 +12,6 @@ describe Admin::UsersController do
     it "should list all users" do
       get :index
       should respond_with(:success)
-      should assign_to(:users)
-      should assign_to(:title)
     end
 
     it "can manage permissions" do
@@ -27,14 +25,12 @@ describe Admin::UsersController do
     it "should toggle admin" do
       post :toggle_admin, :id => @user.id, :format => :js
       should respond_with(:success)
-      should assign_to(:user)
       assigns(:user).admin?.should be_true
     end
 
     it "can edit user info" do
       get :edit, :id => @user.id
       should respond_with(:success)
-      should assign_to(:user)
     end
   end
 end

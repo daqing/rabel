@@ -6,14 +6,11 @@ describe WelcomeController do
     it "should be able to browse home page" do
       get :index
       should respond_with(:success)
-      should assign_to(:topics)
-      should assign_to(:canonical_path)
     end
 
     it "should display mobile version" do
       get :index, :format => :mobile
       should respond_with(:success)
-      should assign_to(:planes)
     end
   end
 
