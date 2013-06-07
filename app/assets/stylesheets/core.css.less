@@ -113,6 +113,30 @@ a.action_label:hover {
   .timeago { display: none; }
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .span9 {
+    width: 650px;
+  }
+
+  .span3 {
+    width: 230px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container, .navbar-static-top .container {
+    width: 970px;
+  }
+
+  .span9 {
+    width: 670px;
+  }
+
+  .span3 {
+    width: 250px;
+  }
+}
+
 .item_node {
   background: -moz-linear-gradient(center top , #FFFFFF 0%, #F3F3F3 50%, #EDEDED 51%, #FFFFFF 100%) repeat scroll 0 0 transparent;
   background: -webkit-linear-gradient(top , #FFFFFF 0%, #F3F3F3 50%, #EDEDED 51%, #FFFFFF 100%) repeat scroll 0 0 transparent;
@@ -159,20 +183,6 @@ a.current_label {
 .sort_item:hover { cursor: pointer; }
 .sort_actions { margin-top: 10px; }
 
-
-@media (min-width: 1200px) {
-  .container, .navbar-static-top .container {
-    width: 970px;
-  }
-
-  .span9 {
-    width: 670px;
-  }
-
-  .span3 {
-    width: 250px;
-  }
-}
 
 img.external {
   max-width: 570px;
