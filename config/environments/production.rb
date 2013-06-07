@@ -37,7 +37,7 @@ Rabel::Application.configure do
   # config.logger = SyslogLogger.new
 
   # Use a different cache store in production
-  config.cache_store = :dalli_store, ENV['RABEL_MEMCACHED_SERVER'], {:namespace => ENV['RABEL_MEMCACHED_NAMESPACE'], :compress => true}
+  config.cache_store = :dalli_store, Figaro.env['RABEL_MEMCACHED_SERVER'], {:namespace => Figaro.env['RABEL_MEMCACHED_NAMESPACE'], :compress => true}
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
