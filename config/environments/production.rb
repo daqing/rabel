@@ -38,11 +38,11 @@ Rabel::Application.configure do
 
   # Use a different cache store in production
   config.cache_store = :dalli_store,
-    Figaro.env['RABEL_MEMCACHED_SERVER'],
+    Figaro.env.RABEL_MEMCACHED_SERVER,
     {
-      :namespace => Figaro.env['RABEL_MEMCACHED_NAMESPACE'],
-      :username => Figaro.env['RABEL_MEMCACHED_USERNAME'],
-      :password => Figaro.env['RABEL_MEMCACHED_PASSWORD'],
+      :namespace => Figaro.env.RABEL_MEMCACHED_NAMESPACE,
+      :username => Figaro.env.RABEL_MEMCACHED_USERNAME,
+      :password => Figaro.env.RABEL_MEMCACHED_PASSWORD,
       :compress => true
     }
 
