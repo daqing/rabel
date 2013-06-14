@@ -1,6 +1,6 @@
 # required
-RABEL_HOST_NAME: 'DOMAIN'
-RABEL_SYSTEM_EMAIL: 'hello@DOMAIN'
+RABEL_HOST_NAME: 'example.com'
+RABEL_SYSTEM_EMAIL: 'hello@example.com'
 SECRET_TOKEN: ''
 SESSION_KEY: '_example_session'
 
