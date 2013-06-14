@@ -1,4 +1,4 @@
-@muted : #999;
+$muted: #999;
 
 body {
   background: #FFF;
@@ -7,12 +7,12 @@ body {
 
 .topic {
   .meta {
-    color: @muted;
+    color: $muted;
     font-size: 12px;
   }
 }
 
-.box-header { color: @muted; }
+.box-header { color: $muted; }
 
 .bigger { font-size: 16px; }
 
@@ -43,7 +43,7 @@ a.count {
 
 a.node:link, a.node:visited, a.node:active {
   background-color: #F5F5F5;
-  color: @muted;
+  color: $muted;
   display: inline-block;
   font-size: 10px;
   line-height: 10px;
@@ -74,7 +74,7 @@ a.black:link, a.black:visited, a.black:active {
 
 a.muted {
   &:link, &:visited, &:active {
-    color: @muted;
+    color: $muted;
     text-decoration: none;
   }
 
@@ -100,12 +100,12 @@ a.dark:hover {
 }
 
 #footer {
-  color: @muted;
+  color: $muted;
   font-size: 12px;
 }
 
 .marketing {
-  color: @muted;
+  color: $muted;
 }
 
 .box {
@@ -151,7 +151,7 @@ a.dark:hover {
 }
 
 .topic-meta {
-  color: @muted;
+  color: $muted;
 }
 
 .profile-link {
@@ -159,7 +159,7 @@ a.dark:hover {
 }
 
 .signature {
-  color: @muted;
+  color: $muted;
   margin: 5px 0;
 }
 
