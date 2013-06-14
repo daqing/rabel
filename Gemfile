@@ -14,7 +14,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
-  gem 'therubyracer', '~> 0.10.2', :platforms => :ruby
+  # gem 'therubyracer', '~> 0.10.2', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -73,7 +73,7 @@ gem 'acts_as_list'
 gem 'rails-settings-cached', '= 0.2.1'
 gem 'facebox-rails', '~> 0.1.3'
 gem 'default_value_for', '~> 2.0.2'
-gem 'less-rails-bootstrap', '~> 2.2.0'
+gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'slim-rails', '~> 1.0.3'
 gem 'simple_form', '~> 2.0.4'
 gem 'foreman', '~> 0.61.0'

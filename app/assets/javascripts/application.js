@@ -3,7 +3,7 @@
 //= require jquery.ui.sortable
 //= require jquery.ui.datepicker
 //= require jquery.ui.datepicker-zh-CN
-//= require twitter/bootstrap
+//= require bootstrap
 //= require jquery.ui.effect-highlight
 //= require jquery_elastic
 //= require jquery.facebox
