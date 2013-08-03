@@ -1,0 +1,15 @@
+.box
+  .cell
+    h2 创建新话题
+  .inner
+    = simple_form_for @topic, :url => create_from_home_topics_path do |f|
+      = f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}
+      = render 'shared/fileupload_widget', :textarea_selector => "textarea#topic_content"
+      = render 'shared/preview_widget', :ref => :topic_content, :type => :topic
+      = f.input :content, :input_html => {:rows => 10, :style => 'width: 98%;'}, :label => false, :placeholder => '话题内容'
+      = f.association :node, :label => false, :collection => Plane.all, :as => :grouped_select, :group_method => :nodes, :prompt => '选择一个节点'
+      - if current_user.can_manage_site?
+        = f.input :sticky, :inline_label => '保持置顶', :label => false
+        = f.input :comments_closed, :inline_label => '禁止回复', :label => false
+      = f.submit '创建新话题', :class => 'btn btn-primary btn-inverse', :data => {:disable_with => t('tips.submitting')}
+

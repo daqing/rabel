@@ -1,11 +1,9 @@
 .box#topics_index
   .cell{:align => 'left'}
-    .pull-right.marketing
-      %span.gray{:style => 'font-size: 110%'}
-        = Siteconf.marketing.join('&nbsp;<span class="snow">&nbsp;•&nbsp;</span>&nbsp;').html_safe
-    .bigger.welcome= Siteconf.welcome_tip.html_safe
-    .sep10
-    = Siteconf.splash.html_safe
+    .pull-right
+      = link_to '创建新话题', new_from_home_topics_path, :class => 'btn btn-success btn-small btn-new-topic'
+    .welcome
+      = Siteconf.welcome_tip.html_safe
   - if @sticky_topics.any?
     - if Siteconf.sticky_topics_heading.present?
       #sticky_topics.cell.topics_heading= Siteconf.sticky_topics_heading
