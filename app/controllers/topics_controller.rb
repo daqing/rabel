@@ -94,7 +94,9 @@ class TopicsController < ApplicationController
   end
 
   def create_from_home
+    node_id = params[:topic].delete(:node_id)
     @topic = Topic.new(params[:topic], :as => current_user.permission_role)
+    @topic.node = Node.find(node_id) if node_id.present?
     @topic.user = current_user
 
     if @topic.save
