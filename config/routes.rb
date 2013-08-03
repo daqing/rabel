@@ -34,6 +34,8 @@ Rabel::Application.routes.draw do
     post :preview, :on => :collection
     put :toggle_comments_closed
     put :toggle_sticky
+    get :new_from_home, :on => :collection
+    post :create_from_home, :on => :collection
   end
 
   resources :comments, :bookmarks, :upyun_images
