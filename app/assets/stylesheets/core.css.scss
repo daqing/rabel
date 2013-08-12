@@ -96,7 +96,6 @@ a.action_label:hover {
   }
 }
 
-img.external { width: 100%; height: auto; margin-bottom: 10px; }
 
 @media (max-width: 767px) {
   #wrap {
@@ -185,8 +184,10 @@ a.current_label {
 .sort_item:hover { cursor: pointer; }
 .sort_actions { margin-top: 10px; }
 
-
 img.external {
+  width: auto;
+  height: auto;
+  margin-bottom: 10px;
   max-width: 570px;
 }
 
