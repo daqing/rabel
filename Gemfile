@@ -39,7 +39,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.12.0'
-  # gem 'debugger'
+  gem 'debugger'
 end
 
 group :test do
@@ -49,6 +49,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara', '~> 2.0.1'
+  gem 'selenium-webdriver', '~> 2.37.0'
 end
 
 group :development do
