@@ -27,7 +27,7 @@ class Siteconf < RailsSettings::CachedSettings
     end
 
     def marketing_str
-      self.marketing.join(',')
+      self.marketing.join(',') rescue ''
     end
 
     def marketing_str=(str)
