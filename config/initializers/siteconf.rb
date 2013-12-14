@@ -12,7 +12,6 @@ Siteconf.defaults[:mobile_footer] = '&copy; 2012 Rabel'
 Siteconf.defaults[:custom_css] = '' # 全局自定义CSS
 Siteconf.defaults[:custom_js] = '' # 全局自定义JavaScript
 Siteconf.defaults[:custom_head_tags] = '' # 自定义Head标签
-Siteconf.defaults[:marketing] = ['Rails', 'PostgreSQL', 'BDD'] # 市场宣传关键字
 Siteconf.defaults[:pagination_topics] = "25"
 Siteconf.defaults[:pagination_comments] = "100"
 Siteconf.defaults[:nav_position] = 'bottom'

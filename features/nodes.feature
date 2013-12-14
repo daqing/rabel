@@ -1,5 +1,4 @@
 Feature: Nodes
-  @javascript
   Scenario: visit node page when signed out
     Given I am not authenticated
       And a node exists with name: 电影

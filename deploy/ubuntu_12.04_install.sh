@@ -11,6 +11,8 @@ fi
 MYSQL_PASSWD="$1"
 MAIL_ADDRESS="$2"
 
+RUBY_VERSION="2.0.0-p247"
+
 sudo apt-get update
 sudo apt-get install -y unzip curl aptitude vim debconf-utils
 
@@ -32,10 +34,10 @@ libmysqlclient-dev
 sudo apt-get install -y graphicsmagick-libmagick-dev-compat
 sudo apt-get install -y libmagickwand-dev
 
-# Install Ruby 1.9.3-p327
-~/.rvm/bin/rvm install 1.9.3-p327
+# Install Ruby
+~/.rvm/bin/rvm install $RUBY_VERSION
 echo "$source_rvm" | bash
-rvm use 1.9.3-p327 --default
+rvm use $RUBY_VERSION --default
 
 sudo aptitude install -y memcached imagemagick nodejs nginx
 
