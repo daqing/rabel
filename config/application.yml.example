@@ -1,18 +1,35 @@
-# required
+# 网站域名，比如 'www.apple.com' 或者 'twitter.com'
 RABEL_HOST_NAME: 'example.com'
+
+# 系统邮件的发件地址，比如 'no-replya@twitter.com'
 RABEL_SYSTEM_EMAIL: 'hello@example.com'
+
+# 使用 'rake secret' 命令来生成 secret token
 SECRET_TOKEN: ''
+
+# 请使用'网站名+ 随机数'替换 'example', 比如替换成 '_twitter_9527_session'
 SESSION_KEY: '_example_session'
 
-# memcache
+# 缓存配置，默认情况下不需要修改
 RABEL_MEMCACHED_SERVER: '127.0.0.1:11011'
 RABEL_MEMCACHED_USERNAME: ''
 RABEL_MEMCACHED_PASSWORD: ''
 RABEL_MEMCACHED_NAMESPACE: 'example'
 
-# upyun
+# 又拍云存储(www.upyun.com)配置
+
+# 修改为 'on'，开启图片上传功能
 RABEL_UPYUN_SWITCH: 'off'
+
+# 操作员名称
 RABEL_UPYUN_OP_NAME: 'example'
+
+# 操作员密码
 RABEL_UPYUN_OP_PASSWORD: 'example'
+
+# 空间名称
 RABEL_UPYUN_BUCKET: 'example'
+
+# 空间域名
 RABEL_UPYUN_BUCKET_DOMAIN: 'example.b0.upaiyun.com'
+
