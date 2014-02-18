@@ -21,6 +21,7 @@ zh:
       invalid_token: 'Invalid authentication token.'
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
+      not_found_in_database: '无效的用户名或密码'
       user:
         blocked: '管理员取消了您的登录权限。'
     sessions:
