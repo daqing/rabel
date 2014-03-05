@@ -203,5 +203,8 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+
+  # Secret key for devise
+  config.secret_key = Figaro.env.DEVISE_SECRET_KEY
 end
 

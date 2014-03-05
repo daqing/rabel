@@ -4,11 +4,18 @@ RABEL_HOST_NAME: 'example.com'
 # 系统邮件的发件地址，比如 'no-replya@twitter.com'
 RABEL_SYSTEM_EMAIL: 'hello@example.com'
 
-# 使用 'rake secret' 命令来生成 secret token
+# 推荐使用 'rake secret' 命令
+# 生成 secret token
 SECRET_TOKEN: ''
 
-# 请使用'网站名+ 随机数'替换 'example', 比如替换成 '_twitter_9527_session'
+# 请使用'网站名+ 随机数'替换 'example'
+# 比如替换成 '_twitter_9527_session'
 SESSION_KEY: '_example_session'
+
+# Devise secret key
+#
+# 推荐使用 'rake secret' 命令来生成
+DEVISE_SECRET_KEY: ''
 
 # 缓存配置，默认情况下不需要修改
 RABEL_MEMCACHED_SERVER: '127.0.0.1:11011'
