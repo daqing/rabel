@@ -6,16 +6,16 @@ RABEL_SYSTEM_EMAIL: 'hello@example.com'
 
 # 推荐使用 'rake secret' 命令
 # 生成 secret token
-SECRET_TOKEN: ''
+RABEL_SECRET_TOKEN: ''
 
 # 请使用'网站名+ 随机数'替换 'example'
 # 比如替换成 '_twitter_9527_session'
-SESSION_KEY: '_example_session'
+RABEL_SESSION_KEY: '_example_session'
 
 # Devise secret key
 #
 # 推荐使用 'rake secret' 命令来生成
-DEVISE_SECRET_KEY: ''
+RABEL_DEVISE_SECRET_KEY: ''
 
 # 缓存配置，默认情况下不需要修改
 RABEL_MEMCACHED_SERVER: '127.0.0.1:11011'

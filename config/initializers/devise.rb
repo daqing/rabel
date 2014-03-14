@@ -205,6 +205,6 @@ Devise.setup do |config|
   # end
 
   # Secret key for devise
-  config.secret_key = Figaro.env.DEVISE_SECRET_KEY
+  config.secret_key = Figaro.env.RABEL_DEVISE_SECRET_KEY
 end
 

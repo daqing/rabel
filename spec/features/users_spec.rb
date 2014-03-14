@@ -17,7 +17,7 @@ describe "Registration", :type => :feature do
     fill_in "user[password]", :with => '123456789001007'
     fill_in "user[password_confirmation]", :with => '123456789001007'
 
-    click_button '加入社区'
+    expect { click_button '加入社区' }.to change { User.count }.by(1)
     expect(current_url).to eq(root_url)
   end
 end
