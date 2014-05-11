@@ -9,8 +9,6 @@ describe Admin::SiteSettingsController do
     it "should show settings form" do
       get :show
       should respond_with(:success)
-      should assign_to(:settings)
-      should assign_to(:title)
     end
   end
 end

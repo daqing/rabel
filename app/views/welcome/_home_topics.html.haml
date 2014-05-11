@@ -1,11 +1,9 @@
 .box#topics_index
   .cell{:align => 'left'}
-    .fr
-      %span.fade{:style => 'font-size: 110%'}
-        = Siteconf.marketing.join('&nbsp;<span class="snow">&nbsp;•&nbsp;</span>&nbsp;').html_safe
-    %span.bigger= Siteconf.welcome_tip.html_safe
-    .sep10
-    = Siteconf.splash.html_safe
+    .pull-right
+      = link_to '创建新话题', new_from_home_topics_path, :class => 'btn btn-success btn-small btn-new-topic'
+    .welcome
+      = Siteconf.welcome_tip.html_safe
   - if @sticky_topics.any?
     - if Siteconf.sticky_topics_heading.present?
       #sticky_topics.cell.topics_heading= Siteconf.sticky_topics_heading
@@ -16,8 +14,8 @@
 
   = render @topics
   .inner
-    .fr= render 'shared/rss'
+    .pull-right= render 'shared/rss'
     &nbsp;
     - if Topic.cached_count > Siteconf::HOMEPAGE_TOPICS
       %span.chevron »
-      = link_to '更多新主题', topics_path + '?page=2'
+      = link_to '更多新主题', topics_path + '?page=2', :class => :rabel

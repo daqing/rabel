@@ -1,8 +1,8 @@
 /*
- *= require desktop
- *= require jquery.facebox
- *= require jquery_ui
- *= require shared
- *= require rabel
+ * = require_self
+ * = require bootstrap
+ * = require bootstrap-responsive
+ * = require jquery.facebox
+ * = require core
+ *
  */
-

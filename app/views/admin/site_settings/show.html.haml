@@ -2,183 +2,152 @@
   .cell
     = build_admin_navigation([@title])
   .inner
-    = form_for :site_settings, :url => admin_site_settings_path, :method => :put do |f|
-      %table
-        %tr
-          %td
-            = f.submit '保存', :class => 'super normal button'
-        %tr
-          %td
-            = label_tag 'settings[site_name]', '网站名称'
-            %small.smaller (必填)
-          %td
-            = text_field_tag 'settings[site_name]', @settings.site_name, :class => :sls
-            .sep10
+    = form_for :site_settings, :url => admin_site_settings_path, :method => :put, :html => {:class => 'form-horizontal'} do |f|
+      .control-group
+        = label_tag 'settings[site_name]', '网站名称', :class => 'control-label'
+        .controls
+          = text_field_tag 'settings[site_name]', @settings.site_name
+          %small.help-inline 必填
 
-        %tr
-          %td
-            = label_tag 'settings[welcome_tip]', '欢迎信息'
-            %small.smaller (必填)
-          %td
-            = text_field_tag 'settings[welcome_tip]', @settings.welcome_tip, :class => :sl
-            %small.smaller 支持HTML
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[short_intro]', '简短介绍'
-          %td
-            = text_field_tag 'settings[short_intro]', @settings.short_intro, :class => :sl
-            %small.smaller 网站简短介绍, 显示在右侧边栏
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[marketing_str]', '市场宣传关键字'
-          %td
-            = text_field_tag 'settings[marketing_str]', @settings.marketing_str, :class => :sl
-            %small.smaller 用英文逗号(,)隔开
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[ga_id]', 'Google Analytics ID'
-          %td
-            = text_field_tag 'settings[ga_id]', @settings.ga_id, :class => :sls
-            %small.smaller 例如: UA-12345678-01
-            .sep10
+      .control-group
+        = label_tag 'settings[welcome_tip]', '欢迎信息', :class => 'control-label'
+        .controls
+          = text_field_tag 'settings[welcome_tip]', @settings.welcome_tip, :class => :span4
+          %small.help-inline 支持 HTML
 
-        %tr
-          %td
-            = label_tag 'settings[default_search_engine]', '站内搜索引擎'
-          %td
-            = select_tag 'settings[default_search_engine]', options_for_select([['谷歌', 'google'], ['百度', 'baidu'], ['必应', 'bing']], @settings.default_search_engine)
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[show_captcha]', '注册验证码'
-          %td
+      .control-group
+        = label_tag 'settings[short_intro]', '简短介绍', :class => 'control-label'
+        .controls
+          = text_field_tag 'settings[short_intro]', @settings.short_intro, :class => :span4
+          %small.help-inline 网站简短介绍, 显示在右侧边栏
+
+      .control-group
+        = label_tag 'settings[marketing_str]', '市场宣传关键字', :class => 'control-label'
+        .controls
+          = text_field_tag 'settings[marketing_str]', @settings.marketing_str, :class => :span4
+          %small.help-inline 用英文逗号(,)隔开
+
+      .control-group
+        = label_tag 'settings[ga_id]', 'Google Analytics ID', :class => 'control-label'
+        .controls
+          = text_field_tag 'settings[ga_id]', @settings.ga_id, :class => :sls
+          %small.help-inline 例如: UA-12345678-01
+
+      .control-group
+        = label_tag 'settings[default_search_engine]', '站内搜索引擎', :class => 'control-label'
+        .controls
+          = select_tag 'settings[default_search_engine]', options_for_select([['谷歌', 'google'], ['百度', 'baidu'], ['必应', 'bing']], @settings.default_search_engine)
+
+      .control-group
+        = label_tag 'settings[show_captcha]', '注册验证码', :class => 'control-label'
+        .controls
+          %label.radio.inline
             = radio_button_tag 'settings[show_captcha]', 'on', @settings.show_captcha?
             开启
+          %label.radio.inline
             = radio_button_tag 'settings[show_captcha]', 'off', !@settings.show_captcha?
             关闭
-        %tr
-          %td
-            = label_tag 'settings[show_community_stats]', '社区运行状态'
-          %td
+
+      .control-group
+        = label_tag 'settings[show_community_stats]', '社区运行状态', :class => 'control-label'
+        .controls
+          %label.radio.inline
             = radio_button_tag 'settings[show_community_stats]', 'on', @settings.show_community_stats?
             显示
+          %label.radio.inline
             = radio_button_tag 'settings[show_community_stats]', 'off', !@settings.show_community_stats?
             隐藏
-        %tr
-          %td
-            = label_tag 'settings[allow_markdown_in_topics]', '话题允许 Markdown'
-          %td
+
+      .control-group
+        = label_tag 'settings[allow_markdown_in_topics]', '话题允许 Markdown', :class => 'control-label'
+        .controls
+          %label.radio.inline
             = radio_button_tag 'settings[allow_markdown_in_topics]', 'on', @settings.allow_markdown_in_topics?
             允许
+          %label.radio.inline
             = radio_button_tag 'settings[allow_markdown_in_topics]', 'off', !@settings.allow_markdown_in_topics?
             关闭
-        %tr
-          %td
-            = label_tag 'settings[allow_markdown_in_comments]', '回复允许 Markdown'
-          %td
+      .control-group
+        = label_tag 'settings[allow_markdown_in_comments]', '回复允许 Markdown', :class => 'control-label'
+        .controls
+          %label.radio.inline
             = radio_button_tag 'settings[allow_markdown_in_comments]', 'on', @settings.allow_markdown_in_comments?
             允许
+          %label.radio.inline
             = radio_button_tag 'settings[allow_markdown_in_comments]', 'off', !@settings.allow_markdown_in_comments?
             关闭
-        %tr
-          %td
-            = label_tag 'settings[allow_markdown_in_pages]', '页面允许 Markdown'
-          %td
+      .control-group
+        = label_tag 'settings[allow_markdown_in_pages]', '页面允许 Markdown', :class => 'control-label'
+        .controls
+          %label.radio.inline
             = radio_button_tag 'settings[allow_markdown_in_pages]', 'on', @settings.allow_markdown_in_pages?
             允许
+          %label.radio.inline
             = radio_button_tag 'settings[allow_markdown_in_pages]', 'off', !@settings.allow_markdown_in_pages?
             关闭
-        %tr
-          %td
-            = label_tag 'settings[custom_head_tags]', '自定义Head标签'
-          %td
-            = text_area_tag 'settings[custom_head_tags]', @settings.custom_head_tags, :class => :ml
-            %small.smaller 可以添加&lt;meta&gt;, &lt;script&gt;, &lt;style&gt;等头部标签
-            .sep10
+      .control-group
+        = label_tag 'settings[custom_head_tags]', '自定义Head标签', :class => 'control-label'
+        .controls
+          = text_area_tag 'settings[custom_head_tags]', @settings.custom_head_tags, :class => :span6, :rows => 5
+          %small.help-inline 可以添加&lt;meta&gt;, &lt;script&gt;, &lt;style&gt;等头部标签
+      .control-group
+        = label_tag 'settings[seo_description]', 'SEO 描述', :class => 'control-label'
+        .controls
+          = text_area_tag 'settings[seo_description]', @settings.seo_description, :class => :span6
+          %small.help-inline 用于HTML meta标签
+      .control-group
+        = label_tag 'settings[splash]', 'Hero Unit', :class => 'control-label'
+        .controls
+          = text_area_tag 'settings[splash]', @settings.splash, :class => :span6, :rows => 5
+          %small.help-inline 支持HTML
+      .control-group
+        = label_tag 'settings[global_sidebar_block]', '全局侧边栏', :class => 'control-label'
+        .controls
+          = text_area_tag 'settings[global_sidebar_block]', @settings.global_sidebar_block, :class => :span6, :rows => 5
+          %small.help-inline 支持HTML
+      .control-group
+        = label_tag 'settings[footer]', '页面底部 [普通版]', :class => 'control-label'
+        .controls
+          = text_area_tag 'settings[footer]', @settings.footer, :class => :span6, :rows => 5
+          %small.help-inline 支持HTML
+      .control-group
+        = label_tag 'settings[mobile_footer]', '页面底部 [移动版]', :class => 'control-label'
+        .controls
+          = text_area_tag 'settings[mobile_footer]', @settings.mobile_footer, :class => :span6, :rows => 5
+          %small.help-inline 支持HTML
+      .control-group
+        = label_tag 'settings[sticky_topics_heading]', '置顶话题提示', :class => 'control-label'
+        .controls
+          = text_field_tag 'settings[sticky_topics_heading]', @settings.sticky_topics_heading
+      .control-group
+        = label_tag 'settings[latest_topics_heading]', '最新话题提示', :class => 'control-label'
+        .controls
+          = text_field_tag 'settings[latest_topics_heading]', @settings.latest_topics_heading
+      .control-group
+        = label_tag 'settings[reward_title]', '奖励名称', :class => 'control-label'
+        .controls
+          = text_field_tag 'settings[reward_title]', @settings.reward_title
+          %small.help-inline 例如: 银币，金币，积分，优惠券，代金券，蓝钻, Q币等
+      .control-group
+        = label_tag 'settings[topic_editable_period_str]', '话题编辑限制', :class => 'control-label'
+        .controls
+          .input-append
+            = text_field_tag 'settings[topic_editable_period_str]', @settings.topic_editable_period_str, :class => 'input-mini'
+            %span.add-on 分钟
+          %small.help-inline 允许用户修改话题的时间
+      .control-group
+        = label_tag 'settings[pagination_topics]', '节点话题', :class => 'control-label'
+        .controls
+          .input-append
+            = text_field_tag 'settings[pagination_topics]', @settings.pagination_topics, :class => 'input-mini'
+            %span.add-on / 页
+      .control-group
+        = label_tag 'settings[pagination_comments]', '回复', :class => 'control-label'
+        .controls
+          .input-append
+            = text_field_tag 'settings[pagination_comments]', @settings.pagination_comments, :class => 'input-mini'
+            %span.add-on / 页
 
-        %tr
-          %td
-            = label_tag 'settings[seo_description]', 'SEO 描述'
-          %td
-            = text_area_tag 'settings[seo_description]', @settings.seo_description, :class => :ml
-            %small.smaller 用于HTML meta标签
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[splash]', 'Hero Unit'
-          %td
-            = text_area_tag 'settings[splash]', @settings.splash, :class => :ml
-            %small.smaller 支持HTML
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[global_sidebar_block]', '全局侧边栏'
-          %td
-            = text_area_tag 'settings[global_sidebar_block]', @settings.global_sidebar_block, :class => :ml
-            %small.smaller 支持HTML
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[footer]', '页面底部 [普通版]'
-          %td
-            = text_area_tag 'settings[footer]', @settings.footer, :class => :ml
-            %small.smaller 支持HTML
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[mobile_footer]', '页面底部 [移动版]'
-          %td
-            = text_area_tag 'settings[mobile_footer]', @settings.mobile_footer, :class => :sl
-            %small.smaller 支持HTML
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[sticky_topics_heading]', '置顶话题提示'
-          %td
-            = text_field_tag 'settings[sticky_topics_heading]', @settings.sticky_topics_heading, :class => :sl
-            .sep10
+      .form-actions
+        = f.submit '保存', :class => 'btn btn-small btn-primary'
 
-        %tr
-          %td
-            = label_tag 'settings[latest_topics_heading]', '最新话题提示'
-          %td
-            = text_field_tag 'settings[latest_topics_heading]', @settings.latest_topics_heading, :class => :sl
-            .sep10
-
-        %tr
-          %td
-            = label_tag 'settings[reward_title]', '奖励名称'
-          %td
-            = text_field_tag 'settings[reward_title]', @settings.reward_title, :class => :sls
-            %small.smaller 例如: 银币，金币，积分，优惠券，代金券，蓝钻, Q币等
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[topic_editable_period_str]', '话题编辑限制'
-          %td
-            = text_field_tag 'settings[topic_editable_period_str]', @settings.topic_editable_period_str, :class => 'sls quantity'
-            分钟
-            %small.smaller 允许用户修改话题的时间
-            .sep10
-        %tr
-          %td
-            = label_tag 'settings[pagination_topics]', '节点话题'
-          %td
-            = text_field_tag 'settings[pagination_topics]', @settings.pagination_topics, :class => 'sls quantity'
-            \/页
-            .sep10
-
-        %tr
-          %td
-            = label_tag 'settings[pagination_comments]', '回复'
-          %td
-            = text_field_tag 'settings[pagination_comments]', @settings.pagination_comments, :class => 'sls quantity'
-            \/页
-            .sep10
-        %tr
-          %td
-          %td
-            = f.submit '保存', :class => 'super normal button'

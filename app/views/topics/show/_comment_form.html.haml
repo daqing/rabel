@@ -1,15 +1,15 @@
 - if user_signed_in?
-  .sep20
   = form_for [@topic, @new_comment] do |f|
     .box
-      .cell
-        .fr.fade
+      .box-header
+        .fr
           ⬆
           = link_to '回到顶部', 'javascript:void(0);', :class => 'dark back_to_top'
-        .fade 现在就添加一条回复
+        现在就添加一条回复
       .inner
+        = render 'shared/fileupload_widget', :textarea_selector => "textarea#comment_content"
         = render 'shared/preview_widget', :ref => :comment_content, :type => :comment
-        = f.text_area :content, :class => :mll
+        = f.text_area :content, :rows => 5, :style => 'width: 98%;'
         .sep10
-        = f.submit '发送', :class => 'super normal button', :data => {:disable_with => t('tips.submitting')}
-        %small.fade 支持 Ctrl + Enter 快捷键
+        = f.submit '发送', :class => 'btn btn-small', :data => {:disable_with => t('tips.submitting')}
+        %small.gray 支持 Ctrl + Enter 快捷键

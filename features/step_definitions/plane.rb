@@ -2,7 +2,6 @@
 Then /^it should display the plane creation form$/ do
   page.should have_css('form.new_plane')
   steps %Q(And I should see 名称)
-  steps %Q(And I should see 必填)
   steps %Q(And it should display button 保存)
 end
 

@@ -2,6 +2,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   include ApplicationHelper
+  include BootstrapHelper
+
+  layout :find_layout
 
   rescue_from CanCan::AccessDenied do |exception|
     exception.default_message = t('tips.no_permission')
@@ -66,7 +69,7 @@ class ApplicationController < ActionController::Base
     initialize_breadcrumbs_and_title
 
     @seo_description = ''
-    ActionMailer::Base.default_url_options[:host] = Settings.canonical_host
+    ActionMailer::Base.default_url_options[:host] = Figaro.env.RABEL_HOST_NAME
   end
 
   def initialize_breadcrumbs_and_title
@@ -87,6 +90,14 @@ class ApplicationController < ActionController::Base
       goodbye_path
     end
 
+    def find_layout
+      if mobile_device?
+        'application'
+      else
+        'app'
+      end
+    end
+
     def count_unread_notification
       unless request.format.to_sym == :js or params[:controller] == 'notifications'
         @unread_count = current_user.try(:unread_notification_count) || 0
@@ -100,19 +111,6 @@ class ApplicationController < ActionController::Base
     def detect_mobile_client
       ua = request.env['HTTP_USER_AGENT']
       session[:posting_device] = ua[/(iPod|iPad|iPhone|Android)/i] if ua.present?
-
-      if [:html, :mobile].include?(request.format.try(:to_sym)) and session[:format]
-        # Format has been forced by Sessions#change_format
-        request.format = session[:format].to_sym
-      else
-        # We should autodetect mobile clients and redirect if they ask for html
-        mobile_regex = /(iPod|iPhone|Android|Opera mini|Opera mobi|Blackberry|Palm|UCWEB|Windows CE|PSP|Blazer|iemobile|webOS)/i
-        mobile =   ua && ua[mobile_regex]
-        mobile ||= request.env["HTTP_PROFILE"] || request.env["HTTP_X_WAP_PROFILE"]
-        if mobile and request.format == :html
-          request.format = :mobile
-        end
-      end
     end
 
     def store_location

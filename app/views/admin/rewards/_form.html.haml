@@ -1,5 +1,5 @@
-= form_for [:admin, @user, @reward], :remote => true do |f|
-  %h3
+= simple_form_for [:admin, @user, @reward], :remote => true do |f|
+  %legend
     - if @reward_type == Reward::TYPE_GRANT
       奖励给
       = @user.nickname
@@ -8,19 +8,18 @@
       = @user.nickname
       帐户中扣除
 
-  = f.text_field :amount_str, :class => 'sls quantity', :autofocus => true, :placeholder => '必填'
-  = Siteconf.reward_title
-  - if @reward_type == Reward::TYPE_REVOKE
-    %small
-      (可用余额:
-      %span.red= @user.reward
-      )
-  .sep3
-  = f.label :reason, '理由'
-  = f.text_area :reason, :class => :ml, :placeholder => '必填'
-  .sep3
+  .control-group
+    = f.label :amount_str, Siteconf.reward_title, :class => 'control-label'
+    .controls
+      = f.text_field :amount_str, :autofocus => true, :class => 'input-small'
+      - if @reward_type == Reward::TYPE_REVOKE
+        %span.gray 可用余额
+        .label.label-info= @user.reward
+  = f.input :reason, :label => '理由', :input_html => {:placeholder => '必填', :rows => 2, :class => :span4}
   = f.hidden_field :reward_type
   - if @reward_type == 'grant'
-    = f.submit '发放奖励', :class => 'super normal button'
+    - @button_name = '发放奖励'
   - else
-    = f.submit "扣除#{Siteconf.reward_title}", :class => 'super normal button'
+    - @button_name = "扣除#{Siteconf.reward_title}"
+  .form-actions
+    = f.submit @button_name, :class => 'btn btn-small btn-primary'

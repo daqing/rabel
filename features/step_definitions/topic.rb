@@ -1,15 +1,15 @@
 # encoding: utf-8
 
 Then /^it should display a topic creation form$/ do
-  page.should have_css('form.new_topic')
-  page.should have_no_css('input.sll')
-  page.should have_css('textarea.mll')
+  page.should have_css('form.form-vertical')
+  page.should have_css('input#topic_title')
+  page.should have_css('textarea#topic_content')
 end
 
 Then /^it should display a topic edit form$/ do
-  page.should have_css('form.edit_topic')
-  page.should have_no_css('input.sll')
-  page.should have_css('textarea.mll')
+  page.should have_css('form.form-vertical')
+  page.should have_css('input#topic_title')
+  page.should have_css('textarea#topic_content')
 end
 
 Then /^it should display a comment form$/ do
@@ -30,17 +30,28 @@ Given /^the topic has comments of (\d+) pages \((\d+) per page\)$/ do |pages, pe
   end
 end
 
-Then /^it should display the nagination links$/ do
+Then /^it should display the pagination links$/ do
   within(".pagination") do
-    page.should have_css('.k_page')
+    page.should have_css('.first')
+    page.should have_css('.active')
+  end
+end
+
+Then /^it should display the mobile pagination links$/ do
+  within(".pagination") do
     page.should have_css('.current')
+    page.should have_css('.k_page')
   end
 end
 
 Then /^the current page is the last page$/ do
+  last_child = find(".pagination .active span")
+  last_child.tag_name.should == 'span'
+end
+
+Then /^the current mobile page is the last page$/ do
   last_child = find(".pagination .current")
   last_child.tag_name.should == 'span'
-  last_child[:class].should have_text('current')
 end
 
 def str_to_num(str)
@@ -61,6 +72,10 @@ When /^I click the (.*) page$/ do |page|
 end
 
 Then /^the current page should be the (.*) page$/ do |page|
+  find(".pagination .active span").text.should == str_to_num(page).to_s
+end
+
+Then /^the current mobile page should be the (.*) page$/ do |page|
   find(".pagination .current").text.should == str_to_num(page).to_s
 end
 

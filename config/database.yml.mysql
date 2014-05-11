@@ -1,5 +1,5 @@
 # MySQL.  Versions 4.1 and 5.0 are recommended.
-# 
+#
 # Install the MYSQL driver
 #   gem install mysql2
 #
@@ -16,6 +16,8 @@ default: &default
   username: root
   password:
   socket: /tmp/mysql.sock
+  # host: 127.0.0.1
+  # port: 3306
 
 development:
   <<: *default

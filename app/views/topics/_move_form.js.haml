@@ -3,4 +3,4 @@
   %br
   = select_tag "new_node_id", option_groups_from_collection_for_select(Plane.default_order.all, :nodes, :name, :id, :name, f.object.node.id)
   %br
-  = f.submit '开始移动', :class => 'super normal button'
+  = f.submit '开始移动', :class => 'btn btn-small'

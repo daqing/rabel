@@ -11,17 +11,17 @@ module Admin::BaseHelper
   end
 
   def admin_create_button(text, resource, options={})
-    default_option = {:class => 'super normal button'}
+    default_option = {:class => 'btn btn-small'}
     link_to text, new_polymorphic_path(prepare_resource(resource)), default_option.merge(options)
   end
 
   def admin_edit_button(text, resource, options={})
-    default_option = {:class => 'op admin_op'}
+    default_option = {:class => 'btn btn-small'}
     link_to text, edit_polymorphic_path(prepare_resource(resource)), default_option.merge(options)
   end
 
   def admin_delete_button(resource, options={})
-    default_option = {:class => 'op admin_op op_danger', :method => :delete, :data => {:confirm => '真的要删除吗?'}}
+    default_option = {:class => 'btn btn-small btn-danger', :method => :delete, :data => {:confirm => '真的要删除吗?'}}
     link_to '删除', prepare_resource(resource), default_option.merge(options)
   end
 
@@ -38,7 +38,7 @@ module Admin::BaseHelper
           ['讨论话题', 'topics', admin_topics_path],
           ['页面', 'pages', admin_pages_path],
           ['广告位', 'ads', admin_advertisements_path],
-          ['云硬盘', 'cloud', admin_cloud_files_path],
+          ['文件上传', 'cloud', admin_cloud_files_path],
           ['奖励记录', 'reward_history', admin_rewards_path],
         ]
       }

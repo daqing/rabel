@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+    = render 'shared/meta'
+    = stylesheet_link_tag  'application', :media => 'all'
+    = yield :head
+    - if Siteconf.theme != 'default'
+      = stylesheet_link_tag "#{Siteconf.theme}/i_theme"
+    - if Siteconf.custom_css.present?
+      style type='text/css' = Siteconf.custom_css.html_safe
+    = javascript_include_tag 'application'
+    link rel='apple-touch-icon' href='/apple-touch-icon.png'
+
+    = yield :final_head
+  body#rabel
+    .navbar.navbar-static-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar.collapsed(
+           data-toggle='collapse'
+           data-target='.nav-collapse')
+           span.icon-bar
+           span.icon-bar
+           span.icon-bar
+          - if Siteconf.custom_logo.present?
+            = link_to root_path, :class => :custom_brand do
+              = image_tag Siteconf.custom_logo, :class => :custom_logo, :alt => Siteconf.site_name
+          - else
+            = link_to Siteconf.site_name, root_path, class: :brand
+            .navbar-search.pull-left
+              = form_tag search_index_path, :method => :get do
+                .i.icon-search
+                = text_field_tag :query, params[:query]
+            ul.nav.pull-right
+              = nav_item(t(:homepage), root_path)
+              - if user_signed_in?
+                li= nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
+                li= nav_item '个人设置', settings_path
+                - if current_user.can_manage_site?
+                  li= nav_item t(:dashboard), admin_root_path
+                li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+              - else
+                = nav_item(t(:sign_up), new_user_registration_path)
+                = nav_item(t(:sign_in), new_user_session_path)
+
+    #wrap
+      .container#page-main
+        .row
+          = content_for?(:content) ? yield(:content) : yield
+          = yield :sidebar
+    = render 'shared/footer'
+

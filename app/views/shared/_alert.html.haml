@@ -1,0 +1,6 @@
+- if flash[:notice].present?
+  %p.alert.alert-info= notice
+- if flash[:success].present?
+  %p.alert.alert-success= flash[:success]
+- if flash[:alert].present?
+  %p.alert.alert-error= flash[:alert]

@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = Settings.system_email
+  config.mailer_sender = Figaro.env.RABEL_SYSTEM_EMAIL
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -203,5 +203,8 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+
+  # Secret key for devise
+  config.secret_key = Figaro.env.RABEL_DEVISE_SECRET_KEY
 end
 

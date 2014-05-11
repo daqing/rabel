@@ -27,24 +27,15 @@ Given /^the node has topics of (\d+) pages$/ do |page_count|
 end
 
 Then /^it should display one page topics$/ do
-  page.should have_css("td.avatar", :count => Siteconf.pagination_topics.to_i)
+  page.should have_css(".avatar", :count => Siteconf.pagination_topics.to_i)
 end
 
 Given /^a node exists with introduction: (.*)$/ do |intro|
   FactoryGirl.create(:node, :introduction => intro)
 end
 
-Then /^it should display the node creation form$/ do
-  page.should have_css('form.new_node')
-  steps %Q(And I should see 英文标识)
-  steps %Q(And I should see 名称)
-  steps %Q(And I should see 一句话简介)
-  steps %Q(And I should see 自定义内容)
-  steps %Q(And it should display button 保存)
-end
-
-Then /^it should display the node editing form$/ do
-  page.should have_css('form.edit_node')
+Then /^it should display the node form$/ do
+  page.should have_css('form.node')
 end
 
 When /^I try to provide node info with name: (.*)$/ do |name|

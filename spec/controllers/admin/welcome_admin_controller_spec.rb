@@ -32,7 +32,6 @@ describe Admin::WelcomeAdminController do
       it "shows admin dashboard" do
         get :index
         should respond_with(:success)
-        should assign_to(:title)
       end
     end
   end

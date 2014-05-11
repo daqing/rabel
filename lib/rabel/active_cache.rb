@@ -29,7 +29,7 @@ module Rabel
       raise ArgumentError, "Invalid order type: #{order_type}" unless Rabel::Model::ORDER_SPEC.include?(order_type)
 
       ts = send(assoc).select("updated_at").order("updated_at DESC").first.try(:updated_at)
-      return Rabel::Model::EMPTY_DATASET unless ts.present?
+      return Kaminari.paginate_array(Rabel::Model::EMPTY_DATASET).page(0) unless ts.present?
 
       total = send(assoc).count
       cache_keys = [
@@ -45,8 +45,7 @@ module Rabel
         send(assoc).order("#{order_column} #{order_type}").page(current_page).per(per_page).all
       end
 
-      result.pagination_ready(current_page, (total * 1.0 / per_page).ceil, per_page)
-      result
+      Kaminari.paginate_array(result, :total_count => total).page(current_page).per(per_page)
     end
 
     def cached_assoc_object(assoc)
@@ -88,7 +87,7 @@ module Rabel
       def cached_pagination(page, per_page, order_column, order_type=Rabel::Model::ORDER_DESC)
         raise ArgumentError, "Invalid order type: #{order_type}" unless Rabel::Model::ORDER_SPEC.include?(order_type)
         ts = select(order_column).order("#{order_column} DESC").first.try(order_column.to_sym)
-        return Rabel::Model::EMPTY_DATASET unless ts.present?
+        return Kaminari.paginate_array(Rabel::Model::EMPTY_DATASET).page(0) unless ts.present?
 
         total = self.count
         cache_keys = [
@@ -98,9 +97,11 @@ module Rabel
           "#{total}-#{ts}",
         ]
 
-        Rails.cache.fetch(cache_keys.join('/')) do
+        result = Rails.cache.fetch(cache_keys.join('/')) do
           order("#{order_column} #{order_type}").page(page).per(per_page).all
         end
+
+        Kaminari.paginate_array(result, :total_count => total).page(page).per(per_page)
       end
 
       def cached_count

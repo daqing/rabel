@@ -1,7 +1,7 @@
 # encoding: utf-8
 class TopicsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :find_node, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky]
+  before_filter :find_node, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky, :new_from_home, :create_from_home]
   before_filter :find_topic_and_auth, :only => [:edit_title,:update_title,
     :edit, :update, :move, :destroy]
   before_filter :only => [:toggle_comments_closed, :toggle_sticky] do |c|
@@ -20,11 +20,7 @@ class TopicsController < ApplicationController
           current_page = 1
         end
 
-
-
-        total_pages = (Topic.cached_count * 1.0 / per_page).ceil
         @topics = Topic.cached_pagination(current_page, per_page, 'updated_at')
-        @topics.pagination_ready(current_page, total_pages, per_page)
 
         @canonical_path = topics_path
         @canonical_path += "?page=#{current_page}" if current_page > 1
@@ -65,6 +61,9 @@ class TopicsController < ApplicationController
     @canonical_path += "?p=#{@current_page}" if @total_pages > 1
     @seo_description = "#{@node.name} - #{@topic.user.nickname} - #{@topic.title}"
 
+    @prev_topic = @topic.prev_topic(@node)
+    @next_topic = @topic.next_topic(@node)
+
     respond_to do |format|
       format.html
       format.mobile
@@ -80,6 +79,10 @@ class TopicsController < ApplicationController
     end
   end
 
+  def new_from_home
+    @topic = Topic.new
+  end
+
   def create
     @topic = @node.topics.new(params[:topic], :as => current_user.permission_role)
     @topic.user = current_user
@@ -87,6 +90,19 @@ class TopicsController < ApplicationController
       redirect_to t_path(@topic.id)
     else
       render :new
+    end
+  end
+
+  def create_from_home
+    node_id = params[:topic].delete(:node_id)
+    @topic = Topic.new(params[:topic], :as => current_user.permission_role)
+    @topic.node = Node.find(node_id) if node_id.present?
+    @topic.user = current_user
+
+    if @topic.save
+      redirect_to t_path(@topic.id)
+    else
+      render :new_from_home
     end
   end
 
@@ -152,8 +168,14 @@ class TopicsController < ApplicationController
   end
 
   def preview
-    type = ['topic', 'comment', 'page'].delete params[:type]
-    render :text => send("format_#{type}".to_sym, params[:content]) if type.present?
+    @type = ['topic', 'comment', 'page'].delete params[:type]
+    respond_to do |f|
+      if @type.present?
+        f.text { @content = params[:content] }
+      else
+        render :text => :error, :status => :unprocessable_entity
+      end
+    end
   end
 
   def toggle_comments_closed

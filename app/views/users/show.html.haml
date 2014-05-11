@@ -1,17 +1,12 @@
-- content_for :template_js do
-  $(document).bind('keydown', 'f', function() { $("a.follow").click() });
-  $(document).bind('keydown', 'shift+f', function() { $("a.unfollow").click() });
-
 - if @user.follower_count > 0
   - content_for :rightbar do
     .box
-      .cell
+      .box-header
         = "关注#{@nickname_tip}的人"
-        %span.fade= "(#{@user.follower_count})"
+        %span.gray= "(#{@user.follower_count})"
       .inner
         - @user.recent_followers.each do |follower|
           = user_profile_avatar_link(follower, :mini)
-    .sep20
 
 .box
   %div{:class => (@introduction.length > 0) ? 'cell' : 'inner'}
@@ -24,19 +19,19 @@
           .fr
             .sep3
             - if @user.reward > 0
-              %span.fade
+              %span.gray
                 %strong#reward_balance= @user.reward
                 = Siteconf.reward_title
             - if user_signed_in? and @user != current_user
               - if current_user.following?(@user)
-                = link_to '取消特别关注', unfollow_user_path(@user.nickname), :method => :post, :class => 'super inverse button unfollow'
+                = link_to '取消特别关注', unfollow_user_path(@user.nickname), :method => :post, :class => 'btn btn-small btn-warning unfollow'
               - else
-                = link_to '加入特别关注', follow_user_path(@user.nickname), :method => :post, :class => 'super special button follow'
+                = link_to '加入特别关注', follow_user_path(@user.nickname), :method => :post, :class => 'btn btn-small btn-inverse follow'
           %h2{:style => 'padding: 0px; margin: 0px; font-size: 22px; line-height: 22px;'}
             = @user.nickname
           - if @signature.length > 0
             .sep5
-            %span.fade.bigger= @signature
+            %span.gray.bigger= @signature
           .sep5
           %span.snow
             = Siteconf.site_name
@@ -52,61 +47,61 @@
                   %span{:style => 'line-height: 16px;'}
                     = image_tag "icon/#{weibo_icon_for(@weibo_link)}.png", :align => :absmiddle
                     &nbsp;
-                    = link_to @weibo_link, @weibo_link, :target => :_blank, :rel => 'nofollow external'
+                    = link_to @weibo_link, @weibo_link, :target => :_blank, :rel => 'nofollow external', :class => :rabel
             %tr
               %td{:width => '50%'}
                 - if @personal_website.length > 0
                   %span{:style => 'line-height: 16px;'}
                     = image_tag 'icon/mobileme.png', :align => :absmiddle
                     &nbsp;
-                    = link_to @personal_website, @personal_website, :target => '_blank', :rel => 'nofollow external'
+                    = link_to @personal_website, @personal_website, :target => '_blank', :rel => 'nofollow external', :class => :rabel
             %tr
               %td{:width => '50%'}
                 - if @location.length > 0
                   %span{:style => 'line-height: 16px;'}
                     = image_tag 'icon/location.png', :align => :absmiddle
                     &nbsp;
-                    = link_to @location, "http://www.google.com/maps?q=#{@location}", :target => '_blank', :rel => 'nofollow external'
+                    = link_to @location, "http://www.google.com/maps?q=#{@location}", :target => '_blank', :rel => 'nofollow external', :class => :rabel
 
   - if @introduction.length > 0
     .inner= parse_markdown @introduction
 
   - if user_signed_in? and current_user.can_manage_site?
-    .inner
-      %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
-        %tr
-          %td{:width => 73, :valign => :top, :align => :center}
-          %td{:width => :auto}
-            = link_to "奖励#{Siteconf.reward_title}", new_admin_user_reward_path(@user), :class => 'op admin_op', :remote => true
-            = link_to "扣除#{Siteconf.reward_title}", new_admin_user_reward_path(@user) + "?reward_type=#{Reward::TYPE_REVOKE}", :class => 'op admin_op', :remote => true
-            = link_to '管理此用户', admin_users_path + "?nickname=#{url_encode(@user.nickname)}", :class => 'op admin_op'
+    - content_for :rightbar do
+      .box
+        .box-header
+          管理
+        .inner
+          .btn-group
+            = link_to "奖励#{Siteconf.reward_title}", new_admin_user_reward_path(@user), :class => 'btn btn-mini', :remote => true
+            = link_to "扣除#{Siteconf.reward_title}", new_admin_user_reward_path(@user) + "?reward_type=#{Reward::TYPE_REVOKE}", :class => 'btn btn-mini', :remote => true
+            = link_to '管理此用户', admin_users_path + "?nickname=#{url_encode(@user.nickname)}", :class => 'btn btn-mini'
 
-.sep20
 .box
-  .cell
-    %span.fade 最近创建主题
-  .cell
-    = render :partial => 'topics/table_view', :locals => { :topics => @user.latest_created_topics }
+  .box-header
+    = @user.nickname
+    最近创建的话题
+  = render :partial => 'topics/profile_topic', :collection => @user.latest_created_topics, :as => :topic, :locals => {:topic_user => @user}
   - if @user.topics.any?
     .inner
       %span.chevron »
-      = link_to "#{@user.nickname} 创建的更多主题", member_topics_path(@user.nickname)
+      %small= link_to "#{@user.nickname} 创建的更多主题", member_topics_path(@user.nickname), :class => :rabel
 
-.sep20
 .box
-  .cell
-    %span.fade 最近参与主题
-  .inner
-    = render :partial => 'topics/table_view', :locals => { :topics => @user.latest_replied_topics }
+  .box-header
+    = @user.nickname
+    最近的回复
+  = render :partial => 'comments/profile_comment', :collection => @user.latest_comments, :as => :comment
 
 - if user_signed_in? and current_user.can_manage_site? and (not @user.root?) and @user != current_user
-  .sep20
-  .box
-    .cell
-      %a{:name => :spam}
-      %strong.danger SPAM 处理
-    .inner
-      %p 如果该用户违反了社区行为准则，您可以删除此会员。
-      %p 与该会员相关的所有信息，也会一并删除。
-    .inner
-      = link_to '删除此会员', admin_user_path(@user), :method => :delete, :data => {:confirm => t('delete_confirm')}, :class => 'super danger button'
+  - content_for :rightbar do
+    .box
+      .box-header
+        %a{:name => :spam}
+        SPAM 处理
+      .inner
+        %p 如果该用户违反了社区行为准则，您可以删除此会员。
+        %p 与该会员相关的所有信息，也会一并删除。
+      .inner
+        = link_to '删除此会员', admin_user_path(@user), :method => :delete, :data => {:confirm => t('delete_confirm')}, :class => 'btn btn-small btn-danger'
+

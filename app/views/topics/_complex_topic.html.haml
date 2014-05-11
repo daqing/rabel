@@ -1,28 +1,24 @@
 - comments_count = topic.comments_count
 - last_replied_by = topic.last_replied_by
 .cell.topic{:class => topic_user.can_manage_site? ? 'admin' : ''}
-  %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
-    %tr
-      %td{:valign => :top, :class => :avatar}
-        = user_profile_avatar_link(topic_user, :medium)
-      %td{:valign => :top, :style => 'padding-left: 12px'}
-        - if comments_count > 0
-          .fr
-            = link_to comments_count, t_path(topic.id), :class => :count
-        .sep3
-        %span.bigger{:style => 'font-size: 16px; line-height: 130%'}
-          = link_to topic.title, t_path(topic.id), :class => :topic
-        .sep5
-        %span.created
-          %strong= link_to topic_node.name, go_path(topic_node.key), :class => :node
-          &nbsp;&nbsp;•&nbsp;&nbsp;
-          %strong= user_profile_link(topic_user, :class => :dark)
-          - if comments_count > 0
-            &nbsp;&nbsp;•&nbsp;&nbsp;
-            = time_ago_in_words(topic.last_replied_at)
-            &nbsp;&nbsp;•&nbsp;&nbsp;
-            最后回复来自
-            = nickname_profile_link(last_replied_by)
-          - else
-            &nbsp;&nbsp;•&nbsp;&nbsp;
-            = time_ago_in_words(topic.created_at)
+  .avatar.pull-left
+    = user_profile_avatar_link(topic_user, :medium)
+  .item_title
+    - if comments_count > 0
+      .pull-right
+        .badge.badge-info= comments_count
+    %h2.topic_title
+      = link_to topic.title, t_path(topic.id), :class => 'rabel topic'
+    .topic-meta
+      = link_to topic_node.name, go_path(topic_node.key), :class => :node
+      %span.muted •
+      = user_profile_link(topic_user, :class => :dark)
+      %span.muted •
+      - if comments_count > 0
+        = time_ago_in_words(topic.last_replied_at)
+        %span.muted •
+        最后回复来自
+        = nickname_profile_link(last_replied_by)
+      - else
+        = time_ago_in_words(topic.created_at)
+

@@ -20,12 +20,13 @@ jQuery ($) ->
   .mouseleave ->
     $(this).css('background', '')
   $("textarea").elastic()
-  $("#Search input").keyup (ev) ->
-    if ev.which == 13
-      query = $(this).val()
+  $("form.navbar-search").submit () ->
+      search_input = $("#q");
+      query = search_input.val()
       return if query.length == 0
-      domain = $(this).data('domain')
-      window.open "#{window.rabel.search_engine_url}site:#{domain}%20#{query}"
+      domain = search_input.data('domain')
+      window.open window.rabel.search_engine_url + "site:#{domain}%20#{query}"
+      false
 
   focus_comment_box = ->
     $("#comment_content").focus()
@@ -41,7 +42,7 @@ jQuery ($) ->
       new_content = mention + ' '
     focus_comment_box().val(new_content)
   $(".jump_to_comment").click ->
-    $.smoothScroll({speed: 700, scrollTarget: '.reply_content:last'})
+    $.smoothScroll({speed: 800, scrollTarget: '#comment_content'})
     focus_comment_box()
   $(".back_to_top").click ->
     $.smoothScroll({speed: 700, scrollTarget: '#Top'})
@@ -54,14 +55,14 @@ jQuery ($) ->
       return
 
     type = $(this).data('type')
-    $.post("/topics/preview", {content: preview_content, type: type}, (data) ->
+    $.post("/topics/preview.text", {content: preview_content, type: type}, (data) ->
       ref_obj.hide()
       $("#preview").html(data).show()
       $("#preview").css('border', '1px dotted #ccc')
       $("#preview").css('background', 'lightyellow')
       $("#preview").css('padding', '10px')
-      $("a.preview").hide()
-      $(".cancel_preview").show()
+      $("a.preview").addClass('current_label')
+      $(".cancel_preview").removeClass('current_label')
     )
   $("a.cancel_preview").click ->
     content_id = $(this).data('ref')
@@ -69,14 +70,11 @@ jQuery ($) ->
     $("#preview").hide()
     ref_obj.show()
     ref_obj.focus()
-    $("a.preview").show()
-    $(this).hide()
+    $(this).addClass('current_label')
+    $("a.preview").removeClass('current_label')
 
   $(".track_event").click ->
     window.rabel.trackEvent($(this).data('category'), $(this).data('action'), $(this).data('label'))
-
-  $.datepicker.setDefaults($.datepicker.regional['zh-CN'])
-  $(".datepicker").datepicker({showButtonPanel: true})
 
   $(".hoverable").mouseenter ->
     $(this).find('.hover_action').fadeIn()

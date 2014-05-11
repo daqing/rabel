@@ -11,7 +11,7 @@ Feature: Homepage
       And I am on the home page
       Then I should see devin
         And I should see 设置
-        And I should see 登出
+        And I should see 退出
         And it should not display link 注册
         And I should not see 登入
 
@@ -34,10 +34,13 @@ Feature: Homepage
       And I am on the home page
       Then 3 page nav links shold be shown
 
+  Scenario: show ad on homepage
+    Given an advertisement exists with title: Rabel is cool
+      And I am on the home page
+      Then I should see Rabel is cool
+
   @javascript
   Scenario: search
     Given I am on the home page
       Then it should display the search form
-      When I search for rails
-        Then it will use configured search engine
 

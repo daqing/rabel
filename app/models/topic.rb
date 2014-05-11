@@ -2,6 +2,10 @@ class Topic < ActiveRecord::Base
   include Notifiable
   include Rabel::ActiveCache
 
+  searchable do
+    text :title,:content
+  end
+  
   DEFAULT_HIT = 0
   default_value_for :hit, DEFAULT_HIT
   default_value_for :content, ''
@@ -89,6 +93,14 @@ class Topic < ActiveRecord::Base
     mentioned_names = self.mention_check_text.scan(Notifiable::MENTION_REGEXP).collect {|matched| matched.first}.uniq
     mentioned_names.delete(self.user.nickname)
     mentioned_names.map { |name| User.find_by_nickname(name) }.compact
+  end
+
+  def prev_topic(node)
+    node.topics.where(['id < ?', self.id]).order('created_at DESC').first
+  end
+
+  def next_topic(node)
+    node.topics.where(['id > ?', self.id]).order('created_at ASC').first
   end
 
   private

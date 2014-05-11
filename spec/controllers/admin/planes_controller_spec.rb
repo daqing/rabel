@@ -12,14 +12,11 @@ describe Admin::PlanesController do
     it "should display all planes and nodes" do
       get :index
       should respond_with(:success)
-      should assign_to(:planes)
-      should assign_to(:title)
     end
 
     it "should show plane creation form via ajax" do
       get :new, :format => :js
       should respond_with(:success)
-      should assign_to(:plane)
     end
 
     it "should create planes via ajax" do
@@ -28,20 +25,17 @@ describe Admin::PlanesController do
       }.to change{Plane.count}.by(1)
 
       should respond_with(:success)
-      should assign_to(:plane)
     end
 
     it "should show plane editing form via ajax" do
       get :edit, :id => @plane.id, :format => :js
       should respond_with(:success)
-      should assign_to(:plane)
     end
 
     it "should update plane" do
       new_name = @plane.name + "_new"
       put :update, :id => @plane.id, :plane => {:name => new_name}, :format => :js
       should respond_with(:success)
-      should assign_to(:plane)
       assigns(:plane).name.should == new_name
     end
 
@@ -51,7 +45,6 @@ describe Admin::PlanesController do
       }.to change{Plane.count}.by(-1)
 
       should respond_with(:success)
-      should assign_to(:plane)
     end
 
     it "should not delete planes that have nodes" do

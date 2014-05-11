@@ -1,0 +1,9 @@
+.cell= build_navigation(['关键字'+ '"'+  @keyword + '"'+ '  的搜索结果共有' + '"'+ @lists_amount + '"' + '条'])
+.inner
+  .ul
+  - @lists.each do |list|
+    .li
+      %i.icon-file
+      =link_to list.title,list
+%small
+  = paginate @lists

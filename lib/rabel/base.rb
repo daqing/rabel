@@ -7,7 +7,7 @@ module Rabel
     def self.make_mention_links(text)
       text.gsub(Notifiable::MENTION_REGEXP) do
         if $1.present?
-          %(@<a href="/member/#{$1}">#{$1}</a>)
+          %(@<a class="rabel" href="/member/#{$1}">#{$1}</a>)
         else
           "@#{$1}"
         end
@@ -21,7 +21,7 @@ module Rabel
     def self.smart_url(link)
       if link =~ /http:\/\/v.youku.com\/v_show\/id_(.*)\.html/
         self.embed_video("http://player.youku.com/player.php/sid/#{$1}/v.swf")
-      elsif link =~ /http:\/\/www.tudou.com\/programs\/view\/([a-zA-Z0-9-]+)\/?/
+      elsif link =~ /http:\/\/www.tudou.com\/programs\/view\/([a-zA-Z0-9\-_]+)\/?/
         self.embed_video("http://www.tudou.com/v/#{$1}/v.swf")
       elsif link =~ /xiami\.com\/widget\/?(.*)\/albumPlayer/
         embed_music(link, 235, 346)
@@ -35,7 +35,11 @@ module Rabel
     end
 
     def self.protect_at_symbol(text)
-      text.gsub("@", "%AT%")
+      begin
+        text.gsub("@", "%AT%")
+      rescue
+        text
+      end
     end
 
     def self.decode_symbols(text)

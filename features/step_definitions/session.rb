@@ -9,12 +9,12 @@ Then /^it should display the login form$/ do
   page.should have_content('登入')
   page.should have_content('用户名')
   page.should have_content('密码')
-  page.should have_content('我忘记密码了')
+  page.should have_content('找回登录密码')
 end
 
 When /^I fill in (.*)\'s credentials$/ do |nickname|
   fill_in 'user_nickname', :with => nickname
-  fill_in 'user_password', :with => Settings.default_password
+  fill_in 'user_password', :with => ENV['RABEL_TEST_DEFAULT_PASSWORD']
   click_button '登入'
 end
 

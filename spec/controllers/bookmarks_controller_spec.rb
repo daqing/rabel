@@ -14,7 +14,6 @@ describe BookmarksController do
 
       should respond_with(:redirect)
       should set_the_flash
-      should_not assign_to(:bookmarkable)
     end
 
     it "should not destroy bookmark" do
@@ -25,7 +24,6 @@ describe BookmarksController do
 
       should respond_with(:redirect)
       should set_the_flash
-      should_not assign_to(:bookmark)
     end
   end
 
@@ -37,7 +35,6 @@ describe BookmarksController do
       }.to change{Bookmark.count}.by(1)
 
       should respond_with(:redirect)
-      should assign_to(:bookmarkable)
       should_not set_the_flash
     end
 
@@ -50,7 +47,6 @@ describe BookmarksController do
 
       should respond_with(:redirect)
       should_not set_the_flash
-      should assign_to(:bookmark)
     end
 
     it "should not destroy other's bookmark" do
@@ -64,7 +60,6 @@ describe BookmarksController do
       should respond_with(:redirect)
       should redirect_to(root_path)
       should set_the_flash
-      should assign_to(:bookmark)
     end
   end
 end

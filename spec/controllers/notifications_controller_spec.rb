@@ -14,8 +14,6 @@ describe NotificationsController do
       it "should display unread notifications" do
         get :index
         should respond_with(:success)
-        should assign_to(:title)
-        should assign_to(:notifications)
       end
     end
   end

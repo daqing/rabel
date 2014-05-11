@@ -13,19 +13,16 @@ describe Admin::AdvertisementsController do
     it "should show all ads" do
       get :index
       should respond_with(:success)
-      should assign_to(:ads)
     end
 
     it "should show ad creation form" do
       get :new
       should respond_with(:success)
-      should assign_to(:ad)
     end
 
     it "should show ad editing form" do
       get :edit, :id => @ad.id
       should respond_with(:success)
-      should assign_to(:ad)
     end
 
     it "should update ad" do
@@ -33,7 +30,6 @@ describe Admin::AdvertisementsController do
       post :update, :id => @ad.id, :advertisement => {:title => new_title}
       should respond_with(:redirect)
       should_not set_the_flash
-      should assign_to(:ad)
       assigns(:ad).title.should == new_title
     end
   end

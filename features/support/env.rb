@@ -4,8 +4,9 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 ENV['RAILS_ENV'] = 'test'
+ENV['RABEL_TEST_DEFAULT_PASSWORD'] = '123456'
+ENV['RABEL_HOST_NAME'] = '127.0.0.1'
 require 'cucumber/rails'
-require 'ruby-debug'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -13,7 +14,7 @@ require 'ruby-debug'
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
 Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome, :switches => %w(--disable-translate --disable-popup-blocking))
+  Capybara::Selenium::Driver.new(app, :browser => :firefox)
 end
 
 Capybara.register_driver :mobile do |app|

@@ -1,22 +1,34 @@
-.advertisement
-  .fr
-    = admin_edit_button('修改', advertisement)
+.box.advertisement.span5
+  .cell
+    .pull-right
+      = admin_edit_button('修改', advertisement)
+    = advertisement.title
   = render 'shared/ad', :ad => advertisement
+  .cell
+    %table.table.table-bordered
+      %tr
+        %td
+          开始日期
+        %td
+          = advertisement.start_date
+      %tr
+        %td
+          结束日期
+        %td
+          = advertisement.expire_date
+      %tr
+        %td
+          持续时间
+        %td
+          = advertisement.duration
+          %span.gray 天
+    .clear-fix
   .inner
-    %span.fade 开始日期
-    = advertisement.start_date
-    .sep5
-    %span.fade 结束日期
-    = advertisement.expire_date
-    .sep5
-    %span.fade 持续时间
-    %strong= advertisement.duration
-    %span.fade 天
-    .sep10
+    .pull-right
+      = admin_delete_button(advertisement)
     - if advertisement.showing?
-      %strong.green 展示中
+      .label.label-success 展示中
     - elsif advertisement.expire_date < today
-      %em.red 已过期
+      .label.label-danger 已过期
     - else
-      %em 已预约
-    = admin_delete_button(advertisement)
+      .label.label-info 已预约

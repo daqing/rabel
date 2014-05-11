@@ -1,21 +1,15 @@
 - if @total_pages > 1
-  %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
-    %tr
-      %td{:width => 100, :align => :left}
-        - if @prev_page_num > 0
-          .sep5
-          - if @prev_page_num == 1
-            = link_to '上一页', go_path(@node.key), :class => 'super normal button'
-          - else
-            = link_to '上一页', go_path(@node.key) + "?p=#{@prev_page_num}", :class => 'super normal button'
-          .sep5
+  %ul.pager
+    - if @prev_page_num > 0
+      %li.previous
+        - if @prev_page_num == 1
+          = link_to '← 上一页', go_path(@node.key)
+        - else
+          = link_to '← 上一页', go_path(@node.key) + "?p=#{@prev_page_num}"
+    %li.center
+      %span.gray= "#{@page_num}/#{@total_pages}"
 
-      %td{:width => :auto, :align => :center, :valign => :middle}
-        %strong{:style => 'font-size: 13px;'}
-          %span.fade= "#{@page_num}/#{@total_pages}"
-          %span.snow= "- #{@total_topics} Topics"
-      %td{:width => 100, :align => :right}
-        - if @next_page_num > 0
-          .sep5
-          = link_to '下一页', go_path(@node.key) + "?p=#{@next_page_num}", :class => 'super normal button'
-          .sep5
+    - if @next_page_num > 0
+      %li.next
+        = link_to '下一页 →', go_path(@node.key) + "?p=#{@next_page_num}"
+
