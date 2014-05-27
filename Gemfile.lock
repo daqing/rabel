@@ -39,7 +39,7 @@ GEM
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    bootstrap-sass (2.3.2.2)
+    bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     bourne (1.5.0)
       mocha (>= 0.13.2, < 0.15)
@@ -259,7 +259,7 @@ DEPENDENCIES
   acts_as_list
   awesome_print
   better_errors
-  bootstrap-sass (~> 2.3.2.0)
+  bootstrap-sass (~> 3.1.1)
   cancan
   capybara (~> 2.0.1)
   carrierwave (~> 0.6.2)

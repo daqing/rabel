@@ -136,6 +136,10 @@ a.action_label:hover {
   .span3 {
     width: 250px;
   }
+
+  .navbar-form button {
+    margin-left: 5px;
+  }
 }
 
 .item_node {
@@ -246,3 +250,6 @@ ul.nav li {
   top: -3px;
 }
 
+.navbar {
+  margin-bottom: 0;
+}
