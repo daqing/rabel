@@ -31,8 +31,7 @@ html
         .collapse.navbar-collapse#navbar-collapse
           form.navbar-form.navbar-left
             .form-group
-              input.form-control type='text' name='q' maxlength=40 data-domain=ENV['RABEL_HOST_NAME'] placeholder=t(:search)
-            button.btn.btn-default type="submit" Go
+              input#q.form-control type='text' name='q' maxlength=40 data-domain=ENV['RABEL_HOST_NAME'] placeholder=t(:search)
           ul.nav.navbar-nav.navbar-right
             = nav_item(t(:homepage), root_path)
             - if user_signed_in?
