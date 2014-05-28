@@ -11,17 +11,17 @@ module Admin::BaseHelper
   end
 
   def admin_create_button(text, resource, options={})
-    default_option = {:class => 'btn btn-small'}
+    default_option = {:class => 'btn btn-sm btn-info'}
     link_to text, new_polymorphic_path(prepare_resource(resource)), default_option.merge(options)
   end
 
   def admin_edit_button(text, resource, options={})
-    default_option = {:class => 'btn btn-small'}
+    default_option = {:class => 'btn btn-sm'}
     link_to text, edit_polymorphic_path(prepare_resource(resource)), default_option.merge(options)
   end
 
   def admin_delete_button(resource, options={})
-    default_option = {:class => 'btn btn-small btn-danger', :method => :delete, :data => {:confirm => '真的要删除吗?'}}
+    default_option = {:class => 'btn btn-sm btn-danger', :method => :delete, :data => {:confirm => '真的要删除吗?'}}
     link_to '删除', prepare_resource(resource), default_option.merge(options)
   end
 
