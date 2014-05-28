@@ -8,7 +8,7 @@
 .box
   .box-header
     头像
-  = simple_form_for @user, :url => update_avatar_path, :html => {:multipart => true, :class => 'edit_user form-horizontal'} do |f|
+  = simple_form_for @user, :url => update_avatar_path, :html => {:multipart => true, :class => 'edit_user'} do |f|
     .cell
       .control-group
         .control-label 当前头像

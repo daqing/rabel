@@ -1,4 +1,4 @@
-= simple_form_for @user, :url => update_account_path, :html => {:class => 'form-horizontal'} do |f|
+= simple_form_for @user, :url => update_account_path do |f|
   = f.input :nickname, :disabled => true
   = f.input :email
   = render :partial => 'account_detail_form', :locals => {:f => f}, :formats => :html

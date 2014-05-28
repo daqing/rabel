@@ -18,20 +18,14 @@
 
 .box
   .box-header
-    .fr
-      话题总数
-      .label
-        &nbsp;
-        = @total_topics
-        &nbsp;
+    - if user_signed_in?
+      .fr
+        = link_to '创建新话题', '#new_topic', :class => 'btn btn-sm btn-success'
     = build_navigation([@node.name], 'bigger')
     - if @node.introduction.present?
       .sep10
       %span.gray= @node.introduction
-    - if user_signed_in?
       .sep10
-      = link_to '创建新话题', '#new_topic', :class => 'btn btn-sm btn-success'
-      .sep5
   = render @topics
   .inner
     = render 'paginator'
