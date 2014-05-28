@@ -39,9 +39,9 @@
       - if user_signed_in?
         .pull-right
           - if current_user.bookmarked?(@topic)
-            = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-mini unbookmark'
+            = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-xs btn-info unbookmark'
           - else
-            = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'btn btn-mini bookmark'
+            = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'btn btn-xs btn-info bookmark'
       .clearfix
     .inner
       - if @next_topic.present?

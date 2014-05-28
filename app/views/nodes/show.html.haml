@@ -8,7 +8,7 @@
       .box-header
         节点管理
       .cell
-        = link_to "修改 #{@node.name} 节点", admin_planes_path + "#!/click/edit_#{@node.html_id}", :class => 'btn btn-small btn-info'
+        = link_to "管理 #{@node.name} 节点", admin_planes_path + "#!/click/edit_#{@node.html_id}", :class => 'btn btn-sm btn-default'
       - if @node.quiet
         .inner
           = image_tag 'ghost.png', :align => :top, :title => t('tips.quiet_node')
@@ -30,7 +30,7 @@
       %span.gray= @node.introduction
     - if user_signed_in?
       .sep10
-      = link_to '创建新话题', '#new_topic', :class => 'btn btn-success'
+      = link_to '创建新话题', '#new_topic', :class => 'btn btn-sm btn-success'
       .sep5
   = render @topics
   .inner

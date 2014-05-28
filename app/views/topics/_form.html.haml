@@ -1,4 +1,4 @@
-.alert.alert-info 如果标题已经包含你想说的话，内容可以留空。
+.alert.alert-info 如果标题已经包含你想说的话，内容可以留空
 = simple_form_for [node, topic], :html => {:class => 'form-vertical'} do |f|
   %a{:name => 'new_topic'}/
   = f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}
