@@ -1,10 +1,10 @@
 - content_for :content do
-  .col-md-9
+  .col-md-9.col-lg-9.col-sm-8
     = render 'shared/alert'
     = yield
 
 - content_for :sidebar do
-  .col-md-3#Rightbar
+  .col-md-3.col-lg-3.col-sm-4#Rightbar
     = render 'shared/sidebar_box'
     = yield :rightbar
     = render :partial => 'shared/ad', :collection => Advertisement.available, :as => :ad
