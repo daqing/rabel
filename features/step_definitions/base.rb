@@ -229,7 +229,7 @@ Then /^it will use configured search engine$/ do
 end
 
 Then /^it should display (\d+) notification(s?)$/ do |n, i|
-  page.all("#page-main .span9 table tr").size.should == n.to_i
+  page.all("#page-main .col-md-9 table tr").size.should == n.to_i
 end
 
 Given /^a notification exists with user: (.*)$/ do |nickname|

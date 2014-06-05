@@ -15,7 +15,7 @@
     - unless current_user.has_avatar?
       .cell
         .muted
-          %a{:href => settings_path + "#avatar", :class => 'btn btn-sm btn-info btn-block'} 立刻上传个性头像~
+          %a{:href => settings_path + "#avatar", :class => 'btn btn-sm btn-info btn-block'} 立刻上传个性头像
     .inner.muted
       - if @unread_count > 0
         = image_tag 'dot_orange.png', :class => :icon, :align => :top

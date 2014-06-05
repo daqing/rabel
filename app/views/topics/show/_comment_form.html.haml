@@ -11,5 +11,5 @@
         = render 'shared/preview_widget', :ref => :comment_content, :type => :comment
         = f.text_area :content, :rows => 5, :style => 'width: 98%;'
         .sep10
-        = f.submit '发送', :class => 'btn btn-small', :data => {:disable_with => t('tips.submitting')}
+        = f.submit '发送', :class => 'btn btn-sm btn-success', :data => {:disable_with => t('tips.submitting')}
         %small.gray 支持 Ctrl + Enter 快捷键

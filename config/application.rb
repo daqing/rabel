@@ -15,6 +15,8 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+I18n.enforce_available_locales = true
+
 module Rabel
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
