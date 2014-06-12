@@ -1,4 +1,20 @@
 # encoding: utf-8
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id              :integer          not null, primary key
+#  user_id         :integer
+#  notifiable_type :string(255)
+#  notifiable_id   :integer
+#  content         :text
+#  action_user_id  :integer
+#  action          :string(255)
+#  unread          :boolean          default(TRUE)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class Notification < ActiveRecord::Base
   ACTION_MENTION = 'mention'
   ACTION_REPLY = 'reply'

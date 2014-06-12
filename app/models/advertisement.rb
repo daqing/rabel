@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: advertisements
+#
+#  id          :integer          not null, primary key
+#  link        :string(255)
+#  banner      :string(255)
+#  title       :string(255)
+#  words       :string(255)
+#  start_date  :date
+#  expire_date :date
+#  duration    :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Advertisement < ActiveRecord::Base
   validates :link, :banner, :title, :words, :start_date, :expire_date, :duration, :presence => true
   validates :duration, :numericality => {:only_integer => true, :less_than => 3650, :greater_than => 1}

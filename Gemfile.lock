@@ -27,6 +27,9 @@ GEM
       tzinfo (~> 0.3.37)
     acts_as_list (0.4.0)
       activerecord (>= 3.0)
+    annotate (2.6.3)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arel (4.0.2)
     awesome_print (1.2.0)
     bcrypt (3.1.7)
@@ -253,6 +256,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  annotate (>= 2.6.0)
   awesome_print
   better_errors
   binding_of_caller

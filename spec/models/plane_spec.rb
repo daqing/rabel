@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: planes
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  position   :integer          default(0), not null
+#
+
 require 'spec_helper'
 
 describe Plane do
