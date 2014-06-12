@@ -32,7 +32,7 @@ describe CommentsController do
   context "users signed in" do
     login_user(:devin)
     before do
-      @my_topic = create(:topic, :user => User.find_by_nickname(:devin))
+      @my_topic = create(:topic, :user => User.find_by(nickname::devin))
     end
 
     it "can add comment" do

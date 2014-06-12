@@ -88,7 +88,7 @@ class Topic < ActiveRecord::Base
   def mentioned_users
     mentioned_names = self.mention_check_text.scan(Notifiable::MENTION_REGEXP).collect {|matched| matched.first}.uniq
     mentioned_names.delete(self.user.nickname)
-    mentioned_names.map { |name| User.find_by_nickname(name) }.compact
+    mentioned_names.map { |name| User.find_by(nickname:name) }.compact
   end
 
   def prev_topic(node)
