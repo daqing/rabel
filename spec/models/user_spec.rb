@@ -34,12 +34,6 @@ describe User do
   it { should validate_presence_of(:nickname) }
   it { should validate_presence_of(:email) }
 
-  it { should allow_mass_assignment_of(:nickname) }
-  it { should allow_mass_assignment_of(:email) }
-  it { should allow_mass_assignment_of(:password) }
-  it { should allow_mass_assignment_of(:password_confirmation) }
-  it { should_not allow_mass_assignment_of(:role) }
-  it { should_not allow_mass_assignment_of(:blocked) }
 
   it { should have_one(:account).dependent(:destroy) }
   it { should have_many(:topics).dependent(:destroy) }

@@ -81,7 +81,7 @@ gem 'dalli'
 gem 'acts_as_list'
 gem 'rails-settings-cached', '~> 0.4.1'
 gem 'facebox-rails'
-gem 'default_value_for', '~> 2.0.2'
+gem "default_value_for", "~> 3.0.0"
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'slim-rails'
 gem 'simple_form'

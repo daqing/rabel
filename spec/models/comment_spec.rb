@@ -21,9 +21,6 @@ describe Comment do
   it { should validate_presence_of(:commentable_id) }
   it { should validate_presence_of(:commentable_type) }
   it { should validate_presence_of(:content) }
-  it { should_not allow_mass_assignment_of(:user_id) }
-  it { should_not allow_mass_assignment_of(:commentable_id) }
-  it { should_not allow_mass_assignment_of(:commentable_type) }
   context "an instance" do
     it "should mention existing user" do
       nickname = 'nana'
