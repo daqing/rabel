@@ -58,6 +58,7 @@ group :test do
 end
 
 group :development do
+  gem 'pry-rails'
   gem 'quiet_assets', '~> 1.0.1'
   gem 'awesome_print'
   gem 'better_errors'
@@ -86,5 +87,4 @@ gem 'simple_form'
 gem 'foreman', '~> 0.61.0'
 gem 'thin', '~> 1.5.0'
 gem 'figaro'
-gem 'protected_attributes'
 

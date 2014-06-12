@@ -11,8 +11,6 @@ class Node < ActiveRecord::Base
   validates :key, :uniqueness => true, :format => {:with => /[a-zA-Z0-9_-]+/, :message => I18n.t('tips.node_key_format')}
   validate :node_key_should_not_contain_slash
 
-  attr_accessible :plane_id, :name, :key, :custom_css, :custom_html, :introduction, :position, :quiet
-
   def can_delete?
     self.topics_count == 0
   end

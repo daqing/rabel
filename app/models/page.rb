@@ -6,7 +6,6 @@ class Page < ActiveRecord::Base
   acts_as_list
 
   validates :key, :title, :content, :presence => true
-  attr_accessible :key, :title, :content, :published, :position
 
   def self.only_published
     where(:published => true)
