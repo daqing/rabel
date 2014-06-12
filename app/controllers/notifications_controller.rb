@@ -26,4 +26,9 @@ class NotificationsController < ApplicationController
       redirect_to root_path, :error => '无法处理之前的请求'
     end
   end
+
+  private
+  def notification_params
+    params.require(:notification).permit(:content, :action)
+  end
 end

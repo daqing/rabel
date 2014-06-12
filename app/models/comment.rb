@@ -15,7 +15,7 @@ class Comment < ActiveRecord::Base
     mentioned_names = self.content.scan(Notifiable::MENTION_REGEXP).collect {|matched| matched.first}.uniq
     mentioned_names.delete(self.user.nickname)
     mentioned_names.delete(self.commentable.user.nickname)
-    mentioned_names.map { |name| User.find_by_nickname(name) }.compact
+    mentioned_names.map { |name| User.find_by(nickname:name) }.compact
   end
 
   private

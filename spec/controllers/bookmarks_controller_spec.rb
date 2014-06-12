@@ -39,7 +39,7 @@ describe BookmarksController do
     end
 
     it "should destroy his/her own bookmark" do
-      @bookmark = create(:bookmark, :user => User.find_by_nickname(:devin))
+      @bookmark = create(:bookmark, :user => User.find_by(nickname::devin))
 
       expect {
         delete :destroy, :id => @bookmark.id
