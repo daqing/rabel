@@ -272,7 +272,7 @@ DEPENDENCIES
   dalli
   database_cleaner
   default_value_for (~> 3.0.0)
-  devise
+  devise (~> 3.2.4)
   facebox-rails
   factory_girl_rails (~> 3.5.0)
   figaro
