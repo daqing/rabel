@@ -19,9 +19,9 @@ class ApplicationController < ActionController::Base
       @title = '404: Not Found'
       @note = '您要访问的页面不存在。'
       @exception = exception
-      render 'welcome/exception' and return
+      render 'welcome/exception'
     when :js
-      render :json => {:error => 'record not found'}, :status => :not_found and return
+      render :json => {:error => 'record not found'}, :status => :not_found
     end
   end
 
@@ -34,9 +34,9 @@ class ApplicationController < ActionController::Base
       @title = '500: Internal Error'
       @note = '不好意思，系统运行遇到了错误。'
       @exception = exception
-      render 'welcome/exception' and return
+      render 'welcome/exception'
     when :js
-      render :json => {:error => exception.inspect}, :status => :internal_server_error and return
+      render :json => {:error => exception.inspect}, :status => :internal_server_error
     end
   end
 
@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
       such_able = "@#{$1}able"
       params.each do |name, value|
         if name =~ /(.+)_id$/
-          instance_variable_set(such_able.to_sym, $1.classify.constantize.find(value)) and return
+          instance_variable_set(such_able.to_sym, $1.classify.constantize.find(value))
         end
       end
     else

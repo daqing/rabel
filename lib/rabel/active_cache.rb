@@ -98,7 +98,7 @@ module Rabel
         ]
 
         result = Rails.cache.fetch(cache_keys.join('/')) do
-          order("#{order_column} #{order_type}").page(page).per(per_page).all
+          order("#{order_column} #{order_type}").page(page).per(per_page).load
         end
 
         Kaminari.paginate_array(result, :total_count => total).page(page).per(per_page)

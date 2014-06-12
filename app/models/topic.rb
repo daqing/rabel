@@ -88,14 +88,14 @@ class Topic < ActiveRecord::Base
   end
 
   def self.latest_involved_topics(num)
-    order('involved_at DESC').limit(num).all
+    order('involved_at DESC').limit(num).load
   end
 
   def self.recent_topics(num)
     ts = select('updated_at').order('updated_at DESC').first.try(:updated_at)
     return Rabel::Model::EMPTY_DATASET unless ts.present?
     Rails.cache.fetch("topics/recent/#{self.count}/#{num}-#{ts}") do
-      order('involved_at DESC').limit(num).all
+      order('involved_at DESC').limit(num).load
     end
   end
 

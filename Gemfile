@@ -49,7 +49,7 @@ end
 
 group :test do
   gem 'rspec'
-  gem 'shoulda-matchers', '~> 1.5.2'
+  gem 'shoulda-matchers', '~> 2.6.1'
   gem 'factory_girl_rails', '~> 3.5.0'
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
