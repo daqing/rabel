@@ -1,6 +1,8 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   include ApplicationHelper
   include BootstrapHelper
 
@@ -82,6 +84,13 @@ class ApplicationController < ActionController::Base
 
   def mobile_device?
     request.format == :mobile
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nickname, :email, :password, :password_confirmation) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:nickname, :email, :remember_me) }
   end
 
   private

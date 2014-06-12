@@ -43,7 +43,7 @@ GEM
     bourne (1.5.0)
       mocha (>= 0.13.2, < 0.15)
     builder (3.1.4)
-    cancan (1.6.10)
+    cancancan (1.8.2)
     capybara (2.0.3)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -262,7 +262,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.1.1)
-  cancan
+  cancancan (~> 1.8)
   capybara (~> 2.0.1)
   carrierwave (~> 0.6.2)
   carrierwave-upyun (~> 0.1.6)

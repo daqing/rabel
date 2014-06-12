@@ -88,6 +88,7 @@ class Admin::UsersController < Admin::BaseController
 
   private
   def user_params
-    params.require(:user).permit(*BASE_FIELDS, *(BASE_FIELDS + [:reward]), :as => :admin)
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation,
+    :remember_me, :avatar, :account_attributes, :captcha, :reward)
   end
 end
