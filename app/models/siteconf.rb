@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: settings
+#
+#  id         :integer          not null, primary key
+#  var        :string(255)      not null
+#  value      :text
+#  thing_id   :integer
+#  thing_type :string(30)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Siteconf < RailsSettings::CachedSettings
   def self.boolean_attributes(*args)
     args.each do |m|
@@ -10,7 +23,6 @@ class Siteconf < RailsSettings::CachedSettings
   end
 
   HOMEPAGE_TOPICS = 15
-  attr_accessible :var
 
   boolean_attributes :show_captcha, :show_community_stats,
     :allow_markdown_in_topics,

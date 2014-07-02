@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @notifications = current_user.notifications.where(:unread => true).order('created_at DESC').limit(100).all
+    @notifications = current_user.notifications.where(:unread => true).order('created_at DESC').limit(100).load
     current_user.notifications.update_all(:unread => false)
     @unread_count = 0
 
@@ -25,5 +25,10 @@ class NotificationsController < ApplicationController
     else
       redirect_to root_path, :error => '无法处理之前的请求'
     end
+  end
+
+  private
+  def notification_params
+    params.require(:notification).permit(:content, :action)
   end
 end

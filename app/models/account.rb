@@ -1,9 +1,20 @@
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  personal_website :string(255)
+#  location         :string(255)
+#  signature        :string(255)
+#  introduction     :text
+#  created_at       :datetime
+#  updated_at       :datetime
+#  weibo_link       :string(255)      default("")
+#
+
 class Account < ActiveRecord::Base
   belongs_to :user
-
-  BASE_FIELDS = [:personal_website, :location, :signature, :introduction, :weibo_link]
-  attr_accessible *BASE_FIELDS
-  attr_accessible *BASE_FIELDS, :as => :admin
 
   validates :signature, :length => {:maximum => 20}
 

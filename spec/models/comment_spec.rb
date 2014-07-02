@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id               :integer          not null, primary key
+#  content          :text
+#  user_id          :integer
+#  commentable_type :string(255)
+#  commentable_id   :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#  posting_device   :string(255)      default(""), not null
+#
+
 require 'spec_helper'
 
 describe Comment do
@@ -7,9 +21,6 @@ describe Comment do
   it { should validate_presence_of(:commentable_id) }
   it { should validate_presence_of(:commentable_type) }
   it { should validate_presence_of(:content) }
-  it { should_not allow_mass_assignment_of(:user_id) }
-  it { should_not allow_mass_assignment_of(:commentable_id) }
-  it { should_not allow_mass_assignment_of(:commentable_type) }
   context "an instance" do
     it "should mention existing user" do
       nickname = 'nana'

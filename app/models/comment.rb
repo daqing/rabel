@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id               :integer          not null, primary key
+#  content          :text
+#  user_id          :integer
+#  commentable_type :string(255)
+#  commentable_id   :integer
+#  created_at       :datetime
+#  updated_at       :datetime
+#  posting_device   :string(255)      default(""), not null
+#
+
 class Comment < ActiveRecord::Base
   include Rabel::ActiveCache
 
@@ -5,7 +19,6 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true, :counter_cache => true
 
   validates :user_id, :commentable_id, :commentable_type, :content, :presence => true
-  attr_accessible :content
 
   after_create :touch_parent_model
   after_create :send_notifications
@@ -15,7 +28,7 @@ class Comment < ActiveRecord::Base
     mentioned_names = self.content.scan(Notifiable::MENTION_REGEXP).collect {|matched| matched.first}.uniq
     mentioned_names.delete(self.user.nickname)
     mentioned_names.delete(self.commentable.user.nickname)
-    mentioned_names.map { |name| User.find_by_nickname(name) }.compact
+    mentioned_names.map { |name| User.find_by(nickname:name) }.compact
   end
 
   private

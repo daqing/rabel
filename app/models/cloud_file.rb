@@ -1,5 +1,17 @@
+# == Schema Information
+#
+# Table name: cloud_files
+#
+#  id           :integer          not null, primary key
+#  content_type :string(255)
+#  file_size    :integer
+#  asset        :string(255)
+#  name         :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 class CloudFile < ActiveRecord::Base
-  attr_accessible :name, :asset
 
   mount_uploader :asset, CloudFileUploader
 

@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: nodes
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  key          :string(255)
+#  introduction :string(255)
+#  custom_html  :text
+#  created_at   :datetime
+#  updated_at   :datetime
+#  plane_id     :integer
+#  position     :integer
+#  topics_count :integer          default(0), not null
+#  quiet        :boolean          default(FALSE), not null
+#  custom_css   :text
+#
+
 require 'spec_helper'
 
 describe Node do
@@ -16,7 +34,5 @@ describe Node do
     it { should belong_to(:plane) }
     it { should have_many(:bookmarks).dependent(:destroy) }
 
-    it { should allow_mass_assignment_of(:plane_id) }
-    it { should allow_mass_assignment_of(:position) }
   end
 end

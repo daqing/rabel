@@ -13,4 +13,9 @@ class Admin::TopicsController < Admin::BaseController
       redirect_to admin_root_path
     end
   end
+
+  private
+  def topic_params
+    params.require(:topic).permit(:title, :content, :title, :content, :comments_closed, :sticky, :as => :admin)
+  end
 end

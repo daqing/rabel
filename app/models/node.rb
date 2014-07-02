@@ -1,4 +1,22 @@
 # encoding: utf-8
+# == Schema Information
+#
+# Table name: nodes
+#
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  key          :string(255)
+#  introduction :string(255)
+#  custom_html  :text
+#  created_at   :datetime
+#  updated_at   :datetime
+#  plane_id     :integer
+#  position     :integer
+#  topics_count :integer          default(0), not null
+#  quiet        :boolean          default(FALSE), not null
+#  custom_css   :text
+#
+
 class Node < ActiveRecord::Base
   include Sortable
   include Rabel::ActiveCache
@@ -10,8 +28,6 @@ class Node < ActiveRecord::Base
   validates :name, :plane_id, :key, :presence => true
   validates :key, :uniqueness => true, :format => {:with => /[a-zA-Z0-9_-]+/, :message => I18n.t('tips.node_key_format')}
   validate :node_key_should_not_contain_slash
-
-  attr_accessible :plane_id, :name, :key, :custom_css, :custom_html, :introduction, :position, :quiet
 
   def can_delete?
     self.topics_count == 0

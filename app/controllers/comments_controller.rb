@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
   def create
     redirect_to root_path, :notice => I18n.t('tips.comments_closed') and return if @commentable.try(:comments_closed)
-    @comment = @commentable.comments.build(params[:comment])
+    @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
     @comment.posting_device = session[:posting_device] if session[:posting_device].present?
     flash[:else] = '添加回复失败' unless @comment.save
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @comment.update_attributes(params[:comment])
+      if @comment.update_attributes(comment_params)
         format.js
       else
         render :json => :error, :status => :unprocessable_entity
@@ -44,4 +44,9 @@ class CommentsController < ApplicationController
       render :text => :error, :status => :not_found and return unless current_user.can_manage_site?
       @comment = Comment.find(params[:id])
     end
+
+  private
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 end

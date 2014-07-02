@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: topics
+#
+#  id              :integer          not null, primary key
+#  node_id         :integer
+#  user_id         :integer
+#  title           :string(255)
+#  content         :text
+#  hit             :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#  involved_at     :datetime
+#  comments_count  :integer          default(0), not null
+#  comments_closed :boolean          default(FALSE), not null
+#  sticky          :boolean          default(FALSE)
+#  last_replied_by :string(255)      default("")
+#  last_replied_at :datetime
+#
+
 class Topic < ActiveRecord::Base
   include Notifiable
   include Rabel::ActiveCache
@@ -17,8 +37,6 @@ class Topic < ActiveRecord::Base
 
   validates :node_id, :user_id, :title, :presence => true
 
-  attr_accessible :title, :content
-  attr_accessible :title, :content, :comments_closed, :sticky, :as => :admin
 
   after_create :send_notifications
 
@@ -70,14 +88,14 @@ class Topic < ActiveRecord::Base
   end
 
   def self.latest_involved_topics(num)
-    order('involved_at DESC').limit(num).all
+    order('involved_at DESC').limit(num).load
   end
 
   def self.recent_topics(num)
     ts = select('updated_at').order('updated_at DESC').first.try(:updated_at)
     return Rabel::Model::EMPTY_DATASET unless ts.present?
     Rails.cache.fetch("topics/recent/#{self.count}/#{num}-#{ts}") do
-      order('involved_at DESC').limit(num).all
+      order('involved_at DESC').limit(num).load
     end
   end
 
@@ -88,7 +106,7 @@ class Topic < ActiveRecord::Base
   def mentioned_users
     mentioned_names = self.mention_check_text.scan(Notifiable::MENTION_REGEXP).collect {|matched| matched.first}.uniq
     mentioned_names.delete(self.user.nickname)
-    mentioned_names.map { |name| User.find_by_nickname(name) }.compact
+    mentioned_names.map { |name| User.find_by(nickname:name) }.compact
   end
 
   def prev_topic(node)

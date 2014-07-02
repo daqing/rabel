@@ -1,7 +1,20 @@
+# == Schema Information
+#
+# Table name: upyun_images
+#
+#  id           :integer          not null, primary key
+#  asset        :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  user_id      :integer
+#  size         :integer
+#  filename     :string(255)
+#  content_type :string(255)
+#
+
 class UpyunImage < ActiveRecord::Base
   belongs_to :user
 
-  attr_accessible :asset
 
   mount_uploader :asset, UpyunImageUploader
 

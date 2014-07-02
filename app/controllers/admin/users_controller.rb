@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::BaseController
 
   def index
     if params[:nickname].present?
-      @user = User.find_by_nickname(params[:nickname])
+      @user = User.find_by(nickname:params[:nickname])
       if @user.present?
         @users = [@user]
       else
@@ -26,12 +26,12 @@ class Admin::UsersController < Admin::BaseController
   def update
     authorize! :edit_info, @user
 
-    if params[:user][:password].empty?
-      params[:user].delete(:password)
-      params[:user].delete(:password_confirmation)
+    if user_params[:password].empty?
+      user_params.delete(:password)
+      user_params.delete(:password_confirmation)
     end
 
-    if @user.update_attributes(params[:user], :as => current_user.permission_role)
+    if @user.update_attributes(user_params, :as => current_user.permission_role)
       redirect_to admin_users_path + "?nickname=#{@user.nickname}"
     else
       render :edit
@@ -85,4 +85,10 @@ class Admin::UsersController < Admin::BaseController
     def find_user
       @user = User.find(params[:id])
     end
+
+  private
+  def user_params
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation,
+    :remember_me, :avatar, :account_attributes, :captcha, :reward)
+  end
 end

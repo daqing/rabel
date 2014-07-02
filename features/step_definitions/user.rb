@@ -51,9 +51,9 @@ When /^I provide new password$/ do
 end
 
 Given /^(.*) has followed (.*)$/ do |who, nicknames|
-  actor = User.find_by_nickname(who)
+  actor = User.find_by(nickname:who)
   nicknames.split(', ').each do |nickname|
-    user = User.find_by_nickname(nickname)
+    user = User.find_by(nickname:nickname)
     unless user.present?
       user = FactoryGirl.create(:user, :nickname => nickname)
     end

@@ -1,7 +1,7 @@
 # encoding: utf-8
 class RegistrationsController < Devise::RegistrationsController
   def create
-    build_resource params[:user]
+    build_resource(sign_up_params)
 
     if resource.verify_captcha(session[:captcha]) and resource.save
       if resource.active_for_authentication?
