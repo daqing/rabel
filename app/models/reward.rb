@@ -1,23 +1,10 @@
 # encoding: utf-8
-# == Schema Information
-#
-# Table name: rewards
-#
-#  id            :integer          not null, primary key
-#  admin_user_id :integer          default(0)
-#  user_id       :integer          default(0)
-#  amount        :integer          default(0)
-#  balance       :integer          default(0)
-#  reason        :text
-#  created_at    :datetime
-#  updated_at    :datetime
-#
-
 class Reward < ActiveRecord::Base
   TYPE_GRANT = 'grant'
   TYPE_REVOKE = 'revoke'
 
   attr_accessor :amount_str, :reward_type
+  attr_accessible :reason, :amount, :amount_str, :reward_type
 
   validates :user_id, :admin_user_id, :amount, :reason, :presence => true
   validates :reward_type, :amount_str, :presence => true, :on => :create

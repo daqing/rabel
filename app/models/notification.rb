@@ -1,20 +1,4 @@
 # encoding: utf-8
-# == Schema Information
-#
-# Table name: notifications
-#
-#  id              :integer          not null, primary key
-#  user_id         :integer
-#  notifiable_type :string(255)
-#  notifiable_id   :integer
-#  content         :text
-#  action_user_id  :integer
-#  action          :string(255)
-#  unread          :boolean          default(TRUE)
-#  created_at      :datetime
-#  updated_at      :datetime
-#
-
 class Notification < ActiveRecord::Base
   ACTION_MENTION = 'mention'
   ACTION_REPLY = 'reply'
@@ -24,6 +8,8 @@ class Notification < ActiveRecord::Base
   belongs_to :user
   belongs_to :action_user, :class_name => 'User'
   belongs_to :notifiable, :polymorphic => true
+
+  attr_accessible :content, :action
 
   # Notify user
   def self.notify(user, notifiable, action_user, action, content)

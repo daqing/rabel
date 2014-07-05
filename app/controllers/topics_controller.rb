@@ -84,7 +84,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = @node.topics.new(topic_params)
+    @topic = @node.topics.new(params[:topic], :as => current_user.permission_role)
     @topic.user = current_user
     if @topic.save
       redirect_to t_path(@topic.id)
@@ -94,8 +94,8 @@ class TopicsController < ApplicationController
   end
 
   def create_from_home
-    node_id = topic_params.delete(:node_id)
-    @topic = Topic.new(topic_params)
+    node_id = params[:topic].delete(:node_id)
+    @topic = Topic.new(params[:topic], :as => current_user.permission_role)
     @topic.node = Node.find(node_id) if node_id.present?
     @topic.user = current_user
 
@@ -115,7 +115,7 @@ class TopicsController < ApplicationController
   def update_title
     respond_to do |f|
       f.js {
-        unless @topic.update_attributes(topic_params)
+        unless @topic.update_attributes(params[:topic])
           render :text => :error, :status => :unprocessable_entity
         end
       }
@@ -144,7 +144,7 @@ class TopicsController < ApplicationController
         }
       end
     else
-      if @topic.update_attributes(topic_params)
+      if @topic.update_attributes(params[:topic], :as => current_user.permission_role)
         redirect_to t_path(@topic.id)
       else
         flash[:error] = '之前的更新有误，请编辑后再提交'
@@ -201,9 +201,4 @@ class TopicsController < ApplicationController
       @topic = @node.topics.find(params[:id])
       authorize! :update, @topic, :message => '你没有权限管理此主题'
     end
-
-  private
-  def topic_params
-    params.require(:topic).permit(:title, :content, :title, :content, :comments_closed, :sticky)
-  end
 end

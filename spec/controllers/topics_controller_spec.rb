@@ -70,7 +70,7 @@ describe TopicsController do
   context "authenticated users" do
     login_user(:devin)
     before(:each) do
-      @current_user = User.find_by(nickname: :devin)
+      @current_user = User.find_by_nickname(:devin)
       @my_topic = create(:topic, :node => @node, :user => @current_user)
     end
 
@@ -152,7 +152,7 @@ describe TopicsController do
   context "admins" do
     login_admin :devin
     before(:each) do
-      @current_user = User.find_by(nickname: :devin)
+      @current_user = User.find_by_nickname(:devin)
       @locked_topic = create(:locked_topic, :node => @node)
     end
 

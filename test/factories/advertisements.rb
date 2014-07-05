@@ -1,19 +1,3 @@
-# == Schema Information
-#
-# Table name: advertisements
-#
-#  id          :integer          not null, primary key
-#  link        :string(255)
-#  banner      :string(255)
-#  title       :string(255)
-#  words       :string(255)
-#  start_date  :date
-#  expire_date :date
-#  duration    :integer
-#  created_at  :datetime
-#  updated_at  :datetime
-#
-
 # Read about factories at http://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do

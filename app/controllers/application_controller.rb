@@ -1,8 +1,6 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
   include ApplicationHelper
   include BootstrapHelper
 
@@ -19,9 +17,9 @@ class ApplicationController < ActionController::Base
       @title = '404: Not Found'
       @note = '您要访问的页面不存在。'
       @exception = exception
-      render 'welcome/exception'
+      render 'welcome/exception' and return
     when :js
-      render :json => {:error => 'record not found'}, :status => :not_found
+      render :json => {:error => 'record not found'}, :status => :not_found and return
     end
   end
 
@@ -34,9 +32,9 @@ class ApplicationController < ActionController::Base
       @title = '500: Internal Error'
       @note = '不好意思，系统运行遇到了错误。'
       @exception = exception
-      render 'welcome/exception'
+      render 'welcome/exception' and return
     when :js
-      render :json => {:error => exception.inspect}, :status => :internal_server_error
+      render :json => {:error => exception.inspect}, :status => :internal_server_error and return
     end
   end
 
@@ -58,7 +56,7 @@ class ApplicationController < ActionController::Base
       such_able = "@#{$1}able"
       params.each do |name, value|
         if name =~ /(.+)_id$/
-          instance_variable_set(such_able.to_sym, $1.classify.constantize.find(value))
+          instance_variable_set(such_able.to_sym, $1.classify.constantize.find(value)) and return
         end
       end
     else
@@ -84,13 +82,6 @@ class ApplicationController < ActionController::Base
 
   def mobile_device?
     request.format == :mobile
-  end
-
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:nickname, :email, :password, :password_confirmation) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:nickname, :email, :remember_me) }
   end
 
   private

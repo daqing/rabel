@@ -13,7 +13,7 @@ class Admin::AdvertisementsController < Admin::BaseController
   end
 
   def create
-    @ad = Advertisement.new(advertisement_params)
+    @ad = Advertisement.new(params[:advertisement])
     if @ad.save
       redirect_to admin_advertisements_path
     else
@@ -27,7 +27,7 @@ class Admin::AdvertisementsController < Admin::BaseController
   end
 
   def update
-    if @ad.update_attributes(advertisement_params)
+    if @ad.update_attributes(params[:advertisement])
       redirect_to admin_advertisements_path
     else
       flash[:error] = '修改广告失败'
@@ -48,9 +48,4 @@ class Admin::AdvertisementsController < Admin::BaseController
     def find_ad
       @ad = Advertisement.find(params[:id])
     end
-
-  private
-  def advertisement_params
-    params.require(:advertisement).permit(:link, :banner, :title, :words, :start_date, :duration)
-  end
 end

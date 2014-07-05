@@ -8,7 +8,7 @@ class UpyunImagesController < ApplicationController
       f.json {
         result = []
 
-        upyun_image_params[:asset].each do |file|
+        params[:upyun_image][:asset].each do |file|
           img = UpyunImage.new(:asset => file)
           img.filename = file.original_filename
           img.user = current_user
@@ -27,10 +27,5 @@ class UpyunImagesController < ApplicationController
         render :json => result
       }
     end
-  end
-
-  private
-  def upyun_image_params
-    params.require(:upyun_image).permit(:asset)
   end
 end

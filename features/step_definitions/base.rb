@@ -17,7 +17,7 @@ def path_to(page)
     if nickname == 'the user'
       user = User.first
     else
-      user = User.find_by(nickname:nickname)
+      user = User.find_by_nickname(nickname)
     end
     member_path(user.nickname)
   when 'the topic'
@@ -96,7 +96,7 @@ Given /^an? (.*) exists with nickname: (.*)$/ do |type, nickname|
 end
 
 Given /^I have logged in as (.*)$/ do |nickname|
-  user = User.find_by(nickname:nickname)
+  user = User.find_by_nickname(nickname)
   steps %Q(Given an user exists with nickname: #{nickname}) unless user.present?
   visit new_user_session_path
   fill_in 'user_nickname', :with => nickname
@@ -133,8 +133,7 @@ Given /^a topic of (.*) exists with title:(.*)$/ do |nickname, title|
   if nickname == 'the user' or nickname == 'me'
     user = User.first
   else
-    user = User.find_by(nickname:nickname)
-    user = User.find_by(nickname:nickname)
+    user = User.find_by_nickname(nickname)
   end
   FactoryGirl.create(:topic, :user => user, :title => title)
 end
@@ -143,7 +142,7 @@ Given /^a locked topic of (.*) exists with title:(.*)$/ do |nickname, title|
   if nickname == 'the user' or nickname == 'me'
     user = User.first
   else
-    user = User.find_by(nickname:nickname)
+    user = User.find_by_nickname(nickname)
   end
   FactoryGirl.create(:locked_topic, :user => user, :title => title)
 end
@@ -234,7 +233,7 @@ Then /^it should display (\d+) notification(s?)$/ do |n, i|
 end
 
 Given /^a notification exists with user: (.*)$/ do |nickname|
-  user = User.find_by(nickname:nickname)
+  user = User.find_by_nickname(nickname)
   FactoryGirl.create(:notification, :user => user)
 end
 

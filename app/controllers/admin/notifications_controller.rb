@@ -5,9 +5,4 @@ class Admin::NotificationsController < Admin::BaseController
 
     redirect_to admin_root_path
   end
-
-  private
-  def notification_params
-    params.require(:notification).permit(:content, :action)
-  end
 end

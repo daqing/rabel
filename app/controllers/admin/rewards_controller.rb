@@ -19,7 +19,7 @@ class Admin::RewardsController < Admin::BaseController
   def create
     respond_to do |f|
       f.js {
-        @reward = @user.rewards.build(reward_params)
+        @reward = @user.rewards.build(params[:reward])
         @reward_type = @reward.reward_type
         @reward.admin_user = current_user
 
@@ -30,10 +30,5 @@ class Admin::RewardsController < Admin::BaseController
         render :new and return unless result
       }
     end
-  end
-
-  private
-  def reward_params
-    params.require(:reward).permit(:reason, :amount, :amount_str, :reward_type)
   end
 end

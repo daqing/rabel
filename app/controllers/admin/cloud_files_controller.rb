@@ -11,7 +11,7 @@ class Admin::CloudFilesController < Admin::BaseController
   end
 
   def create
-    @file = CloudFile.new(cloud_file_params)
+    @file = CloudFile.new(params[:cloud_file])
 
     if @file.save
       redirect_to admin_cloud_files_path
@@ -30,10 +30,5 @@ class Admin::CloudFilesController < Admin::BaseController
       flash[:error] = '删除失败'
     end
     redirect_to admin_cloud_files_path
-  end
-
-  private
-  def cloud_file_params
-    params.require(:cloud_file).permit(:name, :asset)
   end
 end

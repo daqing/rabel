@@ -26,9 +26,4 @@ class NodesController < ApplicationController
       format.mobile { add_breadcrumb @node.name }
     end
   end
-
-  private
-  def node_params
-    params.require(:node).permit(:plane_id, :name, :key, :custom_css, :custom_html, :introduction, :position, :quiet)
-  end
 end

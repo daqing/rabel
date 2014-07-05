@@ -68,13 +68,13 @@ describe UsersController do
       post :follow, :nickname => 'dhh'
       should respond_with(:redirect)
       should_not set_the_flash
-      current_user = User.find_by(nickname: :devin)
+      current_user = User.find_by_nickname(:devin)
       assigns(:followed_user).followed_by?(current_user).should be_true
     end
 
     it "should unfollow people" do
       dhh = create(:user, :nickname => 'dhh')
-      devin = User.find_by(nickname: :devin)
+      devin = User.find_by_nickname(:devin)
       devin.follow(dhh)
       post :unfollow, :nickname => 'dhh'
       should respond_with(:redirect)

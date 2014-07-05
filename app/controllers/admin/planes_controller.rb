@@ -16,7 +16,7 @@ class Admin::PlanesController < Admin::BaseController
   end
 
   def create
-    @plane = Plane.new(plane_params)
+    @plane = Plane.new(params[:plane])
     respond_to do |format|
       if @plane.save
         format.js
@@ -37,7 +37,7 @@ class Admin::PlanesController < Admin::BaseController
 
   def update
     respond_to do |format|
-      if @plane.update_attributes(plane_params)
+      if @plane.update_attributes(params[:plane])
         format.js { render :js => 'window.location.reload()' }
       else
         format.js { render :show_form }
@@ -71,10 +71,5 @@ class Admin::PlanesController < Admin::BaseController
         }
       end
     end
-  end
-
-  private
-  def plane_params
-    params.require(:plane).permit(:name, :position)
   end
 end

@@ -43,7 +43,7 @@ class WelcomeController < ApplicationController
           Comment.order('updated_at DESC').first.try(:updated_at),
         ].compact.max
 
-        @pages = Page.only_published.load
+        @pages = Page.only_published.all
         @topics = Topic.select('id, comments_count, updated_at').order('created_at DESC').limit(max - @pages.size - 1)
       }
     end
