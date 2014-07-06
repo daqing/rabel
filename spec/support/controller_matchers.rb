@@ -17,6 +17,10 @@ module Rabel
       def failure_message_for_should_not
         "Expected controller #{@actual_class.inspect} *NOT* to extend #{@expected.inspect}"
       end
+
+      def description
+        "extend controller: #{@expected.inspect}"
+      end
     end
 
     def extend_the_controller(expected)

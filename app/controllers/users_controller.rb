@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
   def update_account
     @user = current_user
-    if @user.update_without_password(params[:user])
+    if @user.update_without_password(user_params)
       flash[:success] = '个人设置成功更新'
       sign_in :user, current_user, :bypass => true
       redirect_to settings_path
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
 
   def update_password
     @user = current_user
-    if @user.update_with_password(params[:user])
+    if @user.update_with_password(user_params)
       flash[:success] = '密码已成功更新，下次请用新密码登录'
       sign_in :user, current_user, :bypass => true
       redirect_to settings_path
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   def update_avatar
     @user = current_user
     if params[:user].present?
-      if @user.update_without_password(params[:user])
+      if @user.update_without_password(user_params)
         flash[:success] = '头像更新成功'
         redirect_to settings_path + '#avatar'
       else
@@ -119,5 +119,12 @@ class UsersController < ApplicationController
       flash[:error] = '取消特别关注失败' unless current_user.unfollow(@followed_user)
     end
     redirect_to member_path(params[:nickname])
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:avatar, :password, :password_confirmation, :current_password,
+                                  account_attributes: [:signature])
   end
 end

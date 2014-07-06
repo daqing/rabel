@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CommentsController do
   before do
@@ -6,13 +6,13 @@ describe CommentsController do
     @comment = create(:comment, :commentable => @topic)
 
     def cannot_manage_coments_as(response_status)
-      get :edit , :id => @comment.id, :format => :js
+      xhr :get, :edit , :id => @comment.id
       should respond_with(response_status)
 
-      post :update, :id => @comment.id, :comment => {:content => 'hi'}, :format => :js
+      xhr :post, :update, :id => @comment.id, :comment => {:content => 'hi'}
       should respond_with(response_status)
 
-      delete :destroy, :id => @comment.id, :format => :js
+      xhr :delete, :destroy, :id => @comment.id
       should respond_with(response_status)
     end
   end
@@ -21,7 +21,7 @@ describe CommentsController do
     it "can't add comment" do
       expect {
         post :create, :topic_id => @topic.id, :comment => {:content => 'Great idea!'}
-      }.to_not change{Comment.count}.by(1)
+      }.to change{Comment.count}.by(0)
     end
 
     it "can't manage comments" do
@@ -57,17 +57,18 @@ describe CommentsController do
     login_admin(:devin)
 
     it "can update comment" do
-      get :edit, :id => @comment.id, :format => :js
+      xhr :get, :edit, :id => @comment.id
       should respond_with(:success)
 
-      post :update, :id => @comment.id, :comment => {:content => 'hi'}, :format => :js
+      xhr :post, :update, :id => @comment.id, :comment => {:content => 'hi'}
       should respond_with(:success)
     end
 
     it "can delete comment" do
       expect {
-        delete :destroy, :id => @comment.id, :format => :js
+        xhr :delete, :destroy, :id => @comment.id
       }.to change{Comment.count}.by(-1)
+
       should respond_with(:success)
     end
   end

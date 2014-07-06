@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Node do
   context "model" do
@@ -16,7 +16,5 @@ describe Node do
     it { should belong_to(:plane) }
     it { should have_many(:bookmarks).dependent(:destroy) }
 
-    it { should allow_mass_assignment_of(:plane_id) }
-    it { should allow_mass_assignment_of(:position) }
   end
 end

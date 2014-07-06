@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Admin::SiteSettingsController do
   it { should extend_the_controller(Admin::BaseController) }

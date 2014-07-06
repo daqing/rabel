@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe BookmarksController do
   before do
@@ -10,7 +10,7 @@ describe BookmarksController do
     it "should not create bookmark" do
       expect {
         post :create, :topic_id => @topic.id
-      }.to_not change{Bookmark.count}.by(1)
+      }.to change{Bookmark.count}.by(0)
 
       should respond_with(:redirect)
       should set_the_flash
@@ -20,7 +20,7 @@ describe BookmarksController do
       @bookmark = create(:bookmark)
       expect {
         delete :destroy, :id => @bookmark.id
-      }.to_not change{Bookmark.count}.by(-1)
+      }.to change{Bookmark.count}.by(0)
 
       should respond_with(:redirect)
       should set_the_flash
@@ -55,7 +55,7 @@ describe BookmarksController do
 
       expect {
         delete :destroy, :id => @bookmark.id
-      }.to_not change{Bookmark.count}.by(-1)
+      }.to change{Bookmark.count}.by(0)
 
       should respond_with(:redirect)
       should redirect_to(root_path)

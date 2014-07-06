@@ -12,7 +12,7 @@ class SessionsController < Devise::SessionsController
     resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#new")
     sign_in(resource_name, resource)
     reset_session
-    session.reverse_merge!(old_session)
+    session.merge!(old_session)
     if mobile_device?
       redirect_to root_path
     else

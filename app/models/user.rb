@@ -10,13 +10,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessor :captcha
 
-  BASE_FIELDS = [:nickname, :email, :password, :password_confirmation,
-    :remember_me, :avatar, :account_attributes, :captcha
-  ]
-
-  attr_accessible *BASE_FIELDS
-  attr_accessible *(BASE_FIELDS + [:reward]), :as => :admin
-
   mount_uploader :avatar, AvatarUploader
 
   validates :nickname, :presence => true, :uniqueness => true, :length => {:maximum => 12}

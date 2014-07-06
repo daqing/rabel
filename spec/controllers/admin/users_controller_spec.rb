@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Admin::UsersController do
   it { should extend_the_controller(Admin::BaseController) }
@@ -15,7 +15,7 @@ describe Admin::UsersController do
     end
 
     it "can manage permissions" do
-      post :toggle_admin, :id => @user.id, :format => :js
+      xhr :post, :toggle_admin, :id => @user.id
       should respond_with(:success)
     end
   end
@@ -23,9 +23,9 @@ describe Admin::UsersController do
   context "root" do
     login_as_root
     it "should toggle admin" do
-      post :toggle_admin, :id => @user.id, :format => :js
+      xhr :post, :toggle_admin, :id => @user.id
       should respond_with(:success)
-      assigns(:user).admin?.should be_true
+      expect(assigns(:user).admin?).to be true
     end
 
     it "can edit user info" do

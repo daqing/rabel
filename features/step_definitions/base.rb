@@ -153,7 +153,7 @@ Given /^a comment exists with content:(.*)$/ do |content|
 end
 
 Then /^page title should contain (.*)$/ do |title|
-  page.find(:xpath, '//title').native.text.should have_content(title)
+  expect(page).to have_title(title)
 end
 
 Then /^page title should not contain (.*)$/ do |title|

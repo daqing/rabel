@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Advertisement do
   it { should validate_presence_of(:link) }
@@ -9,5 +9,4 @@ describe Advertisement do
   it { should validate_presence_of(:expire_date) }
   it { should validate_presence_of(:duration) }
   it { should validate_numericality_of(:duration) }
-  it { should_not allow_mass_assignment_of(:expire_date) }
 end
