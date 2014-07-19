@@ -5,9 +5,15 @@ When /^I add comment:(.*)$/ do |comment|
   click_button '发送'
 end
 
-Then /^there should be link (.*) in reply$/ do |link|
+Then /^there should be EDIT link in reply$/ do
   within(".reply") do
-    page.should have_link(link)
+    page.should have_css("a.edit", :visible => false)
+  end
+end
+
+Then /^there should be DEL link in reply$/ do
+  within(".reply") do
+    page.should have_css("a.rabel[data-method=delete]", :visible => false)
   end
 end
 

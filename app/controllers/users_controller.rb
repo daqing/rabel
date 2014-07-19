@@ -9,11 +9,11 @@ class UsersController < ApplicationController
     @title = @user.nickname
     @canonical_path = "/member/#{@title}"
 
-    @signature = @user.account.signature
-    @weibo_link = cannonical_url(@user.account.weibo_link)
-    @personal_website = cannonical_url(@user.account.personal_website)
-    @location = @user.account.location
-    @introduction = @user.account.introduction
+    @signature = @user.account.try(:signature) || ''
+    @weibo_link = cannonical_url(@user.account.try(:weibo_link)) || ''
+    @personal_website = cannonical_url(@user.account.try(:personal_website)) || ''
+    @location = @user.account.try(:location) || ''
+    @introduction = @user.account.try(:introduction) || ''
 
     @nickname_tip = (@user == current_user) ? '我' : @user.nickname
     @seo_description = "#{@user.nickname} - #{@signature}"

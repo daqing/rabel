@@ -36,16 +36,15 @@ module Rabel
         self.class.model_name.collection,
         id,
         assoc,
-        "#{current_page}:#{per_page}",
         "#{order_column}:#{order_type}",
         "#{total}-#{ts}"
       ]
 
       result = Rails.cache.fetch(cache_keys.join('/')) do
-        send(assoc).order("#{order_column} #{order_type}").page(current_page).per(per_page).to_a
+        send(assoc).order("#{order_column} #{order_type}").to_a
       end
 
-      Kaminari.paginate_array(result, :total_count => total).page(1).per(per_page)
+      Kaminari.paginate_array(result, :total_count => total).page(current_page).per(per_page)
     end
 
     def cached_assoc_object(assoc)

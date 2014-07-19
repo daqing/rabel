@@ -23,8 +23,8 @@ Feature: Comments
   Scenario: admin can manage comments
     Given as an admin, I have logged in as devin
       And I am on the topic page
-      Then there should be link EDIT in reply
-        And there should be link DEL in reply
+      Then there should be EDIT link in reply
+        And there should be DEL link in reply
 
   Scenario: normal user can't manage comments
     Given I am not authenticated
