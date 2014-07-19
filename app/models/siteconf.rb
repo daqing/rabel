@@ -10,7 +10,6 @@ class Siteconf < RailsSettings::CachedSettings
   end
 
   HOMEPAGE_TOPICS = 15
-  attr_accessible :var
 
   boolean_attributes :show_captcha, :show_community_stats,
     :allow_markdown_in_topics,
@@ -47,7 +46,8 @@ class Siteconf < RailsSettings::CachedSettings
     end
 
     def topic_editable_period
-      self.topic_editable_period_str.to_i.minutes
+      #self.topic_editable_period_str.to_i.minutes
+      5.minutes
     end
 
     def simple_topic_list_style?

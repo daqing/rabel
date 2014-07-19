@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Admin::PlanesController do
   it { should extend_the_controller(Admin::BaseController) }
@@ -15,20 +15,20 @@ describe Admin::PlanesController do
     end
 
     it "should show plane creation form via ajax" do
-      get :new, :format => :js
+      xhr :get, :new
       should respond_with(:success)
     end
 
     it "should create planes via ajax" do
       expect {
-        post :create, :plane => {:name => 'foobar'}, :format => :js
+        xhr :post, :create, :plane => {:name => 'foobar'}
       }.to change{Plane.count}.by(1)
 
       should respond_with(:success)
     end
 
     it "should show plane editing form via ajax" do
-      get :edit, :id => @plane.id, :format => :js
+      xhr :get, :edit, :id => @plane.id
       should respond_with(:success)
     end
 
@@ -52,7 +52,7 @@ describe Admin::PlanesController do
       node = create(:node, :plane => plane)
       expect {
         delete :destroy, :id => plane.id, :format => :js
-      }.to_not change{Plane.count}.by(-1)
+      }.to change{Plane.count}.by(0)
 
       should respond_with(:unprocessable_entity)
     end

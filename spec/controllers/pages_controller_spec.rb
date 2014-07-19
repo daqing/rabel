@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe PagesController do
   before(:each) do
@@ -13,13 +13,6 @@ describe PagesController do
   it "should not show draft page" do
     page = create(:page, :published => false)
     get :show, :key => page.key
-    should respond_with(:success)
-    should render_template('welcome/exception')
-  end
-
-  it "should not show draft page on mobile view" do
-    page = create(:page, :published => false)
-    get :show, :key => page.key, :format => :mobile
     should respond_with(:success)
     should render_template('welcome/exception')
   end

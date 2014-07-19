@@ -32,8 +32,8 @@ end
 
 Then /^it should display the pagination links$/ do
   within(".pagination") do
-    page.should have_css('.first')
-    page.should have_css('.active')
+    page.should have_css('li.first')
+    page.should have_css('li.active')
   end
 end
 
@@ -94,11 +94,11 @@ Then /^it should display a mention button$/ do
 end
 
 When /^I click the mention button$/ do
-  find("img.mention_button:first").click
+  find("img.mention_button").click
 end
 
 Then /^the commenter user name should appear in the comment box$/ do
-  mention_button = find("img.mention_button:first")
+  mention_button = find("img.mention_button")
   find("#comment_content").value.should have_content(mention_button['data-mention'])
 end
 

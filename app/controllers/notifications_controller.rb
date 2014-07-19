@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @notifications = current_user.notifications.where(:unread => true).order('created_at DESC').limit(100).all
+    @notifications = current_user.notifications.where(:unread => true).order('created_at DESC').limit(100).to_a
     current_user.notifications.update_all(:unread => false)
     @unread_count = 0
 

@@ -4,7 +4,7 @@
 %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1.0'}
 %title= title
 = Siteconf.custom_head_tags.html_safe
-= favicon_link_tag
+= favicon_link_tag '/favicon.ico'
 = auto_discovery_link_tag :atom, topics_path(:atom)
 - if @canonical_path.present?
   %link{:rel => :canonical, :href => "http://#{ENV['RABEL_HOST_NAME']}#{@canonical_path}"}

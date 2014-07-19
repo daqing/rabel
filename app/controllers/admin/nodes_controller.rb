@@ -14,7 +14,7 @@ class Admin::NodesController < Admin::BaseController
   end
 
   def create
-    @node = @plane.nodes.build(params[:node])
+    @node = @plane.nodes.build(node_params)
     respond_to do |format|
       if @node.save
         format.js
@@ -37,7 +37,7 @@ class Admin::NodesController < Admin::BaseController
   def update
     @node = @plane.nodes.find(params[:id])
     respond_to do |format|
-      if @node.update_attributes(params[:node])
+      if @node.update_attributes(node_params)
         format.js
       else
         format.js { render :show_form }
@@ -77,5 +77,10 @@ class Admin::NodesController < Admin::BaseController
         format.js { render :text => :error, :status => :unprocessable_entity }
       end
     end
+  end
+
+  private
+  def node_params
+    params.require(:node).permit(:name, :key, :introduction, :custom_html, :position, :quiet, :custom_css)
   end
 end

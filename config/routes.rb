@@ -1,13 +1,14 @@
 Rabel::Application.routes.draw do
+  root 'welcome#index'
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   get 'settings' => 'users#edit'
   get 'member/:nickname' => 'users#show', :as => :member
   get 'member/:nickname/topics' => 'users#topics', :as => :member_topics
   post 'member/:nickname/follow' => 'users#follow', :as => :follow_user
   post 'member/:nickname/unfollow' => 'users#unfollow', :as => :unfollow_user
-  put 'users/update_account' => 'users#update_account', :as => :update_account
-  put 'users/update_password' => 'users#update_password', :as => :update_password
-  put 'users/update_avatar' => 'users#update_avatar', :as => :update_avatar
+  patch 'users/update_account' => 'users#update_account', :as => :update_account
+  patch 'users/update_password' => 'users#update_password', :as => :update_password
+  patch 'users/update_avatar' => 'users#update_avatar', :as => :update_avatar
   get 'go/:key' => 'nodes#show', :as => :go
   get 't/:id' => 'topics#show', :as => :t
   get '/topics/:id' => redirect('/t/%{id}'), :constraints => { :id => /\d+/ }
@@ -24,7 +25,7 @@ Rabel::Application.routes.draw do
       member do
         get :move
         get :edit_title
-        put :update_title
+        patch :update_title
       end
     end
   end
@@ -32,8 +33,8 @@ Rabel::Application.routes.draw do
     resources :comments
     resources :bookmarks
     post :preview, :on => :collection
-    put :toggle_comments_closed
-    put :toggle_sticky
+    patch :toggle_comments_closed
+    patch :toggle_sticky
     get :new_from_home, :on => :collection
     post :create_from_home, :on => :collection
   end
@@ -54,12 +55,12 @@ Rabel::Application.routes.draw do
     resources :nodes do
       post :sort, :on => :collection
       get :move, :on => :member
-      put :move_to, :on => :member
+      patch :move_to, :on => :member
     end
 
     resources :users do
       member do
-        put :toggle_admin
+        patch :toggle_admin
         put :toggle_blocked
       end
       resources :rewards
@@ -71,16 +72,15 @@ Rabel::Application.routes.draw do
 
     resource :site_settings
     resources :topics, :advertisements, :cloud_files, :rewards
-    
+
     resources :notifications do
       delete :clear, :on => :collection
     end
 
     get 'appearance' => 'site_settings#appearance'
 
-    root :to => 'welcome_admin#index'
+    root 'welcome_admin#index'
   end
-  root :to => 'welcome#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

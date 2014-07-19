@@ -196,7 +196,7 @@ module ApplicationHelper
   end
 
   def cannonical_url(url)
-    return url if url.length == 0
+    return "" if url == nil || url.length == 0
     url.start_with?('http://') ? url : 'http://' + url
   end
 

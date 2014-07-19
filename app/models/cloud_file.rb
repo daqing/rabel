@@ -1,6 +1,4 @@
 class CloudFile < ActiveRecord::Base
-  attr_accessible :name, :asset
-
   mount_uploader :asset, CloudFileUploader
 
   validates :name, :asset, :presence => true

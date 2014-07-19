@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe UsersController do
   before do
@@ -8,12 +8,6 @@ describe UsersController do
   it "displays user's personal homepage" do
     create(:user, :nickname => 'devin')
     get :show, :nickname => 'devin'
-    response.should be_success
-  end
-
-  it "displays user's personal homepage in mobile version" do
-    create(:user, :nickname => 'devin')
-    get :show, :nickname => 'devin', :format => :mobile
     response.should be_success
   end
 
@@ -28,11 +22,6 @@ describe UsersController do
     login_user(:devin)
     it "allows editing profile" do
       get :edit
-      response.should be_success
-    end
-
-    it "allows editing profile on mobile device" do
-      get :edit, :format => :mobile
       response.should be_success
     end
 
@@ -69,7 +58,7 @@ describe UsersController do
       should respond_with(:redirect)
       should_not set_the_flash
       current_user = User.find_by_nickname(:devin)
-      assigns(:followed_user).followed_by?(current_user).should be_true
+      expect(assigns(:followed_user).followed_by?(current_user)).to be true
     end
 
     it "should unfollow people" do
@@ -79,7 +68,7 @@ describe UsersController do
       post :unfollow, :nickname => 'dhh'
       should respond_with(:redirect)
       should_not set_the_flash
-      devin.following?(dhh).should be_false
+      expect(devin.following?(dhh)).to be false
     end
   end
 

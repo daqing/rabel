@@ -10,5 +10,5 @@
       = "#{@total_comments} 回复"
     #replies{:class => "#{'fix_cell' if @total_pages == 1}"}
       = render @comments
-    - if @total_pages > 1
+    .center
       = paginate @comments, :param_name => :p

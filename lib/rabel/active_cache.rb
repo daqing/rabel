@@ -21,7 +21,7 @@ module Rabel
       ]
 
       Rails.cache.fetch(cache_keys.join('/')) do
-        send(assoc).order(order).limit(limit).all
+        send(assoc).order(order).limit(limit).to_a
       end
     end
 
@@ -36,13 +36,12 @@ module Rabel
         self.class.model_name.collection,
         id,
         assoc,
-        "#{current_page}:#{per_page}",
         "#{order_column}:#{order_type}",
         "#{total}-#{ts}"
       ]
 
       result = Rails.cache.fetch(cache_keys.join('/')) do
-        send(assoc).order("#{order_column} #{order_type}").page(current_page).per(per_page).all
+        send(assoc).order("#{order_column} #{order_type}").to_a
       end
 
       Kaminari.paginate_array(result, :total_count => total).page(current_page).per(per_page)
@@ -98,7 +97,7 @@ module Rabel
         ]
 
         result = Rails.cache.fetch(cache_keys.join('/')) do
-          order("#{order_column} #{order_type}").page(page).per(per_page).all
+          order("#{order_column} #{order_type}").page(page).per(per_page).to_a
         end
 
         Kaminari.paginate_array(result, :total_count => total).page(page).per(per_page)
@@ -114,7 +113,7 @@ module Rabel
         ts = select('updated_at').order('updated_at DESC').first.try(:updated_at)
         return Rabel::Model::EMPTY_DATASET unless ts.present?
         Rails.cache.fetch("#{self.model_name.collection}/all-#{ts}") do
-          self.order(order_str).all
+          self.order(order_str).to_a
         end
       end
     end

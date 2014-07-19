@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'spec_helper.rb'
+require 'rails_helper.rb'
 
 describe "Registration", :type => :feature do
   it "should allow registration when captcha off" do
