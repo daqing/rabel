@@ -90,11 +90,6 @@ describe TopicsController do
       should respond_with(:success)
     end
 
-    it "should display topic creation form in mobile version" do
-      get :new, :node_id => @node.id, :format => :mobile
-      should respond_with(:success)
-    end
-
     it "can only edit own topics" do
       nana = create(:user)
       others_topic = create(:topic, :user => nana, :node => @node)

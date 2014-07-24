@@ -7,18 +7,6 @@ describe WelcomeController do
       get :index
       should respond_with(:success)
     end
-
-    it "should display mobile version" do
-      get :index, :format => :mobile
-      should respond_with(:success)
-    end
-  end
-
-  describe "Get #goodbye" do
-    it "should display goodbye on mobile device" do
-      get :goodbye, :format => :mobile
-      should respond_with(:success)
-    end
   end
 
   describe "Get #sitemap" do

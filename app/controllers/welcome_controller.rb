@@ -9,7 +9,6 @@ class WelcomeController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile { @planes = Plane.all }
     end
   end
 
@@ -18,7 +17,6 @@ class WelcomeController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile { add_breadcrumb @title }
     end
   end
 

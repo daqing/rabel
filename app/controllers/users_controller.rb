@@ -20,7 +20,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile { add_breadcrumb @user.nickname }
     end
   end
 
@@ -41,7 +40,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile
     end
   end
 
@@ -90,7 +88,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile { add_breadcrumb(@title) }
     end
   end
 
@@ -101,7 +98,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile { add_breadcrumb(@title) }
     end
   end
 

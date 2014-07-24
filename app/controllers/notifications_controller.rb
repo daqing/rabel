@@ -11,10 +11,6 @@ class NotificationsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile {
-        add_breadcrumb(@title)
-        @show_notification_count = false
-      }
     end
   end
 
