@@ -1,25 +1,13 @@
-!!! 5
-%html{:lang => 'zh-CN'}
-  %head
-    = render 'shared/head'
-  %body
-    #Top
-      = render 'shared/top', :link_class => :top
-    #Wrapper
-      - if Siteconf.global_banner.present?
-        .sep10
-        #Banner
-          = image_tag Siteconf.global_banner, :alt => :banner
-        .sep10
-      - else
-      #Content
-        #Sidebar
-        #Rightbar
-          = render 'shared/sidebar_box'
-          = yield :rightbar
-          = render :partial => 'shared/ad', :collection => Advertisement.available, :as => :ad
-        #Main
-          = render 'shared/content'
-        .c
-    = render 'shared/footer'
+- content_for :content do
+  .col-md-9.col-lg-9.col-sm-8
+    = render 'shared/alert'
+    = yield
+
+- content_for :sidebar do
+  .col-md-3.col-lg-3.col-sm-4#Rightbar
+    = render 'shared/sidebar_box'
+    = yield :rightbar
+    = render :partial => 'shared/ad', :collection => Advertisement.available, :as => :ad
+
+= render :template => 'layouts/base'
 
