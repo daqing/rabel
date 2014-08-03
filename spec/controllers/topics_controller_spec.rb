@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe TopicsController do
   before(:each) do
@@ -18,11 +18,6 @@ describe TopicsController do
     should respond_with(:success)
   end
 
-  it "should show topic in mobile version" do
-    get :show, :id => @topic.id, :format => :mobile
-    should respond_with(:success)
-  end
-
   it "should show all topics" do
     get :index
     should respond_with(:success)
@@ -37,7 +32,7 @@ describe TopicsController do
     it "should redirect when trying to create topic" do
       expect {
         post :create, :node_id => @node.id, :topic => @topic_params
-      }.to_not change{Topic.count}.by(1)
+      }.to change{Topic.count}.by(0)
       should respond_with(:redirect)
     end
 
@@ -78,6 +73,7 @@ describe TopicsController do
       expect {
         post :create, :node_id => @node.id, :topic => @topic_params
       }.to change{Topic.count}.by(1)
+
       should respond_with(:redirect)
     end
 
@@ -85,16 +81,12 @@ describe TopicsController do
       expect {
         post :create, :node_id => @node.id, :topic => {:title => 'hi'}
       }.to change{Topic.count}.by(1)
+
       should respond_with(:redirect)
     end
 
     it "can edit topic" do
       get :edit, :node_id => @node, :id => @my_topic.id
-      should respond_with(:success)
-    end
-
-    it "should display topic creation form in mobile version" do
-      get :new, :node_id => @node.id, :format => :mobile
       should respond_with(:success)
     end
 
@@ -131,7 +123,7 @@ describe TopicsController do
     it "should redirect when trying to delete topic" do
       expect {
         delete :destroy, :node_id => @node.id, :id => @topic.id
-      }.to_not change{Topic.count}.by(-1)
+      }.to change{Topic.count}.by(0)
       should respond_with(:redirect)
       should redirect_to(root_path)
     end
@@ -169,7 +161,7 @@ describe TopicsController do
     end
 
     it "should move topics" do
-      get :move, :node_id => @node.id, :id => @topic.id, :format => :js
+      xhr :get, :move, :node_id => @node.id, :id => @topic.id
       should respond_with(:success)
     end
 
@@ -181,14 +173,14 @@ describe TopicsController do
 
     it "can toggle comments_closed status of topic" do
       put :toggle_comments_closed, :topic_id => @topic.id
-      assigns(:topic).comments_closed.should be_true
+      expect(assigns(:topic).comments_closed).to be true
       should redirect_to(t_path(@topic.id))
       should_not set_the_flash
     end
 
     it "can toggle sticky status of topic" do
       put :toggle_sticky, :topic_id => @topic.id
-      assigns(:topic).sticky.should be_true
+      expect(assigns(:topic).sticky).to be true
       should redirect_to(t_path(@topic.id))
       should_not set_the_flash
     end

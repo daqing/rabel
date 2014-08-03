@@ -9,8 +9,6 @@ class Notification < ActiveRecord::Base
   belongs_to :action_user, :class_name => 'User'
   belongs_to :notifiable, :polymorphic => true
 
-  attr_accessible :content, :action
-
   # Notify user
   def self.notify(user, notifiable, action_user, action, content)
     nf = Notification.new(:action => action, :content => content)

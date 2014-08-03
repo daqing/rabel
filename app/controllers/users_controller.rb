@@ -9,18 +9,17 @@ class UsersController < ApplicationController
     @title = @user.nickname
     @canonical_path = "/member/#{@title}"
 
-    @signature = @user.account.signature
-    @weibo_link = cannonical_url(@user.account.weibo_link)
-    @personal_website = cannonical_url(@user.account.personal_website)
-    @location = @user.account.location
-    @introduction = @user.account.introduction
+    @signature = @user.account.try(:signature) || ''
+    @weibo_link = cannonical_url(@user.account.try(:weibo_link)) || ''
+    @personal_website = cannonical_url(@user.account.try(:personal_website)) || ''
+    @location = @user.account.try(:location) || ''
+    @introduction = @user.account.try(:introduction) || ''
 
     @nickname_tip = (@user == current_user) ? '我' : @user.nickname
     @seo_description = "#{@user.nickname} - #{@signature}"
 
     respond_to do |format|
       format.html
-      format.mobile { add_breadcrumb @user.nickname }
     end
   end
 
@@ -41,13 +40,12 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile
     end
   end
 
   def update_account
     @user = current_user
-    if @user.update_without_password(params[:user])
+    if @user.update_without_password(user_params)
       flash[:success] = '个人设置成功更新'
       sign_in :user, current_user, :bypass => true
       redirect_to settings_path
@@ -59,7 +57,7 @@ class UsersController < ApplicationController
 
   def update_password
     @user = current_user
-    if @user.update_with_password(params[:user])
+    if @user.update_with_password(user_params)
       flash[:success] = '密码已成功更新，下次请用新密码登录'
       sign_in :user, current_user, :bypass => true
       redirect_to settings_path
@@ -72,7 +70,7 @@ class UsersController < ApplicationController
   def update_avatar
     @user = current_user
     if params[:user].present?
-      if @user.update_without_password(params[:user])
+      if @user.update_without_password(user_params)
         flash[:success] = '头像更新成功'
         redirect_to settings_path + '#avatar'
       else
@@ -90,7 +88,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile { add_breadcrumb(@title) }
     end
   end
 
@@ -101,7 +98,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile { add_breadcrumb(@title) }
     end
   end
 
@@ -119,5 +115,12 @@ class UsersController < ApplicationController
       flash[:error] = '取消特别关注失败' unless current_user.unfollow(@followed_user)
     end
     redirect_to member_path(params[:nickname])
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:avatar, :password, :password_confirmation, :current_password,
+                                  account_attributes: [:signature])
   end
 end

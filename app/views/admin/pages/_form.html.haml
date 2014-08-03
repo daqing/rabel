@@ -1,27 +1,25 @@
-= simple_form_for [:admin, page], :html => {:class => 'form-horizontal'} do |f|
+= simple_form_for [:admin, page] do |f|
   = f.input :title, :label => '标题'
-  .control-group
-    = f.label :key, '英文标题', :class => 'control-label'
-    .controls
-      .input-prepend
-        %span.add-on /page/
-        = f.text_field :key, :class => 'input-small'
-      %small.help-inline 只允许英文字符和下划线
+  .form-group
+    = f.label :key, '英文标题'
+    .input-group
+      %span.input-group-addon /page/
+      = f.text_field :key, :class => 'form-control'
+    %span.help-block 只允许英文字符和下划线
 
-  .control-group
-    = f.label :content, '页面内容', :class => 'control-label'
-    .controls
-      = render 'shared/preview_widget', :ref => :page_content, :type => :page
-      = f.text_area :content, :class => :span6, :rows => 5
-  .control-group
-    = f.label :published, '发布状态', :class => 'control-label'
-    .controls
-      %label.radio.inline
+  .form-group
+    = f.label :content, '页面内容'
+    = render 'shared/preview_widget', :ref => :page_content, :type => :page
+    = f.text_area :content, :class => 'form-control', :rows => 5
+  .form-group
+    = f.label :published, '发布状态'
+    .radio
+      %label
         = f.radio_button 'published', true
         %span.published 立刻发布
-      %label.radio.inline
+      %label
         = f.radio_button 'published', false
         %span.draft 保存为草稿
   .form-actions
-    = f.submit '保存', :class => 'btn btn-small btn-primary'
+    = f.submit '保存', :class => 'btn btn-sm btn-primary'
 

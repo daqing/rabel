@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe User do
   before(:each) do
@@ -6,16 +6,9 @@ describe User do
   end
 
   it { should validate_uniqueness_of(:nickname) }
-  #it { should validate_uniqueness_of(:email) }
   it { should validate_presence_of(:nickname) }
   it { should validate_presence_of(:email) }
 
-  it { should allow_mass_assignment_of(:nickname) }
-  it { should allow_mass_assignment_of(:email) }
-  it { should allow_mass_assignment_of(:password) }
-  it { should allow_mass_assignment_of(:password_confirmation) }
-  it { should_not allow_mass_assignment_of(:role) }
-  it { should_not allow_mass_assignment_of(:blocked) }
 
   it { should have_one(:account).dependent(:destroy) }
   it { should have_many(:topics).dependent(:destroy) }
@@ -55,13 +48,13 @@ describe User do
   it "should follow other users" do
     nana = create(:user, :nickname => 'nana')
     @user.follow(nana)
-    @user.following?(nana).should be_true
-    nana.followers.include?(@user).should be_true
-    nana.followed_by?(@user).should be_true
+    expect(@user.following?(nana)).to be true
+    expect(nana.followers.include?(@user)).to be true
+    expect(nana.followed_by?(@user)).to be true
   end
 
   it "should not have custom avatar" do
-    @user.has_avatar?.should be_false
+    expect(@user.has_avatar?).to be false
   end
 end
 

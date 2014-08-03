@@ -1,35 +1,35 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Admin::NodesController do
   it { should extend_the_controller(Admin::BaseController) }
   context "admins" do
     login_admin :devin
-    
+
     before(:each) do
       @plane = create(:plane)
       @node = create(:node, :plane => @plane)
     end
 
     it "should show node creation form via ajax" do
-      get :new, :plane_id => @plane.id, :format => :js
+      xhr :get, :new, :plane_id => @plane.id
       should respond_with(:success)
     end
 
     it "should create node via ajax" do
       expect {
-        post :create, :plane_id => @plane.id, :node => {:key => 'rails', :name => 'Ruby on Rails'}, :format => :js
+        xhr :post, :create, :plane_id => @plane.id, :node => {:key => 'rails', :name => 'Ruby on Rails'}
       }.to change{Node.count}.by(1)
       should respond_with(:success)
     end
 
     it "should show node editing form via ajax" do
-      get :edit, :plane_id => @plane.id, :id => @node.id, :format => :js
+      xhr :get, :edit, :plane_id => @plane.id, :id => @node.id
       should respond_with(:success)
     end
 
     it "should update node via ajax" do
       new_name = 'Nginx 1.0'
-      put :update, :plane_id => @plane.id, :id => @node.id, :node => {:name => new_name}, :format => :js
+      xhr :patch, :update, :plane_id => @plane.id, :id => @node.id, :node => {:name => new_name}
       should respond_with(:success)
       assigns(:node).name.should == new_name
     end
@@ -56,7 +56,7 @@ describe Admin::NodesController do
 
       expect {
         delete :destroy, :id => node.id, :format => :js
-      }.to_not change{Node.count}.by(-1)
+      }.to change{Node.count}.by(0)
 
       should respond_with(:unprocessable_entity)
     end

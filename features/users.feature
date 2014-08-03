@@ -55,6 +55,7 @@ Feature: Users
         And I should not see 加入特别关注
         And I should see Rails is cool
 
+  @javascript
   Scenario: follow and unfollow user
     Given an user exists with nickname: dhh
       And I have logged in as devin

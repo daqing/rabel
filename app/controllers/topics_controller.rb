@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
     # NOTE
     # We can't use @topic.increment!(:hit) here,
     # because updated_at is part of the cache key
-    ActiveRecord::Base.connection.execute("UPDATE topics SET hit = hit + 1 WHERE topics.id = #{@topic.id}")
+    ActiveRecord::Base.connection.execute("UPDATE topics SET hit = hit + 1 WHERE topics.id = #{@topic.id} LIMIT 1")
 
     @title = @topic.title
     @node = @topic.cached_assoc_object(:node)
@@ -66,7 +66,6 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile
     end
   end
 
@@ -75,7 +74,6 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile
     end
   end
 
@@ -84,7 +82,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = @node.topics.new(params[:topic], :as => current_user.permission_role)
+    @topic = @node.topics.new(topic_params)
     @topic.user = current_user
     if @topic.save
       redirect_to t_path(@topic.id)
@@ -115,7 +113,7 @@ class TopicsController < ApplicationController
   def update_title
     respond_to do |f|
       f.js {
-        unless @topic.update_attributes(params[:topic])
+        unless @topic.update_attributes(topic_params)
           render :text => :error, :status => :unprocessable_entity
         end
       }
@@ -144,7 +142,7 @@ class TopicsController < ApplicationController
         }
       end
     else
-      if @topic.update_attributes(params[:topic], :as => current_user.permission_role)
+      if @topic.update_attributes(topic_params)
         redirect_to t_path(@topic.id)
       else
         flash[:error] = '之前的更新有误，请编辑后再提交'
@@ -200,5 +198,9 @@ class TopicsController < ApplicationController
     def find_topic_and_auth
       @topic = @node.topics.find(params[:id])
       authorize! :update, @topic, :message => '你没有权限管理此主题'
+    end
+
+    def topic_params
+      params.require(:topic).permit(:title, :content, :comments_closed, :sticky)
     end
 end

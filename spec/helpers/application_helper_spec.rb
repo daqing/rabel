@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'spec_helper'
+require 'rails_helper'
 
 describe ApplicationHelper do
   describe "markdown parsing" do
@@ -15,11 +15,11 @@ describe ApplicationHelper do
     it "should convert newlines" do
       helper.parse_markdown("foo\nbar").should == '<p>foo<br/>bar</p>'
       helper.parse_markdown("foo\rbar").should == '<p>foo<br/>bar</p>'
-      helper.parse_markdown("foo\rbar").html_safe?.should be_true
+      expect(helper.parse_markdown("foo\rbar").html_safe?).to be true
     end
 
     it "should protect email address" do
-      helper.parse_markdown('foo@bar.com').include?('foo@bar.com').should be_true
+      expect(helper.parse_markdown('foo@bar.com').include?('foo@bar.com')).to be true
     end
 
     it "should not throw exceptions in bad code" do
@@ -29,9 +29,9 @@ describe ApplicationHelper do
 
     it "should foramt content" do
       helper.format_content("\r\nfoobar").should == '<br/>foobar'
-      helper.format_content('foobar@example.org').include?('mailto').should be_true
-      helper.format_content('www.g.cn').include?('http').should be_true
-      helper.format_content('@daqing').include?('/member/').should be_true
+      expect(helper.format_content('foobar@example.org').include?('mailto')).to be true
+      expect(helper.format_content('www.g.cn').include?('http')).to be true
+      expect(helper.format_content('@daqing').include?('/member/')).to be true
     end
 
     it "should not raise exception" do

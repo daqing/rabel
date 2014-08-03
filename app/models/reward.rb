@@ -4,7 +4,6 @@ class Reward < ActiveRecord::Base
   TYPE_REVOKE = 'revoke'
 
   attr_accessor :amount_str, :reward_type
-  attr_accessible :reason, :amount, :amount_str, :reward_type
 
   validates :user_id, :admin_user_id, :amount, :reason, :presence => true
   validates :reward_type, :amount_str, :presence => true, :on => :create

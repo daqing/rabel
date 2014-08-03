@@ -96,48 +96,6 @@ a.action_label:hover {
   }
 }
 
-
-@media (max-width: 767px) {
-  #wrap {
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: -20px;
-    margin-right: -20px;
-  }
-
-  #Rightbar {
-    width: 100%;
-  }
-
-  .marketing { display: none; }
-  .welcome { text-align: center; }
-  .timeago { display: none; }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .span9 {
-    width: 650px;
-  }
-
-  .span3 {
-    width: 230px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container, .navbar-static-top .container {
-    width: 970px;
-  }
-
-  .span9 {
-    width: 670px;
-  }
-
-  .span3 {
-    width: 250px;
-  }
-}
-
 .item_node {
   background: -moz-linear-gradient(center top , #FFFFFF 0%, #F3F3F3 50%, #EDEDED 51%, #FFFFFF 100%) repeat scroll 0 0 transparent;
   background: -webkit-linear-gradient(top , #FFFFFF 0%, #F3F3F3 50%, #EDEDED 51%, #FFFFFF 100%) repeat scroll 0 0 transparent;
@@ -246,3 +204,7 @@ ul.nav li {
   top: -3px;
 }
 
+.navbar {
+  margin-bottom: 0;
+  border-bottom: 1px solid #ccc;
+}

@@ -1,10 +1,11 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
+
   include ApplicationHelper
   include BootstrapHelper
-
-  layout :find_layout
 
   rescue_from CanCan::AccessDenied do |exception|
     exception.default_message = t('tips.no_permission')
@@ -17,7 +18,7 @@ class ApplicationController < ActionController::Base
       @title = '404: Not Found'
       @note = '您要访问的页面不存在。'
       @exception = exception
-      render 'welcome/exception' and return
+      render 'welcome/exception'
     when :js
       render :json => {:error => 'record not found'}, :status => :not_found and return
     end
@@ -32,9 +33,9 @@ class ApplicationController < ActionController::Base
       @title = '500: Internal Error'
       @note = '不好意思，系统运行遇到了错误。'
       @exception = exception
-      render 'welcome/exception' and return
+      render 'welcome/exception'
     when :js
-      render :json => {:error => exception.inspect}, :status => :internal_server_error and return
+      render :json => {:error => exception.inspect}, :status => :internal_server_error
     end
   end
 
@@ -80,22 +81,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def mobile_device?
-    request.format == :mobile
-  end
-
   private
     # Overwriting the sign_out redirect path method
     def after_sign_out_path_for(resource_or_scope)
       goodbye_path
-    end
-
-    def find_layout
-      if mobile_device?
-        'application'
-      else
-        'app'
-      end
     end
 
     def count_unread_notification

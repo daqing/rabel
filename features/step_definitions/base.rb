@@ -153,11 +153,11 @@ Given /^a comment exists with content:(.*)$/ do |content|
 end
 
 Then /^page title should contain (.*)$/ do |title|
-  page.find(:xpath, '//title').native.text.should have_content(title)
+  expect(page).to have_title(title)
 end
 
 Then /^page title should not contain (.*)$/ do |title|
-  page.find(:xpath, '//title').native.text.should_not have_content(title)
+  expect(page.title).not_to include(title)
 end
 
 When /^I click the link (.*)$/ do |link|
@@ -204,11 +204,11 @@ Given /^(a|an) (.*) exists$/ do |i, model|
 end
 
 Then /^an alert message is shown as (.*)$/ do |text|
-  assert page.driver.browser.switch_to.alert.text.include?(text)
+  expect(page.driver.browser.switch_to.alert.text).to eq(text)
 end
 
 When /^I confirm the alert message$/ do
-  page.driver.browser.switch_to.alert.accept
+  accept_alert
 end
 
 Then /^it should display the search form$/ do
@@ -229,7 +229,7 @@ Then /^it will use configured search engine$/ do
 end
 
 Then /^it should display (\d+) notification(s?)$/ do |n, i|
-  page.all("#page-main .span9 table tr").size.should == n.to_i
+  page.all("#page-main .col-md-9 table tr").size.should == n.to_i
 end
 
 Given /^a notification exists with user: (.*)$/ do |nickname|

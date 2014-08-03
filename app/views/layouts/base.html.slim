@@ -2,23 +2,23 @@ doctype html
 html
   head
     = render 'shared/meta'
-    = stylesheet_link_tag  'application', :media => 'all'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = yield :head
     - if Siteconf.theme != 'default'
       = stylesheet_link_tag "#{Siteconf.theme}/i_theme"
     - if Siteconf.custom_css.present?
       style type='text/css' = Siteconf.custom_css.html_safe
-    = javascript_include_tag 'application'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     link rel='apple-touch-icon' href='/apple-touch-icon.png'
 
     = yield :final_head
   body#rabel
-    .navbar.navbar-static-top
-      .navbar-inner
-        .container
-          a.btn.btn-navbar.collapsed(
+    .navbar.navbar-default
+      .container
+        .navbar-header
+          button.navbar-toggle(
            data-toggle='collapse'
-           data-target='.nav-collapse')
+           data-target='#navbar-collapse')
            span.icon-bar
            span.icon-bar
            span.icon-bar
@@ -26,22 +26,23 @@ html
             = link_to root_path, :class => :custom_brand do
               = image_tag Siteconf.custom_logo, :class => :custom_logo, :alt => Siteconf.site_name
           - else
-            = link_to Siteconf.site_name, root_path, class: :brand
+            = link_to Siteconf.site_name, root_path, class: 'navbar-brand'
 
-          .nav-collapse.collapse
-            form.navbar-search.pull-left
-              input#q.search-query type='text' name='q' maxlength=40 data-domain=ENV['RABEL_HOST_NAME'] placeholder=t(:search)
-            ul.nav.pull-right
-              = nav_item(t(:homepage), root_path)
-              - if user_signed_in?
-                li= nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
-                li= nav_item '个人设置', settings_path
-                - if current_user.can_manage_site?
-                  li= nav_item t(:dashboard), admin_root_path
-                li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
-              - else
-                = nav_item(t(:sign_up), new_user_registration_path)
-                = nav_item(t(:sign_in), new_user_session_path)
+        .collapse.navbar-collapse#navbar-collapse
+          form.navbar-form.navbar-left
+            .form-group
+              input#q.form-control type='text' name='q' maxlength=40 data-domain=ENV['RABEL_HOST_NAME'] placeholder=t(:search)
+          ul.nav.navbar-nav.navbar-right
+            = nav_item(t(:homepage), root_path)
+            - if user_signed_in?
+              li= nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
+              li= nav_item '个人设置', settings_path
+              - if current_user.can_manage_site?
+                li= nav_item t(:dashboard), admin_root_path
+              li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+            - else
+              = nav_item(t(:sign_up), new_user_registration_path)
+              = nav_item(t(:sign_in), new_user_session_path)
 
     #wrap
       .container#page-main

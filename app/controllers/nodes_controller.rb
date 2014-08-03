@@ -23,7 +23,6 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.mobile { add_breadcrumb @node.name }
     end
   end
 end

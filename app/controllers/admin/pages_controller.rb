@@ -14,7 +14,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def create
-    @page = Page.new(params[:page])
+    @page = Page.new(page_params)
     if @page.save
       redirect_to admin_pages_path
     else
@@ -29,7 +29,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def update
-    if @page.update_attributes(params[:page])
+    if @page.update_attributes(page_params)
       redirect_to admin_pages_path
     else
       @title = '编辑页面'
@@ -54,6 +54,12 @@ class Admin::PagesController < Admin::BaseController
     respond_to do |format|
       format.js { head :ok }
     end
+  end
+
+  private
+
+  def page_params
+    params.require(:page).permit(:key, :title, :content, :published, :position)
   end
 
 end

@@ -14,9 +14,8 @@
         = render 'shared/my_fav'
     - unless current_user.has_avatar?
       .cell
-        .muted.alert.alert-warn{:style => 'margin-bottom: 0;'}
-          头像不够个性？
-          %a{:href => settings_path + "#avatar", :class => :rabel} 立刻上传 →
+        .muted
+          %a{:href => settings_path + "#avatar", :class => 'btn btn-sm btn-info btn-block'} 立刻上传个性头像
     .inner.muted
       - if @unread_count > 0
         = image_tag 'dot_orange.png', :class => :icon, :align => :top

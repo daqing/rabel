@@ -1,8 +1,6 @@
 class UpyunImage < ActiveRecord::Base
   belongs_to :user
 
-  attr_accessible :asset
-
   mount_uploader :asset, UpyunImageUploader
 
   validates :asset, :content_type, :size, :filename, :presence => true

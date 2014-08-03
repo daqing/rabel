@@ -1,15 +1,18 @@
-= simple_form_for [:admin, plane, node], :remote => true, :html => {:class => 'form-horizontal node'} do |f|
+= simple_form_for [:admin, plane, node], :remote => true, :html => {:class => 'node'} do |f|
   %legend= @title
   = f.input :name, :label => '名称'
-  .control-group
-    = f.label :key, 'URL 路径', :class => 'control-label'
-    .controls
-      .input-prepend
-        %span.add-on /go/
-        = f.text_field :key, :class => 'input-small'
-  = f.input :introduction, :label => '一句话简介', :class => :span4
-  = f.input :custom_css, :label => '自定义 CSS', :input_html => {:class => :span4, :rows => 5}
-  = f.input :custom_html, :label => '自定义侧栏内容', :input_html => {:class => :span4, :rows => 5}
-  = f.input :quiet, :label => false, :inline_label => '禁止本节点话题出现在首页'
+  .form-group
+    = f.label :key, 'URL 路径'
+    .input-group
+      %span.input-group-addon /go/
+      = f.text_field :key, :class => 'form-control'
+  = f.input :introduction, :label => '一句话简介'
+  = f.input :custom_css, :label => '自定义 CSS', :input_html => {:rows => 5}
+  = f.input :custom_html, :label => '自定义侧栏内容', :input_html => {:rows => 5}
+  .form-group
+    .checkbox
+      %label
+        = f.check_box :quiet
+        禁止本节点话题出现在首页
   .form-actions
-    = f.submit '保存', :class => 'btn btn-small btn-primary'
+    = f.submit '保存', :class => 'btn btn-sm btn-primary'

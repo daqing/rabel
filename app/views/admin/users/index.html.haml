@@ -1,10 +1,10 @@
 .box
   .cell
     .fr
-      = form_for '', :url => admin_users_path, :method => :get, :html => {:class => 'form-search'} do
+      = form_for '', :url => admin_users_path, :method => :get, :html => {:class => 'form-inline'} do
         .input-append
-          = text_field_tag :nickname, params[:nickname], :class => 'span2 search-query', :placeholder => '用户昵称'
-          = submit_tag '搜索', :class => :btn
+          = text_field_tag :nickname, params[:nickname], :class => 'form-control input-sm', :placeholder => '用户昵称'
+          = submit_tag '搜索', :class => 'btn btn-default btn-sm'
 
     = build_admin_navigation([@title])
   .cell

@@ -6,7 +6,7 @@ class CreateRewards < ActiveRecord::Migration
       t.integer :amount, default: 0
       t.integer :balance, default: 0
 
-      t.text :reason, default: ''
+      t.text :reason
 
       t.timestamps
     end

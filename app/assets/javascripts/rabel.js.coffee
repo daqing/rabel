@@ -20,7 +20,7 @@ jQuery ($) ->
   .mouseleave ->
     $(this).css('background', '')
   $("textarea").elastic()
-  $("form.navbar-search").submit () ->
+  $("form.navbar-form").submit () ->
       search_input = $("#q");
       query = search_input.val()
       return if query.length == 0

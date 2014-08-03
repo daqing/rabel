@@ -1,7 +1,7 @@
 .box#topics_index
   .cell{:align => 'left'}
     .pull-right
-      = link_to '创建新话题', new_from_home_topics_path, :class => 'btn btn-success btn-small btn-new-topic'
+      = link_to '创建新话题', new_from_home_topics_path, :class => 'btn btn-success btn-sm btn-new-topic'
     .welcome
       = Siteconf.welcome_tip.html_safe
   - if @sticky_topics.any?

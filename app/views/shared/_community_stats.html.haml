@@ -2,19 +2,19 @@
   .box-header
     社区运行状态
   .inner
-    %table{:cellpadding => 3, :cellspacing => 0, :border => 0, :width => '100%'}
+    %table.table.table-striped
       %tr
-        %td{:align => :right, :width => 60}
+        %td
           %span.gray 注册会员
-        %td{:align => :left}
+        %td
           %strong= User.cached_count
       %tr
-        %td{:align => :right, :width => 50}
+        %td
           %span.gray 话题
-        %td{:align => :left}
+        %td
           %strong= Topic.cached_count
       %tr
-        %td{:align => :right, :width => 50}
+        %td
           %span.gray 回复
-        %td{:align => :left}
+        %td
           %strong= Comment.cached_count

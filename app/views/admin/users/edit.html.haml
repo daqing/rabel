@@ -3,8 +3,7 @@
     .pull-right= link_to '返回用户管理', admin_users_path + "?nickname=#{url_encode @user.nickname}", :class => :btn
     = build_admin_navigation([@title])
   .cell
-
-    = simple_form_for [:admin, @user], :html => {:class => 'form-horizontal'} do |f|
+    = simple_form_for [:admin, @user] do |f|
       = f.input :nickname, :label => '用户名'
       = f.input :email
       = f.input :password, :label => '新密码'

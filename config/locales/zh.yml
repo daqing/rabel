@@ -224,7 +224,8 @@ zh:
   tips:
     submitting: 正在提交
     comments_closed: 该话题的回复权限已关闭
-    cloud_file_url: 请输入云硬盘路径
+    custom_logo_path: 请输入 Logo 相对路径
+    banner_path: 请输入 Banner 图片相对路径
     quiet_node: 本节点话题禁登首页
     no_permission: 你没有权限访问刚才的页面
     node_key_format: "只允许英文字符，数字，下划线(_)和短横线(-)"

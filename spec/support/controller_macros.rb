@@ -1,4 +1,4 @@
-module Rabel 
+module Rabel
   module ControllerMacros
     def login_user(nickname_or_user)
       before(:each) do
