@@ -1,41 +1,39 @@
-# 网站域名，比如 'www.apple.com' 或者 'twitter.com'
+# host name, e.g. 'www.apple.com' or 'twitter.com'
 RABEL_HOST_NAME: 'example.com'
 
-# 系统邮件的发件地址，比如 'no-replya@twitter.com'
+# address for system emails, e.g. 'no-replya@twitter.com'
 RABEL_SYSTEM_EMAIL: 'hello@example.com'
 
-# 推荐使用 'rake secret' 命令来生成
-RABEL_SECRET_KEY: '_secret_key'
+# use `$ rake secret` to generate a secret key
+RABEL_SECRET_KEY: ''
 
-# 请使用'网站名+ 随机数'替换 'example'
-# 比如替换成 '_twitter_9527_session'
+# session key, e.g. '_twitter_9527_session'
 RABEL_SESSION_KEY: '_example_session'
 
 # Devise secret key
-#
-# 推荐使用 'rake secret' 命令来生成
+# use `$ rake secret` to generate a secret key
 RABEL_DEVISE_SECRET_KEY: ''
 
-# 缓存配置，默认情况下不需要修改
+# memcached config, leave as default in most cases
 RABEL_MEMCACHED_SERVER: '127.0.0.1:11211'
 RABEL_MEMCACHED_USERNAME: ''
 RABEL_MEMCACHED_PASSWORD: ''
 RABEL_MEMCACHED_NAMESPACE: 'example'
 
-# 又拍云存储(www.upyun.com)配置
+# upyun storage service
 
-# 修改为 'on'，开启图片上传功能
+# change to 'on' to turn on image upload
 RABEL_UPYUN_SWITCH: 'off'
 
-# 操作员名称
-RABEL_UPYUN_OP_NAME: 'example'
+# operator name
+RABEL_UPYUN_OP_NAME: 'example_name'
 
-# 操作员密码
-RABEL_UPYUN_OP_PASSWORD: 'example'
+# operator password
+RABEL_UPYUN_OP_PASSWORD: 'example_password'
 
-# 空间名称
-RABEL_UPYUN_BUCKET: 'example'
+# bucket name
+RABEL_UPYUN_BUCKET: 'example_bucket'
 
-# 空间域名
-RABEL_UPYUN_BUCKET_DOMAIN: 'example.b0.upaiyun.com'
+# bucket host name
+RABEL_UPYUN_BUCKET_HOST: 'http://example.b0.upaiyun.com'
 

@@ -1,4 +1,4 @@
-- if ENV['RABEL_UPYUN_SWITCH'] == 'on'
+- if Figaro.env.RABEL_UPYUN_SWITCH == 'on'
   - content_for :final_head do
     = javascript_include_tag 'i_fileupload'
 
