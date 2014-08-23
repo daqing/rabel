@@ -40,10 +40,8 @@ class TopicsController < ApplicationController
 
     @topic = Topic.find_cached(params[:id])
     store_location
-    # NOTE
-    # We can't use @topic.increment!(:hit) here,
-    # because updated_at is part of the cache key
-    ActiveRecord::Base.connection.execute("UPDATE topics SET hit = hit + 1 WHERE topics.id = #{@topic.id} LIMIT 1")
+
+    Topic.increment_counter(:hit, @topic.id)
 
     @title = @topic.title
     @node = @topic.cached_assoc_object(:node)
