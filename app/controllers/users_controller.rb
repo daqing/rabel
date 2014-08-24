@@ -120,7 +120,11 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:avatar, :password, :password_confirmation, :current_password,
-                                  account_attributes: [:signature])
+    params.require(:user).permit(:avatar,
+                                 :password,
+                                 :password_confirmation,
+                                 :current_password,
+                                 :email,
+                                  account_attributes: [:personal_website, :location, :weibo_link, :introduction, :signature])
   end
 end
