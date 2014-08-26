@@ -1,7 +1,7 @@
 source 'https://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.1.5'
 
 # gem 'pg'
 gem 'mysql2'
@@ -72,7 +72,7 @@ end
 gem 'haml'
 gem 'devise', '~> 3.2.4'
 gem 'cancancan', '~> 1.8.4'
-gem 'kaminari'
+gem 'kaminari', '~> 0.16.1'
 gem 'carrierwave', '~> 0.10.0'
 gem 'carrierwave-upyun', '~> 0.1.8'
 gem 'rmagick', '~> 2.13.2', require: false
