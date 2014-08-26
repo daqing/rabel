@@ -5,10 +5,10 @@
   = f.input :password, :label => '密码'
   = f.input :password_confirmation, :label => '密码确认'
   - if Siteconf.show_captcha?
-    = f.input :captcha, :label => '验证码'
-    .control-group
-      .controls
-        = image_tag captcha_path(:format => :gif), :class => :captcha
+    .form-group
+      %label 验证码
+      %p= image_tag captcha_path(:format => :gif), :class => :captcha
+    = f.input :captcha, :label => false
   .form-actions
     = f.submit '加入社区', :class => 'btn btn-small btn-primary'
 
