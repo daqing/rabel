@@ -48,21 +48,18 @@ td.avatar {
     padding: 10px;
   }
 
-  ul.page-links {
+  .page-links {
     margin: 10px 0 20px 0;
     font-weight: bold;
 
-    li {
+    a {
       display: inline;
-    }
-
-    li.snow {
-      padding: 0 5px;
     }
   }
 
   .copywrite {
-    margin-bottom: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 

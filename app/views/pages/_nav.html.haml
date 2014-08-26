@@ -1,6 +1,6 @@
 - if nav.content.start_with?('http')
-  %li= link_to nav.title, nav.content, :class => 'dark nav', :target => :_blank
+  = link_to nav.title, nav.content, :class => 'dark', :target => :_blank
 - elsif nav.content.start_with?('/')
-  %li= link_to nav.title, nav.content, :class => 'dark nav'
+  = link_to nav.title, nav.content, :class => 'dark'
 - else
-  %li= link_to nav.title, page_path(nav.key), :class => 'dark nav'
+  = link_to nav.title, page_path(nav.key), :class => 'dark'
