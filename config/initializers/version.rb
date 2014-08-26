@@ -3,7 +3,7 @@ module Rabel
     MAJOR = 1
     MINOR = 5
     TINY  = 4
-    PRE   = 3
+    PRE   = 4
 
     STRING = [MAJOR, MINOR, TINY, PRE].compact.join('.')
   end
