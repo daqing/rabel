@@ -143,7 +143,22 @@ img.external {
   width: auto;
   height: auto;
   margin-bottom: 10px;
-  max-width: 570px;
+}
+
+@media only screen and (min-width: 320px) {
+  img.external { max-width: 300px; }
+}
+
+@media only screen and (min-width: 480px) {
+  img.external { max-width: 450px; }
+}
+
+@media only screen and (min-width: 768px) {
+  img.external { max-width: 450px; }
+}
+
+@media only screen and (min-width: 960px) {
+  img.external { max-width: 600px; }
 }
 
 .fileupload-btn {
