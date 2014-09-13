@@ -26,7 +26,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
+  process :fix_resize_issue_with_gif_animation
   process :resize_to_fit => [72, 72]
+
   #
   # def scale(width, height)
   #   # do something
@@ -39,6 +41,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   version :mini do
     process :resize_to_fit => [24, 24]
+  end
+
+  def fix_resize_issue_with_gif_animation
+    if file.extension.downcase == 'gif' && version_name.blank?
+      list = ::Magick::ImageList.new.from_blob file.read
+      if list.size > 1
+        list = list.coalesce
+        File.open(current_path, 'wb') { |f| f.write list.to_blob}
+      end
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
