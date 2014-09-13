@@ -4,7 +4,7 @@ window.rabel.trackEvent = (category, action, label) ->
     _gaq.push ['_trackEvent', category, action, label]
   catch error
 
-jQuery ($) ->
+jQuery(document).on 'page:load',  ->
   window.rabel.sortable = (selector, update_path, options) ->
     options ||= {}
     settings =
@@ -86,3 +86,5 @@ jQuery ($) ->
     if hashbang[0] == '#!' and hashbang[1] == 'click'
       $("##{hashbang[2]}").click()
 
+jQuery ($) ->
+  $(document).trigger('page:load');
