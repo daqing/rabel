@@ -45,7 +45,7 @@ td.avatar {
 #footer {
   #footer-main {
     line-height: 150%;
-    padding: 10px;
+    padding: 20px 10px 10px 5px;
   }
 
   .page-links {
@@ -204,4 +204,9 @@ ul.nav li {
 .navbar {
   margin-bottom: 0;
   border-bottom: 1px solid #ccc;
+}
+
+.navbar-inverse {
+  background: #333;
+  border-radius: 0;
 }
