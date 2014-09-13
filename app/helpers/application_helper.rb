@@ -161,7 +161,7 @@ module ApplicationHelper
     options[:title] = nickname
     hash_key_append(options, :class, 'rabel profile_link')
 
-    link_to nickname, member_path(url_encode(nickname)), options
+    link_to nickname, member_path(nickname), options
   end
 
   def user_profile_link(user, options={})
@@ -174,7 +174,7 @@ module ApplicationHelper
     options[:title] = user.nickname
     hash_key_append(options, :class, 'profile_link')
 
-    link_to(member_path(url_encode(user.nickname)), options) { send(avatar_method, user) }
+    link_to(member_path(user.nickname), options) { send(avatar_method, user) }
   end
 
   def page_real_url(page)

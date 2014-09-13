@@ -35,7 +35,7 @@ html
           ul.nav.navbar-nav.navbar-right
             = nav_item(t(:homepage), root_path)
             - if user_signed_in?
-              li= nav_item current_user.nickname, member_path(url_encode(current_user.nickname))
+              li= nav_item current_user.nickname, member_path(current_user.nickname)
               li= nav_item '个人设置', settings_path
               - if current_user.can_manage_site?
                 li= nav_item t(:dashboard), admin_root_path

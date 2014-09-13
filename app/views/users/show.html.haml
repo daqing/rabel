@@ -75,7 +75,7 @@
           .btn-group
             = link_to "奖励#{Siteconf.reward_title}", new_admin_user_reward_path(@user), :class => 'btn btn-mini', :remote => true
             = link_to "扣除#{Siteconf.reward_title}", new_admin_user_reward_path(@user) + "?reward_type=#{Reward::TYPE_REVOKE}", :class => 'btn btn-mini', :remote => true
-            = link_to '管理此用户', admin_users_path + "?nickname=#{url_encode(@user.nickname)}", :class => 'btn btn-mini'
+            = link_to '管理此用户', admin_users_path + "?nickname=#{@user.nickname}", :class => 'btn btn-mini'
 
 .box
   .box-header

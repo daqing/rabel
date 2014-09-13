@@ -1,7 +1,7 @@
 - nickname = followed_user.nickname
 %li
   .thumbnail
-    = link_to member_path(url_encode(nickname)), :title => nickname do
+    = link_to member_path(nickname), :title => nickname do
       = large_avatar(followed_user)
   .sep5
   .caption.center
