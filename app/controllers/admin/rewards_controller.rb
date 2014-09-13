@@ -19,12 +19,12 @@ class Admin::RewardsController < Admin::BaseController
   def create
     respond_to do |f|
       f.js {
-        @reward = @user.rewards.build(params[:reward])
+        @reward = @user.rewards.build(params.require(:reward).permit(:amount_str, :reason, :reward_type))
         @reward_type = @reward.reward_type
         @reward.admin_user = current_user
 
         result = Reward.transaction do
-          @reward.save && @user.update_attributes({:reward => @user.reward + @reward.amount}, :as => current_user.permission_role)
+          @reward.save && @user.update(:reward => @user.reward + @reward.amount)
         end
 
         render :new and return unless result

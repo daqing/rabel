@@ -26,7 +26,7 @@
               - if current_user.following?(@user)
                 = link_to '取消特别关注', unfollow_user_path(@user.nickname), :method => :post, :class => 'btn btn-small btn-warning unfollow'
               - else
-                = link_to '加入特别关注', follow_user_path(@user.nickname), :method => :post, :class => 'btn btn-small btn-inverse follow'
+                = link_to '加入特别关注', follow_user_path(@user.nickname), :method => :post, :class => 'btn btn-small btn-default follow'
           %h2{:style => 'padding: 0px; margin: 0px; font-size: 22px; line-height: 22px;'}
             = @user.nickname
           - if @signature.length > 0
