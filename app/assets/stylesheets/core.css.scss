@@ -146,19 +146,23 @@ img.external {
 }
 
 @media only screen and (min-width: 320px) {
-  img.external { max-width: 300px; }
+  img.external { max-width: 280px; }
+  .reply img.external { max-width: 220px; }
 }
 
 @media only screen and (min-width: 480px) {
-  img.external { max-width: 450px; }
+  img.external { max-width: 440px; }
+  .reply img.external { max-width: 380px; }
 }
 
 @media only screen and (min-width: 768px) {
   img.external { max-width: 450px; }
+  .reply img.external { max-width: 390px; }
 }
 
 @media only screen and (min-width: 960px) {
-  img.external { max-width: 600px; }
+  img.external { max-width: 620px; }
+  .reply img.external { max-width: 560px; }
 }
 
 .fileupload-btn {
