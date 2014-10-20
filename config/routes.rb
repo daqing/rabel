@@ -61,7 +61,7 @@ Rabel::Application.routes.draw do
     resources :users do
       member do
         patch :toggle_admin
-        put :toggle_blocked
+        patch :toggle_blocked
       end
       resources :rewards
     end

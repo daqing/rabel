@@ -11,8 +11,8 @@
       - if current_user.can_manage_site?
         .cell
           - toggle_comments_closed_tip = @topic.comments_closed? ? '允许回复' : '禁止回复'
-          = link_to toggle_comments_closed_tip, topic_toggle_comments_closed_path(@topic), :method => :put, :class => :btn
+          = link_to toggle_comments_closed_tip, topic_toggle_comments_closed_path(@topic), :method => :patch, :class => :btn
           - toggle_sticky_tip = @topic.sticky? ? '取消置顶' : '置顶此话题'
-          = link_to toggle_sticky_tip, topic_toggle_sticky_path(@topic), :method => :put, :class => :btn
+          = link_to toggle_sticky_tip, topic_toggle_sticky_path(@topic), :method => :patch, :class => :btn
       .inner
         = link_to '删除此话题', node_topic_path(@node, @topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'btn btn-sm btn-danger'
