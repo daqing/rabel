@@ -90,7 +90,8 @@ class TopicsController < ApplicationController
   end
 
   def create_from_home
-    @topic = Topic.new(topic_params)
+    @node = Node.find(params[:topic][:node_id])
+    @topic = @node.topics.new(topic_params)
     @topic.user = current_user
 
     if @topic.save
@@ -197,6 +198,6 @@ class TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :content, :comments_closed, :sticky, :node_id)
+      params.require(:topic).permit(:title, :content)
     end
 end
