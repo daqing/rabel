@@ -31,7 +31,8 @@ class Admin::UsersController < Admin::BaseController
       params[:user].delete(:password_confirmation)
     end
 
-    if @user.update_attributes(params[:user], :as => current_user.permission_role)
+    if @user.update(user_params)
+      flash[:success] = '用户信息更新成功'
       redirect_to admin_users_path + "?nickname=#{@user.nickname}"
     else
       render :edit
@@ -84,5 +85,18 @@ class Admin::UsersController < Admin::BaseController
   private
     def find_user
       @user = User.find(params[:id])
+    end
+
+    def user_params
+      params.require(:user).permit(:nickname, :email,
+                                   :password, :password_confirmation, :reward,
+                                   :account_attributes => [:personal_website,
+                                                           :location,
+                                                           :weibo_link,
+                                                           :signature,
+                                                           :introduction,
+                                                           :id]
+                                  )
+
     end
 end
