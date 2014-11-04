@@ -64,7 +64,7 @@ class Admin::NodesController < Admin::BaseController
   def move_to
     respond_to do |f|
       f.js {
-        render :text => :error, :status => :unprocessable_entity unless @node.update_attributes(params[:node])
+        render :text => :error, :status => :unprocessable_entity unless @node.update(params.require(:node).permit(:plane_id))
       }
     end
   end
