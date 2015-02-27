@@ -1,6 +1,4 @@
 Rabel::Application.routes.draw do
-  resources :qiniu_images
-
   root 'welcome#index'
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   get 'settings' => 'users#edit'
