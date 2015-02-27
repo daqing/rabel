@@ -1,4 +1,6 @@
 Rabel::Application.routes.draw do
+  resources :qiniu_images
+
   root 'welcome#index'
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   get 'settings' => 'users#edit'
@@ -39,7 +41,7 @@ Rabel::Application.routes.draw do
     post :create_from_home, :on => :collection
   end
 
-  resources :comments, :bookmarks, :upyun_images
+  resources :comments, :bookmarks, :upyun_images, :qiniu_images
 
   resources :notifications do
     get :read, :on => :member

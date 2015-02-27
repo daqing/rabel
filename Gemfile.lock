@@ -1,5 +1,5 @@
 GEM
-  remote: https://ruby.taobao.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (4.1.6)
       actionpack (= 4.1.6)
@@ -53,6 +53,9 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    carrierwave-qiniu (0.1.5)
+      carrierwave
+      qiniu (~> 6.2.4)
     carrierwave-upyun (0.1.8)
       carrierwave (>= 0.5.7)
       rest-client (>= 1.6.7)
@@ -144,6 +147,11 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
+    qiniu (6.2.4)
+      json (~> 1.7)
+      mime-types (~> 1.19)
+      rest-client (~> 1.6)
+      ruby-hmac (~> 0.4)
     quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rabel-meta (1.5)
@@ -191,6 +199,7 @@ GEM
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
       rspec-mocks (~> 2.99.0)
+    ruby-hmac (0.4.0)
     rubyzip (1.0.0)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -264,6 +273,7 @@ DEPENDENCIES
   cancancan (~> 1.8.4)
   capybara (~> 2.4.1)
   carrierwave (~> 0.10.0)
+  carrierwave-qiniu
   carrierwave-upyun (~> 0.1.8)
   coderay
   coffee-rails (~> 4.0.1)

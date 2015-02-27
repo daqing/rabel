@@ -30,3 +30,36 @@
     %a.fileupload-btn.action_label
       %span#upload-tip 上传图片
       %input#fileupload{:type => 'file', :multiple => true, :name => "upyun_image[asset][]"}
+
+- if Figaro.env.RABEL_QINIU_SWITCH == 'on'
+  - content_for :final_head do
+    = javascript_include_tag 'i_fileupload'
+
+  - content_for :template_js do
+    :plain
+      var textarea = $("#{textarea_selector}");
+      var _tip = $("#upload-tip");
+      $('#fileupload').fileupload({
+          dataType: 'json',
+          autoUpload: true,
+          url: '/qiniu_images.json',
+          maxFileSize: 1024 * 1024 * 5,
+          acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+          start: function(e) {
+            _tip.html('图片上传中&nbsp;&middot;&middot;&middot;');
+          },
+          done: function (e, data) {
+              $.each(data.result, function (index, file) {
+                new_pic = "\n" + file.url;
+                textarea.atCaret('insert', new_pic);
+              });
+          },
+          always: function(e) {
+            _tip.html("上传图片");
+          },
+      });
+
+  .pull-right
+    %a.fileupload-btn.action_label
+      %span#upload-tip 上传图片
+      %input#fileupload{:type => 'file', :multiple => true, :name => "qiniu_image[asset][]"}
