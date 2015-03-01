@@ -1,0 +1,2 @@
+module QiniuImagesHelper
+end
