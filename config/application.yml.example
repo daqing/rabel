@@ -40,7 +40,7 @@ RABEL_UPYUN_BUCKET_HOST: 'http://example.b0.upaiyun.com'
 # qiniu storage service
 
 # change to 'on' to turn on image upload
-RABEL_QINIU_SWITCH: 'on'
+RABEL_QINIU_SWITCH: 'off'
 
 # access key
 RABEL_QINIU_ACCESS_KEY: 'example_access_key'
