@@ -90,8 +90,7 @@ class TopicsController < ApplicationController
   end
 
   def create_from_home
-    @node = Node.find(params[:topic][:node_id])
-    @topic = @node.topics.new(topic_params)
+    @topic = Topic.new(topic_params)
     @topic.user = current_user
 
     if @topic.save

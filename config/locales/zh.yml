@@ -158,6 +158,11 @@ zh:
         body: "如下字段出现错误："
       full_messages:
         format: "%{attribute} %{message}"
+      models:
+        topic:
+          attributes:
+            node_id:
+              blank: "请选择正确节点"
       messages:
         inclusion: "不包含于列表中"
         exclusion: "是保留关键字"
