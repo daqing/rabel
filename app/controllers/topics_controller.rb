@@ -197,6 +197,6 @@ class TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :content, :node_id)
+      params.require(:topic).permit(:title, :content, :node_id, :comments_closed, :sticky)
     end
 end
