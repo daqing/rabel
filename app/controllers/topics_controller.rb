@@ -197,6 +197,10 @@ class TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :content, :node_id, :comments_closed, :sticky)
+      if current_user.can_manage_site?
+        params.require(:topic).permit(:title, :content, :node_id, :comments_closed, :sticky)
+      else
+        params.require(:topic).permit(:title, :content, :node_id)
+      end
     end
 end
