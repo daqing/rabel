@@ -25,7 +25,7 @@ describe Admin::PagesController do
       }.to change{Page.count}.by(1)
 
       should respond_with(:redirect)
-      should_not set_the_flash
+      should_not set_flash
     end
 
     it "should edit page" do
@@ -36,7 +36,7 @@ describe Admin::PagesController do
     it "should update page" do
       post :update, :id => @page.id, :page => {:title => 'hello'}
       should respond_with(:redirect)
-      should_not set_the_flash
+      should_not set_flash
     end
 
     it "should delete page" do
@@ -45,7 +45,7 @@ describe Admin::PagesController do
       }.to change{Page.count}.by(-1)
 
       should respond_with(:redirect)
-      should_not set_the_flash
+      should_not set_flash
     end
 
     it "should sort page" do

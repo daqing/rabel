@@ -1,7 +1,7 @@
 # configure custom format
-ActionController::Responder.class_eval do
-  alias :to_mobile :to_html
-end
+#ActionController::Responder.class_eval do
+#  alias :to_mobile :to_html
+#end
 
 ActiveRecord::Base.class_eval <<-CODE
   def html_id

@@ -38,7 +38,7 @@ describe Admin::NodesController do
       @n1 = create(:node)
       @n2 = create(:node)
 
-      post :sort, :position => [@n1, @n2], :format => :js
+      post :sort, :position => [@n1.id, @n2.id], :format => :js
       should respond_with(:success)
     end
 

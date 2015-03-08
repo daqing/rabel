@@ -31,5 +31,7 @@ module Rabel
 
     # Don't access the DB when precompiling the assets
     config.assets.initialize_on_precompile = false
+
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

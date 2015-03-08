@@ -29,7 +29,7 @@ describe Admin::AdvertisementsController do
       new_title = 'Rabel 1.0 Preview'
       post :update, :id => @ad.id, :advertisement => {:title => new_title}
       should respond_with(:redirect)
-      should_not set_the_flash
+      should_not set_flash
       assigns(:ad).title.should == new_title
     end
   end

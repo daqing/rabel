@@ -5,7 +5,7 @@ describe NotificationsController do
     it "should redirect to sign in page for anonymous users" do
       get :index
       should respond_with(:redirect)
-      should set_the_flash
+      should set_flash
       should redirect_to(new_user_session_path)
     end
 

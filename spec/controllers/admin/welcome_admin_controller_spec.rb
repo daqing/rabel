@@ -8,7 +8,7 @@ describe Admin::WelcomeAdminController do
       it "redirects to login page" do
         get :index
         should respond_with(:redirect)
-        should set_the_flash
+        should set_flash
         should redirect_to(new_user_session_path)
       end
     end
@@ -20,7 +20,7 @@ describe Admin::WelcomeAdminController do
       it "redirects to root path because of permission error" do
         get :index
         should respond_with(:redirect)
-        should set_the_flash
+        should set_flash
         should redirect_to(root_path)
       end
     end

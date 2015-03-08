@@ -100,7 +100,7 @@ describe TopicsController do
     it "can't update others topic" do
       post :update, :node_id => @node.id, :id => @topic.id, :topic => @topic_params
       should respond_with(:redirect)
-      should set_the_flash
+      should set_flash
     end
 
     it "can't update locked topic" do
@@ -109,7 +109,7 @@ describe TopicsController do
       post :update, :node_id => @node.id, :id => locked_topic.id, :topic => @topic_params
       should respond_with(:redirect)
       should redirect_to(root_path)
-      should set_the_flash
+      should set_flash
       assigns(:topic).title.should_not == @topic_params[:title]
     end
 
@@ -117,7 +117,7 @@ describe TopicsController do
       post :update, :node_id => @node.id, :id => @my_topic.id, :topic => @topic_params
       should respond_with(:redirect)
       should redirect_to(t_path(@my_topic.id))
-      should_not set_the_flash
+      should_not set_flash
     end
 
     it "should redirect when trying to delete topic" do
@@ -157,7 +157,7 @@ describe TopicsController do
       post :update, :node_id => @node.id, :id => @locked_topic.id, :topic => @topic_params
       should respond_with(:redirect)
       should redirect_to(t_path(@locked_topic.id))
-      should_not set_the_flash
+      should_not set_flash
     end
 
     it "should move topics" do
@@ -175,14 +175,14 @@ describe TopicsController do
       put :toggle_comments_closed, :topic_id => @topic.id
       expect(assigns(:topic).comments_closed).to be true
       should redirect_to(t_path(@topic.id))
-      should_not set_the_flash
+      should_not set_flash
     end
 
     it "can toggle sticky status of topic" do
       put :toggle_sticky, :topic_id => @topic.id
       expect(assigns(:topic).sticky).to be true
       should redirect_to(t_path(@topic.id))
-      should_not set_the_flash
+      should_not set_flash
     end
   end
 end

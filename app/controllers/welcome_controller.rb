@@ -27,7 +27,7 @@ class WelcomeController < ApplicationController
       format.gif {
         expires_now
         session[:captcha] = Rabel::Captcha.random_code
-        send_data Rabel::Captcha.image(session[:captcha]), :type => 'image/gif', :disposition => 'ineline'
+        send_data Rabel::Captcha.image(session[:captcha]), :type => 'image/gif', :disposition => 'inline'
       }
     end
   end
