@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org'
+source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -75,6 +75,7 @@ gem 'cancancan', '~> 1.8.4'
 gem 'kaminari', '~> 0.16.1'
 gem 'carrierwave', '~> 0.10.0'
 gem 'carrierwave-upyun', '~> 0.1.8'
+gem 'carrierwave-qiniu'
 gem 'rmagick', '~> 2.13.2', require: false
 gem 'mime-types'
 gem 'redcarpet'
