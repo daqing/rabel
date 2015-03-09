@@ -56,6 +56,15 @@ a.node:hover {
   color: #777;
   text-decoration: none;
 }
+a.top:link, a.top:visited, a.top:active {
+  color: #556;
+  text-decoration: none;
+}
+
+a.navbar-brand {
+  color: black;
+  font-size: 2em;
+}
 
 a.rabel:link, a.rabel:visited, a.rabel:active {
   color: #778087;

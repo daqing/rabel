@@ -10,7 +10,7 @@ html
 
     = yield :final_head
   body#rabel
-    .navbar.navbar-inverse
+    .navbar
       .container
         .navbar-header
           button.navbar-toggle(
@@ -36,7 +36,7 @@ html
               li= nav_item '个人设置', settings_path
               - if current_user.can_manage_site?
                 li= nav_item t(:dashboard), admin_root_path
-              li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+              li= link_to t(:sign_out), destroy_user_session_path, :method => :delete, :class => 'top'
             - else
               = nav_item(t(:sign_up), new_user_registration_path)
               = nav_item(t(:sign_in), new_user_session_path)

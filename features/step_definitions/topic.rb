@@ -22,10 +22,10 @@ Then /^it should not display a comment form$/ do
   page.should have_no_content('现在就添加一条回复')
 end
 
-Given /^the topic has comments of (\d+) pages \((\d+) per page\)$/ do |pages, per_page|
+Given /^the topic has comments of (\d+) pages$/ do |pages|
   topic = Topic.first
-  Siteconf.pagination_comments = per_page.to_i
-  (per_page.to_i * pages.to_i).times do
+  per_page = Siteconf.pagination_comments.to_i
+  (per_page * pages.to_i).times do
     FactoryGirl.create(:comment, :commentable => topic)
   end
 end

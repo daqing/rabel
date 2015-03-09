@@ -81,7 +81,7 @@ Feature: Topics
 
   Scenario: topic comments pagination
     Given a topic exists with title: 那继续晒一下韩国电影吧
-      And the topic has comments of 3 pages (2 per page)
+      And the topic has comments of 3 pages
       And I am on the topic page
       Then it should display the pagination links
         And the current page is the last page
@@ -92,23 +92,16 @@ Feature: Topics
 
   Scenario: show topic comment sequence id on multi pages
     Given a topic exists with title: 那继续晒一下韩国电影吧
-      And the topic has comments of 3 pages (2 per page)
+      And the topic has comments of 3 pages
       And I am on the topic page
-      Then I should see #5
-        And I should see #6
+      Then I should see #300
+        And I should see #299
       When I click the second page
-        Then I should see #3
-          And I should see #4
+        Then I should see #200
+          And I should see #199
         When I click the first page
         Then I should see #1
           And I should see #2
-
-  Scenario: show topic comment sequence id on one page
-    Given a topic exists with title: 那继续晒一下韩国电影吧
-      And the topic has comments of 1 pages (2 per page)
-      And I am on the topic page
-      Then I should see #1
-        And I should see #2
 
   Scenario: show custom rightbar widget
     Given a node exists with custom html: <strong class="heading">认识电影</strong>
