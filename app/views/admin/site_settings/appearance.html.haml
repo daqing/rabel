@@ -5,7 +5,7 @@
     = form_for :site_settings, :url => admin_site_settings_path, :method => :put do |f|
       .form-group
         = label_tag 'settings[theme]', '设计风格'
-        = select_tag 'settings[theme]', options_for_select([['默认风格', :rabel], ['水果', :fruit]], @settings.theme), :class => 'form-control'
+        = select_tag 'settings[theme]', options_for_select([['默认风格', :rabel]], @settings.theme), :class => 'form-control'
 
       .form-group
         = label_tag 'settings[nav_position]', '节点导航位置'
