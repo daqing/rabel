@@ -2,10 +2,6 @@
   - content_for :rightbar do
     = render 'rightbar_planes'
 
-- if Siteconf.show_community_stats?
-  - content_for :rightbar do
-    = render 'shared/community_stats'
-
 - if Siteconf.nav_position_top?
   = render 'home_planes'
   = render 'home_topics'

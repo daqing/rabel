@@ -26,17 +26,26 @@ html
             = link_to Siteconf.site_name, root_path, class: 'navbar-brand'
 
         .collapse.navbar-collapse#navbar-collapse
-          form.navbar-form.navbar-left
-            .form-group
-              input#q.form-control type='text' name='q' maxlength=40 data-domain=ENV['RABEL_HOST_NAME'] placeholder=t(:search)
-          ul.nav.navbar-nav.navbar-right
+          ul.nav.navbar-nav.navbar-left
             = nav_item(t(:homepage), root_path)
+          ul.nav.navbar-nav.navbar-right
+            = link_to new_from_home_topics_path, class: 'navbar-left' do
+              button.navbar-btn.btn.btn-sm.btn-success 创建新话题
             - if user_signed_in?
-              li= nav_item current_user.nickname, member_path(current_user.nickname)
-              li= nav_item '个人设置', settings_path
-              - if current_user.can_manage_site?
-                li= nav_item t(:dashboard), admin_root_path
-              li= link_to t(:sign_out), destroy_user_session_path, :method => :delete, :class => 'top'
+              li= nav_item "#{@unread_count} 提醒", notifications_path
+              li.dropdown
+                = link_to 'javascript:void(0);', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
+                  = current_user.nickname
+                ul.dropdown-menu
+                  li= nav_item '个人主页', member_path(current_user.nickname)
+                  li= nav_item '账号设置', settings_path
+                  - if current_user.can_manage_site?
+                    li= nav_item t(:dashboard), admin_root_path
+                  li.divider
+                  li= nav_item "#{current_user.bookmarked_topics_count} 话题收藏", my_topics_path
+                  li= nav_item "#{current_user.followed_user_count} 特别关注", my_following_path
+                  li.divider
+                  li= link_to t(:sign_out), destroy_user_session_path, :method => :delete, :class => 'top'
             - else
               = nav_item(t(:sign_up), new_user_registration_path)
               = nav_item(t(:sign_in), new_user_session_path)
