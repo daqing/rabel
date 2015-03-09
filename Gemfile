@@ -47,7 +47,7 @@ gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+gem 'byebug', group: [:development, :test]
 
 gem 'rabel-meta', '1.5', group: :production
 gem 'rspec-rails', '~> 2.99', group: [:development, :test]
@@ -64,8 +64,6 @@ end
 group :development do
   gem 'quiet_assets'
   gem 'awesome_print'
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'thin'
 end
 

@@ -41,15 +41,13 @@ GEM
     arel (6.0.0)
     awesome_print (1.6.1)
     bcrypt (3.1.10)
-    better_errors (2.1.1)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
-      rack (>= 0.9.0)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     cancancan (1.8.4)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -94,13 +92,7 @@ GEM
     daemons (1.1.9)
     dalli (2.7.2)
     database_cleaner (1.4.0)
-    debug_inspector (0.0.2)
-    debugger (1.6.8)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.5)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.8)
     default_value_for (3.0.1)
       activerecord (>= 3.2.0, < 5.0)
     devise (3.4.1)
@@ -254,6 +246,7 @@ GEM
       activesupport (>= 3.1, < 5.0)
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
+    slop (3.6.0)
     spring (1.3.3)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -293,9 +286,8 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   awesome_print
-  better_errors
-  binding_of_caller
   bootstrap-sass (~> 3.1.1)
+  byebug
   cancancan (~> 1.8.4)
   capybara
   carrierwave (~> 0.10.0)
@@ -306,7 +298,6 @@ DEPENDENCIES
   cucumber-rails
   dalli
   database_cleaner
-  debugger
   default_value_for
   devise
   facebox-rails (~> 0.2.0)
