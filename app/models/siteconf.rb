@@ -46,12 +46,19 @@ class Siteconf < RailsSettings::CachedSettings
     end
 
     def topic_editable_period
-      #self.topic_editable_period_str.to_i.minutes
       5.minutes
     end
 
     def simple_topic_list_style?
       self.topic_list_style == 'simple'
+    end
+
+    def pagination_topics
+      25
+    end
+
+    def pagination_comments
+      100
     end
   end
 end

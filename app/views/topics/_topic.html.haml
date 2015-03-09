@@ -1,5 +1,27 @@
 - topic_user = topic.cached_assoc_object(:user)
 - topic_node = topic.cached_assoc_object(:node)
 - comments_count = topic.comments_count
-= render "topics/#{Siteconf.topic_list_style}_topic", :topic_user => topic_user, :topic_node => topic_node, :topic => topic
+- last_replied_by = topic.last_replied_by
+.cell.topic{:class => topic_user.can_manage_site? ? 'admin' : ''}
+  .avatar.pull-left
+    = user_profile_avatar_link(topic_user, :medium)
+  .item_title
+    - if comments_count > 0
+      .pull-right
+        .badge.badge-info= comments_count
+    %h2.topic_title
+      = link_to topic.title, t_path(topic.id), :class => 'rabel topic'
+    .topic-meta
+      = link_to topic_node.name, go_path(topic_node.key), :class => :node
+      %span.muted •
+      = user_profile_link(topic_user, :class => :dark)
+      %span.muted •
+      - if comments_count > 0
+        = time_ago_in_words(topic.last_replied_at)
+        %span.muted •
+        最后回复来自
+        = nickname_profile_link(last_replied_by)
+      - else
+        = time_ago_in_words(topic.created_at)
+
 

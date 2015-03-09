@@ -4,7 +4,7 @@
   = f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}
   = render 'shared/fileupload_widget', :textarea_selector => "textarea#topic_content"
   = render 'shared/preview_widget', :ref => :topic_content, :type => :topic
-  = f.input :content, :input_html => {:rows => 10, :style => 'width: 98%;'}, :label => false, :placeholder => '话题内容'
+  = f.input :content, :input_html => {:rows => 10}, :label => false, :placeholder => '话题内容'
   - if current_user.can_manage_site?
     .checkbox
       = f.input :sticky, :inline_label => '保持置顶', :label => false

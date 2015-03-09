@@ -9,19 +9,9 @@
         %span.help-block 必填
 
       .form-group
-        = label_tag 'settings[welcome_tip]', '欢迎信息'
-        = text_field_tag 'settings[welcome_tip]', @settings.welcome_tip, :class => 'form-control'
-        %span.help-block 支持 HTML
-
-      .form-group
         = label_tag 'settings[short_intro]', '简短介绍'
         = text_field_tag 'settings[short_intro]', @settings.short_intro, :class => 'form-control'
         %span.help-block 网站简短介绍, 显示在右侧边栏
-
-      .form-group
-        = label_tag 'settings[marketing_str]', '市场宣传关键字'
-        = text_field_tag 'settings[marketing_str]', @settings.marketing_str, :class => 'form-control'
-        %span.help-block 用英文逗号(,)隔开
 
       .form-group
         = label_tag 'settings[ga_id]', 'Google Analytics ID'
@@ -89,20 +79,12 @@
         = text_area_tag 'settings[seo_description]', @settings.seo_description, :class => 'form-control'
         %span.help-block 用于HTML meta标签
       .form-group
-        = label_tag 'settings[splash]', 'Hero Unit'
-        = text_area_tag 'settings[splash]', @settings.splash, :class => 'form-control', :rows => 5
-        %span.help-block 支持HTML
-      .form-group
         = label_tag 'settings[global_sidebar_block]', '全局侧边栏'
         = text_area_tag 'settings[global_sidebar_block]', @settings.global_sidebar_block, :class => 'form-control', :rows => 5
         %span.help-block 支持HTML
       .form-group
         = label_tag 'settings[footer]', '页面底部 [普通版]'
         = text_area_tag 'settings[footer]', @settings.footer, :class => 'form-control', :rows => 5
-        %span.help-block 支持HTML
-      .form-group
-        = label_tag 'settings[mobile_footer]', '页面底部 [移动版]'
-        = text_area_tag 'settings[mobile_footer]', @settings.mobile_footer, :class => 'form-control', :rows => 5
         %span.help-block 支持HTML
       .form-group
         = label_tag 'settings[sticky_topics_heading]', '置顶话题提示'
@@ -114,22 +96,6 @@
         = label_tag 'settings[reward_title]', '奖励名称'
         = text_field_tag 'settings[reward_title]', @settings.reward_title, :class => 'form-control'
         %span.help-block 例如: 银币，金币，积分，优惠券，代金券，蓝钻, Q币等
-      .form-group
-        = label_tag 'settings[topic_editable_period_str]', '话题编辑限制'
-        .input-group
-          = text_field_tag 'settings[topic_editable_period_str]', @settings.topic_editable_period_str, :class => 'form-control'
-          %span.input-group-addon 分钟
-        %span.help-block 允许用户修改话题的时间
-      .form-group
-        = label_tag 'settings[pagination_topics]', '节点话题'
-        .input-group
-          = text_field_tag 'settings[pagination_topics]', @settings.pagination_topics, :class => 'form-control'
-          %span.input-group-addon / 页
-      .form-group
-        = label_tag 'settings[pagination_comments]', '回复'
-        .input-group
-          = text_field_tag 'settings[pagination_comments]', @settings.pagination_comments, :class => 'form-control input-sm'
-          %span.input-group-addon / 页
 
       .form-actions
         = f.submit '保存', :class => 'btn btn-small btn-primary'
