@@ -5,7 +5,6 @@
 # files.
 ENV['RAILS_ENV'] = 'test'
 ENV['RABEL_TEST_DEFAULT_PASSWORD'] = '123456'
-ENV['RABEL_HOST_NAME'] = '127.0.0.1'
 require 'cucumber/rails'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
