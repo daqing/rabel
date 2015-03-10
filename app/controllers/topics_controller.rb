@@ -90,7 +90,11 @@ class TopicsController < ApplicationController
   end
 
   def create_from_home
+    @node = Node.where(id: params[:topic][:node_id]).first
+    redirect_to root_path and return if @node.nil?
+
     @topic = Topic.new(topic_params)
+    @topic.node = @node
     @topic.user = current_user
 
     if @topic.save
@@ -198,9 +202,9 @@ class TopicsController < ApplicationController
 
     def topic_params
       if current_user.can_manage_site?
-        params.require(:topic).permit(:title, :content, :node_id, :comments_closed, :sticky)
+        params.require(:topic).permit(:title, :content, :comments_closed, :sticky)
       else
-        params.require(:topic).permit(:title, :content, :node_id)
+        params.require(:topic).permit(:title, :content)
       end
     end
 end
