@@ -31,4 +31,4 @@ chromedriver.log
 .rvmrc
 /logfile
 config/application.yml
-
+.env
