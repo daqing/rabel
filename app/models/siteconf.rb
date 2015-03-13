@@ -11,8 +11,7 @@ class Siteconf < RailsSettings::CachedSettings
 
   HOMEPAGE_TOPICS = 15
 
-  boolean_attributes :show_captcha, :show_community_stats,
-    :allow_markdown_in_topics,
+  boolean_attributes :show_captcha, :allow_markdown_in_topics,
     :allow_markdown_in_comments,
     :allow_markdown_in_pages
 
@@ -31,18 +30,6 @@ class Siteconf < RailsSettings::CachedSettings
 
     def marketing_str=(str)
       self.marketing = str.split(',')
-    end
-
-    def nav_position_top?
-      self.nav_position == 'top'
-    end
-
-    def nav_position_sidebar?
-      self.nav_position == 'sidebar'
-    end
-
-    def nav_position_bottom?
-      self.nav_position == 'bottom'
     end
 
     def topic_editable_period
