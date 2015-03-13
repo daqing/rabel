@@ -1,1 +1,1 @@
-web: bundle exec rails server thin -p $PORT -e $RAILS_ENV
+web: bundle exec thin start -p $PORT -e $RAILS_ENV
