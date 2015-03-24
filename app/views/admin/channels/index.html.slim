@@ -1,0 +1,18 @@
+.box
+  .header
+    .pull-right
+      = admin_create_button('添加讨论区', Channel)
+    = build_admin_navigation([@title])
+    .sep10
+  .inner
+    table.table
+      tr
+        th 名称
+        th
+      - Channel.default_order.all.each do |ch|
+        tr
+          td= ch.name
+          td
+            = admin_edit_button('修改', ch)
+            |&nbsp;&nbsp;
+            = admin_delete_button(ch) if ch.topics.count == 0

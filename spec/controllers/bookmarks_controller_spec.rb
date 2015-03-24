@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe BookmarksController do
   before do
-    @node = create(:node)
     @topic = create(:topic)
   end
 

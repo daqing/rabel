@@ -43,12 +43,7 @@ class Topic < ActiveRecord::Base
   end
 
   def self.home_topics(num)
-    excluded_nodes = Node.where(:quiet => true).pluck(:id)
-    if excluded_nodes.any?
-      where("node_id NOT in (?)", excluded_nodes).with_sticky(false).latest_involved_topics(num)
-    else
-      with_sticky(false).latest_involved_topics(num)
-    end
+    with_sticky(false).latest_involved_topics(num)
   end
 
   def self.with_sticky(sticky)

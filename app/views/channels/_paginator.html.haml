@@ -3,13 +3,13 @@
     - if @prev_page_num > 0
       %li.previous
         - if @prev_page_num == 1
-          = link_to '← 上一页', go_path(@node.key)
+          = link_to '← 上一页', channel_path(@channel)
         - else
-          = link_to '← 上一页', go_path(@node.key) + "?p=#{@prev_page_num}"
+          = link_to '← 上一页', channel_path(@channel) + "?p=#{@prev_page_num}"
     %li.center
       %span.gray= "#{@page_num}/#{@total_pages}"
 
     - if @next_page_num > 0
       %li.next
-        = link_to '下一页 →', go_path(@node.key) + "?p=#{@next_page_num}"
+        = link_to '下一页 →', channel_path(@channel) + "?p=#{@next_page_num}"
 

@@ -59,6 +59,8 @@ def path_to(page)
     new_user_password_path
   when 'the notifications'
     notifications_path
+  when 'the channel'
+    channel_path(@channel)
   else
     raise 'Unknown page'
   end

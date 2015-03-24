@@ -42,9 +42,6 @@ Feature: Users
         And I should see dhh
         And I should see 加入特别关注
         And I should see Rails is cool
-        Given nana has followed dhh
-          And I am on dhh's profile page
-          Then I should see 关注dhh的人
 
   Scenario: visit my personal homepage as authenticated user
     Given I have logged in as devin

@@ -9,8 +9,8 @@ Feature: Admin
         And I should see 基本设置
         And I should see 外观
         And I should see 用户
-        And I should see 位面节点
-        And I should see 讨论话题
+        And I should see 讨论区
+        And I should see 话题
         And I should see 页面
         And I should see 广告位
 

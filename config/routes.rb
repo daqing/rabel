@@ -52,7 +52,7 @@ Rabel::Application.routes.draw do
       get :sort, :on => :collection
     end
 
-    resources :nodes do
+    resources :channels do
       post :sort, :on => :collection
       get :move, :on => :member
       patch :move_to, :on => :member

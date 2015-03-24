@@ -103,12 +103,6 @@ Feature: Topics
         Then I should see #1
           And I should see #2
 
-  Scenario: show custom rightbar widget
-    Given a node exists with custom html: <strong class="heading">认识电影</strong>
-      And a topic under the node exists with title: Hi
-      And I am on the topic page
-      Then it should display custom widget: 认识电影
-
   @javascript
   Scenario: mention someone using mention button as authenticated user
     Given I have logged in as devin
