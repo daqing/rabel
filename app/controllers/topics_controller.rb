@@ -1,7 +1,7 @@
 # encoding: utf-8
 class TopicsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :find_node, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky, :new_from_home, :create_from_home]
+  before_filter :find_channel, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky, :new_from_home, :create_from_home]
   before_filter :find_topic_and_auth, :only => [:edit_title,:update_title,
     :edit, :update, :move, :destroy]
   before_filter :only => [:toggle_comments_closed, :toggle_sticky] do |c|
@@ -44,7 +44,7 @@ class TopicsController < ApplicationController
     Topic.increment_counter(:hit, @topic.id)
 
     @title = @topic.title
-    @node = @topic.node
+    @channel = @topic.channel
 
     @total_comments = @topic.comments.count
     @total_pages = (@total_comments * 1.0 / Siteconf.pagination_comments.to_i).ceil
@@ -57,18 +57,16 @@ class TopicsController < ApplicationController
 
     @canonical_path = "/t/#{params[:id]}"
     @canonical_path += "?p=#{@current_page}" if @total_pages > 1
-    @seo_description = "#{@node.name} - #{@topic.user.nickname} - #{@topic.title}"
+    @seo_description = "#{@channel.name} - #{@topic.user.nickname} - #{@topic.title}"
 
-    @prev_topic = @topic.prev_topic(@node)
-    @next_topic = @topic.next_topic(@node)
+    @prev_topic = @topic.prev_topic(@channel)
+    @next_topic = @topic.next_topic(@channel)
 
-    respond_to do |format|
-      format.html
-    end
+    render :layout => 'single-column'
   end
 
   def new
-    @topic = @node.topics.new
+    @topic = @channel.topics.new
 
     respond_to do |format|
       format.html
@@ -77,11 +75,13 @@ class TopicsController < ApplicationController
 
   def new_from_home
     @topic = Topic.new
-    @topic.node = Node.find(params[:node_id]) if params[:node_id]
+    @topic.channel = channel.find(params[:channel_id]) if params[:channel_id]
+
+    render :layout => 'single-column'
   end
 
   def create
-    @topic = @node.topics.new(topic_params)
+    @topic = @channel.topics.new(topic_params)
     @topic.user = current_user
     if @topic.save
       redirect_to t_path(@topic.id)
@@ -91,11 +91,11 @@ class TopicsController < ApplicationController
   end
 
   def create_from_home
-    @node = Node.where(id: params[:topic][:node_id]).first
-    redirect_to root_path and return if @node.nil?
+    @channel = Channel.where(id: params[:topic][:channel_id]).first
+    redirect_to root_path, :notice => '讨论区不存在' and return if @channel.nil?
 
     @topic = Topic.new(topic_params)
-    @topic.node = @node
+    @topic.channel = @channel
     @topic.user = current_user
 
     if @topic.save
@@ -125,13 +125,13 @@ class TopicsController < ApplicationController
   end
 
   def update
-    if params[:new_node_id].present?
-      # move to new node
-      @new_node = Node.find(params[:new_node_id])
+    if params[:new_channel_id].present?
+      # move to new channel
+      @new_channel = Channel.find(params[:new_channel_id])
       respond_to do |format|
         format.js {
-          if @new_node.present?
-            @topic.node = @new_node
+          if @new_channel.present?
+            @topic.channel = @new_channel
             if @topic.save
               render :js => "window.location.reload()"
             else
@@ -192,12 +192,12 @@ class TopicsController < ApplicationController
   end
 
   private
-    def find_node
-      @node = Node.find(params[:node_id])
+    def find_channel
+      @channel = Channel.find(params[:channel_id])
     end
 
     def find_topic_and_auth
-      @topic = @node.topics.find(params[:id])
+      @topic = @channel.topics.find(params[:id])
       authorize! :update, @topic, :message => '你没有权限管理此主题'
     end
 

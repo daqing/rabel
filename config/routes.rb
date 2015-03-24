@@ -9,7 +9,6 @@ Rabel::Application.routes.draw do
   patch 'users/update_account' => 'users#update_account', :as => :update_account
   patch 'users/update_password' => 'users#update_password', :as => :update_password
   patch 'users/update_avatar' => 'users#update_avatar', :as => :update_avatar
-  get 'go/:key' => 'nodes#show', :as => :go
   get 't/:id' => 'topics#show', :as => :t
   get '/topics/:id' => redirect('/t/%{id}'), :constraints => { :id => /\d+/ }
 
@@ -20,7 +19,7 @@ Rabel::Application.routes.draw do
   get 'captcha' => 'welcome#captcha'
   get 'sitemap' => 'welcome#sitemap'
 
-  resources :nodes do
+  resources :channels do
     resources :topics do
       member do
         get :move
@@ -29,6 +28,7 @@ Rabel::Application.routes.draw do
       end
     end
   end
+
   resources :topics do
     resources :comments
     resources :bookmarks

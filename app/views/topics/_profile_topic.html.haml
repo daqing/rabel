@@ -1,4 +1,4 @@
-- topic_node = topic.node
+- channel = topic.channel
 - comments_count = topic.comments.count
 - last_replied_by = topic.last_replied_by
 .cell.topic{:class => topic_user.can_manage_site? ? 'admin' : ''}
@@ -8,7 +8,7 @@
         %span.bigger
           = link_to topic.title, t_path(topic.id), :class => 'rabel topic'
         .topic-meta
-          = link_to topic_node.name, go_path(topic_node.key), :class => :node
+          = link_to channel.name, channel, :class => 'dark rabel channel'
           - if comments_count > 0
             &nbsp;&nbsp;•&nbsp;&nbsp;
             = time_ago_in_words(topic.last_replied_at)

@@ -1,6 +1,5 @@
 .alert.alert-info 如果标题已经包含你想说的话，内容可以留空
-= simple_form_for [node, topic] do |f|
-  %a{:name => 'new_topic'}/
+= simple_form_for [channel, topic] do |f|
   = f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}
   = render 'shared/fileupload_widget', :textarea_selector => "textarea#topic_content"
   = render 'shared/preview_widget', :ref => :topic_content, :type => :topic

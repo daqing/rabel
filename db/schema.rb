@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150227153845) do
+ActiveRecord::Schema.define(version: 20150324010453) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "user_id",          limit: 4
@@ -51,6 +51,12 @@ ActiveRecord::Schema.define(version: 20150227153845) do
 
   add_index "bookmarks", ["bookmarkable_id", "bookmarkable_type"], name: "index_bookmarks_on_bookmarkable_id_and_bookmarkable_type", using: :btree
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
+
+  create_table "channels", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "cloud_files", force: :cascade do |t|
     t.string   "content_type", limit: 255
@@ -179,7 +185,6 @@ ActiveRecord::Schema.define(version: 20150227153845) do
   add_index "settings", ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true, using: :btree
 
   create_table "topics", force: :cascade do |t|
-    t.integer  "node_id",         limit: 4
     t.integer  "user_id",         limit: 4
     t.string   "title",           limit: 255
     t.text     "content",         limit: 65535
@@ -192,10 +197,11 @@ ActiveRecord::Schema.define(version: 20150227153845) do
     t.boolean  "sticky",          limit: 1,     default: false
     t.string   "last_replied_by", limit: 255,   default: ""
     t.datetime "last_replied_at"
+    t.integer  "channel_id",      limit: 4
   end
 
+  add_index "topics", ["channel_id"], name: "index_topics_on_channel_id", using: :btree
   add_index "topics", ["involved_at"], name: "index_topics_on_involved_at", using: :btree
-  add_index "topics", ["node_id"], name: "index_topics_on_node_id", using: :btree
   add_index "topics", ["sticky"], name: "index_topics_on_sticky", using: :btree
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 

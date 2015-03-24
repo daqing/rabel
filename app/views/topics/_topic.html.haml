@@ -1,5 +1,5 @@
 - topic_user = topic.user
-- topic_node = topic.node
+- channel = topic.channel
 - comments_count = topic.comments.count
 - last_replied_by = topic.last_replied_by
 .cell.topic{:class => topic_user.can_manage_site? ? 'admin' : ''}
@@ -12,7 +12,7 @@
     %h2.topic_title
       = link_to topic.title, t_path(topic.id), :class => 'rabel topic'
     .topic-meta
-      = link_to topic_node.name, go_path(topic_node.key), :class => :node
+      = link_to channel.name, channel, :class => 'dark rabel channel'
       %span.muted •
       = user_profile_link(topic_user, :class => :dark)
       %span.muted •

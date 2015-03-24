@@ -9,9 +9,7 @@ class NotificationsController < ApplicationController
 
     @title = '提醒系统'
 
-    respond_to do |format|
-      format.html
-    end
+    render :layout => 'single-column'
   end
 
   def read

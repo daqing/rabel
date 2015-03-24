@@ -13,5 +13,7 @@ class PagesController < ApplicationController
     else
       @seo_description = @page.content
     end
+
+    render :layout => 'single-column'
   end
 end

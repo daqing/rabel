@@ -1,0 +1,14 @@
+- if user_signed_in?
+  - content_for :template_js do
+    $("a.super").click(function() { $("textarea.mll:first").focus() });
+
+.box
+  .box-header
+    - if user_signed_in?
+      .fr
+        = link_to '在此讨论区创建新话题', new_from_home_topics_path(:channel_id => @channel.id)
+    = build_navigation([@channel.name], 'bigger')
+  = render @topics
+  .inner
+    = render 'paginator'
+

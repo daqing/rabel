@@ -8,13 +8,13 @@ class Topic < ActiveRecord::Base
     Time.zone.now
   end
 
-  belongs_to :node, :touch => true, :counter_cache => true
+  belongs_to :channel
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :bookmarks, :as => :bookmarkable, :dependent => :destroy
   has_many :notifications, :as => :notifiable, :dependent => :destroy
 
-  validates :node_id, :user_id, :title, :presence => true
+  validates :channel_id, :user_id, :title, :presence => true
 
   after_create :send_notifications
 

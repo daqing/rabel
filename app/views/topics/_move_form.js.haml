@@ -1,6 +1,6 @@
-= form_for [@node, @topic], :remote => :true do |f|
-  = label_tag '移动到新节点'
-  %br
-  = select_tag "new_node_id", option_groups_from_collection_for_select(Plane.default_order.all, :nodes, :name, :id, :name, f.object.node.id)
-  %br
-  = f.submit '开始移动', :class => 'btn btn-small'
+= form_for [@channel, @topic], :remote => :true do |f|
+  = label_tag '移动到新讨论区'
+  .sep10
+  = select_tag "new_channel_id", options_from_collection_for_select(Channel.default_order.all, :id, :name, f.object.channel.id)
+  .sep10
+  = f.submit '开始移动', :class => 'btn btn-sm btn-success'

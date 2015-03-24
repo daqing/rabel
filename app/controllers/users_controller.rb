@@ -2,6 +2,8 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :topics]
 
+  layout 'single-column'
+
   def show
     @user = User.where(:nickname => params[:nickname]).first
     store_location
@@ -17,10 +19,6 @@ class UsersController < ApplicationController
 
     @nickname_tip = (@user == current_user) ? '我' : @user.nickname
     @seo_description = "#{@user.nickname} - #{@signature}"
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def topics
@@ -85,20 +83,12 @@ class UsersController < ApplicationController
   def my_topics
     @my_topics = current_user.bookmarked_topics
     @title = '我收藏的话题'
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def my_following
     @my_followed_users = current_user.followed_users
     @followed_topic_timeline = current_user.followed_topic_timeline
     @title = '我的特别关注'
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def follow

@@ -1,5 +1,7 @@
 # encoding: utf-8
 class RegistrationsController < Devise::RegistrationsController
+  layout 'single-column'
+
   def create
     build_resource(user_params)
 

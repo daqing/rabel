@@ -44,9 +44,9 @@ module ApplicationHelper
     build_navigation(items, class_name)
   end
 
-  def edit_topic_navigation(node, topic)
+  def edit_topic_navigation(channel, topic)
     build_navigation([
-      link_to(node.name, go_path(node.key)),
+      link_to(channel.name, channel),
       link_to(topic.title, t_path(topic.id)),
       '编辑'
     ], 'bigger')

@@ -1,8 +1,8 @@
 # encoding: utf-8
-class NodesController < ApplicationController
+class ChannelsController < ApplicationController
   def show
-    @node = Node.where(key: params[:key]).first
-    @title = @node.name
+    @channel = Channel.find(params[:id])
+    @title = @channel.name
 
     if params[:p].present?
       @page_num = params[:p].to_i
@@ -11,18 +11,16 @@ class NodesController < ApplicationController
       @page_num = 1
     end
 
-    @total_topics = @node.topics_count
+    @total_topics = @channel.topics.count
     @total_pages = (@total_topics * 1.0 / Siteconf.pagination_topics.to_i).ceil
     @next_page_num = (@page_num < @total_pages) ? @page_num + 1 : 0
     @prev_page_num = (@page_num > 1) ? @page_num - 1 : 0
-    @topics = @node.topics.page(@page_num).per(Siteconf.pagination_topics.to_i).order('updated_at DESC')
+    @topics = @channel.topics.page(@page_num).per(Siteconf.pagination_topics.to_i).order('updated_at DESC')
 
     @canonical_path = "/go/#{params[:key]}"
     @canonical_path += "?p=#{@page_num}" if @page_num > 1
-    @seo_description = "#{@node.name} - #{@node.introduction}"
+    @seo_description = @channel.name
 
-    respond_to do |format|
-      format.html
-    end
+    render :layout => 'single-column'
   end
 end

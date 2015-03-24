@@ -1,5 +1,7 @@
 .box.fix_cell
   .box-header
-    节点导航
-  = render :partial => 'rightbar_plane', :collection => Plane.all.order(Plane.default_order_str), :as => :plane
+    讨论区
+  - Channel.order('created_at ASC').each do |ch|
+    .cell
+      = link_to ch.name, ch
 

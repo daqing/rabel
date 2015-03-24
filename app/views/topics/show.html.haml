@@ -1,4 +1,3 @@
-= render 'nodes/custom_fields', :node => @node
 = render 'topics/show/bookmarked_users'
 = render 'topics/show/manage'
 
@@ -21,7 +20,7 @@
     .header
       .pull-right
         = user_profile_avatar_link(topic_user, :large)
-      = build_navigation([link_to(@node.name, go_path(@node.key), :class => :rabel)], 'bigger')
+      = build_navigation([link_to(@channel.name, @channel, :class => :rabel)], 'bigger')
       .sep10
       %h1#topic_title
         = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe

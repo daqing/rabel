@@ -4,10 +4,10 @@
       .fr
         = link_to '修改', edit_admin_page_path(@page), :class => 'btn btn-small'
     .page
-      %article
-        %h1.page-header
-          = @title
-          - unless @page.published
-            %small (草稿)
-        = format_page @page.content
+      %h1.page-header
+        = @title
+        - unless @page.published
+          %small (草稿)
+      .sep10
+      = format_page @page.content
 

@@ -7,7 +7,7 @@
       = render 'shared/fileupload_widget', :textarea_selector => "textarea#topic_content"
       = render 'shared/preview_widget', :ref => :topic_content, :type => :topic
       = f.input :content, :input_html => {:rows => 10}, :label => false, :placeholder => '话题内容'
-      = f.association :node, :label => false, :collection => Plane.all, :as => :grouped_select, :group_method => :nodes, :prompt => '选择一个节点'
+      = f.association :channel, :label => false, :collection => Channel.order('created_at ASC').all, :prompt => '选择讨论区'
       - if current_user.can_manage_site?
         .checkbox
           = f.input :sticky, :inline_label => '保持置顶', :label => false

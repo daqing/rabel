@@ -1,0 +1,6 @@
+- content_for :content do
+  .col-md-8.col-md-offset-2
+    = render 'shared/alert'
+    = yield
+
+= render :template => 'layouts/base'

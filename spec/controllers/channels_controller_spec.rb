@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe NodesController do
+describe ChannelsController do
   before(:each) do
-    @node = create(:node)
+    @channel = create(:channel)
   end
 
   it "should display node" do
-    get :show, :key => @node.key
+    get :show, :id => @channel.id
     should respond_with(:success)
   end
 end

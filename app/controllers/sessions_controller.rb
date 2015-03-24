@@ -1,5 +1,7 @@
 # encoding: utf-8
 class SessionsController < Devise::SessionsController
+  layout 'single-column'
+
   def new
     @title = '登入'
     @seo_description = @title

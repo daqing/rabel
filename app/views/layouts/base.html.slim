@@ -28,6 +28,13 @@ html
         .collapse.navbar-collapse#navbar-collapse
           ul.nav.navbar-nav.navbar-left
             = nav_item(t(:homepage), root_path)
+            li.dropdown
+              = link_to '讨论区', 'javascript:void(0);', class: 'dropdown-toggle top', data: {toggle: 'dropdown'}
+              ul.dropdown-menu
+                - Channel.order('created_at ASC').each do |ch|
+                  li= link_to ch.name, ch
+            = yield :context_menu
+
           ul.nav.navbar-nav.navbar-right
             = link_to new_from_home_topics_path, class: 'navbar-left global-create-btn' do
               button.navbar-btn.btn.btn-sm.btn-success 创建新话题

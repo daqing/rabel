@@ -25,7 +25,7 @@
         }, 1000);
 .box
   .cell
-    = edit_topic_navigation(@node, @topic)
+    = edit_topic_navigation(@channel, @topic)
   .cell
-    = render 'form', :node => @node, :topic => @topic, :comments_closed => @topic.comments_closed?
-  .inner= render 'back_to_node', :node => @node
+    = render 'form', :channel => @channel, :topic => @topic, :comments_closed => @topic.comments_closed?
+  .inner= render 'back_to_channel', :channel => @channel

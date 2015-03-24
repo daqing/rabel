@@ -7,9 +7,7 @@ class WelcomeController < ApplicationController
     @full_title = site_intro
     @seo_description = Siteconf.seo_description
 
-    respond_to do |format|
-      format.html
-    end
+    render :layout => 'single-column'
   end
 
   def goodbye
