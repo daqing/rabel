@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Admin::ChannelsController < Admin::BaseController
   def index
     @channels = Channel.default_order.all
