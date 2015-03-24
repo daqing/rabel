@@ -9,7 +9,7 @@
     - i += 1
     %tr
       %td{:align => :right, :width => 50, :class => "#{class_name} lend"}
-        - comments_count = topic.comments_count
+        - comments_count = topic.comments.count
         - if comments_count > 0
           %strong
             %span.green= comments_count

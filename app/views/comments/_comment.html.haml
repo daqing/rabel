@@ -1,4 +1,4 @@
-- comment_user = comment.cached_assoc_object(:user)
+- comment_user = comment.user
 %article
   .cell.reply.hoverable{:id => comment.html_id, :class => comment_user.can_manage_site? ? 'admin' : ''}
     %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}

@@ -20,7 +20,7 @@
   .box-header
     - if user_signed_in?
       .fr
-        = link_to '创建新话题', '#new_topic', :class => 'btn btn-sm btn-success'
+        = link_to '在此节点创建新话题', new_from_home_topics_path(:node_id => @node.id), :class => 'btn btn-sm btn-success'
     = build_navigation([@node.name], 'bigger')
     - if @node.introduction.present?
       .sep10
@@ -29,12 +29,4 @@
   = render @topics
   .inner
     = render 'paginator'
-
-- if user_signed_in?
-  .box
-    .box-header
-      创建新话题
-    .inner
-      = render 'topics/form', :node => @node, :topic => @node.topics.new, :comments_closed => false
-
 

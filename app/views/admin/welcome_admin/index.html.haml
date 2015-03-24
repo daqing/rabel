@@ -32,11 +32,11 @@
               %th 回复
           %tr
             %td
-              %strong= User.cached_count
+              %strong= User.count
             %td
-              %strong= Topic.cached_count
+              %strong= Topic.count
             %td
-              %strong= Comment.cached_count
+              %strong= Comment.count
 
 - if @notifications_to_clear > 0
   .row

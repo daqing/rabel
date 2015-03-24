@@ -1,4 +1,4 @@
 .cell
   %span.gray= plane.name
   .sep5
-  = render plane.cached_assoc_collection(:nodes, Node.default_order_str, 20)
+  = render plane.nodes.order(Node.default_order_str).limit(20)

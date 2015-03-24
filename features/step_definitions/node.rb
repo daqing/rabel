@@ -12,12 +12,6 @@ Then /^it should not display a compact topic creation form$/ do
   page.should_not have_css('textarea.mll')
 end
 
-When /^I provide topic creation information$/ do
-  fill_in "topic[title]", :with => 'hi'
-  fill_in "topic[content]", :with => 'Rails is cool!'
-  click_button '创建'
-end
-
 Given /^the node has topics of (\d+) pages$/ do |page_count|
   node = Node.first
   topic_count = Siteconf.pagination_topics.to_i * page_count.to_i

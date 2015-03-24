@@ -22,7 +22,7 @@
         %td.auto
           = user_profile_link(topic.user)
         %td.auto{:align => :right}
-          = topic.comments_count
+          = topic.comments.count
         %td.auto{:align => :right}
           = topic.hit
         %td.auto{:align => :right}

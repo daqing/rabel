@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :topics]
 
   def show
-    @user = User.find_by_attr_cached!(:nickname, params[:nickname])
+    @user = User.where(:nickname => params[:nickname]).first
     store_location
 
     @title = @user.nickname
@@ -24,10 +24,10 @@ class UsersController < ApplicationController
   end
 
   def topics
-    @user = User.find_by_attr_cached!(:nickname, params[:nickname])
+    @user = User.where(:nickname => params[:nickname]).first
 
     @current_page = params[:page].present? ? params[:page] : 1
-    @topics = @user.cached_assoc_pagination(:topics, @current_page, 20, 'created_at')
+    @topics = @user.topics.page(@current_page).per(20).order('created_at DESC')
 
     @title = "#{@user.nickname} 创建的所有主题"
     @seo_description = "#{@title} - #{Siteconf.site_name}"

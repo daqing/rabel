@@ -1,6 +1,4 @@
 class Comment < ActiveRecord::Base
-  include Rabel::ActiveCache
-
   belongs_to :user
   belongs_to :commentable, :polymorphic => true, :counter_cache => true
 
@@ -60,7 +58,7 @@ class Comment < ActiveRecord::Base
 
     def update_last_reply
       if commentable.has_attribute?(:last_replied_by) and commentable.has_attribute?(:last_replied_at)
-        if commentable.comments_count == 0
+        if commentable.comments.count == 0
           commentable.last_replied_by = ''
           commentable.last_replied_at = ''
         else

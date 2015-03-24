@@ -75,8 +75,8 @@ Feature: Topics
 
   Scenario: admin can close comments for topic
     Given as an admin, I have logged in as devin
-      And a node exists
-      When I am on the node page
+      And a topic exists
+      When I am on the topic page
       Then I should see 禁止回复
 
   Scenario: topic comments pagination
@@ -139,15 +139,15 @@ Feature: Topics
           And I have logged in as nana
           And I am on the home page
           Then page title should contain 1
-          When I click the link 1 条未读提醒
+          When I click the link 1 提醒
             Then page title should contain 提醒系统
               And I should not see 全部标记为已读
               And it should display 1 notification
               And I should see Rails is cool
               When I click the link Rails is cool
               Then I should see Rails is cool
-                And page title should not contain 1 条未读提醒
-                And I should not see 1 条未读提醒
+                And page title should not contain 1 提醒
+                And I should not see 1 提醒
 
   Scenario: topic feed
     Given a topic exists

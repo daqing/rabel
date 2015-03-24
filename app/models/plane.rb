@@ -1,5 +1,4 @@
 class Plane < ActiveRecord::Base
-  include Rabel::ActiveCache
   include Sortable
 
   validates :name, :presence => true
