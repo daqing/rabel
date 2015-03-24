@@ -20,7 +20,7 @@ class TopicsController < ApplicationController
           current_page = 1
         end
 
-        @topics = Topic.cached_pagination(current_page, per_page, 'updated_at')
+        @topics = Topic.page(current_page).per(per_page).order('updated_at DESC')
 
         @canonical_path = topics_path
         @canonical_path += "?page=#{current_page}" if current_page > 1
@@ -38,19 +38,19 @@ class TopicsController < ApplicationController
   def show
     raise ActiveRecord::RecordNotFound.new if params[:id].to_i.to_s != params[:id]
 
-    @topic = Topic.find_cached(params[:id])
+    @topic = Topic.find(params[:id])
     store_location
 
     Topic.increment_counter(:hit, @topic.id)
 
     @title = @topic.title
-    @node = @topic.cached_assoc_object(:node)
+    @node = @topic.node
 
-    @total_comments = @topic.comments_count
+    @total_comments = @topic.comments.count
     @total_pages = (@total_comments * 1.0 / Siteconf.pagination_comments.to_i).ceil
     @current_page = params[:p].nil? ? @total_pages : params[:p].to_i
     @per_page = Siteconf.pagination_comments.to_i
-    @comments = @topic.cached_assoc_pagination(:comments, @current_page, @per_page, 'created_at', Rabel::Model::ORDER_ASC)
+    @comments = @topic.comments.page(@current_page).per(@per_page).order('created_at ASC')
 
     @new_comment = @topic.comments.new
     @total_bookmarks = @topic.bookmarks.count
@@ -77,6 +77,7 @@ class TopicsController < ApplicationController
 
   def new_from_home
     @topic = Topic.new
+    @topic.node = Node.find(params[:node_id]) if params[:node_id]
   end
 
   def create

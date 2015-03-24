@@ -4,4 +4,4 @@
       %td{:align => :right, :width => 100}
         = plane.name
       %td{:style => 'line-height: 200%; padding-left: 15px;'}
-        = render plane.cached_assoc_collection(:nodes, Node.default_order_str, 20)
+        = render plane.nodes.order(Node.default_order_str).limit(20)

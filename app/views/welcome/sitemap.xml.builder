@@ -10,7 +10,7 @@ xml.urlset :"xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
     @topics.each do |topic|
       xml.url do
         xml.loc(t_url(topic.id))
-        if topic.comments_count > 0
+        if topic.comments.count > 0
           lastmod = topic.last_comment.updated_at
         else
           lastmod = topic.updated_at

@@ -1,6 +1,5 @@
 class Topic < ActiveRecord::Base
   include Notifiable
-  include Rabel::ActiveCache
 
   DEFAULT_HIT = 0
   default_value_for :hit, DEFAULT_HIT
@@ -40,25 +39,15 @@ class Topic < ActiveRecord::Base
   end
 
   def self.sticky_topics
-    ts = select('updated_at').with_sticky(true).order('updated_at DESC').first.try(:updated_at)
-    return Rabel::Model::EMPTY_DATASET unless ts.present?
-    count = with_sticky(true).count
-    Rails.cache.fetch("topics/sticky/#{ts}-#{count}") do
-      with_sticky(true).order('updated_at DESC').all
-    end
+    with_sticky(true).order('updated_at DESC').all
   end
 
   def self.home_topics(num)
-    ts = select('updated_at').order('updated_at DESC').first.try(:updated_at)
-    return Rabel::Model::EMPTY_DATASET unless ts.present?
-    node_ts = Node.select('updated_at').order('updated_at DESC').first.try(:updated_at)
-    Rails.cache.fetch("topics/homepage/#{self.count}/#{num}-#{ts}/#{node_ts}") do
-      excluded_nodes = Node.where(:quiet => true).pluck(:id)
-      if excluded_nodes.any?
-        where("node_id NOT in (?)", excluded_nodes).with_sticky(false).latest_involved_topics(num)
-      else
-        with_sticky(false).latest_involved_topics(num)
-      end
+    excluded_nodes = Node.where(:quiet => true).pluck(:id)
+    if excluded_nodes.any?
+      where("node_id NOT in (?)", excluded_nodes).with_sticky(false).latest_involved_topics(num)
+    else
+      with_sticky(false).latest_involved_topics(num)
     end
   end
 

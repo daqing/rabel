@@ -1,7 +1,6 @@
 # encoding: utf-8
 class Node < ActiveRecord::Base
   include Sortable
-  include Rabel::ActiveCache
 
   has_many :topics
   has_many :bookmarks, :as => :bookmarkable, :dependent => :destroy

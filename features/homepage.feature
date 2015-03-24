@@ -39,8 +39,3 @@ Feature: Homepage
       And I am on the home page
       Then I should see Rabel is cool
 
-  @javascript
-  Scenario: search
-    Given I am on the home page
-      Then it should display the search form
-

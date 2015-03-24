@@ -4,6 +4,7 @@ Feature: Pages
       And I am on the page page
       Then page title should contain FAQ
         And I should see FAQ
+
   Scenario: visit draft page
     Given an root exists
       And a page is in draft with title: FAQ

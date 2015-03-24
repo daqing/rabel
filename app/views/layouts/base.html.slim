@@ -29,7 +29,7 @@ html
           ul.nav.navbar-nav.navbar-left
             = nav_item(t(:homepage), root_path)
           ul.nav.navbar-nav.navbar-right
-            = link_to new_from_home_topics_path, class: 'navbar-left' do
+            = link_to new_from_home_topics_path, class: 'navbar-left global-create-btn' do
               button.navbar-btn.btn.btn-sm.btn-success 创建新话题
             - if user_signed_in?
               li= nav_item "#{@unread_count} 提醒", notifications_path

@@ -2,7 +2,6 @@
 require 'carrierwave/orm/activerecord'
 
 class User < ActiveRecord::Base
-  include Rabel::ActiveCache
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -68,7 +67,7 @@ class User < ActiveRecord::Base
 
   def recent_followers
     follower_ids = self.follower_relationships.order('created_at DESC').limit(10).pluck(:user_id)
-    follower_ids.map { |uid| User.find_cached(uid) }
+    follower_ids.map { |uid| User.find(uid) }
   end
 
   def follow(user)
