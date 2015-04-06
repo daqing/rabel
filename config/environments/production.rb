@@ -47,15 +47,23 @@ Rails.application.configure do
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
 
-  # Use a different cache store in production
-  config.cache_store = :dalli_store,
-    Figaro.env.RABEL_MEMCACHED_SERVER,
-    {
+   # Use a different cache store in production
+  if Figaro.env.RABEL_MEMCACHED_USERNAME.present?
+    dalli_config = {
       :namespace => Figaro.env.RABEL_MEMCACHED_NAMESPACE,
       :username => Figaro.env.RABEL_MEMCACHED_USERNAME,
       :password => Figaro.env.RABEL_MEMCACHED_PASSWORD,
       :compress => true
     }
+  else
+    dalli_config = {
+      :namespace => Figaro.env.RABEL_MEMCACHED_NAMESPACE,
+      :compress => true
+    }
+  end
+
+  config.cache_store = :dalli_store,
+    Figaro.env.RABEL_MEMCACHED_SERVER, dalli_config # Use a different cache store in production
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
