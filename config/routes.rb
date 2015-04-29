@@ -10,7 +10,7 @@ Rabel::Application.routes.draw do
   patch 'users/update_password' => 'users#update_password', :as => :update_password
   patch 'users/update_avatar' => 'users#update_avatar', :as => :update_avatar
   get 't/:id' => 'topics#show', :as => :t
-  get '/topics/:id' => redirect('/t/%{id}'), :constraints => { :id => /\d+/ }
+  get 'topics/:id' => redirect('/t/%{id}'), :constraints => { :id => /\d+/ }
 
   get 'my/topics' => 'users#my_topics', :as => :my_topics
   get 'my/following' => 'users#my_following', :as => :my_following
@@ -18,6 +18,8 @@ Rabel::Application.routes.draw do
   get 'goodbye' => 'welcome#goodbye'
   get 'captcha' => 'welcome#captcha'
   get 'sitemap' => 'welcome#sitemap'
+
+  patch 'upyun_images' => 'upyun_images#create'
 
   resources :channels do
     resources :topics do
