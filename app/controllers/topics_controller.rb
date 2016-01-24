@@ -75,7 +75,7 @@ class TopicsController < ApplicationController
 
   def new_from_home
     @topic = Topic.new
-    @topic.channel = channel.find(params[:channel_id]) if params[:channel_id]
+    @topic.channel = Channel.find(params[:channel_id]) if params[:channel_id]
 
     render :layout => 'single-column'
   end
