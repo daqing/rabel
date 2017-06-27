@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '5.1.1'
 
 gem 'pg'
 # gem 'mysql2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails',   '~> 4.0.3'
+gem 'sass-rails'
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.1'
+gem 'coffee-rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
@@ -50,21 +50,18 @@ gem 'unicorn'
 gem 'byebug', group: [:development, :test]
 
 gem 'rabel-meta', '1.5', group: :production
-gem 'rspec-rails', '~> 2.99', group: [:development, :test]
+gem 'rspec-rails', group: [:development, :test]
 
 group :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'capybara'
   gem 'selenium-webdriver'
 end
 
 group :development do
-  gem 'quiet_assets'
   gem 'awesome_print'
-  gem 'thin'
 end
 
 gem 'haml'
@@ -82,10 +79,10 @@ gem 'kgio'
 gem 'dalli'
 gem 'acts_as_list'
 gem 'rails-settings-cached', '0.4.1'
-gem 'facebox-rails', '~> 0.2.0'
 gem 'default_value_for'
-gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-sass'
 gem 'slim-rails'
 gem 'simple_form'
 gem 'figaro'
+gem 'puma'
 

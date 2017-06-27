@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Admin::PagesController < Admin::BaseController
-  before_filter :find_page, :only => [:edit, :update, :destroy]
+  before_action :find_page, :only => [:edit, :update, :destroy]
 
   def index
     @pages = Page.default_order

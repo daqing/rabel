@@ -1,4 +1,4 @@
-class AddIndexToAdvertisements < ActiveRecord::Migration
+class AddIndexToAdvertisements < ActiveRecord::Migration[4.2]
   def change
     change_table :advertisements do |t|
       t.index :start_date

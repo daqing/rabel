@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Admin::PlanesController < Admin::BaseController
-  before_filter :find_plane, :only => [:edit, :update, :destroy]
+  before_action :find_plane, :only => [:edit, :update, :destroy]
 
   def index
     @planes = Plane.default_order

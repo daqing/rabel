@@ -1,6 +1,6 @@
 # encoding: utf-8
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :topics]
+  before_action :authenticate_user!, :except => [:show, :topics]
 
   layout 'single-column'
 

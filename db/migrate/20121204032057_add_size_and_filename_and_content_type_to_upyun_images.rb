@@ -1,4 +1,4 @@
-class AddSizeAndFilenameAndContentTypeToUpyunImages < ActiveRecord::Migration
+class AddSizeAndFilenameAndContentTypeToUpyunImages < ActiveRecord::Migration[4.2]
   def change
     add_column :upyun_images, :size, :integer
     add_column :upyun_images, :filename, :string

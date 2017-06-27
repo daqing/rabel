@@ -1,6 +1,6 @@
 # encoding: utf-8
 class NotificationsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @notifications = current_user.notifications.where(:unread => true).order('created_at DESC').limit(100).to_a

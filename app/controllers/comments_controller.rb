@@ -1,8 +1,8 @@
 # encoding: utf-8
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :find_commentable, :only => [:create]
-  before_filter :find_comment_and_auth, :only => [:edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :find_commentable, :only => [:create]
+  before_action :find_comment_and_auth, :only => [:edit, :update, :destroy]
 
   def create
     redirect_to root_path, :notice => I18n.t('tips.comments_closed') and return if @commentable.try(:comments_closed)

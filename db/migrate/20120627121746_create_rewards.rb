@@ -1,4 +1,4 @@
-class CreateRewards < ActiveRecord::Migration
+class CreateRewards < ActiveRecord::Migration[4.2]
   def change
     create_table :rewards do |t|
       t.integer :admin_user_id, default: 0

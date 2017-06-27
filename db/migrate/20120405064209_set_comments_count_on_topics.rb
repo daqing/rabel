@@ -1,4 +1,4 @@
-class SetCommentsCountOnTopics < ActiveRecord::Migration
+class SetCommentsCountOnTopics < ActiveRecord::Migration[4.2]
   def up
     Topic.find_each do |t|
       Topic.reset_counters(t.id, :comments)

@@ -1,4 +1,4 @@
-class AddCommentsCountToTopics < ActiveRecord::Migration
+class AddCommentsCountToTopics < ActiveRecord::Migration[4.2]
   def change
     add_column :topics, :comments_count, :integer, :null => false, :default => 0
   end

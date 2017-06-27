@@ -1,7 +1,7 @@
 # encoding: utf-8
 class BookmarksController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :find_bookmarkable, :only => :create
+  before_action :authenticate_user!
+  before_action :find_bookmarkable, :only => :create
 
   def create
     @bookmark = @bookmarkable.bookmarks.build

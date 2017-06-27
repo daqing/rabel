@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Admin::UsersController < Admin::BaseController
-  before_filter :find_user, :only => [:edit, :update, :toggle_admin, :toggle_blocked, :destroy]
+  before_action :find_user, :only => [:edit, :update, :toggle_admin, :toggle_blocked, :destroy]
 
   def index
     if params[:nickname].present?

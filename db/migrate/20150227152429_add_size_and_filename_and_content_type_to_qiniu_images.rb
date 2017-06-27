@@ -1,4 +1,4 @@
-class AddSizeAndFilenameAndContentTypeToQiniuImages < ActiveRecord::Migration
+class AddSizeAndFilenameAndContentTypeToQiniuImages < ActiveRecord::Migration[4.2]
   def change
     add_column :qiniu_images, :size, :integer
     add_column :qiniu_images, :filename, :string

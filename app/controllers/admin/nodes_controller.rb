@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Admin::NodesController < Admin::BaseController
-  before_filter :find_parent_plane, :except => [:sort, :destroy, :move, :move_to]
-  before_filter :find_node, :only => [:move, :move_to, :destroy]
+  before_action :find_parent_plane, :except => [:sort, :destroy, :move, :move_to]
+  before_action :find_node, :only => [:move, :move_to, :destroy]
 
   def new
     @node = @plane.nodes.new

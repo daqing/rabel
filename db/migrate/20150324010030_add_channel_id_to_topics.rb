@@ -1,4 +1,4 @@
-class AddChannelIdToTopics < ActiveRecord::Migration
+class AddChannelIdToTopics < ActiveRecord::Migration[4.2]
   def change
     add_column :topics, :channel_id, :integer
     add_index :topics, :channel_id

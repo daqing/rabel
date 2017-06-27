@@ -1,4 +1,4 @@
-class AddLastRepliedByToTopics < ActiveRecord::Migration
+class AddLastRepliedByToTopics < ActiveRecord::Migration[4.2]
   def up
     add_column :topics, :last_replied_by, :string, default: ''
     Topic.find_each do |topic|

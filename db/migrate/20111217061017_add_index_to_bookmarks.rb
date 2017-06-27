@@ -1,4 +1,4 @@
-class AddIndexToBookmarks < ActiveRecord::Migration
+class AddIndexToBookmarks < ActiveRecord::Migration[4.2]
   def change
     change_table :bookmarks do |t|
       t.index :user_id

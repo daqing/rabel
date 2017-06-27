@@ -1,4 +1,4 @@
-class CreateCloudFiles < ActiveRecord::Migration
+class CreateCloudFiles < ActiveRecord::Migration[4.2]
   def change
     create_table :cloud_files do |t|
       t.string :content_type

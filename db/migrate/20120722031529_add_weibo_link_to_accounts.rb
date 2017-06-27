@@ -1,4 +1,4 @@
-class AddWeiboLinkToAccounts < ActiveRecord::Migration
+class AddWeiboLinkToAccounts < ActiveRecord::Migration[4.2]
   def up
     add_column :accounts, :weibo_link, :string, default: ''
     User.find_each do |user|

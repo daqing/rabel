@@ -1,4 +1,4 @@
-class CreateFollowings < ActiveRecord::Migration
+class CreateFollowings < ActiveRecord::Migration[4.2]
   def change
     create_table :followings do |t|
       t.integer :user_id

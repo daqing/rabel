@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Admin::AdvertisementsController < Admin::BaseController
-  before_filter :find_ad, :only => [:edit, :update, :destroy]
+  before_action :find_ad, :only => [:edit, :update, :destroy]
 
   def index
     @ads = Advertisement.order('start_date DESC').page(params[:page]).per(4)

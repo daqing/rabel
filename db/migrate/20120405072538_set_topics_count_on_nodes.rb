@@ -1,4 +1,4 @@
-class SetTopicsCountOnNodes < ActiveRecord::Migration
+class SetTopicsCountOnNodes < ActiveRecord::Migration[4.2]
   def up
     Node.find_each do |node|
       Node.reset_counters(node.id, :topics)

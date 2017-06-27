@@ -1,4 +1,4 @@
-class AddLastRepliedAtToTopics < ActiveRecord::Migration
+class AddLastRepliedAtToTopics < ActiveRecord::Migration[4.2]
   def change
     add_column :topics, :last_replied_at, :datetime
     Topic.find_each do |topic|

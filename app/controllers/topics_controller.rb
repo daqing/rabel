@@ -1,10 +1,10 @@
 # encoding: utf-8
 class TopicsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :find_channel, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky, :new_from_home, :create_from_home]
-  before_filter :find_topic_and_auth, :only => [:edit_title,:update_title,
+  before_action :authenticate_user!, :except => [:show, :index]
+  before_action :find_channel, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky, :new_from_home, :create_from_home]
+  before_action :find_topic_and_auth, :only => [:edit_title,:update_title,
     :edit, :update, :move, :destroy]
-  before_filter :only => [:toggle_comments_closed, :toggle_sticky] do |c|
+  before_action :only => [:toggle_comments_closed, :toggle_sticky] do |c|
     auth_admin
   end
 

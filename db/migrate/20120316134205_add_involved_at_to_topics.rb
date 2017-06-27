@@ -1,4 +1,4 @@
-class AddInvolvedAtToTopics < ActiveRecord::Migration
+class AddInvolvedAtToTopics < ActiveRecord::Migration[4.2]
   def up
     add_column :topics, :involved_at, :datetime
     add_index :topics, :involved_at

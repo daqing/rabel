@@ -1,12 +1,12 @@
 # encoding: utf-8
 class Admin::BaseController < ApplicationController
   include Admin::BaseHelper
-  before_filter :authenticate_user!
-  before_filter do |c|
+  before_action :authenticate_user!
+  before_action do |c|
     raise CanCan::AccessDenied unless current_user.can_manage_site?
   end
 
-  before_filter do |c|
+  before_action do |c|
     add_title_item '管理后台'
   end
 

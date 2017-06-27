@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Admin::RewardsController < Admin::BaseController
-  before_filter :find_parent_user, :except => [:index]
+  before_action :find_parent_user, :except => [:index]
 
   def index
     @rewards = Reward.order('created_at DESC').page(params[:page])

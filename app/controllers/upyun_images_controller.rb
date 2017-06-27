@@ -1,5 +1,5 @@
 class UpyunImagesController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def create
     redirect_to root_path and return if Figaro.env.RABEL_UPYUN_SWITCH != 'on'
