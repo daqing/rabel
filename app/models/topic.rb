@@ -1,13 +1,6 @@
 class Topic < ActiveRecord::Base
   include Notifiable
 
-  DEFAULT_HIT = 0
-  default_value_for :hit, DEFAULT_HIT
-  default_value_for :content, ''
-  default_value_for :involved_at do
-    Time.zone.now
-  end
-
   belongs_to :channel
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
@@ -16,6 +9,7 @@ class Topic < ActiveRecord::Base
 
   validates :channel_id, :user_id, :title, :presence => true
 
+  before_create :set_default_value
   after_create :send_notifications
 
   def last_comment
@@ -82,6 +76,12 @@ class Topic < ActiveRecord::Base
 
   private
 
+    def set_default_value
+      self.hit = 0
+      self.content = ''
+      self.involved_at = Time.zone.now
+    end
+
     def send_notifications
       mentioned_users.each do |user|
         Notification.notify(
@@ -93,5 +93,4 @@ class Topic < ActiveRecord::Base
         )
       end
     end
-
 end

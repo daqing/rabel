@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.1.1'
+gem 'rails', '5.1.2'
 
 gem 'pg'
 # gem 'mysql2'
@@ -79,7 +79,6 @@ gem 'kgio'
 gem 'dalli'
 gem 'acts_as_list'
 gem 'rails-settings-cached', '0.4.1'
-gem 'default_value_for'
 gem 'bootstrap-sass'
 gem 'slim-rails'
 gem 'simple_form'
