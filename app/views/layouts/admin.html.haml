@@ -1,16 +1,17 @@
+- content_for :head do
+  = stylesheet_link_tag :i_admin
+
 - content_for :content do
-  .col-md-3
+  .admin-nav
     - dashboard_menu.each do |m|
       .box.fix_cell
         .cell
           %strong.gray= m[:name]
-        - m[:items].each do |item|
-          .cell
-            = image_tag "admin/#{item.second}.png", :align => :absmiddle, :valign => :middle
-            &nbsp;
+        .cell
+          - m[:items].each do |item|
             = link_to item.first, item.last, :class => (:current_item if @title == item.first)
       = yield :rightbar
-  .col-md-9
+  .admin-main
     = render 'shared/alert'
     = yield
 

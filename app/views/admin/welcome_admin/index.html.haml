@@ -52,11 +52,10 @@
               .pull-right= link_to '删除已读提醒', clear_admin_notifications_path, :method => :delete, :class => 'btn btn-mini btn-info' if @notifications_to_clear > 0
               %strong= @notifications_to_clear
 
-.row
-  .box.span8
-    .cell
-      最新回复
-    .inner
-      = render Comment.order('created_at DESC').limit(5)
+.box
+  .cell
+    最新回复
+  .inner
+    = render Comment.order('created_at DESC').limit(5)
 
 

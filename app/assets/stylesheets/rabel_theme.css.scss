@@ -209,3 +209,13 @@ h4 {
   font-size: 12px;
 }
 
+#main-menu {
+    text-align: center;
+    padding: 12px 15px;
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: #111;
+    }
+}
