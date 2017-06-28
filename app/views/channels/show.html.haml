@@ -3,7 +3,7 @@
     $("a.super").click(function() { $("textarea.mll:first").focus() });
 
 .box
-  .box-header
+  .header
     - if user_signed_in?
       .fr
         = link_to '在此讨论区创建新话题', new_from_home_topics_path(:channel_id => @channel.id), class: 'dark rabel'

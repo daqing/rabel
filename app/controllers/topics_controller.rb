@@ -61,8 +61,6 @@ class TopicsController < ApplicationController
 
     @prev_topic = @topic.prev_topic(@channel)
     @next_topic = @topic.next_topic(@channel)
-
-    render :layout => 'single-column'
   end
 
   def new

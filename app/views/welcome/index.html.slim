@@ -1,5 +1,8 @@
 .box#topics_index
-  .cell{:align => 'left'}
+  .cell.home-channels
+    = link_to '全部', root_path
+    - Channel.default_order.each do |ch|
+      = link_to ch.name, ch
   - if @sticky_topics.any?
     - if Siteconf.sticky_topics_heading.present?
       #sticky_topics.cell.topics_heading= Siteconf.sticky_topics_heading
@@ -11,7 +14,7 @@
   = render @topics
   .inner
     .pull-right= render 'shared/rss'
-    &nbsp;
+    |&nbsp;
     - if Topic.count > Siteconf::HOMEPAGE_TOPICS
-      %span.chevron »
+      span.chevron »
       = link_to '更多新主题', topics_path + '?page=2', :class => :rabel

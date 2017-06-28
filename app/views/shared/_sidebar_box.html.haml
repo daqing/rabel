@@ -1,2 +1,6 @@
-- content_for :rightbar do
-  = Siteconf.global_sidebar_block.html_safe
+- if user_signed_in?
+  = render 'shared/user_sidebar_box'
+- else
+  = render 'shared/login_sidebar_box'
+
+= Siteconf.global_sidebar_block.html_safe

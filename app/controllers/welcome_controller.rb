@@ -6,8 +6,6 @@ class WelcomeController < ApplicationController
     @canonical_path = '/'
     @full_title = site_intro
     @seo_description = Siteconf.seo_description
-
-    render :layout => 'single-column'
   end
 
   def goodbye

@@ -9,18 +9,13 @@
         %span.help-block 必填
 
       .form-group
-        = label_tag 'settings[short_intro]', '简短介绍'
-        = text_field_tag 'settings[short_intro]', @settings.short_intro, :class => 'form-control'
-        %span.help-block 网站简短介绍, 显示在右侧边栏
+        = label_tag 'settings[slogan]', '网站口号'
+        = text_field_tag 'settings[slogan]', @settings.slogan, :class => 'form-control'
 
       .form-group
         = label_tag 'settings[ga_id]', 'Google Analytics ID'
         = text_field_tag 'settings[ga_id]', @settings.ga_id, :class => 'form-control'
         %span.help-block 例如: UA-12345678-01
-
-      .form-group
-        = label_tag 'settings[default_search_engine]', '站内搜索引擎'
-        = select_tag 'settings[default_search_engine]', options_for_select([['谷歌', 'google'], ['百度', 'baidu'], ['必应', 'bing']], @settings.default_search_engine), :class => 'form-control'
 
       .form-group
         = label_tag 'settings[show_captcha]', '注册验证码'

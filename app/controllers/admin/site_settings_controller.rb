@@ -12,10 +12,10 @@ class Admin::SiteSettingsController < Admin::BaseController
   end
 
   def update
-    params[:settings].each_key do |key|
+    params[:settings].keys.each do |key|
       Siteconf.send("#{key}=", params[:settings][key])
     end
     flash[:success] = '保存成功'
-    redirect_to :back
+    redirect_back fallback_location: root_path
   end
 end

@@ -11,9 +11,8 @@ html
     = yield :final_head
   body#rabel
     = render 'layouts/navbar'
-    #wrap
-      .container#page-main
+    #page
+      .container
         = content_for?(:content) ? yield(:content) : yield
-        = yield :sidebar
     = render 'shared/footer'
 

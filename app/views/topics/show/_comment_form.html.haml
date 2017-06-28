@@ -1,7 +1,7 @@
 - if user_signed_in?
   = form_for [@topic, @new_comment] do |f|
     .box
-      .box-header
+      .header
         .fr
           ⬆
           = link_to '回到顶部', 'javascript:void(0);', :class => 'dark back_to_top'
