@@ -34,6 +34,7 @@ module Admin::BaseHelper
           ['基本设置', 'settings', admin_site_settings_path],
           ['外观', 'palette', admin_appearance_path],
           ['用户', 'users', admin_users_path],
+          ['导航链接', 'nav_links', admin_nav_links_path],
           ['讨论区', 'channels', admin_channels_path],
           ['话题', 'topics', admin_topics_path],
           ['页面', 'pages', admin_pages_path],

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324010453) do
+ActiveRecord::Schema.define(version: 20170628051857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,14 @@ ActiveRecord::Schema.define(version: 20150324010453) do
     t.index ["followed_user_id"], name: "index_followings_on_followed_user_id"
     t.index ["user_id", "followed_user_id"], name: "index_followings_on_user_id_and_followed_user_id", unique: true
     t.index ["user_id"], name: "index_followings_on_user_id"
+  end
+
+  create_table "nav_links", force: :cascade do |t|
+    t.string "title"
+    t.string "url"
+    t.integer "position", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "nodes", id: :serial, force: :cascade do |t|

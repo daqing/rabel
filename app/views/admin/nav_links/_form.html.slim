@@ -1,0 +1,4 @@
+= simple_form_for [:admin, @nav_link] do |f|
+  = f.input :title, label: '标题'
+  = f.input :url, label: '链接地址'
+  = f.submit '保存', class: 'btn btn-sm btn-success'
