@@ -1,8 +1,5 @@
 .box
-  .header
-    .pull-right
-      span.slogan= Siteconf.slogan
-    strong= Siteconf.site_name
-  .cell
+  .inner
     = link_to '登录社区', new_user_session_path, class: 'btn btn-md btn-block btn-default'
+    p.action-or 或者
     = link_to '注册会员', new_user_registration_path, class: 'btn btn-md btn-block btn-danger'

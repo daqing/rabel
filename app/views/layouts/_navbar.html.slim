@@ -14,11 +14,8 @@
         = link_to Siteconf.site_name, root_path, class: 'navbar-brand'
 
     .collapse.navbar-collapse#navbar-collapse
-      ul.nav.navbar-nav.navbar-right
-        = link_to new_from_home_topics_path, class: 'navbar-left global-create-btn' do
-          button.navbar-btn.btn.btn-sm.btn-success 创建新话题
-        - if user_signed_in?
-          li= nav_item "#{@unread_count} 提醒", notifications_path
+      - if user_signed_in?
+        ul.nav.navbar-nav.navbar-right
           li.dropdown
             = link_to 'javascript:void(0);', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
               = current_user.nickname
@@ -32,10 +29,9 @@
               li= nav_item "#{current_user.followed_user_count} 特别关注", my_following_path
               li.divider
               li= link_to t(:sign_out), destroy_user_session_path, :method => :delete, :class => 'top'
-        - else
-          = nav_item(t(:sign_up), new_user_registration_path)
-          = nav_item(t(:sign_in), new_user_session_path)
-
+      - else
+        .pull-right
+          h2.slogan= Siteconf.slogan
 
 .container
   #main-menu

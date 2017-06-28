@@ -146,6 +146,8 @@ a.dark:hover {
 .topics_heading {
   text-align: center;
   color: #ccc;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 5px 0;
 }
 
 .payload {
@@ -231,4 +233,11 @@ h4 {
 
 .slogan {
     color: #999;
+    line-height: 52px;
+}
+
+.action-or {
+    color: #999;
+    margin: 5px 0;
+    text-align: center;
 }

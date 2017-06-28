@@ -1,7 +1,7 @@
 # encoding: utf-8
 module ApplicationHelper
   def site_intro
-    append_notification_count(Siteconf.site_name + ' - ' + Siteconf.short_intro)
+    append_notification_count(Siteconf.site_name + ' - ' + Siteconf.slogan)
   end
 
   def append_notification_count(title)
