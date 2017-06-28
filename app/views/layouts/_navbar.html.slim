@@ -39,6 +39,11 @@
 
 .container
   #main-menu
-    = link_to '首页', root_path
+    - NavLink.default_order.each do |link|
+      - if link.url.start_with?('http://')
+        = link_to link.title, link.url, target: :_blank
+      - else
+        = link_to link.title, link.url
+
     = yield :context_menu
 
