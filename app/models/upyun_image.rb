@@ -1,4 +1,4 @@
-class UpyunImage < ActiveRecord::Base
+class UpyunImage < ApplicationRecord
   belongs_to :user
 
   mount_uploader :asset, UpyunImageUploader
@@ -9,9 +9,9 @@ class UpyunImage < ActiveRecord::Base
   before_validation :set_metadata
 
   private
-    def set_metadata
-      self.content_type = asset.file.content_type
-      self.size = asset.file.size
-    end
 
+  def set_metadata
+    self.content_type = asset.file.content_type
+    self.size = asset.file.size
+  end
 end

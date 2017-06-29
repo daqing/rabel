@@ -1,4 +1,4 @@
-class Advertisement < ActiveRecord::Base
+class Advertisement < ApplicationRecord
   validates :link, :banner, :title, :words, :start_date, :expire_date, :duration, :presence => true
   validates :duration, :numericality => {:only_integer => true, :less_than => 3650, :greater_than => 1}
 
@@ -20,9 +20,10 @@ class Advertisement < ActiveRecord::Base
   end
 
   private
-    def set_expire_date
-      if self.start_date.present? and self.duration.present?
-        self.expire_date = self.start_date + self.duration.days
-      end
+
+  def set_expire_date
+    if self.start_date.present? and self.duration.present?
+      self.expire_date = self.start_date + self.duration.days
     end
+  end
 end

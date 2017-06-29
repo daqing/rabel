@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
   include Sortable
 
   acts_as_list

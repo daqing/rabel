@@ -1,4 +1,4 @@
-class Account < ActiveRecord::Base
+class Account < ApplicationRecord
   belongs_to :user
 
   validates :signature, :length => {:maximum => 20}

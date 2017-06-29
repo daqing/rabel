@@ -22,23 +22,14 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-# gem 'turbolinks'
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring', group: :development
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.7'
-
-# Use unicorn as the web server
-gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -48,8 +39,6 @@ gem 'unicorn'
 
 # Use debugger
 gem 'byebug', group: [:development, :test]
-
-gem 'rabel-meta', '1.5', group: :production
 
 group :development do
   gem 'awesome_print'

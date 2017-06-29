@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Reward < ActiveRecord::Base
+class Reward < ApplicationRecord
   TYPE_GRANT = 'grant'
   TYPE_REVOKE = 'revoke'
 
@@ -19,37 +19,38 @@ class Reward < ActiveRecord::Base
   after_create :notify_user
 
   private
-    def set_amount
-      if self.reward_type == TYPE_GRANT
-        self.amount = self.amount_str.to_i.abs
-      else
-        self.amount = self.amount_str.to_i.abs * -1
+
+  def set_amount
+    if self.reward_type == TYPE_GRANT
+      self.amount = self.amount_str.to_i.abs
+    else
+      self.amount = self.amount_str.to_i.abs * -1
+    end
+  end
+
+  def set_balance
+    self.balance = self.user.reward + self.amount
+  end
+
+  def notify_user
+    Notification.notify(
+      self.user,
+      self,
+      self.admin_user,
+      Notification::ACTION_REWARD,
+      self.reason
+    )
+  end
+
+  def amount_rules
+    if self.amount.present?
+      if self.amount == 0
+        errors.add(:amount_str, "不能为零")
+      end
+
+      if self.reward_type == TYPE_REVOKE and self.amount.abs > self.user.reward
+        errors.add(:amount_str, "扣除金额不能超过可用余额")
       end
     end
-
-    def set_balance
-      self.balance = self.user.reward + self.amount
-    end
-
-    def notify_user
-      Notification.notify(
-        self.user,
-        self,
-        self.admin_user,
-        Notification::ACTION_REWARD,
-        self.reason
-      )
-    end
-
-    def amount_rules
-      if self.amount.present?
-        if self.amount == 0
-          errors.add(:amount_str, "不能为零")
-        end
-
-        if self.reward_type == TYPE_REVOKE and self.amount.abs > self.user.reward
-          errors.add(:amount_str, "扣除金额不能超过可用余额")
-        end
-      end
-    end
+  end
 end

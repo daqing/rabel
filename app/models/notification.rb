@@ -1,5 +1,5 @@
 # encoding: utf-8
-class Notification < ActiveRecord::Base
+class Notification < ApplicationRecord
   ACTION_MENTION = 'mention'
   ACTION_REPLY = 'reply'
   ACTION_TOPIC = 'topic'

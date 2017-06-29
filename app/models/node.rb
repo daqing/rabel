@@ -1,2 +1,2 @@
-class Node < ActiveRecord::Base
+class Node < ApplicationRecord
 end

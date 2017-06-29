@@ -1,12 +1,9 @@
 # encoding:utf-8
 require 'carrierwave/orm/activerecord'
 
-class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  # Setup accessible (or protected) attributes for your model
   attr_accessor :captcha
 
   mount_uploader :avatar, AvatarUploader
@@ -162,20 +159,21 @@ class User < ActiveRecord::Base
   end
 
   private
-    def create_acount
-      self.build_account if self.account.nil?
-    end
 
-    def nickname_cannot_contain_invalid_characters
-      if self.nickname.present? and (self.nickname.include?('@') or
-                                     self.nickname.include?('-') or
-                                     self.nickname.include?(' ') or
-                                     self.nickname.include?('.') or
-                                     self.nickname.include?('/') or
-                                     self.nickname.include?('\\')
-                                    )
-        errors.add(:nickname, "不能包含@, 横线, 斜线, 句点或空格")
-      end
+  def create_acount
+    self.build_account if self.account.nil?
+  end
+
+  def nickname_cannot_contain_invalid_characters
+    if self.nickname.present? and (self.nickname.include?('@') or
+                                    self.nickname.include?('-') or
+                                    self.nickname.include?(' ') or
+                                    self.nickname.include?('.') or
+                                    self.nickname.include?('/') or
+                                    self.nickname.include?('\\')
+                                  )
+      errors.add(:nickname, "不能包含@, 横线, 斜线, 句点或空格")
     end
+  end
 end
 
