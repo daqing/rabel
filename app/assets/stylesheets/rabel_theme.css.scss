@@ -12,7 +12,7 @@ body {
   }
 }
 
-.box-header { color: $muted; }
+.header { color: $muted; }
 
 .bigger { font-size: 16px; }
 
@@ -56,7 +56,7 @@ a.node:hover {
   color: #777;
   text-decoration: none;
 }
-a.top:link, a.top:visited, a.top:active {
+a:link, a:visited, a:active {
   color: #556;
   text-decoration: none;
 }
