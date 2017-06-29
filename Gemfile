@@ -50,15 +50,6 @@ gem 'unicorn'
 gem 'byebug', group: [:development, :test]
 
 gem 'rabel-meta', '1.5', group: :production
-gem 'rspec-rails', group: [:development, :test]
-
-group :test do
-  gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
-  gem 'database_cleaner'
-  gem 'capybara'
-  gem 'selenium-webdriver'
-end
 
 group :development do
   gem 'awesome_print'
