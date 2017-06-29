@@ -1,8 +1,9 @@
 # encoding: utf-8
 class WelcomeController < ApplicationController
   def index
-    @topics = Topic.home_topics(Siteconf::HOMEPAGE_TOPICS)
-    @sticky_topics = Topic.sticky_topics
+    @num = 15
+    @topics = HomeTopicsQuery.new.get!(@num)
+    @sticky_topics = StickyTopicsQuery.new.get!(10)
 
     @title = site_intro
   end

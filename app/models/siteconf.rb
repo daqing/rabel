@@ -9,8 +9,6 @@ class Siteconf < RailsSettings::CachedSettings
     end
   end
 
-  HOMEPAGE_TOPICS = 15
-
   boolean_attributes :show_captcha, :allow_markdown_in_topics,
     :allow_markdown_in_comments,
     :allow_markdown_in_pages

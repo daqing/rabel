@@ -16,8 +16,6 @@
 
   = render @topics
   .inner
-    .pull-right= render 'shared/rss'
-    |&nbsp;
-    - if Topic.count > Siteconf::HOMEPAGE_TOPICS
+    - if Topic.count > @num
       span.chevron »
       = link_to '更多新主题', topics_path + '?page=2', :class => :rabel

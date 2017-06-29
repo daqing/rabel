@@ -27,11 +27,6 @@ class TopicsController < ApplicationController
 
         @seo_description = @title
       }
-      format.atom {
-        @feed_items = Topic.recent_topics(Siteconf::HOMEPAGE_TOPICS)
-        @last_update = @feed_items.first.updated_at unless @feed_items.empty?
-        render :layout => false
-      }
     end
   end
 

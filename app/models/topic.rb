@@ -32,30 +32,6 @@ class Topic < ActiveRecord::Base
     "/t/#{id}"
   end
 
-  def self.sticky_topics
-    with_sticky(true).order('updated_at DESC').all
-  end
-
-  def self.home_topics(num)
-    with_sticky(false).latest_involved_topics(num)
-  end
-
-  def self.with_sticky(sticky)
-    where(:sticky => sticky)
-  end
-
-  def self.latest_involved_topics(num)
-    order('involved_at DESC').limit(num).all
-  end
-
-  def self.recent_topics(num)
-    ts = select('updated_at').order('updated_at DESC').first.try(:updated_at)
-    return Rabel::Model::EMPTY_DATASET unless ts.present?
-    Rails.cache.fetch("topics/recent/#{self.count}/#{num}-#{ts}") do
-      order('involved_at DESC').limit(num).all
-    end
-  end
-
   def mention_check_text
     self.title + self.content
   end
