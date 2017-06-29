@@ -48,6 +48,10 @@ Rabel::Application.routes.draw do
   end
 
   namespace :admin do
+    resources :side_blocks do
+      post :sort, :on => :collection
+    end
+
     resources :nav_links do
       post :sort, :on => :collection
     end

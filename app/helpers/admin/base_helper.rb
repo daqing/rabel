@@ -38,6 +38,7 @@ module Admin::BaseHelper
           ['讨论区', 'channels', admin_channels_path],
           ['话题', 'topics', admin_topics_path],
           ['页面', 'pages', admin_pages_path],
+          ['区块', 'side_blocks', admin_side_blocks_path],
           ['广告位', 'ads', admin_advertisements_path],
           ['文件上传', 'cloud', admin_cloud_files_path],
           ['奖励记录', 'reward_history', admin_rewards_path],

@@ -1,6 +1,9 @@
 = render 'topics/show/bookmarked_users'
 = render 'topics/show/manage'
 
+- content_for :sidebar_box do
+  = render OtherSideBlocksQuery.new.get!
+
 - content_for :template_js do
   :plain
     var creating_comment = false;

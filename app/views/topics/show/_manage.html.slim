@@ -1,16 +1,18 @@
 - if can? :update, @topic
-  - content_for :context_menu do
-    li.dropdown
-      = link_to '话题管理', 'javascript:void(0);', class: 'dropdown-toggle top', data: {toggle: 'dropdown'}
-      ul.dropdown-menu
-        li= link_to '修改标题', edit_title_channel_topic_path(@channel, @topic), :remote => true
-        li= link_to '编辑全部', edit_channel_topic_path(@channel, @topic)
-        li.divider
-        li= link_to '移动到新讨论区', move_channel_topic_path(@channel, @topic), :remote => true
-        - if current_user.can_manage_site?
-          - toggle_comments_closed_tip = @topic.comments_closed? ? '允许回复' : '禁止回复'
-          li= link_to toggle_comments_closed_tip, topic_toggle_comments_closed_path(@topic), :method => :patch
-          - toggle_sticky_tip = @topic.sticky? ? '取消置顶' : '置顶此话题'
-          li= link_to toggle_sticky_tip, topic_toggle_sticky_path(@topic), :method => :patch
-        li.divider
-        li= link_to '删除此话题', channel_topic_path(@channel, @topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}
+  - content_for :sidebar_box do
+    .box
+      .cell
+        .dropdown
+          = link_to '话题管理', 'javascript:void(0);', class: 'dropdown-toggle btn btn-block btn-sm btn-info', data: {toggle: 'dropdown'}
+          ul.dropdown-menu
+            li= link_to '修改标题', edit_title_channel_topic_path(@channel, @topic), :remote => true
+            li= link_to '编辑全部', edit_channel_topic_path(@channel, @topic)
+            li.divider
+            li= link_to '移动到新讨论区', move_channel_topic_path(@channel, @topic), :remote => true
+            - if current_user.can_manage_site?
+              - toggle_comments_closed_tip = @topic.comments_closed? ? '允许回复' : '禁止回复'
+              li= link_to toggle_comments_closed_tip, topic_toggle_comments_closed_path(@topic), :method => :patch
+              - toggle_sticky_tip = @topic.sticky? ? '取消置顶' : '置顶此话题'
+              li= link_to toggle_sticky_tip, topic_toggle_sticky_path(@topic), :method => :patch
+            li.divider
+            li= link_to '删除此话题', channel_topic_path(@channel, @topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}

@@ -1,0 +1,36 @@
+- content_for :template_js do
+  | rabel.sortable("table tbody", "#{sort_admin_side_blocks_path}", {
+      helper: function(e, ui) {
+        ui.children().each(function() {
+          $(this).width($(this).width());
+        });
+        return ui;
+      }
+    })
+
+
+.box
+  .header
+    .pull-right
+      = admin_create_button('添加区块', SideBlock)
+    = build_admin_navigation([@title])
+    .sep10
+  .inner
+    table.table
+      tr
+        th 名称
+        th 显示在首页？
+        th 显示在内页？
+      - SideBlock.default_order.all.each do |b|
+        tr id=b.html_id
+          td= b.name
+          td
+            - if b.on_homepage?
+              input type="checkbox" checked="true" disabled="true"
+          td
+            - if b.on_otherpage?
+              input type="checkbox" checked="true" disabled="true"
+          td
+            = admin_edit_button('修改', b)
+            |&nbsp;&nbsp;
+            = admin_delete_button(b)

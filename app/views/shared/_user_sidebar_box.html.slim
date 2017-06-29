@@ -1,7 +1,7 @@
 .box
   .header
     .pull-right
-      span.slogan= Siteconf.slogan
+      = Siteconf.slogan
     strong= Siteconf.site_name
   .inner
     = link_to "#{@unread_count} 条未读消息", notifications_path

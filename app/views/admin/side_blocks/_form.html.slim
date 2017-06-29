@@ -1,0 +1,7 @@
+= simple_form_for [:admin, @side_block] do |f|
+  = f.input :name, label: '名称'
+  = f.input :body, label: 'HTML代码'
+  div style="margin-left: 20px;"
+    = f.input :on_homepage, label: '显示在首页'
+    = f.input :on_otherpage, label: '显示在内页'
+  = f.submit '保存', class: 'btn btn-sm btn-success'

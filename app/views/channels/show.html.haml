@@ -2,6 +2,9 @@
   - content_for :template_js do
     $("a.super").click(function() { $("textarea.mll:first").focus() });
 
+- content_for :sidebar_box do
+  = render OtherSideBlocksQuery.new.get!
+
 .box
   .header
     - if user_signed_in?
