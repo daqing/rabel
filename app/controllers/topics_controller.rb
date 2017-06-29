@@ -9,30 +9,19 @@ class TopicsController < ApplicationController
   end
 
   def index
-    respond_to do |format|
-      format.html {
-        per_page = Siteconf::HOMEPAGE_TOPICS
-        @title = '全站最新更改记录'
-        if params[:page].present?
-          current_page = params[:page].to_i
-          @title += " (第 #{current_page} 页)"
-        else
-          current_page = 1
-        end
-
-        @topics = Topic.page(current_page).per(per_page).order('updated_at DESC')
-
-        @canonical_path = topics_path
-        @canonical_path += "?page=#{current_page}" if current_page > 1
-
-        @seo_description = @title
-      }
+    per_page = 20
+    @title = '全站最新更改记录'
+    if params[:page].present?
+      current_page = params[:page].to_i
+      @title += " (第 #{current_page} 页)"
+    else
+      current_page = 1
     end
+
+    @topics = Topic.page(current_page).per(per_page).order('updated_at DESC')
   end
 
   def show
-    raise ActiveRecord::RecordNotFound.new if params[:id].to_i.to_s != params[:id]
-
     @topic = Topic.find(params[:id])
     store_location
 
@@ -50,12 +39,8 @@ class TopicsController < ApplicationController
     @new_comment = @topic.comments.new
     @total_bookmarks = @topic.bookmarks.count
 
-    @canonical_path = "/t/#{params[:id]}"
-    @canonical_path += "?p=#{@current_page}" if @total_pages > 1
-    @seo_description = "#{@channel.name} - #{@topic.user.nickname} - #{@topic.title}"
-
-    @prev_topic = @topic.prev_topic(@channel)
-    @next_topic = @topic.next_topic(@channel)
+    @prev_topic = PrevTopicQuery.new(@channel, @topic).get!
+    @next_topic = NextTopicQuery.new(@channel, @topic).get!
   end
 
   def new
@@ -73,9 +58,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = @channel.topics.new(topic_params)
-    @topic.user = current_user
-    if @topic.save
+    if CreateTopic.with(current_user, @channel, topic_params)
       redirect_to t_path(@topic.id)
     else
       render :new
@@ -83,14 +66,10 @@ class TopicsController < ApplicationController
   end
 
   def create_from_home
-    @channel = Channel.where(id: params[:topic][:channel_id]).first
-    redirect_to root_path, :notice => '讨论区不存在' and return if @channel.nil?
+    @channel = Channel.find(params[:topic][:channel_id])
 
-    @topic = Topic.new(topic_params)
-    @topic.channel = @channel
-    @topic.user = current_user
-
-    if @topic.save
+    @topic = CreateTopic.with(current_user, @channel, topic_params)
+    if @topic
       redirect_to t_path(@topic.id)
     else
       render :new_from_home

@@ -18,6 +18,8 @@ Rabel::Application.routes.draw do
   get 'goodbye' => 'welcome#goodbye'
   get 'captcha' => 'welcome#captcha'
   get 'sitemap' => 'welcome#sitemap'
+  get 'new_from_home' => 'topics#new_from_home'
+  post 'create_from_home' => 'topics#create_from_home'
 
   patch 'upyun_images' => 'upyun_images#create'
 
@@ -37,8 +39,6 @@ Rabel::Application.routes.draw do
     post :preview, :on => :collection
     patch :toggle_comments_closed
     patch :toggle_sticky
-    get :new_from_home, :on => :collection
-    post :create_from_home, :on => :collection
   end
 
   resources :comments, :bookmarks, :upyun_images, :qiniu_images

@@ -62,6 +62,7 @@ end
 
 group :development do
   gem 'awesome_print'
+  gem 'web-console'
 end
 
 gem 'haml'
@@ -85,4 +86,3 @@ gem 'simple_form'
 gem 'figaro'
 gem 'puma'
 gem 'fanli'
-

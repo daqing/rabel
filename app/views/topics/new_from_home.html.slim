@@ -2,7 +2,7 @@
   .cell
     h2 创建新话题
   .inner
-    = simple_form_for @topic, :url => create_from_home_topics_path do |f|
+    = simple_form_for @topic, :url => create_from_home_path do |f|
       = f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}
       = render 'shared/fileupload_widget', :textarea_selector => "textarea#topic_content"
       = render 'shared/preview_widget', :ref => :topic_content, :type => :topic

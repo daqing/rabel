@@ -7,10 +7,9 @@ class Topic < ActiveRecord::Base
   has_many :bookmarks, :as => :bookmarkable, :dependent => :destroy
   has_many :notifications, :as => :notifiable, :dependent => :destroy
 
-  validates :channel_id, :user_id, :title, :presence => true
+  validates :title, :presence => true
 
   before_create :set_default_value
-  after_create :send_notifications
 
   def last_comment
     self.comments.order('created_at ASC').last
@@ -32,41 +31,10 @@ class Topic < ActiveRecord::Base
     "/t/#{id}"
   end
 
-  def mention_check_text
-    self.title + self.content
-  end
-
-  def mentioned_users
-    mentioned_names = self.mention_check_text.scan(Notifiable::MENTION_REGEXP).collect {|matched| matched.first}.uniq
-    mentioned_names.delete(self.user.nickname)
-    mentioned_names.map { |name| User.find_by_nickname(name) }.compact
-  end
-
-  def prev_topic(node)
-    node.topics.where(['id < ?', self.id]).order('created_at DESC').first
-  end
-
-  def next_topic(node)
-    node.topics.where(['id > ?', self.id]).order('created_at ASC').first
-  end
-
   private
 
-    def set_default_value
-      self.hit = 0
-      self.content = ''
-      self.involved_at = Time.zone.now
-    end
-
-    def send_notifications
-      mentioned_users.each do |user|
-        Notification.notify(
-          user,
-          self,
-          self.user,
-          Notification::ACTION_TOPIC,
-          self.content
-        )
-      end
-    end
+  def set_default_value
+    self.hit = 0
+    self.involved_at = Time.zone.now
+  end
 end

@@ -1,7 +1,7 @@
 # encoding: utf-8
 class WelcomeController < ApplicationController
   def index
-    @num = 15
+    @num = 20
     @topics = HomeTopicsQuery.new.get!(@num)
     @sticky_topics = StickyTopicsQuery.new.get!(10)
 

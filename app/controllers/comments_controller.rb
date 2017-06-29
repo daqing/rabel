@@ -6,10 +6,9 @@ class CommentsController < ApplicationController
 
   def create
     redirect_to root_path, :notice => I18n.t('tips.comments_closed') and return if @commentable.try(:comments_closed)
-    @comment = @commentable.comments.build(comment_params)
-    @comment.user = current_user
-    @comment.posting_device = session[:posting_device] if session[:posting_device].present?
-    flash[:else] = '添加回复失败' unless @comment.save
+
+    @comment = CreateComment.with(current_user, @commentable, comment_params)
+    flash[:error] = '添加回复失败' if @comment.blank?
     redirect_to custom_path(@commentable)
   end
 
@@ -46,7 +45,9 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:content)
+      p = params.require(:comment).permit(:content)
+      p[:posting_device] = session[:posting_device] if session[:posting_device].present?
+      p
     end
 
 end
