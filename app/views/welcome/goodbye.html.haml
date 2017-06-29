@@ -1,10 +1,8 @@
 .box
-  .cell
-    = build_navigation([@title])
   .inner
     = "你已经成功从 #{Siteconf.site_name} 退出。没有任何个人信息留在这台设备上。"
     .sep10
     .sep5
-    = link_to '重新登入', new_user_session_path, :class => 'btn btn-small'
+    = link_to '重新登入', new_user_session_path, :class => 'btn btn-sm btn-success'
     .sep5
 

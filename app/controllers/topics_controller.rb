@@ -43,8 +43,8 @@ class TopicsController < ApplicationController
 
     Topic.increment_counter(:hit, @topic.id)
 
-    @title = @topic.title
     @channel = @topic.channel
+    @title = "#{@topic.title} - #{@channel.name}"
 
     @total_comments = @topic.comments.count
     @total_pages = (@total_comments * 1.0 / Siteconf.pagination_comments.to_i).ceil
@@ -66,15 +66,14 @@ class TopicsController < ApplicationController
   def new
     @topic = @channel.topics.new
 
-    respond_to do |format|
-      format.html
-    end
+    @title = build_title('创建新话题')
   end
 
   def new_from_home
     @topic = Topic.new
     @topic.channel = Channel.find(params[:channel_id]) if params[:channel_id]
 
+    @title = build_title('创建新话题')
     render :layout => 'single-column'
   end
 

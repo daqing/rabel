@@ -5,7 +5,8 @@ html
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = yield :head
     - if Siteconf.custom_css.present?
-      style type='text/css' = Siteconf.custom_css.html_safe
+      style type="text/css"
+        = Siteconf.custom_css.html_safe
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
 
     = yield :final_head

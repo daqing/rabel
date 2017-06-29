@@ -3,17 +3,12 @@ class WelcomeController < ApplicationController
   def index
     @topics = Topic.home_topics(Siteconf::HOMEPAGE_TOPICS)
     @sticky_topics = Topic.sticky_topics
-    @canonical_path = '/'
-    @full_title = site_intro
-    @seo_description = Siteconf.seo_description
+
+    @title = site_intro
   end
 
   def goodbye
-    @title = '登出'
-
-    respond_to do |format|
-      format.html
-    end
+    @title = build_title '登出'
   end
 
   def captcha

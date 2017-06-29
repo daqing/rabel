@@ -3,9 +3,7 @@ class SessionsController < Devise::SessionsController
   layout 'single-column'
 
   def new
-    @title = '登入'
-    @seo_description = @title
-
+    @title = "登入 - #{Siteconf.site_name}"
     super
   end
 

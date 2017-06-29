@@ -2,7 +2,7 @@
 class ChannelsController < ApplicationController
   def show
     @channel = Channel.find(params[:id])
-    @title = @channel.name
+    @title = "#{@channel.name} - #{Siteconf.site_name}"
 
     if params[:p].present?
       @page_num = params[:p].to_i

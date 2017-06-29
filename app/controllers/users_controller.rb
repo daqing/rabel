@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     @user = User.where(:nickname => params[:nickname]).first
     store_location
 
-    @title = @user.nickname
-    @canonical_path = "/member/#{@title}"
+    @title = "#{@user.nickname} - #{Siteconf.site_name}"
 
     @signature = @user.account.try(:signature) || ''
     @weibo_link = cannonical_url(@user.account.try(:weibo_link)) || ''
@@ -18,7 +17,6 @@ class UsersController < ApplicationController
     @introduction = @user.account.try(:introduction) || ''
 
     @nickname_tip = (@user == current_user) ? '我' : @user.nickname
-    @seo_description = "#{@user.nickname} - #{@signature}"
   end
 
   def topics
@@ -27,8 +25,7 @@ class UsersController < ApplicationController
     @current_page = params[:page].present? ? params[:page] : 1
     @topics = @user.topics.page(@current_page).per(20).order('created_at DESC')
 
-    @title = "#{@user.nickname} 创建的所有主题"
-    @seo_description = "#{@title} - #{Siteconf.site_name}"
+    @title = "#{@user.nickname} 创建的所有主题 - #{Siteconf.site_name}"
   end
 
   def edit

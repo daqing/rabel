@@ -84,4 +84,5 @@ gem 'slim-rails'
 gem 'simple_form'
 gem 'figaro'
 gem 'puma'
+gem 'fanli'
 

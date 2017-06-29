@@ -110,5 +110,9 @@ class ApplicationController < ActionController::Base
       session[:user_return_to] = request.fullpath
     end
 
+    def build_title(title)
+      "#{title} - #{Siteconf.site_name}"
+    end
+
 end
 

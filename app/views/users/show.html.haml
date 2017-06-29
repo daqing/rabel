@@ -1,7 +1,7 @@
 - if @user.follower_count > 0
   - content_for :rightbar do
     .box
-      .box-header
+      .header
         = "关注#{@nickname_tip}的人"
         %span.gray= "(#{@user.follower_count})"
       .inner
@@ -69,7 +69,7 @@
   - if user_signed_in? and current_user.can_manage_site?
     - content_for :rightbar do
       .box
-        .box-header
+        .header
           管理
         .inner
           .btn-group
@@ -78,7 +78,7 @@
             = link_to '管理此用户', admin_users_path + "?nickname=#{@user.nickname}", :class => 'btn btn-mini'
 
 .box
-  .box-header
+  .header
     = @user.nickname
     最近创建的话题
   = render :partial => 'topics/profile_topic', :collection => @user.latest_created_topics, :as => :topic, :locals => {:topic_user => @user}
@@ -88,7 +88,7 @@
       %small= link_to "#{@user.nickname} 创建的更多主题", member_topics_path(@user.nickname), :class => :rabel
 
 .box
-  .box-header
+  .header
     = @user.nickname
     最近的回复
   = render :partial => 'comments/profile_comment', :collection => @user.latest_comments, :as => :comment
@@ -96,7 +96,7 @@
 - if user_signed_in? and current_user.can_manage_site? and (not @user.root?) and @user != current_user
   - content_for :rightbar do
     .box
-      .box-header
+      .header
         %a{:name => :spam}
         SPAM 处理
       .inner
