@@ -12,12 +12,6 @@ body {
   }
 }
 
-.header { color: $muted; }
-
-.bigger { font-size: 16px; }
-
-.f12 { font-size: 12px; }
-
 .badge-info {
   background-color: #AAB0C6;
   color: white;
@@ -36,7 +30,7 @@ a.count {
 }
 
 .created {
-  color: #CCCCCC;
+  color: #CCC;
   display: block;
   font-size: 11px;
 }
@@ -56,11 +50,6 @@ a.node:hover {
   color: #777;
   text-decoration: none;
 }
-a:link, a:visited, a:active {
-  color: #556;
-  text-decoration: none;
-}
-
 a.navbar-brand {
   color: black;
   font-size: 2em;
