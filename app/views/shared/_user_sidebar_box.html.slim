@@ -3,5 +3,12 @@
     .pull-right
       = Siteconf.slogan
     strong= Siteconf.site_name
+  .cell
+    .pull-right
+      span.check_in_status 连续签到#{current_user.continuous_checkins}次，累计#{current_user.checkins_count}次
+    - if CheckedInAtQuery.new(current_user, Date.today).get!
+      = link_to '今日已签到', 'javascript:void(0);', class: 'checkin_btn'
+    - else
+      = link_to '今日签到', checkins_path, method: :post, class: 'checkin_btn'
   .inner
     = link_to "#{@unread_count} 条未读消息", notifications_path

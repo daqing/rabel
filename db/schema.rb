@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628082853) do
+ActiveRecord::Schema.define(version: 20170708055009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 20170628082853) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "checkins", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "checkin_date"
+    t.index ["checkin_date"], name: "index_checkins_on_checkin_date"
+    t.index ["user_id"], name: "index_checkins_on_user_id"
   end
 
   create_table "cloud_files", id: :serial, force: :cascade do |t|
@@ -243,10 +252,13 @@ ActiveRecord::Schema.define(version: 20170628082853) do
     t.string "role"
     t.boolean "blocked", default: false
     t.integer "reward", default: 0
+    t.integer "continuous_checkins", default: 0
+    t.integer "checkins_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
   end
 
+  add_foreign_key "checkins", "users"
 end

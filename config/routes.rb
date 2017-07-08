@@ -1,4 +1,6 @@
 Rabel::Application.routes.draw do
+  resources :checkins
+
   root 'welcome#index'
   devise_for :users, :controllers => {:sessions => "sessions", :registrations => "registrations"}
   get 'settings' => 'users#edit'

@@ -26,6 +26,8 @@ class User < ApplicationRecord
   has_many :followers, :through => :follower_relationships
   has_many :followed_users, :through => :followed_relationships
 
+  has_many :checkins
+
   before_create :create_acount
 
   def latest_created_topics
