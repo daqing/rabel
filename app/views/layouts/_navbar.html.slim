@@ -17,16 +17,14 @@
       - if user_signed_in?
         ul.nav.navbar-nav.navbar-right
           li.dropdown
-            = link_to 'javascript:void(0);', class: 'dropdown-toggle', data: {toggle: 'dropdown'} do
+            = link_to 'javascript:void(0);', class: 'dropdown-toggle rabel', data: {toggle: 'dropdown'} do
               = current_user.nickname
             ul.dropdown-menu
               li= nav_item '个人主页', member_path(current_user.nickname)
               li= nav_item '账号设置', settings_path
               - if current_user.can_manage_site?
+                li.divider
                 li= nav_item t(:dashboard), admin_root_path
-              li.divider
-              li= nav_item "#{current_user.bookmarked_topics_count} 话题收藏", my_topics_path
-              li= nav_item "#{current_user.followed_user_count} 特别关注", my_following_path
               li.divider
               li= link_to t(:sign_out), destroy_user_session_path, :method => :delete, :class => 'top'
       - else

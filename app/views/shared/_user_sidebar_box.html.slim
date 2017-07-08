@@ -4,11 +4,25 @@
       = Siteconf.slogan
     strong= Siteconf.site_name
   .cell
+    .row
+      .col-md-6.center style="border-right: 1px solid #9d9d9d;"
+        = link_to my_topics_path, class: 'rabel' do
+          h2= current_user.bookmarked_topics_count
+          |话题收藏
+      .col-md-6.center
+        = link_to my_following_path, class: 'rabel' do
+          h2= current_user.followed_user_count
+          |特别关注
+  .cell
+    = link_to new_from_home_path, class: 'rabel' do
+      span.glyphicon.glyphicon-edit
+      |&nbsp;发布主题
+  .cell
     .pull-right
-      span.check_in_status 连续签到#{current_user.continuous_checkins}次，累计#{current_user.checkins_count}次
+      span.checkin_status 连续签到#{current_user.continuous_checkins}次，累计#{current_user.checkins_count}次
     - if CheckedInAtQuery.new(current_user, Date.today).get!
       = link_to '今日已签到', 'javascript:void(0);', class: 'checkin_btn'
     - else
       = link_to '今日签到', checkins_path, method: :post, class: 'checkin_btn'
   .inner
-    = link_to "#{@unread_count} 条未读消息", notifications_path
+    = link_to "#{@unread_count} 条未读消息", notifications_path, class: 'rabel'
