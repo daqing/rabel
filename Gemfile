@@ -46,7 +46,7 @@ group :development do
 end
 
 gem 'haml'
-gem 'devise'
+gem 'devise', '>= 4.6.0'
 gem 'cancancan', '~> 1.8.4'
 gem 'kaminari', '~> 0.16.1'
 gem 'carrierwave', '~> 0.10.0'
