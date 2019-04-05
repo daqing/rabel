@@ -1,6 +1,6 @@
 .box
   .cell
-    .pull-right= link_to '返回用户管理', admin_users_path + "?nickname=#{@user.nickname}", :class => :btn
+    .float-right= link_to '返回用户管理', admin_users_path + "?nickname=#{@user.nickname}", :class => :btn
     = build_admin_navigation([@title])
   .cell
     = simple_form_for [:admin, @user] do |f|

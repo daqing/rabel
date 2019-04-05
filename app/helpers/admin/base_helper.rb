@@ -36,7 +36,7 @@ module Admin::BaseHelper
           ['用户', 'users', admin_users_path],
           ['导航链接', 'nav_links', admin_nav_links_path],
           ['讨论区', 'channels', admin_channels_path],
-          ['话题', 'topics', admin_topics_path],
+          ['帖子', 'topics', admin_topics_path],
           ['页面', 'pages', admin_pages_path],
           ['区块', 'side_blocks', admin_side_blocks_path],
           ['广告位', 'ads', admin_advertisements_path],

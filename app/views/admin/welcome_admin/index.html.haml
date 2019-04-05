@@ -49,7 +49,7 @@
             %td{:align => :right, :width => '40%'}
               %span.gray 可清理提醒
             %td{:align => :left}
-              .pull-right= link_to '删除已读提醒', clear_admin_notifications_path, :method => :delete, :class => 'btn btn-mini btn-info' if @notifications_to_clear > 0
+              .float-right= link_to '删除已读提醒', clear_admin_notifications_path, :method => :delete, :class => 'btn btn-mini btn-info' if @notifications_to_clear > 0
               %strong= @notifications_to_clear
 
 .box

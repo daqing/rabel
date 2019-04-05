@@ -3,11 +3,11 @@
 - comments_count = topic.comments.count
 - last_replied_by = topic.last_replied_by
 .cell.topic{:class => topic_user.can_manage_site? ? 'admin' : ''}
-  .avatar.pull-left
+  .avatar.float-left
     = user_profile_avatar_link(topic_user, :medium)
   .item_title
     - if comments_count > 0
-      .pull-right
+      .float-right
         .badge.badge-info= comments_count
     %h2.topic_title
       = link_to topic.title, t_path(topic.id), :class => 'rabel topic'

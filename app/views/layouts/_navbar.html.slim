@@ -1,43 +1,36 @@
-.navbar
+header.navbar.navbar-expand-lg.navbar-light.bg-light
   .container
-    .navbar-header
-      button.navbar-toggle(
-        data-toggle='collapse'
-        data-target='#navbar-collapse')
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      - if Siteconf.custom_logo.present?
-        = link_to root_path, :class => :custom_brand do
-          = image_tag Siteconf.custom_logo, :class => :custom_logo, :alt => Siteconf.site_name
-      - else
-        = link_to Siteconf.site_name, root_path, class: 'navbar-brand'
+    = link_to Siteconf.site_name, root_path, class: 'navbar-brand'
+    button.navbar-toggler(
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation")
+      span.navbar-toggler-icon
 
-    .collapse.navbar-collapse#navbar-collapse
+    .collapse.navbar-collapse#navbarSupportedContent
+      ul.navbar-nav.mr-auto
+        - NavLink.default_order.each do |link|
+          - if link.url.start_with?('http://')
+            li.nav-item
+              = link_to link.title, link.url, target: :_blank, class: 'nav-link'
+          - else
+            li.nav-item= link_to link.title, link.url, class: 'nav-link'
+
+
       - if user_signed_in?
-        ul.nav.navbar-nav.navbar-right
+        ul.navbar-nav
           li.dropdown
             = link_to 'javascript:void(0);', class: 'dropdown-toggle rabel', data: {toggle: 'dropdown'} do
               = current_user.nickname
-            ul.dropdown-menu
-              li= nav_item '个人主页', member_path(current_user.nickname)
-              li= nav_item '账号设置', settings_path
+            .dropdown-menu
+              = link_to '个人主页', member_path(current_user.nickname),
+                class: 'dropdown-item'
+              = link_to '账号设置', settings_path, class: 'dropdown-item'
               - if current_user.can_manage_site?
-                li.divider
-                li= nav_item t(:dashboard), admin_root_path
-              li.divider
-              li= link_to t(:sign_out), destroy_user_session_path, :method => :delete, :class => 'top'
-      - else
-        .pull-right
-          h2.slogan= Siteconf.slogan
-
-.container
-  #main-menu
-    - NavLink.default_order.each do |link|
-      - if link.url.start_with?('http://')
-        = link_to link.title, link.url, target: :_blank
-      - else
-        = link_to link.title, link.url
-
-    = yield :context_menu
+                = link_to t(:dashboard), admin_root_path, class: 'dropdown-item'
+              = link_to t(:sign_out), destroy_user_session_path,
+                :method => :delete, :class => 'dropdown-item'
 

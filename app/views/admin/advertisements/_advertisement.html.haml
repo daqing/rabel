@@ -1,6 +1,6 @@
 .box.advertisement.span5
   .cell
-    .pull-right
+    .float-right
       = admin_edit_button('修改', advertisement)
     = advertisement.title
   = render 'shared/ad', :ad => advertisement
@@ -24,7 +24,7 @@
           %span.gray 天
     .clear-fix
   .inner
-    .pull-right
+    .float-right
       = admin_delete_button(advertisement)
     - if advertisement.showing?
       .label.label-success 展示中

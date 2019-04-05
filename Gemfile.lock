@@ -50,9 +50,10 @@ GEM
     awesome_print (1.8.0)
     bcrypt (3.1.12)
     bindex (0.6.0)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
+    bootstrap (4.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     builder (3.2.3)
     byebug (11.0.1)
     cancancan (1.8.4)
@@ -137,6 +138,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.1.4)
+    popper_js (1.14.5)
     puma (3.12.1)
     qiniu (6.9.0)
       mime-types (~> 3.1)
@@ -198,6 +200,12 @@ GEM
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
+    sassc-rails (2.1.0)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -246,7 +254,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   awesome_print
-  bootstrap-sass (~> 3.4)
+  bootstrap (~> 4.3.1)
   byebug
   cancancan (~> 1.8.4)
   carrierwave (~> 0.10.0)
