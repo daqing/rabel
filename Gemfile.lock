@@ -48,7 +48,7 @@ GEM
     autoprefixer-rails (9.5.0)
       execjs
     awesome_print (1.8.0)
-    bcrypt (3.1.12)
+    bcrypt (3.1.13)
     bindex (0.6.0)
     bootstrap (4.3.1)
       autoprefixer-rails (>= 9.1.0)
@@ -79,10 +79,10 @@ GEM
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     dalli (2.7.10)
-    devise (4.6.2)
+    devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 6.0)
+      railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
     domain_name (0.5.20180417)
@@ -178,9 +178,9 @@ GEM
       ffi (~> 1.0)
     rdoc (4.3.0)
     redcarpet (3.4.0)
-    responders (2.4.1)
-      actionpack (>= 4.2.0, < 6.0)
-      railties (>= 4.2.0, < 6.0)
+    responders (3.0.0)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rest-client (2.0.2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
@@ -263,7 +263,7 @@ DEPENDENCIES
   coderay
   coffee-rails
   dalli
-  devise (>= 4.6.0)
+  devise (>= 4.7.1)
   fanli
   figaro
   haml
