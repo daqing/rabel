@@ -139,7 +139,7 @@ GEM
     orm_adapter (0.5.0)
     pg (1.1.4)
     popper_js (1.14.5)
-    puma (3.12.1)
+    puma (3.12.2)
     qiniu (6.9.0)
       mime-types (~> 3.1)
       rest-client (~> 2.0)
