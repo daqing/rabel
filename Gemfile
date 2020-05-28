@@ -50,7 +50,7 @@ end
 gem 'haml'
 gem 'devise', '>= 4.7.1'
 gem 'cancancan', '~> 1.8.4'
-gem 'kaminari', '~> 0.16.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'carrierwave', '~> 0.10.0'
 gem 'carrierwave-upyun', '~> 0.1.8'
 gem 'carrierwave-qiniu'
