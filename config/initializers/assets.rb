@@ -9,4 +9,5 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += [
   'facebox/loading.gif',
   'facebox/closelabel.png',
-  Proc.new {|path| File.basename(path).start_with?('i_')} ]
+  # Proc.new {|path| File.basename(path).start_with?('i_')}
+]
