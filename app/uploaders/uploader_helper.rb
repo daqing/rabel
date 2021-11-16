@@ -1,5 +1,5 @@
 require 'digest'
-require 'carrierwave/processing/mime_types'
+# require 'carrierwave/processing/mime_types'
 
 module UploaderHelper
   def store_dir
