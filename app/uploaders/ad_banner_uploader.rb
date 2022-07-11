@@ -3,7 +3,7 @@
 class AdBannerUploader < CarrierWave::Uploader::Base
   include UploaderHelper
   include PictureExtensionWhiteList
-  include CarrierWave::MimeTypes
+  # include CarrierWave::MimeTypes
   process :set_content_type
 
   # Include RMagick or MiniMagick support:
