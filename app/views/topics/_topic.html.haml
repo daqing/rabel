@@ -17,7 +17,8 @@
       = user_profile_link(topic_user, :class => :dark)
       %span.muted •
       - if comments_count > 0
-        = time_ago_in_words(topic.last_replied_at)
+        -# = time_ago_in_words(topic.last_replied_at)
+        = time_ago_in_words(Time.now)
         %span.muted •
         最后回复来自
         = nickname_profile_link(last_replied_by)

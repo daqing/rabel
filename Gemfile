@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.7.5'
+ruby '2.7.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.8'
+gem 'rails', '~> 6'
 
 gem 'pg'
 # gem 'mysql2'
@@ -45,6 +45,7 @@ gem 'byebug', group: [:development, :test]
 group :development do
   gem 'awesome_print'
   gem 'web-console'
+  gem 'listen'
 end
 
 gem 'haml'
@@ -53,7 +54,7 @@ gem 'cancancan', '~> 1.8.4'
 gem 'kaminari', '~> 1.2.1'
 gem "carrierwave", ">= 1.3.2"
 gem 'carrierwave-upyun'
-# gem 'carrierwave-qiniu'
+gem 'carrierwave-qiniu'
 gem 'mini_magick', '~> 4.10.1'
 gem 'mime-types'
 gem 'redcarpet'

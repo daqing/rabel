@@ -37,7 +37,7 @@ class Admin::NodesController < Admin::BaseController
   def update
     @node = @plane.nodes.find(params[:id])
     respond_to do |format|
-      if @node.update_attributes(node_params)
+      if @node.update(node_params)
         format.js
       else
         format.js { render :show_form }

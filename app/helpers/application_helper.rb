@@ -158,6 +158,8 @@ module ApplicationHelper
   end
 
   def nickname_profile_link(nickname, options={})
+    return "#" if nickname.blank?
+
     options[:title] = nickname
     hash_key_append(options, :class, 'rabel profile_link')
 

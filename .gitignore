@@ -32,3 +32,5 @@ chromedriver.log
 /logfile
 config/application.yml
 .env
+/tmp/restart.txt
+.vscode

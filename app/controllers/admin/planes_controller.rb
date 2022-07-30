@@ -37,7 +37,7 @@ class Admin::PlanesController < Admin::BaseController
 
   def update
     respond_to do |format|
-      if @plane.update_attributes(plane_params)
+      if @plane.update(plane_params)
         format.js { render :js => 'window.location.reload()' }
       else
         format.js { render :show_form }
