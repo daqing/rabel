@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @comment.update_attributes(comment_params)
+      if @comment.update(comment_params)
         format.js
       else
         render :json => :error, :status => :unprocessable_entity

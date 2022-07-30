@@ -3,7 +3,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include UploaderHelper
   include PictureExtensionWhiteList
   # include CarrierWave::MimeTypes
-  process :set_content_type
+  # process :set_content_type
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

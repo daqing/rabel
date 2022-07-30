@@ -85,7 +85,7 @@ class TopicsController < ApplicationController
   def update_title
     respond_to do |f|
       f.js {
-        unless @topic.update_attributes(topic_params)
+        unless @topic.update(topic_params)
           render :text => :error, :status => :unprocessable_entity
         end
       }
@@ -114,7 +114,7 @@ class TopicsController < ApplicationController
         }
       end
     else
-      if @topic.update_attributes(topic_params)
+      if @topic.update(topic_params)
         redirect_to t_path(@topic.id)
       else
         flash[:error] = '之前的更新有误，请编辑后再提交'

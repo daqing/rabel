@@ -27,7 +27,7 @@ class Admin::AdvertisementsController < Admin::BaseController
   end
 
   def update
-    if @ad.update_attributes(ad_params)
+    if @ad.update(ad_params)
       redirect_to admin_advertisements_path
     else
       flash[:error] = '修改广告失败'
