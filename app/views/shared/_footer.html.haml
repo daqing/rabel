@@ -3,7 +3,7 @@
     %strong.page-links
       = render :partial => 'pages/nav', :collection => Page.only_published.default_order, :spacer_template => 'pages/nav_ruler'
     .copywrite
-      = Siteconf.footer.html_safe
+      = Siteconf.footer&.html_safe
 
 = render 'shared/google_analytics'
 
@@ -17,4 +17,4 @@
   });
 
 :javascript
-  #{Siteconf.custom_js.html_safe}
+  #{Siteconf.custom_js&.html_safe}
