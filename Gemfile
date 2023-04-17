@@ -1,31 +1,31 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-ruby '2.7.6'
+ruby "3.2.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1'
+gem "rails", "~> 6.1"
 
-gem 'pg'
+gem "pg"
 # gem 'mysql2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem "sass-rails"
 
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier'
+gem "uglifier"
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails'
+gem "coffee-rails"
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
+gem "jquery-rails"
+gem "jquery-ui-rails"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem "jbuilder", "~> 2.0"
 
 # bundle exec rake doc:rails generates the API under doc/api.
 # gem 'sdoc', '~> 0.4.0', group: :doc
@@ -40,34 +40,34 @@ gem 'jbuilder', '~> 2.0'
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-gem 'byebug', group: [:development, :test]
+gem "byebug", group: %i[development test]
 
 group :development do
-  gem 'awesome_print'
-  gem 'web-console'
-  gem 'listen'
+  gem "awesome_print"
+  gem "listen"
+  gem "web-console"
 end
 
-gem 'haml'
-gem 'devise', '>= 4.7.1'
-gem 'cancancan', '~> 1.8.4'
-gem 'kaminari', '~> 1.2.1'
+gem "acts_as_list"
+gem "bootstrap", "~> 4.3.1"
+gem "cancancan", "~> 1.8.4"
 gem "carrierwave", ">= 1.3.2"
-gem 'carrierwave-upyun'
-gem 'carrierwave-qiniu'
-gem 'mini_magick', '~> 4.10.1'
-gem 'mime-types'
-gem 'redcarpet'
-gem 'coderay'
-gem 'kgio'
-gem 'dalli'
-gem 'acts_as_list'
-gem 'rails-settings-cached', '0.4.1'
-gem 'bootstrap', '~> 4.3.1'
-gem 'slim-rails'
-gem 'simple_form'
-gem 'figaro'
-gem 'puma', ">= 3.12.6"
-gem 'fanli'
+gem "carrierwave-qiniu"
+gem "carrierwave-upyun"
+gem "coderay"
+gem "dalli"
+gem "devise", ">= 4.7.1"
+gem "fanli"
+gem "figaro"
+gem "haml"
+gem "kaminari", "~> 1.2.1"
+gem "kgio"
+gem "mime-types"
+gem "mini_magick", "~> 4.10.1"
+gem "puma", ">= 3.12.6"
+gem "rails-settings-cached", "0.4.1"
+gem "redcarpet"
+gem "simple_form"
+gem "slim-rails"
 
-gem 'json', ">= 2.3.0"
+gem "json", ">= 2.3.0"
