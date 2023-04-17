@@ -1,16 +1,17 @@
-# encoding: utf-8
 module ApplicationHelper
   def site_intro
-    append_notification_count(Siteconf.site_name + ' - ' + Siteconf.slogan)
+    append_notification_count([Siteconf.site_name, Siteconf.slogan].compact.join('-'))
   end
 
   def append_notification_count(title)
-    return title if @unread_count == 0
+    return title if @unread_count.zero?
+
     title + " (#{@unread_count})"
   end
 
   def title
     return @full_title if @full_title.present?
+
     add_title_item @title if @title.present?
     @title_items.join(' - ')
   end
@@ -19,8 +20,8 @@ module ApplicationHelper
     @title_items.unshift item unless request.format.to_sym == :js
   end
 
-  def build_navigation(items, class_name='gray')
-    items.unshift(link_to(Siteconf.site_name, root_path, :class => :rabel))
+  def build_navigation(items, _class_name = 'gray')
+    items.unshift(link_to(Siteconf.site_name, root_path, class: :rabel))
     items.join(' <span class="chevron">&nbsp;›&nbsp;</span> ').html_safe
   end
 
@@ -31,25 +32,25 @@ module ApplicationHelper
   def build_breadcrumbs
     result_html =
       case @breadcrumbs.length
-        when 1
-          ''
-        else
-          @breadcrumbs.join('&nbsp;›&nbsp;')
-        end
+      when 1
+        ''
+      else
+        @breadcrumbs.join('&nbsp;›&nbsp;')
+      end
     result_html.html_safe
   end
 
-  def build_admin_navigation(items, class_name='fade')
+  def build_admin_navigation(items, class_name = 'fade')
     items.unshift(link_to('管理后台', admin_root_path))
     build_navigation(items, class_name)
   end
 
   def edit_topic_navigation(channel, topic)
     build_navigation([
-      link_to(channel.name, channel),
-      link_to(topic.title, t_path(topic.id)),
-      '编辑'
-    ], 'bigger')
+                       link_to(channel.name, channel),
+                       link_to(topic.title, t_path(topic.id)),
+                       '编辑'
+                     ], 'bigger')
   end
 
   def format_page(page_content)
@@ -77,88 +78,84 @@ module ApplicationHelper
   end
 
   def format_content(text)
-    begin
-      text = Rabel::LinkEmailParser.parse_url(Rabel::Base.h(text)) do |link|
-        Rabel::Base.smart_url(link)
-      end
-      text = Rabel::LinkEmailParser.parse_email(text) do |address|
-        Rabel::Base.protect_at_symbol(address)
-      end
-
-      nl_to_br(Rabel::Base.decode_symbols(Rabel::Base.make_mention_links(text))).html_safe
-    rescue
-      h(text)
+    text = Rabel::LinkEmailParser.parse_url(Rabel::Base.h(text)) do |link|
+      Rabel::Base.smart_url(link)
     end
+    text = Rabel::LinkEmailParser.parse_email(text) do |address|
+      Rabel::Base.protect_at_symbol(address)
+    end
+
+    nl_to_br(Rabel::Base.decode_symbols(Rabel::Base.make_mention_links(text))).html_safe
+  rescue StandardError
+    h(text)
   end
 
   def nl_to_br(text)
-    text.gsub("\r\n", "<br/>").gsub("\r", "<br/>").gsub("\n", "<br/>")
+    text.gsub("\r\n", '<br/>').gsub("\r", '<br/>').gsub("\n", '<br/>')
   end
 
   def parse_markdown(text)
-    begin
-      nl_to_br(Rabel::Base.decode_symbols(
-        Rabel::Base.make_mention_links(
-          MarkdownConverter.convert(text)
-        )
-      )).html_safe
-    rescue Exception => e
-      h(text)
-    end
+    nl_to_br(Rabel::Base.decode_symbols(
+               Rabel::Base.make_mention_links(
+                 MarkdownConverter.convert(text)
+               )
+             )).html_safe
+  rescue Exception => e
+    h(text)
   end
 
   def flash_messages
-    @flash_messages ||= flash.select {|type, message| message.length > 0}
+    @flash_messages ||= flash.select { |_type, message| message.length.positive? }
   end
 
   def show_flash_messages
     result = []
     flash_messages.each do |type, message|
-      result << content_tag(:span, message, :class => "#{type}-message")
+      result << content_tag(:span, message, class: "#{type}-message")
     end
     result.join('<br/>').html_safe
   end
 
   def show_mobile_messages
-    if flash_messages.any?
-      content_tag(:div, show_flash_messages, :class => :cell)
-    end
+    return unless flash_messages.any?
+
+    content_tag(:div, show_flash_messages, class: :cell)
   end
 
   def search_engines
     {
-      :google => 'http://www.google.com.hk/search?q=',
-      :bing => 'http://cn.bing.com/search?q=',
-      :baidu => 'http://www.baidu.com/s?wd='
+      google: 'http://www.google.com.hk/search?q=',
+      bing: 'http://cn.bing.com/search?q=',
+      baidu: 'http://www.baidu.com/s?wd='
     }
   end
 
   def search_engine_url
-    search_engines[Siteconf.default_search_engine.to_sym]
+    search_engines[:bing]
   end
 
   def large_avatar(user)
-    image_tag user.avatar.url, :class => :large_avatar, :alt => "#{user.nickname} large avatar"
+    image_tag user.avatar.url, class: :large_avatar, alt: "#{user.nickname} large avatar"
   end
 
   def medium_avatar(user)
-    image_tag user.avatar.url(:medium), :class => :medium_avatar, :alt => "#{user.nickname} medium avatar"
+    image_tag user.avatar.url(:medium), class: :medium_avatar, alt: "#{user.nickname} medium avatar"
   end
 
   def mini_avatar(user)
-    image_tag user.avatar.url(:mini), :class => :mini_avatar, :alt => "#{user.nickname} mini avatar"
+    image_tag user.avatar.url(:mini), class: :mini_avatar, alt: "#{user.nickname} mini avatar"
   end
 
   def hash_key_append(hash, key, value)
-    if hash[key].present?
-      hash[key] = "#{hash[key]} #{value}"
-    else
-      hash[key] = value
-    end
+    hash[key] = if hash[key].present?
+                  "#{hash[key]} #{value}"
+                else
+                  value
+                end
   end
 
-  def nickname_profile_link(nickname, options={})
-    return "#" if nickname.blank?
+  def nickname_profile_link(nickname, options = {})
+    return '#' if nickname.blank?
 
     options[:title] = nickname
     hash_key_append(options, :class, 'rabel profile_link')
@@ -166,11 +163,11 @@ module ApplicationHelper
     link_to nickname, member_path(nickname), options
   end
 
-  def user_profile_link(user, options={})
+  def user_profile_link(user, options = {})
     nickname_profile_link(user.nickname, options)
   end
 
-  def user_profile_avatar_link(user, avatar_size, options={})
+  def user_profile_avatar_link(user, avatar_size, options = {})
     avatar_method = "#{avatar_size}_avatar"
 
     options[:title] = user.nickname
@@ -190,15 +187,19 @@ module ApplicationHelper
   end
 
   def show_posting_device(comment)
-    content_tag(:span, "&nbsp;&nbsp;via #{comment.posting_device}".html_safe, class: :snow) if comment.posting_device.present?
+    return unless comment.posting_device.present?
+
+    content_tag(:span, "&nbsp;&nbsp;via #{comment.posting_device}".html_safe,
+                class: :snow)
   end
 
-  def auth_admin(error_tip='tips.no_permission')
-    redirect_to root_path, :notice => t(error_tip) unless current_user.can_manage_site?
+  def auth_admin(error_tip = 'tips.no_permission')
+    redirect_to root_path, notice: t(error_tip) unless current_user.can_manage_site?
   end
 
   def cannonical_url(url)
-    return "" if url == nil || url.length == 0
+    return '' if url.nil? || url.length.zero?
+
     url.start_with?('http://') ? url : 'http://' + url
   end
 
