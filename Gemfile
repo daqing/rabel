@@ -56,7 +56,7 @@ gem "carrierwave-qiniu"
 gem "carrierwave-upyun"
 gem "coderay"
 gem "dalli"
-gem "devise", ">= 4.7.1"
+gem "devise", "~> 4.9"
 gem "fanli"
 gem "figaro"
 gem "haml"
@@ -71,3 +71,13 @@ gem "simple_form"
 gem "slim-rails"
 
 gem "json", ">= 2.3.0"
+
+# gem "importmap-rails"
+gem "turbo-rails", "~> 1.4"
+
+# Use Redis for Action Cable
+gem "redis", "~> 4.0"
+
+gem "jsbundling-rails", "~> 1.1"
+
+gem "cssbundling-rails", "~> 1.1"

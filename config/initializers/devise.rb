@@ -206,5 +206,9 @@ Devise.setup do |config|
 
   # Secret key for devise
   config.secret_key = Figaro.env.RABEL_DEVISE_SECRET_KEY
+
+  # HotWire
+  config.responder.error_status = :unprocessable_entity
+  config.responder.redirect_status = :see_other
 end
 

@@ -7,8 +7,7 @@ html
     - if Siteconf.custom_css.present?
       style type="text/css"
         = Siteconf.custom_css.html_safe
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-
+    = javascript_include_tag 'application'
     = yield :final_head
   body#rabel
     = render 'layouts/navbar'
@@ -16,4 +15,3 @@ html
       .container
         = content_for?(:content) ? yield(:content) : yield
     = render 'shared/footer'
-
