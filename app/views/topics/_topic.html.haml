@@ -7,7 +7,7 @@
     = user_profile_avatar_link(topic_user, :medium)
   .item_title
     - if comments_count > 0
-      .float-right
+      .fr
         .badge.badge-info= comments_count
     %h2.topic_title
       = link_to topic.title, t_path(topic.id), :class => 'rabel topic'
@@ -24,5 +24,3 @@
         = nickname_profile_link(last_replied_by)
       - else
         = time_ago_in_words(topic.created_at)
-
-

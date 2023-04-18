@@ -106,9 +106,11 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
+    cssbundling-rails (1.1.2)
+      railties (>= 6.0.0)
     dalli (3.2.3)
     date (3.3.3)
-    devise (4.8.1)
+    devise (4.9.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -149,6 +151,8 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
+    jsbundling-rails (1.1.1)
+      railties (>= 6.0.0)
     json (2.6.3)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -244,9 +248,10 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.5.1)
-    responders (3.0.1)
-      actionpack (>= 5.0)
-      railties (>= 5.0)
+    redis (4.8.1)
+    responders (3.1.0)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
@@ -288,6 +293,10 @@ GEM
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.2)
+    turbo-rails (1.4.0)
+      actionpack (>= 6.0.0)
+      activejob (>= 6.0.0)
+      railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
@@ -321,14 +330,16 @@ DEPENDENCIES
   carrierwave-upyun
   coderay
   coffee-rails
+  cssbundling-rails (~> 1.1)
   dalli
-  devise (>= 4.7.1)
+  devise (~> 4.9)
   fanli
   figaro
   haml
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails
+  jsbundling-rails (~> 1.1)
   json (>= 2.3.0)
   kaminari (~> 1.2.1)
   kgio
@@ -340,9 +351,11 @@ DEPENDENCIES
   rails (~> 7)
   rails-settings-cached (= 0.4.1)
   redcarpet
+  redis (~> 4.0)
   sass-rails
   simple_form
   slim-rails
+  turbo-rails (~> 1.4)
   uglifier
   web-console
 
