@@ -24,12 +24,11 @@
 
     - if current_user.can_manage_site? and user != current_user and (not user.root?)
       - if user.admin?
-        = link_to '取消管理权限', toggle_admin_admin_user_path(user), :method => :patch, :remote => true, :class => 'btn btn-sm'
+        = link_to '取消管理权限', toggle_admin_admin_user_path(user), data: {turbo_method: :patch}, :remote => true, :class => 'btn btn-sm'
       - else
-        = link_to '提升为管理员', toggle_admin_admin_user_path(user), :method => :patch, :remote => true, :class => 'btn btn-sm'
+        = link_to '提升为管理员', toggle_admin_admin_user_path(user), data: {turbo_method: :patch}, :remote => true, :class => 'btn btn-sm'
 
       - if user.blocked?
-        = link_to '取消屏蔽', toggle_blocked_admin_user_path(user), :method => :patch, :remote => true, :class => 'btn btn-sm'
+        = link_to '取消屏蔽', toggle_blocked_admin_user_path(user), data: {turbo_method: :patch}, :remote => true, :class => 'btn btn-sm'
       - else
-        = link_to '屏蔽', toggle_blocked_admin_user_path(user), :method => :patch, :remote => true, :class => 'btn btn-sm btn-danger'
-
+        = link_to '屏蔽', toggle_blocked_admin_user_path(user), data: {turbo_method: :patch}, :remote => true, :class => 'btn btn-sm btn-danger'

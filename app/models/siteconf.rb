@@ -39,7 +39,7 @@ class Siteconf < RailsSettings::CachedSettings
     end
 
     def pagination_topics
-      2
+      25
     end
 
     def pagination_comments

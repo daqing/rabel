@@ -19,6 +19,7 @@ module Rabel
     #
     # config.time_zone = "Central Time (US & Canada)"
     config.time_zone = 'Beijing'
+    config.i18n.default_locale = 'zh'
 
     # config.eager_load_paths << Rails.root.join("extras")
   end

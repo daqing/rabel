@@ -1,11 +1,4 @@
-- content_for :sidebar_box do
-  = render 'home_blocks'
-
 .box#topics_index
-  .cell.home-channels
-    = link_to '全部', root_path, class: 'rabel'
-    - Channel.default_order.each do |ch|
-      = link_to ch.name, ch, class: 'rabel'
   - if @sticky_topics.any?
     - if Siteconf.sticky_topics_heading.present?
       #sticky_topics.topics_heading= Siteconf.sticky_topics_heading

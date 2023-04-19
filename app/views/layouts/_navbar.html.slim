@@ -13,6 +13,10 @@ header.navbar.navbar-expand-lg.navbar-light.bg-light
 
     .collapse.navbar-collapse#navbarSupportedContent
       ul.navbar-nav.me-auto
+        li.nav-item= link_to '首页', root_path, class: 'nav-link'
+        - Channel.default_order.each do |ch|
+          li.nav-item= link_to ch.name, ch, class: 'nav-link'
+
         - NavLink.default_order.each do |link|
           - if link.url.start_with?('http://')
             li.nav-item
@@ -20,6 +24,8 @@ header.navbar.navbar-expand-lg.navbar-light.bg-light
           - else
             li.nav-item= link_to link.title, link.url, class: 'nav-link'
 
+      ul.navbar-nav style='margin-right: 20px;'
+        = link_to '发帖', new_from_home_path, class: 'btn btn-sm btn-outline-success'
 
       - if user_signed_in?
         ul.navbar-nav
@@ -33,3 +39,7 @@ header.navbar.navbar-expand-lg.navbar-light.bg-light
               - if current_user.can_manage_site?
                 = link_to t(:dashboard), admin_root_path, class: 'dropdown-item'
               = link_to t(:sign_out), destroy_user_session_path, data: {turbo_method: :delete}, :class => 'dropdown-item'
+      - else
+        ul.navbar-nav
+          = link_to '登录', new_user_session_path, class: 'nav-link'
+          = link_to '注册账号', new_user_registration_path, class: 'nav-link'

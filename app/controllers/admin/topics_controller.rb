@@ -2,7 +2,7 @@
 class Admin::TopicsController < Admin::BaseController
   def index
     @topics = Topic.order('created_at DESC').page(params[:page])
-    @title = '讨论话题'
+    @title = '帖子'
   end
 
   def destroy

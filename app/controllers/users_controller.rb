@@ -1,11 +1,11 @@
 # encoding: utf-8
 class UsersController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :topics]
+  before_action :authenticate_user!, except: %i[show topics]
 
   layout 'single-column'
 
   def show
-    @user = User.where(:nickname => params[:nickname]).first
+    @user = User.where(nickname: params[:nickname]).first
     store_location
 
     @title = "#{@user.nickname} - #{Siteconf.site_name}"
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def topics
-    @user = User.where(:nickname => params[:nickname]).first
+    @user = User.where(nickname: params[:nickname]).first
 
     @current_page = params[:page].present? ? params[:page] : 1
     @topics = @user.topics.page(@current_page).per(20).order('created_at DESC')
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update_without_password(user_params)
       flash[:success] = '个人设置成功更新'
-      sign_in :user, current_user, :bypass => true
+      sign_in :user, current_user, bypass: true
       redirect_to settings_path
     else
       flash[:error] = '个人设置保存失败'
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update_with_password(user_params)
       flash[:success] = '密码已成功更新，下次请用新密码登录'
-      sign_in :user, current_user, :bypass => true
+      sign_in :user, current_user, bypass: true
       redirect_to settings_path
     else
       flash[:error] = '密码更新失败'
@@ -73,7 +73,7 @@ class UsersController < ApplicationController
         render :edit
       end
     else
-      redirect_to settings_path + '#avatar', :notice => '请选择要上传的头像'
+      redirect_to settings_path + '#avatar', notice: '请选择要上传的头像'
     end
   end
 
@@ -112,6 +112,6 @@ class UsersController < ApplicationController
                                  :password_confirmation,
                                  :current_password,
                                  :email,
-                                  account_attributes: [:personal_website, :location, :weibo_link, :introduction, :signature])
+                                  account_attributes: %i[personal_website location weibo_link introduction signature])
   end
 end
