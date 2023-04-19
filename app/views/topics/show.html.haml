@@ -28,9 +28,9 @@
       - if user_signed_in?
         .fr
           - if current_user.bookmarked?(@topic)
-            = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-xs btn-info unbookmark'
+            = link_to '取消收藏', current_user.bookmark_of(@topic), data: {turbo_method: :delete}, :class => 'btn btn-xs btn-info unbookmark'
           - else
-            = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'btn btn-xs btn-info bookmark'
+            = link_to '加入收藏', topic_bookmarks_path(@topic), data: {turbo_method: :post}, :class => 'btn btn-xs btn-info bookmark'
       .clearfix
 
 = render 'topics/show/comments' if @comments.any?
