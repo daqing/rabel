@@ -2,7 +2,6 @@
   = form_for [@topic, @new_comment] do |f|
     .box
       .inner
-        = render 'shared/fileupload_widget', :textarea_selector => "textarea#comment_content"
         = render 'shared/preview_widget', :ref => :comment_content, :type => :comment
         = f.text_area :content, :rows => 5, :style => 'width: 100%;', :class => 'form-control', placeholder: '请输入回复内容...'
       .inner
