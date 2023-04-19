@@ -11,7 +11,7 @@
           = link_to channel.name, channel, :class => 'dark rabel channel'
           - if comments_count > 0
             &nbsp;&nbsp;•&nbsp;&nbsp;
-            = time_ago_in_words(topic.last_replied_at)
+            = time_ago_in_words(topic.last_replied_at) if topic.last_replied_at.present?
             &nbsp;&nbsp;•&nbsp;&nbsp;
             最后回复来自
             = nickname_profile_link(last_replied_by)

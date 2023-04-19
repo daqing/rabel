@@ -1,6 +1,3 @@
-= render 'topics/show/bookmarked_users'
-= render 'topics/show/manage'
-
 - content_for :sidebar_box do
   = render OtherSideBlocksQuery.new.get!
 
@@ -23,18 +20,8 @@
     .header
       .fr
         = user_profile_avatar_link(topic_user, :large)
-      = build_navigation([link_to(@channel.name, @channel, :class => :rabel)], 'bigger')
-      .sep10
-      %h1#topic_title
+      %h2#topic-title
         = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe
-      %small.topic-meta
-        By
-        = user_profile_link(topic_user, :class => :dark)
-        at
-        = time_ago_in_words(@topic.created_at)
-        ,
-        = @topic.hit
-        次浏览
       .clearfix
     .inner
       .content.topic_content= format_topic(@topic.content)
@@ -44,17 +31,6 @@
             = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-xs btn-info unbookmark'
           - else
             = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'btn btn-xs btn-info bookmark'
-      .clearfix
-    .inner
-      - if @next_topic.present?
-        .fr
-          = link_to proper_length(@next_topic.title, 15), t_path(@next_topic.id), :class => :rabel, :rel => :prev
-          %span.guillemet.right-guillemet »
-
-      - if @prev_topic.present?
-        .float-left
-          %span.guillemet.left-guillemet «
-          = link_to proper_length(@prev_topic.title, 15), t_path(@prev_topic.id), :class => :rabel, :rel => :next
       .clearfix
 
 = render 'topics/show/comments' if @comments.any?

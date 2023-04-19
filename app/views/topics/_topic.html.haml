@@ -5,11 +5,11 @@
 .cell.topic{:class => topic_user.can_manage_site? ? 'admin' : ''}
   .avatar.float-left
     = user_profile_avatar_link(topic_user, :medium)
-  .item_title
+  .item-title
     - if comments_count > 0
       .fr
         .badge.badge-info= comments_count
-    %h2.topic_title
+    .topic-title
       = link_to topic.title, t_path(topic.id), :class => 'rabel topic'
     .topic-meta
       = link_to channel.name, channel, :class => 'dark rabel channel'

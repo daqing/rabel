@@ -1,6 +1,7 @@
 # encoding: utf-8
 class SessionsController < Devise::SessionsController
   layout 'single-column'
+  before_action { @hide_navbar = true }
 
   def new
     @title = "登入 - #{Siteconf.site_name}"

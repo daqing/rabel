@@ -10,7 +10,8 @@ html
     = javascript_include_tag 'application'
     = yield :final_head
   body#rabel
-    = render 'layouts/navbar'
+    - unless @hide_navbar
+      = render 'layouts/navbar'
     #page
       .container
         = content_for?(:content) ? yield(:content) : yield
