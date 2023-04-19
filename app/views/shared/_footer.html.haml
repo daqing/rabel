@@ -1,20 +1,15 @@
 #footer
-  .container#footer-main
-    %strong.page-links
+  .container
+    %span
+      &copy;
+      = Date.current.year
+      = Siteconf.site_name
+      &nbsp;&middot;&nbsp;
       = render :partial => 'pages/nav', :collection => Page.only_published.default_order, :spacer_template => 'pages/nav_ruler'
-    .copywrite
+    .custom-footer
       = Siteconf.footer&.html_safe
 
 = render 'shared/google_analytics'
-
-:javascript
-  window.rabel = {
-    search_engine_url: "#{search_engine_url}",
-    version: "#{Rabel.version}"
-  };
-  jQuery(function($) {
-    #{yield :template_js}
-  });
 
 :javascript
   #{Siteconf.custom_js&.html_safe}

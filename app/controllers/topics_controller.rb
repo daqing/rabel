@@ -1,12 +1,14 @@
 # encoding: utf-8
 class TopicsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :preview]
   before_action :find_channel, except: [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky, :new_from_home, :create_from_home]
   before_action :find_topic_and_auth, only: [:edit_title,:update_title,
     :edit, :update, :move, :destroy]
   before_action only: [:toggle_comments_closed, :toggle_sticky] do |c|
     auth_admin
   end
+
+  skip_forgery_protection only: [:preview]
 
   def index
     per_page = 20
@@ -138,7 +140,7 @@ class TopicsController < ApplicationController
   end
 
   def preview
-    @type = ['topic', 'comment', 'page'].delete params[:type]
+    @type = %w[topic comment page].delete(params[:type])
     respond_to do |f|
       if @type.present?
         f.text { @content = params[:content] }
