@@ -18,7 +18,7 @@ class Admin::AdvertisementsController < Admin::BaseController
       redirect_to admin_advertisements_path
     else
       flash[:error] = '添加新广告失败'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -31,7 +31,7 @@ class Admin::AdvertisementsController < Admin::BaseController
       redirect_to admin_advertisements_path
     else
       flash[:error] = '修改广告失败'
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -45,11 +45,12 @@ class Admin::AdvertisementsController < Admin::BaseController
   end
 
   private
-    def find_ad
-      @ad = Advertisement.find(params[:id])
-    end
 
-    def ad_params
-      params.require(:advertisement).permit(:link, :banner, :title, :words, :start_date, :expire_date, :duration)
-    end
+  def find_ad
+    @ad = Advertisement.find(params[:id])
+  end
+
+  def ad_params
+    params.require(:advertisement).permit(:link, :banner, :title, :words, :start_date, :expire_date, :duration)
+  end
 end

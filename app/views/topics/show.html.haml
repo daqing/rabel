@@ -1,5 +1,12 @@
 - content_for :sidebar_box do
-  = render OtherSideBlocksQuery.new.get!
+  .box
+    .cell
+      = user_profile_avatar_link(@topic.user, :large)
+  - if user_signed_in?
+    - if current_user.bookmarked?(@topic)
+      = link_to '取消收藏', current_user.bookmark_of(@topic), data: {turbo_method: :delete}, :class => 'btn btn-sm btn-outline-danger unbookmark'
+    - else
+      = link_to '加入收藏', topic_bookmarks_path(@topic), data: {turbo_method: :post}, :class => 'btn btn-sm btn-outline-info bookmark'
 
 - content_for :template_js do
   :plain
@@ -16,28 +23,14 @@
 - topic_user = @topic.user
 
 .box
-  %article
-    .header
-      .fr
-        = user_profile_avatar_link(topic_user, :large)
-      %h2#topic-title
-        = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe
-      .clearfix
-    .inner
-      .content.topic_content= format_topic(@topic.content)
-      - if user_signed_in?
-        .fr
-          - if current_user.bookmarked?(@topic)
-            = link_to '取消收藏', current_user.bookmark_of(@topic), data: {turbo_method: :delete}, :class => 'btn btn-xs btn-info unbookmark'
-          - else
-            = link_to '加入收藏', topic_bookmarks_path(@topic), data: {turbo_method: :post}, :class => 'btn btn-xs btn-info bookmark'
-      .clearfix
+  .inner.topic-title
+    = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe
+  .inner
+    .content.topic_content= format_topic(@topic.content)
 
 = render 'topics/show/comments' if @comments.any?
 
 - if @topic.comments_closed?
   = render 'shared/box_tip', :tip => t('tips.comments_closed')
-- elsif @comments.empty?
-  = render 'shared/box_tip', :tip => '目前尚无回复'
 
 = render 'topics/show/comment_form' unless @topic.comments_closed?

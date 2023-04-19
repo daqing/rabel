@@ -13,7 +13,18 @@ header.navbar {
 #page {
   min-height: 100vh;
   margin-top: 20px;
+
+  .main-content {
+    width: 70vw;
+  }
+
+  .sidebar {
+    width: 25vw;
+    margin-left: 2vw;
+  }
 }
+
+
 
 .fr {
   float: right;
@@ -42,9 +53,14 @@ h2.topic-title {
 .box {
   background-color: #FFFFFF;
   box-shadow: 0 1px 2px #e2e2e2;
-  padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
+
+  .inner,
+  .header,
+  .cell {
+    padding: 5px 10px;
+  }
 }
 
 #new_comment textarea.form-control {
@@ -59,4 +75,71 @@ h2.topic-title {
 
 .topic-title {
   font-size: 1.25rem;
+}
+
+.sep5 {
+  height: 5px;
+}
+
+.sep10 {
+  height: 10px;
+}
+
+input.form-control,
+textarea.form-control,
+select.form-control {
+  border-radius: 0;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.topic-title {
+  font-size: 1.5rem;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.center {
+  text-align: center;
+}
+
+.glass {
+  color: #999;
+}
+
+.pager {
+  display: flex;
+  color: #999;
+
+  a {
+    color: #999;
+  }
+
+  .prev,
+  .next {
+    width: 200px;
+  }
+
+  .info {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .next {
+    text-align: right;
+  }
+}
+
+.topic-meta {
+  color: #999;
+
+  a {
+    color: #999;
+  }
+}
+
+.dropdown-menu {
+  min-width: 70px;
+  border-radius: 0;
 }

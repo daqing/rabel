@@ -24,6 +24,8 @@ header.navbar.navbar-expand-lg.navbar-light.bg-light
           - else
             li.nav-item= link_to link.title, "http://" + link.url, class: 'nav-link'
 
+      ul.navbar-nav style='margin-right: 20px;'
+        = link_to '发帖', new_from_home_path, class: 'btn btn-sm btn-outline-success'
 
       - if user_signed_in?
         ul.navbar-nav

@@ -29,4 +29,4 @@
           %small= time_ago_in_words(topic.created_at)
         %td.w100
           = link_to '编辑', edit_channel_topic_path(topic.channel, topic), :class => 'btn btn-sm'
-          = link_to '删除', admin_topic_path(topic), :class => 'btn btn-sm btn-danger', data: {turbo_method: :delete}, :data => {:confirm => t(:delete_confirm)}
+          = link_to '删除', admin_topic_path(topic), :class => 'btn btn-sm btn-danger', :data => {turbo_method: :delete, confirm: t(:delete_confirm)}

@@ -1,12 +1,11 @@
 - content_for :content do
-  .row
-    .col-lg-8.col-sm-12
+  .d-flex
+    .main-content
       = render 'shared/alert'
       = yield
-    .col-lg-4.col-sm-12#Rightbar
+    .sidebar
       = render 'shared/sidebar_box'
       = yield :rightbar
       = render :partial => 'shared/ad', :collection => Advertisement.available, :as => :ad
 
 = render :template => 'layouts/base'
-

@@ -5,6 +5,8 @@ class WelcomeController < ApplicationController
     @sticky_topics = StickyTopicsQuery.new.get!(10)
 
     @title = site_intro
+
+    render layout: 'single-column'
   end
 
   def goodbye

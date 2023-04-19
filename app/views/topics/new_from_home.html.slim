@@ -1,6 +1,4 @@
 .box
-  .cell
-    h2 创建新话题
   .inner
     = simple_form_for @topic, :url => create_from_home_path do |f|
       = f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}

@@ -1,15 +1,14 @@
 - if @total_pages > 1
-  %ul.pager
-    - if @prev_page_num > 0
-      %li.previous
+  .pager
+    .prev
+      - if @prev_page_num > 0
         - if @prev_page_num == 1
           = link_to '← 上一页', channel_path(@channel)
         - else
           = link_to '← 上一页', channel_path(@channel) + "?p=#{@prev_page_num}"
-    %li.center
+    .info
       %span.gray= "#{@page_num}/#{@total_pages}"
 
-    - if @next_page_num > 0
-      %li.next
+    .next
+      - if @next_page_num > 0
         = link_to '下一页 →', channel_path(@channel) + "?p=#{@next_page_num}"
-
