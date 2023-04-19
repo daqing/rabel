@@ -3,7 +3,7 @@
     .box
       .cell
         .dropdown
-          = link_to '话题管理', 'javascript:void(0);', class: 'dropdown-toggle btn btn-block btn-sm btn-info', data: {toggle: 'dropdown'}
+          = link_to '话题管理', 'javascript:void(0);', class: 'dropdown-toggle btn btn-block btn-sm btn-info', data: {bs_toggle: 'dropdown'}
           ul.dropdown-menu
             li= link_to '修改标题', edit_title_channel_topic_path(@channel, @topic), :remote => true
             li= link_to '编辑全部', edit_channel_topic_path(@channel, @topic)

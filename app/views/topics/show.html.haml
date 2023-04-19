@@ -21,7 +21,7 @@
 .box
   %article
     .header
-      .float-right
+      .fr
         = user_profile_avatar_link(topic_user, :large)
       = build_navigation([link_to(@channel.name, @channel, :class => :rabel)], 'bigger')
       .sep10
@@ -39,7 +39,7 @@
     .inner
       .content.topic_content= format_topic(@topic.content)
       - if user_signed_in?
-        .float-right
+        .fr
           - if current_user.bookmarked?(@topic)
             = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-xs btn-info unbookmark'
           - else
@@ -47,7 +47,7 @@
       .clearfix
     .inner
       - if @next_topic.present?
-        .float-right
+        .fr
           = link_to proper_length(@next_topic.title, 15), t_path(@next_topic.id), :class => :rabel, :rel => :prev
           %span.guillemet.right-guillemet »
 

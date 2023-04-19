@@ -85,4 +85,3 @@ jQuery ($) ->
     hashbang = window.location.hash.split('/')
     if hashbang[0] == '#!' and hashbang[1] == 'click'
       $("##{hashbang[2]}").click()
-

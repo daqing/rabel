@@ -1,6 +1,6 @@
 .box
   .cell
-    .float-right= link_to '返回用户管理', admin_users_path + "?nickname=#{@user.nickname}", :class => :btn
+    .fr= link_to '返回用户管理', admin_users_path + "?nickname=#{@user.nickname}", :class => :btn
     = build_admin_navigation([@title])
   .cell
     = simple_form_for [:admin, @user] do |f|
@@ -12,4 +12,3 @@
       = f.input :reward, :label => Siteconf.reward_title
       .form-actions
         = f.submit '更新用户信息', :class => 'btn btn-small btn-primary'
-
