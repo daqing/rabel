@@ -1,6 +1,9 @@
 - @title = '注册'
-.box
-  .cell
-    = build_navigation([@title])
-  .inner
-    = render 'devise/registrations/form'
+
+.container
+  .row
+    .col-md-6.offset-3
+      .box
+        .cell.title 用户注册
+        .inner
+          = render 'devise/registrations/form'
