@@ -6,7 +6,7 @@
 # Siteconf.defaults[:custom_css] = '' # 全局自定义CSS
 # Siteconf.defaults[:custom_js] = '' # 全局自定义JavaScript
 # Siteconf.defaults[:custom_head_tags] = '' # 自定义Head标签
-# Siteconf.defaults[:custom_logo] = ''
+
 # Siteconf.defaults[:global_banner] = ''
 
 # Siteconf.defaults[:allow_markdown_in_topics] = 'off'

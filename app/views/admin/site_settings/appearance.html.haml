@@ -4,26 +4,18 @@
   .inner
     = form_for :site_settings, :url => admin_site_settings_path, :method => :put do |f|
       .form-group
-        = label_tag 'settings[nav_position]', '节点导航位置'
-        = select_tag 'settings[nav_position]', options_for_select([['头部', 'top'], ['侧边栏', 'sidebar'], ['底部', 'bottom']], @settings.nav_position), :class => 'form-control'
-
-      .form-group
-        = label_tag 'settings[custom_logo]', '自定义Logo'
-        = text_field_tag 'settings[custom_logo]', @settings.custom_logo, :class => :sl, :placeholder => t('tips.custom_logo_path'), :class => 'form-control'
-        %small.help-inline 推荐尺寸: 100 x 40
-
-      .form-group
         = label_tag 'settings[custom_css]', '自定义CSS'
-        %span.gray.help-block &lt;style type="text/css"&gt;
-        = text_area_tag 'settings[custom_css]', @settings.custom_css, :class => 'form-control', :rows => 5
-        .gray &lt;/style&gt;
+        .controls
+          %span.help-inline &lt;style type="text/css"&gt;
+          = text_area_tag 'settings[custom_css]', @settings.custom_css, :class => 'form-control', :rows => 5
+          %span.help-inline &lt;/style&gt;
 
       .form-group
         = label_tag 'settings[custom_js]', '自定义JavaScript'
         .controls
-          %span.gray.help-block &lt;script type="text/javascript"&gt;
+          %span.help-inline &lt;script type="text/javascript"&gt;
           = text_area_tag 'settings[custom_js]', @settings.custom_js, :class => 'form-control', :rows => 5
-          .gray &lt;/script&gt;
+          %span.help-inline &lt;/script&gt;
 
       .form-actions
         = f.submit '保存', :class => 'btn btn-small btn-primary'
