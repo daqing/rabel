@@ -9,7 +9,7 @@ class Siteconf < RailsSettings::CachedSettings
     end
   end
 
-  boolean_attributes :show_captcha, :allow_markdown_in_topics,
+  boolean_attributes :allow_markdown_in_topics,
     :allow_markdown_in_comments,
     :allow_markdown_in_pages
 

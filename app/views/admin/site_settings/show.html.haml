@@ -16,21 +16,6 @@
         = text_field_tag 'settings[slogan]', @settings.slogan, :class => 'form-control'
 
       .form-group
-        = label_tag 'settings[ga_id]', 'Google Analytics ID'
-        = text_field_tag 'settings[ga_id]', @settings.ga_id, :class => 'form-control'
-        %span.help-block 例如: UA-12345678-01
-
-      .form-group
-        = label_tag 'settings[show_captcha]', '注册验证码'
-        .radio
-          %label
-            = radio_button_tag 'settings[show_captcha]', 'on', @settings.show_captcha?
-            开启
-          %label
-            = radio_button_tag 'settings[show_captcha]', 'off', !@settings.show_captcha?
-            关闭
-
-      .form-group
         = label_tag 'settings[show_community_stats]', '社区运行状态'
         .radio
           %label

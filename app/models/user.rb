@@ -147,12 +147,11 @@ class User < ApplicationRecord
   end
 
   def verify_captcha(correct_captcha)
-    return true unless Siteconf.show_captcha?
     if self.captcha.downcase == correct_captcha.downcase
-      true
+      return true
     else
       self.errors.add(:captcha, "验证码不正确")
-      false
+      return false
     end
   end
 
@@ -178,4 +177,3 @@ class User < ApplicationRecord
     end
   end
 end
-

@@ -4,11 +4,5 @@
   = f.input :email, :label => '电子邮件'
   = f.input :password, :label => '密码'
   = f.input :password_confirmation, :label => '密码确认'
-  - if Siteconf.show_captcha?
-    .form-group
-      %label 验证码
-      %p= image_tag captcha_path(:format => :gif), :class => :captcha
-    = f.input :captcha, :label => false
   .form-actions
     = f.submit '加入社区', :class => 'btn btn-small btn-primary'
-
