@@ -1,4 +1,6 @@
 class Siteconf < RailsSettings::CachedSettings
+  REWARD_TITLE = '银币'.freeze
+
   def self.boolean_attributes(*args)
     args.each do |m|
       self.instance_eval <<-CODE
@@ -44,6 +46,10 @@ class Siteconf < RailsSettings::CachedSettings
 
     def pagination_comments
       100
+    end
+
+    def reward_title
+      REWARD_TITLE
     end
   end
 end

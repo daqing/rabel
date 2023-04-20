@@ -12,4 +12,3 @@
 # Siteconf.defaults[:allow_markdown_in_topics] = 'off'
 # Siteconf.defaults[:allow_markdown_in_comments] = 'off'
 # Siteconf.defaults[:allow_markdown_in_pages] = 'on'
-# Siteconf.defaults[:reward_title] = '银币'

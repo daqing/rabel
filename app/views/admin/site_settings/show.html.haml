@@ -58,10 +58,5 @@
         = text_area_tag 'settings[footer]', @settings.footer, :class => 'form-control', :rows => 5
         %span.help-block 支持HTML
 
-      .form-group
-        = label_tag 'settings[reward_title]', '奖励名称'
-        = text_field_tag 'settings[reward_title]', @settings.reward_title, :class => 'form-control'
-        %span.help-block 例如: 银币，金币，积分，优惠券，代金券，蓝钻, Q币等
-
       .form-actions
         = f.submit '保存', :class => 'btn btn-small btn-primary'
