@@ -20,5 +20,7 @@ class ChannelsController < ApplicationController
     @canonical_path = "/go/#{params[:key]}"
     @canonical_path += "?p=#{@page_num}" if @page_num > 1
     @seo_description = @channel.name
+
+    render layout: 'single-column'
   end
 end

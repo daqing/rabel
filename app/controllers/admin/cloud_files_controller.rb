@@ -1,7 +1,7 @@
 # encoding: utf-8
 class Admin::CloudFilesController < Admin::BaseController
   def index
-    @title = '云硬盘'
+    @title = '文件上传'
     @files = CloudFile.order('id DESC').page(params[:page])
   end
 
@@ -31,7 +31,7 @@ class Admin::CloudFilesController < Admin::BaseController
     end
     redirect_to admin_cloud_files_path
   end
-  
+
   private
 
   def cloud_file_params

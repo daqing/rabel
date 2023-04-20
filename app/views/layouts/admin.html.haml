@@ -1,12 +1,8 @@
-- content_for :head do
-  = stylesheet_link_tag :i_admin
-
 - content_for :content do
   .admin-nav
     - dashboard_menu.each do |m|
+      %h4{style: 'font-size: 1rem;'}= m[:name]
       .box.fix_cell
-        .cell
-          %strong.gray= m[:name]
         .cell
           - m[:items].each do |item|
             = link_to item.first, item.last, :class => (:current_item if @title == item.first)

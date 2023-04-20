@@ -1,0 +1,28 @@
+.admin-nav a {
+    margin-right: 10px;
+    text-decoration: none;
+
+    &.current_item {
+        background: #666;
+        padding: 5px 8px;
+        color: white;
+        border-radius: 5px;
+    }
+}
+
+.admin-main {
+    .box .form-group {
+        margin: 10px 0;
+        color: #333;
+
+        label {
+            margin-bottom: 2px;
+        }
+    }
+
+    span.help-block,
+    span.help-inline {
+        font-size: 0.8rem;
+        color: #999;
+    }
+}

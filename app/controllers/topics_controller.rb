@@ -1,12 +1,14 @@
 # encoding: utf-8
 class TopicsController < ApplicationController
-  before_action :authenticate_user!, :except => [:show, :index]
-  before_action :find_channel, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky, :new_from_home, :create_from_home]
-  before_action :find_topic_and_auth, :only => [:edit_title,:update_title,
+  before_action :authenticate_user!, except: [:show, :index, :preview]
+  before_action :find_channel, except: [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky, :new_from_home, :create_from_home]
+  before_action :find_topic_and_auth, only: [:edit_title,:update_title,
     :edit, :update, :move, :destroy]
-  before_action :only => [:toggle_comments_closed, :toggle_sticky] do |c|
+  before_action only: [:toggle_comments_closed, :toggle_sticky] do |c|
     auth_admin
   end
+
+  skip_forgery_protection only: [:preview]
 
   def index
     per_page = 20
@@ -54,7 +56,7 @@ class TopicsController < ApplicationController
     @topic.channel = Channel.find(params[:channel_id]) if params[:channel_id]
 
     @title = build_title('创建新话题')
-    render :layout => 'single-column'
+    render layout: 'single-column'
   end
 
   def create
@@ -86,7 +88,7 @@ class TopicsController < ApplicationController
     respond_to do |f|
       f.js {
         unless @topic.update(topic_params)
-          render :text => :error, :status => :unprocessable_entity
+          render text: :error, status: :unprocessable_entity
         end
       }
     end
@@ -104,12 +106,12 @@ class TopicsController < ApplicationController
           if @new_channel.present?
             @topic.channel = @new_channel
             if @topic.save
-              render :js => "window.location.reload()"
+              render js: "window.location.reload()"
             else
-              render :js => "$.facebox('移动帖子失败')"
+              render js: "$.facebox('移动帖子失败')"
             end
           else
-            render :js => "$.facebox('节点不存在')"
+            render js: "$.facebox('节点不存在')"
           end
         }
       end
@@ -131,19 +133,19 @@ class TopicsController < ApplicationController
 
   def destroy
     if @topic.destroy
-      redirect_to root_path, :notice => '帖子删除成功'
+      redirect_to root_path, notice: '帖子删除成功'
     else
       raise RuntimeError.new('删除帖子出错')
     end
   end
 
   def preview
-    @type = ['topic', 'comment', 'page'].delete params[:type]
+    @type = %w[topic comment page].delete(params[:type])
     respond_to do |f|
       if @type.present?
         f.text { @content = params[:content] }
       else
-        render :text => :error, :status => :unprocessable_entity
+        render text: :error, status: :unprocessable_entity
       end
     end
   end
@@ -169,7 +171,7 @@ class TopicsController < ApplicationController
 
     def find_topic_and_auth
       @topic = @channel.topics.find(params[:id])
-      authorize! :update, @topic, :message => '你没有权限管理此主题'
+      authorize! :update, @topic, message: '你没有权限管理此主题'
     end
 
     def topic_params

@@ -2,15 +2,18 @@ doctype html
 html
   head
     = render 'shared/meta'
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = yield :head
+
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
     - if Siteconf.custom_css.present?
       style type="text/css"
         = Siteconf.custom_css.html_safe
-    = javascript_include_tag 'application'
+
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
     = yield :final_head
   body#rabel
-    = render 'layouts/navbar'
+    - unless @hide_navbar
+      = render 'layouts/navbar'
     #page
       .container
         = content_for?(:content) ? yield(:content) : yield

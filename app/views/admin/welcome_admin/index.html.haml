@@ -1,56 +1,55 @@
-.row
-  .col-md-6
-    .box
-      .cell
-        最新用户
-      .inner
-        %table.topics.table
-          %thead
-            %tr
-              %th.auto{:align => :left} 用户名
-              %th.auto{:align => :left} Email
-              %th.w100 注册时间
-          %tbody
-            - User.order('created_at DESC').limit(5).each do |user|
-              %tr
-                %td.auto
-                  = user.nickname
-                %td.auto
-                  = user.email
-                %td.w100
-                  %small.gray= time_ago_in_words(user.created_at)
-  .col-md-6
-    .box
-      .cell
-        社区运行状态
-      .inner
-        %table.table
-          %thead
-            %tr
-              %th 注册会员
-              %th 话题
-              %th 回复
+
+.box
+  .cell
+    最新用户
+  .inner
+    %table.topics.table
+      %thead
+        %tr
+          %th.auto{:align => :left} 用户名
+          %th.auto{:align => :left} Email
+          %th.w100 注册时间
+      %tbody
+        - User.order('created_at DESC').limit(5).each do |user|
           %tr
-            %td
-              %strong= User.count
-            %td
-              %strong= Topic.count
-            %td
-              %strong= Comment.count
+            %td.auto
+              = user.nickname
+            %td.auto
+              = user.email
+            %td.w100
+              %small.gray= time_ago_in_words(user.created_at)
+
+
+.box
+  .cell
+    社区运行状态
+  .inner
+    %table.table
+      %thead
+        %tr
+          %th 注册会员
+          %th 话题
+          %th 回复
+      %tr
+        %td
+          %strong= User.count
+        %td
+          %strong= Topic.count
+        %td
+          %strong= Comment.count
 
 - if @notifications_to_clear > 0
-  .row
-    .box
-      .cell
-        系统清理
-      .inner
-        %table.table.table-bordered
-          %tr
-            %td{:align => :right, :width => '40%'}
-              %span.gray 可清理提醒
-            %td{:align => :left}
-              .fr= link_to '删除已读提醒', clear_admin_notifications_path, :method => :delete, :class => 'btn btn-mini btn-info' if @notifications_to_clear > 0
-              %strong= @notifications_to_clear
+  .box
+    .cell
+      系统清理
+    .inner
+      %table.table.table-bordered
+        %tr
+          %td{:align => :right, :width => '40%'}
+            %span.gray 可清理提醒
+          %td{:align => :left}
+            .fr= link_to '删除已读提醒', clear_admin_notifications_path, :method => :delete, :class => 'btn btn-mini btn-info' if @notifications_to_clear > 0
+            %strong= @notifications_to_clear
 
 .box
   .cell

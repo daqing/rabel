@@ -1,67 +1,22 @@
-= render 'topics/show/bookmarked_users'
-= render 'topics/show/manage'
-
 - content_for :sidebar_box do
-  = render OtherSideBlocksQuery.new.get!
-
-- content_for :template_js do
-  :plain
-    var creating_comment = false;
-
-    $("textarea#comment_content").keydown(function(e) {
-      if (e.ctrlKey && e.keyCode == 13) {
-        if (creating_comment) return;
-        creating_comment = true
-        $("input[type=submit]").click();
-      }
-    });
-
-- topic_user = @topic.user
+  .box
+    .cell
+      = user_profile_avatar_link(@topic.user, :large)
+  - if user_signed_in?
+    - if current_user.bookmarked?(@topic)
+      = link_to '取消收藏', current_user.bookmark_of(@topic), data: {turbo_method: :delete}, :class => 'btn btn-sm btn-outline-danger unbookmark'
+    - else
+      = link_to '加入收藏', topic_bookmarks_path(@topic), data: {turbo_method: :post}, :class => 'btn btn-sm btn-outline-info bookmark'
 
 .box
-  %article
-    .header
-      .fr
-        = user_profile_avatar_link(topic_user, :large)
-      = build_navigation([link_to(@channel.name, @channel, :class => :rabel)], 'bigger')
-      .sep10
-      %h1#topic_title
-        = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe
-      %small.topic-meta
-        By
-        = user_profile_link(topic_user, :class => :dark)
-        at
-        = time_ago_in_words(@topic.created_at)
-        ,
-        = @topic.hit
-        次浏览
-      .clearfix
-    .inner
-      .content.topic_content= format_topic(@topic.content)
-      - if user_signed_in?
-        .fr
-          - if current_user.bookmarked?(@topic)
-            = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-xs btn-info unbookmark'
-          - else
-            = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'btn btn-xs btn-info bookmark'
-      .clearfix
-    .inner
-      - if @next_topic.present?
-        .fr
-          = link_to proper_length(@next_topic.title, 15), t_path(@next_topic.id), :class => :rabel, :rel => :prev
-          %span.guillemet.right-guillemet »
-
-      - if @prev_topic.present?
-        .float-left
-          %span.guillemet.left-guillemet «
-          = link_to proper_length(@prev_topic.title, 15), t_path(@prev_topic.id), :class => :rabel, :rel => :next
-      .clearfix
+  .inner.topic-title
+    = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe
+  .inner
+    .content.topic_content= format_topic(@topic.content)
 
 = render 'topics/show/comments' if @comments.any?
 
 - if @topic.comments_closed?
   = render 'shared/box_tip', :tip => t('tips.comments_closed')
-- elsif @comments.empty?
-  = render 'shared/box_tip', :tip => '目前尚无回复'
 
 = render 'topics/show/comment_form' unless @topic.comments_closed?

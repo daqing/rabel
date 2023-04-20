@@ -1,14 +1,3 @@
-- content_for :template_js do
-  :plain
-    rabel.sortable("table tbody", "#{sort_admin_pages_path}", {
-      helper: function(e, ui) {
-        ui.children().each(function() {
-          $(this).width($(this).width());
-        });
-        return ui;
-      }
-    })
-
 .box
   .cell
     .fr
@@ -24,4 +13,3 @@
           %th{:align => :left} 操作
       %tbody
         = render @pages
-

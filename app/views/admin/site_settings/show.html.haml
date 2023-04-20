@@ -3,6 +3,9 @@
     = build_admin_navigation([@title])
   .inner
     = form_for :site_settings, :url => admin_site_settings_path, :method => :put do |f|
+      .sep10
+      .form-actions
+        = f.submit '保存', :class => 'btn btn-sm btn-outline-success'
       .form-group
         = label_tag 'settings[site_name]', '网站名称'
         = text_field_tag 'settings[site_name]', @settings.site_name, :class => 'form-control'
@@ -94,4 +97,3 @@
 
       .form-actions
         = f.submit '保存', :class => 'btn btn-small btn-primary'
-

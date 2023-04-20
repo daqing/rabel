@@ -3,15 +3,15 @@
 - comments_count = topic.comments.count
 - last_replied_by = topic.last_replied_by
 .cell.topic{:class => topic_user.can_manage_site? ? 'admin' : ''}
-  .avatar.float-left
+  .avatar.float-left{style: 'margin-right: 10px;'}
     = user_profile_avatar_link(topic_user, :medium)
-  .item_title
+  .item-title
     - if comments_count > 0
       .fr
         .badge.badge-info= comments_count
-    %h2.topic_title
+    %div{style: 'font-size: 1.2rem;'}
       = link_to topic.title, t_path(topic.id), :class => 'rabel topic'
-    .topic-meta
+    .topic-meta{style: 'font-size: 0.9rem;'}
       = link_to channel.name, channel, :class => 'dark rabel channel'
       %span.muted •
       = user_profile_link(topic_user, :class => :dark)
