@@ -1,13 +1,9 @@
 .box#topics_index
   - if @sticky_topics.any?
-    - if Siteconf.sticky_topics_heading.present?
-      #sticky_topics.topics_heading= Siteconf.sticky_topics_heading
     = render @sticky_topics
 
-  - if @sticky_topics.any? and Siteconf.latest_topics_heading.present?
-    #latest_topics.topics_heading= Siteconf.latest_topics_heading
-
   = render @topics
+
   .inner
     - if Topic.count > @num
       span.chevron »

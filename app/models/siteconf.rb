@@ -1,4 +1,6 @@
 class Siteconf < RailsSettings::CachedSettings
+  REWARD_TITLE = '银币'.freeze
+
   def self.boolean_attributes(*args)
     args.each do |m|
       self.instance_eval <<-CODE
@@ -9,7 +11,7 @@ class Siteconf < RailsSettings::CachedSettings
     end
   end
 
-  boolean_attributes :show_captcha, :allow_markdown_in_topics,
+  boolean_attributes :allow_markdown_in_topics,
     :allow_markdown_in_comments,
     :allow_markdown_in_pages
 
@@ -44,6 +46,10 @@ class Siteconf < RailsSettings::CachedSettings
 
     def pagination_comments
       100
+    end
+
+    def reward_title
+      REWARD_TITLE
     end
   end
 end

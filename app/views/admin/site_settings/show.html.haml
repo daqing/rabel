@@ -16,31 +16,6 @@
         = text_field_tag 'settings[slogan]', @settings.slogan, :class => 'form-control'
 
       .form-group
-        = label_tag 'settings[ga_id]', 'Google Analytics ID'
-        = text_field_tag 'settings[ga_id]', @settings.ga_id, :class => 'form-control'
-        %span.help-block 例如: UA-12345678-01
-
-      .form-group
-        = label_tag 'settings[show_captcha]', '注册验证码'
-        .radio
-          %label
-            = radio_button_tag 'settings[show_captcha]', 'on', @settings.show_captcha?
-            开启
-          %label
-            = radio_button_tag 'settings[show_captcha]', 'off', !@settings.show_captcha?
-            关闭
-
-      .form-group
-        = label_tag 'settings[show_community_stats]', '社区运行状态'
-        .radio
-          %label
-            = radio_button_tag 'settings[show_community_stats]', 'on', @settings.show_community_stats?
-            显示
-          %label
-            = radio_button_tag 'settings[show_community_stats]', 'off', !@settings.show_community_stats?
-            隐藏
-
-      .form-group
         = label_tag 'settings[allow_markdown_in_topics]', '话题允许 Markdown'
         .radio
           %label
@@ -72,28 +47,11 @@
         = label_tag 'settings[custom_head_tags]', '自定义Head标签'
         = text_area_tag 'settings[custom_head_tags]', @settings.custom_head_tags, :class => 'form-control', :rows => 5
         %span.help-block 可以添加&lt;meta&gt;, &lt;script&gt;, &lt;style&gt;等头部标签
+
       .form-group
-        = label_tag 'settings[seo_description]', 'SEO 描述'
-        = text_area_tag 'settings[seo_description]', @settings.seo_description, :class => 'form-control'
-        %span.help-block 用于HTML meta标签
-      .form-group
-        = label_tag 'settings[global_sidebar_block]', '全局侧边栏'
-        = text_area_tag 'settings[global_sidebar_block]', @settings.global_sidebar_block, :class => 'form-control', :rows => 5
-        %span.help-block 支持HTML
-      .form-group
-        = label_tag 'settings[footer]', '页面底部 [普通版]'
+        = label_tag 'settings[footer]', '页面底部'
         = text_area_tag 'settings[footer]', @settings.footer, :class => 'form-control', :rows => 5
         %span.help-block 支持HTML
-      .form-group
-        = label_tag 'settings[sticky_topics_heading]', '置顶话题提示'
-        = text_field_tag 'settings[sticky_topics_heading]', @settings.sticky_topics_heading, :class => 'form-control'
-      .form-group
-        = label_tag 'settings[latest_topics_heading]', '最新话题提示'
-        = text_field_tag 'settings[latest_topics_heading]', @settings.latest_topics_heading, :class => 'form-control'
-      .form-group
-        = label_tag 'settings[reward_title]', '奖励名称'
-        = text_field_tag 'settings[reward_title]', @settings.reward_title, :class => 'form-control'
-        %span.help-block 例如: 银币，金币，积分，优惠券，代金券，蓝钻, Q币等
 
       .form-actions
         = f.submit '保存', :class => 'btn btn-small btn-primary'

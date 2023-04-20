@@ -1,9 +1,5 @@
 #TopMain
-  - if Siteconf.custom_logo.present?
-    = link_to root_path, :class => 'logo custom_logo' do
-      = image_tag Siteconf.custom_logo, :alt => :logo
-  - else
-    = link_to Siteconf.site_name, root_path, :class => 'logo text_logo'
+  = link_to Siteconf.site_name, root_path, :class => 'logo text_logo'
   #Navigation
     %ul
       %li= link_to '首页', root_path, :class => link_class
