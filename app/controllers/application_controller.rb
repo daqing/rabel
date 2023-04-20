@@ -69,7 +69,6 @@ class ApplicationController < ActionController::Base
     count_unread_notification
     initialize_breadcrumbs_and_title
 
-    @seo_description = ''
     ActionMailer::Base.default_url_options[:host] = Figaro.env.RABEL_HOST_NAME
   end
 
