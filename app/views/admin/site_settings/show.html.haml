@@ -49,12 +49,7 @@
         %span.help-block 可以添加&lt;meta&gt;, &lt;script&gt;, &lt;style&gt;等头部标签
 
       .form-group
-        = label_tag 'settings[global_sidebar_block]', '全局侧边栏'
-        = text_area_tag 'settings[global_sidebar_block]', @settings.global_sidebar_block, :class => 'form-control', :rows => 5
-        %span.help-block 支持HTML
-
-      .form-group
-        = label_tag 'settings[footer]', '页面底部 [普通版]'
+        = label_tag 'settings[footer]', '页面底部'
         = text_area_tag 'settings[footer]', @settings.footer, :class => 'form-control', :rows => 5
         %span.help-block 支持HTML
 

@@ -8,7 +8,7 @@
 # Siteconf.defaults[:custom_head_tags] = '' # 自定义Head标签
 # Siteconf.defaults[:custom_logo] = ''
 # Siteconf.defaults[:global_banner] = ''
-# Siteconf.defaults[:global_sidebar_block] = ''
+
 # Siteconf.defaults[:allow_markdown_in_topics] = 'off'
 # Siteconf.defaults[:allow_markdown_in_comments] = 'off'
 # Siteconf.defaults[:allow_markdown_in_pages] = 'on'
