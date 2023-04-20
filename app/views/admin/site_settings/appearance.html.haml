@@ -3,6 +3,8 @@
     = build_admin_navigation([@title])
   .inner
     = form_for :site_settings, :url => admin_site_settings_path, :method => :put do |f|
+      .sep10
+      = f.submit '保存', :class => 'btn btn-sm btn-outline-primary'
       .form-group
         = label_tag 'settings[custom_css]', '自定义CSS'
         .controls
