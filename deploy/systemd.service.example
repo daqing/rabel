@@ -1,0 +1,17 @@
+[Unit]
+Description=Rabel Puma Webserver
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=simple
+User=USER
+EnvironmentFile=/path/to/systemd.env.txt
+WorkingDirectory=/path/to/rabel
+ExecStart=/bin/bash -lc 'bundle exec rails s -u puma -e production -p 3000'
+
+TimeoutSec=15
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
