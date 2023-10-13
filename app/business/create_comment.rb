@@ -1,4 +1,4 @@
-class CreateComment < Fanli::Base
+class CreateComment
   def initialize(user, commentable, params)
     @user = user
     @commentable = commentable

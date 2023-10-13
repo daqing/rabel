@@ -26,7 +26,6 @@ gem 'carrierwave-upyun'
 gem 'coderay'
 gem 'dalli'
 gem 'devise', '~> 4.9'
-gem 'fanli'
 gem 'figaro'
 gem 'haml'
 gem 'kaminari', '~> 1.2.1'
@@ -49,4 +48,3 @@ gem 'redis', '~> 4.0'
 
 gem 'cssbundling-rails', '~> 1.1'
 gem 'jsbundling-rails', '~> 1.1'
-

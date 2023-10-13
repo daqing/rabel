@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   def create
     redirect_to root_path, :notice => I18n.t('tips.comments_closed') and return if @commentable.try(:comments_closed)
 
-    @comment = CreateComment.with(current_user, @commentable, comment_params)
+    @comment = CreateComment.new(current_user, @commentable, comment_params).perform
     flash[:error] = '添加回复失败' if @comment.blank?
     redirect_to custom_path(@commentable)
   end

@@ -1,4 +1,4 @@
-class CheckIn < Fanli::Base
+class CheckIn
   def initialize(user)
     @user = user
   end

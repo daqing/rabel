@@ -60,7 +60,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    if CreateTopic.with(current_user, @channel, topic_params)
+    if CreateTopic.new(current_user, @channel, topic_params).perform
       redirect_to t_path(@topic.id)
     else
       render :new

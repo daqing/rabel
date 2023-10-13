@@ -117,7 +117,6 @@ GEM
     drb (2.1.1)
       ruby2_keywords
     erubi (1.12.0)
-    fanli (0.4.0)
     faraday (2.7.11)
       base64
       faraday-net_http (>= 2.0, < 3.1)
@@ -322,7 +321,6 @@ DEPENDENCIES
   cssbundling-rails (~> 1.1)
   dalli
   devise (~> 4.9)
-  fanli
   figaro
   haml
   jsbundling-rails (~> 1.1)
