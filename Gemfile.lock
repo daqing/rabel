@@ -156,7 +156,7 @@ GEM
     mime-types-data (3.2021.0901)
     mini_magick (4.10.1)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.1)
+    mini_portile2 (2.8.5)
     minitest (5.20.0)
     net-imap (0.3.4)
       date
@@ -169,8 +169,8 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.7.0)
-    nokogiri (1.14.3)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.16.2)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.1)
@@ -181,7 +181,7 @@ GEM
       mime-types (~> 3.1)
       rest-client (~> 2.0)
       rexml (~> 3.2)
-    racc (1.6.2)
+    racc (1.7.3)
     rack (2.2.6.4)
     rack-test (2.1.0)
       rack (>= 1.3)
