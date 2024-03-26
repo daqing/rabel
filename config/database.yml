@@ -16,10 +16,10 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: postgres
-  password:
-  host: localhost
-  port: 5432
+  username: <%= ENV.fetch("DB_USERNAME") { "daqing" } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { "" } %>
+  host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
+  port: <%= ENV.fetch("DB_PORT") { 5432 } %>
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -44,4 +44,3 @@ test:
 production:
   <<: *default
   database: rabel_production
-

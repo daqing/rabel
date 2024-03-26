@@ -20,7 +20,6 @@
 
 .DS_Store
 .cache_rake_t
-/config/database.yml
 /config/settings.yml
 /.sass-cache
 /public/uploads/
