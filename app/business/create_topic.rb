@@ -1,14 +1,8 @@
 class CreateTopic
-  def initialize(user, channel, params)
-    @user = user
-    @channel = channel
-    @params = params
-  end
+  def self.call(user, channel, params)
+    @topic = channel.topics.new(params)
+    @topic.user = user
 
-  def perform
-    @topic = @channel.topics.new(@params)
-    @topic.user = @user
-
-    return @topic if @topic.save
+    @topic if @topic.save
   end
 end

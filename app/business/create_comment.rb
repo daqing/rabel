@@ -1,14 +1,8 @@
 class CreateComment
-  def initialize(user, commentable, params)
-    @user = user
-    @commentable = commentable
-    @params = params
-  end
+  def self.call(user, commentable, params)
+    @comment = commentable.comments.build(params)
+    @comment.user = user
 
-  def perform
-    @comment = @commentable.comments.build(@params)
-    @comment.user = @user
-
-    return @comment if @comment.save
+    @comment if @comment.save
   end
 end

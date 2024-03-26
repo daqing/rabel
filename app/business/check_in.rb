@@ -1,18 +1,14 @@
 class CheckIn
-  def initialize(user)
-    @user = user
-  end
-
-  def perform
+  def self.call(user)
     today = Date.today
-    return if CheckedInAtQuery.new(@user, today).get!
+    return if CheckedInAtQuery.new(user, today).get!
 
-    @checkin = @user.checkins.build(checkin_date: today)
+    @checkin = user.checkins.build(checkin_date: today)
     @checkin.save
 
-    if CheckedInAtQuery.new(@user, today.yesterday).get!
-      @user.increment(:continuous_checkins)
-      @user.save
-    end
+    return unless CheckedInAtQuery.new(@user, today.yesterday).get!
+
+    user.increment(:continuous_checkins)
+    user.save
   end
 end

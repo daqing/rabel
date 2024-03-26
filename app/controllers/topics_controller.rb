@@ -60,7 +60,7 @@ class TopicsController < ApplicationController
   end
 
   def create
-    if CreateTopic.new(current_user, @channel, topic_params).perform
+    if CreateTopic.call(current_user, @channel, topic_params)
       redirect_to t_path(@topic.id)
     else
       render :new
@@ -70,7 +70,7 @@ class TopicsController < ApplicationController
   def create_from_home
     @channel = Channel.find(params[:topic][:channel_id])
 
-    @topic = CreateTopic.with(current_user, @channel, topic_params)
+    @topic = CreateTopic.call(current_user, @channel, topic_params)
     if @topic
       redirect_to t_path(@topic.id)
     else
