@@ -1,4 +1,4 @@
-class CreateTopic < Fanli::Base
+class CreateTopic
   def initialize(user, channel, params)
     @user = user
     @channel = channel
