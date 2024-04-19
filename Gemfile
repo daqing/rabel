@@ -9,11 +9,9 @@ gem 'pg'
 
 gem 'sprockets-rails', require: 'sprockets/railtie'
 
-# Use debugger
-gem 'byebug', group: %i[development test]
-
 group :development do
   gem 'awesome_print'
+  gem 'rubocop', require: false
 end
 
 gem 'acts_as_list'
