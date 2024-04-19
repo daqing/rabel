@@ -4,19 +4,17 @@
     <div class="text-right">
       <span class="close">&times;</span>
     </div>
-    <div>注册账号</div>
+    <div class="text-zinc-400">注册账号</div>
     <%= form_for :sign_up, url: registrations_path do |f| %>
-      <div>
-        <label>昵称</label>
-        <%= f.text_field :nickname %>
+      <div class="mb-4">
+        <div class="mt-4">
+          <%= f.text_field :nickname, placeholder: '昵称', class: 'w-full', required: true %>
+        </div>
+        <div class="mt-2">
+          <%= f.password_field :password, placeholder: '登录密码', class: 'w-full', required: true %>
+        </div>
       </div>
-      <div>
-        <label>密码</label>
-        <%= f.password_field :password %>
-      </div>
-      <div>
-        <%= f.submit '加入社区' %>
-      </div>
+      <%= f.submit '加入社区', class: 'btn-primary w-full mt-2 py-2' %>
     <% end %>
   </div>
 </div>
