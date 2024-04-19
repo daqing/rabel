@@ -7,16 +7,16 @@
           <span><%= current_user.nickname %></span>
           <%= link_to '退出', sign_out_path, data: {turbo_method: :delete} %>
         <% else %>
-          <%= link_to '登录', '#', class: 'modal-btn', data: {'modal-id': 'sign-in-modal'} %>
+          <%= link_to '登录', '#', class: 'modal-btn hover:text-orange-700 dark:hover:text-orange-500', data: {'modal-id': 'sign-in-modal'} %>
           <%= link_to '注册', '#', class: 'btn-primary modal-btn', data: {'modal-id': 'sign-up-modal'} %>
         <% end %>
       </div>
     </div>
   </div>
 </header>
-<div id="navbar" class="border-t border-b border-zinc-200 mt-6 mb-6 py-2">
+<div id="navbar" class="border-t border-b border-zinc-200 dark:border-zinc-600 mt-6 mb-6 py-2">
   <div class="w-2/3 mx-auto max-w-[860px]">
-    <div class="flex gap-6 text-zinc-500">
+    <div class="flex gap-6 text-zinc-500 dark:text-zinc-400">
       <%= link_to_active '首页', root_path, request.path %>
       <% NavLink.sorted.each do |link| %>
         <%= link_to_active link.title, link.url, request.path %>

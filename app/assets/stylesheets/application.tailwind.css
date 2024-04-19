@@ -8,6 +8,23 @@
   }
 
   a.brand {
-    @apply text-2xl no-underline text-black;
+    @apply text-2xl text-zinc-700 hover:text-orange-700 dark:text-orange-500 dark:hover:text-white;
   }
+
+  #navbar a:hover {
+    @apply text-black dark:text-white;
+  }
+
+  #navbar a.active {
+    @apply text-black dark:text-white;
+  }
+
+  .modal-content {
+    @apply bg-white dark:bg-zinc-800;
+  }
+
+  input[type="text"], input[type="password"], textarea {
+    @apply border border-gray-300 dark:border-gray-400 dark:bg-zinc-800;
+  }
+
 }

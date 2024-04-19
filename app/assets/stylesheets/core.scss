@@ -1,26 +1,3 @@
-// body {
-//   background-image: url("/assets/bg.jpg");
-//   background-size: cover;
-//   background-position: center top;
-// }
-
-.brand {
-  &:hover {
-    background-color: rgb(194, 65, 12);
-    color: white;
-  }
-}
-
-#navbar a {
-  &.active {
-    color: rgb(194, 65, 12);
-  }
-
-  &:hover {
-    color: rgb(194, 65, 12);
-  }
-}
-
 .modal {
   display: none;
   /* Hidden by default */
@@ -42,7 +19,6 @@
 }
 
 .modal-content {
-  background-color: white;
   margin: auto;
   max-width: 30%;
   padding-left: 10px;
