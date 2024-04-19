@@ -11,11 +11,13 @@
         <%= Siteconf.custom_css.html_safe %>
       </style>
     <% end %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true, type: "module" %>
     <%= yield :final_head %>
   </head>
   <body class="bg-white">
     <%= render 'layouts/navbar' %>
     <%= content_for?(:content) ? yield(:content) : yield %>
+    <%= render 'modals/sign_in' %>
+    <%= render 'modals/sign_up' %>
   </body>
 </html>

@@ -1,8 +1,0 @@
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  - f.object.captcha = ''
-  = f.input :nickname, :label => '用户名', :input_html => {:autofocus => true}
-  = f.input :email, :label => '电子邮件'
-  = f.input :password, :label => '密码'
-  = f.input :password_confirmation, :label => '密码确认'
-  .form-actions
-    = f.submit '加入社区', :class => 'btn btn-sm btn-primary'

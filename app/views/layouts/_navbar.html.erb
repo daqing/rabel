@@ -3,8 +3,13 @@
     <div class="flex justify-between items-baseline">
       <div><%= link_to Siteconf.site_name, root_path, class: 'brand' %></div>
       <div class="flex gap-4">
-        <%= link_to '登录', '#' %>
-        <%= link_to '注册', '#', class: 'btn-primary' %>
+        <% if user_signed_in? %>
+          <span><%= current_user.nickname %></span>
+          <%= link_to '退出', sign_out_path, data: {turbo_method: :delete} %>
+        <% else %>
+          <%= link_to '登录', '#', class: 'modal-btn', data: {'modal-id': 'sign-in-modal'} %>
+          <%= link_to '注册', '#', class: 'btn-primary modal-btn', data: {'modal-id': 'sign-up-modal'} %>
+        <% end %>
       </div>
     </div>
   </div>

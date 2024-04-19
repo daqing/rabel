@@ -1,17 +1,21 @@
-class SessionsController < Devise::SessionsController
-  layout 'single-column'
-
-  def new
-    @title = "登入 - #{Siteconf.site_name}"
-    super
-  end
+class SessionsController < ApplicationController
+  def new; end
 
   def create
-    old_session = session.dup
-    resource = warden.authenticate!(:scope => resource_name, :recall => "#{controller_path}#new")
-    sign_in(resource_name, resource)
-    reset_session
-    session.merge!(old_session)
-    respond_with resource, :location => after_sign_in_path_for(resource)
+    @user = User.find_by(nickname: params[:session][:nickname].strip)
+
+    if @user&.authenticate(params[:session][:password])
+      sign_in(@user)
+
+      redirect_to root_path
+    else
+      respond_to(&:turbo_stream)
+    end
+  end
+
+  def destroy
+    sign_out
+
+    redirect_to root_path
   end
 end
