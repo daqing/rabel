@@ -1,0 +1,2 @@
+module Chat::HomeHelper
+end
