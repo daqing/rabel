@@ -54,6 +54,10 @@ Rabel::Application.routes.draw do
     get :read, on: :member
   end
 
+  namespace :forum do
+    root "home#index"
+  end
+
   namespace :admin do
     resources :side_blocks do
       post :sort, on: :collection

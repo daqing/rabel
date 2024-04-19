@@ -185,7 +185,7 @@ module ApplicationHelper
   def cannonical_url(url)
     return "" if url.nil? || url.length.zero?
 
-    url.start_with?("http://") ? url : "http://" + url
+    url.start_with?("http://") ? url : "http://#{url}"
   end
 
   def weibo_icon_for(weibo_link)
@@ -200,7 +200,7 @@ module ApplicationHelper
 
   def proper_length(str, len)
     if str.size > len
-      str[0..len] + " ..."
+      "#{str[0..len]} ..."
     else
       str
     end
@@ -216,5 +216,11 @@ module ApplicationHelper
 
   def rand_char
     ("a".."z").to_a.sample
+  end
+
+  def rand_avatar
+    pic = ["1.jpg", "2.jpg", "3.png", "4.jpg", "5.png"].sample
+
+    image_tag("/assets/avatar/#{pic}", width: 32, height: 32)
   end
 end
