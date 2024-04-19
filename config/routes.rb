@@ -3,6 +3,11 @@ Rabel::Application.routes.draw do
 
   root "welcome#index"
 
+  resources :registrations
+  resources :sessions
+
+  delete "/sign_out", to: "sessions#destroy", as: :sign_out
+
   get "settings" => "users#edit"
   get "member/:nickname" => "users#show", :as => :member
   get "member/:nickname/topics" => "users#topics", :as => :member_topics

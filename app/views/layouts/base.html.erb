@@ -11,7 +11,7 @@
         <%= Siteconf.custom_css.html_safe %>
       </style>
     <% end %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true, type: "module" %>
     <%= yield :final_head %>
   </head>
   <body class="bg-white">

@@ -82,6 +82,7 @@ GEM
     ast (2.4.2)
     awesome_print (1.9.2)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bigdecimal (3.1.7)
     builder (3.2.4)
     cancancan (1.8.4)
@@ -298,6 +299,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   awesome_print
+  bcrypt
   cancancan (~> 1.8.4)
   carrierwave (>= 1.3.2)
   carrierwave-upyun
