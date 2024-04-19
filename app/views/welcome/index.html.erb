@@ -1,3 +1,13 @@
-<%= render 'navbar' %>
-<%= render 'news_hot' %>
-<%= render 'people' %>
+<div class="md:flex">
+  <div>
+    <%= render 'navbar' %>
+  </div>
+  <div class="md:flex md:gap-2 ">
+    <div class="md:min-w-[480px] md:w-1/2">
+      <%= render 'main' %>
+    </div>
+    <div class="md:w-1/2">
+      <%= render 'social' %>
+    </div>
+  </div>
+</div>
