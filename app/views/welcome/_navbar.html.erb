@@ -16,8 +16,10 @@
           <%= link_to '退出', sign_out_path, class: 'hover:text-orange-700 dark:hover:text-orange-500 md:hidden', data: {turbo_method: :delete} %>
         </div>
       <% else %>
-        <%= link_to '登录', '#', class: 'modal-btn hover:text-orange-700 dark:hover:text-orange-500', data: {'modal-id': 'sign-in-modal'} %>
-        <%= link_to '注册', '#', class: 'btn-primary modal-btn', data: {'modal-id': 'sign-up-modal'} %>
+        <div class="md:flex md:flex-col md:gap-2 md:items-end">
+          <%= link_to '登录', '#', class: 'modal-btn hover:text-orange-700 dark:hover:text-orange-500', data: {'modal-id': 'sign-in-modal'} %>
+          <%= link_to '注册', '#', class: 'btn-primary modal-btn', data: {'modal-id': 'sign-up-modal'} %>
+        </div>
       <% end %>
     </div>
   </div>
