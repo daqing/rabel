@@ -10,4 +10,5 @@ window.$ = jQuery
 import rabel from "./rabel"
 
 rabel.onReady()
+
 window.Rabel = rabel

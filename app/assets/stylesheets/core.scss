@@ -7,3 +7,47 @@ header nav a {
     color: black;
   }
 }
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba($color: #717171, $alpha: 0.8)
+}
+
+.modal-content {
+  background-color: white;
+  margin: auto;
+  max-width: 30%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+}
+
+.close {
+  color: #e0e0e0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}

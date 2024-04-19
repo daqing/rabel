@@ -17,5 +17,6 @@
   <body class="bg-white">
     <%= render 'layouts/navbar' %>
     <%= content_for?(:content) ? yield(:content) : yield %>
+    <%= render 'modals/sign_in' %>
   </body>
 </html>

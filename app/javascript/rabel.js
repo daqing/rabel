@@ -5,6 +5,8 @@ var rabel = {
     document.addEventListener("turbo:load", () => {
       _this.clickPreview()
       _this.cancelPreview()
+
+      _this.modal()
     });
   },
   clickPreview: function () {
@@ -40,6 +42,19 @@ var rabel = {
       $("a.preview").removeClass('current_label')
     })
   },
+  modal: function() {
+    $("a.modal-btn").on("click", function(ev) {
+      ev.preventDefault();
+
+      var css_id = $(this).data("modal-id");
+      var modal = $("#" + css_id);
+      $(modal).css("display", "block");
+
+      $(modal).find(".close").on("click", function() {
+        $(modal).css("display", "none");
+      })
+    })
+  }
 }
 
 export default rabel;
