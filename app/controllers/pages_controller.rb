@@ -6,6 +6,6 @@ class PagesController < ApplicationController
               Page.where(published: true).find_by!(key: params[:key])
             end
 
-    @title = @page.title
+    @title = "#{Siteconf.site_name} - #{@page.title}"
   end
 end

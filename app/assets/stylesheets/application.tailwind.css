@@ -16,7 +16,7 @@
   }
 
   #navbar a.active {
-    @apply text-black dark:text-white;
+    @apply text-black dark:text-white font-bold;
   }
 
   .modal-content {
