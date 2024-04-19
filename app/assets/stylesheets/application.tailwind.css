@@ -20,7 +20,7 @@
   }
 
   .modal-content {
-    @apply bg-white dark:bg-zinc-800;
+    @apply bg-white dark:bg-zinc-800 w-[80%] md:max-w-[30%];
   }
 
   input[type="text"], input[type="password"], textarea {
