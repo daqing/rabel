@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '3.2.2'
+ruby '3.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.1'
 
-gem 'pg'
+gem 'pg', '~> 1.5'
 
 gem 'sprockets-rails', require: 'sprockets/railtie'
 
@@ -22,7 +22,6 @@ gem 'carrierwave', '>= 1.3.2'
 gem 'carrierwave-upyun'
 gem 'coderay'
 gem 'devise', '~> 4.9'
-# gem 'figaro'
 gem 'haml'
 gem 'kaminari', '~> 1.2.1'
 gem 'kgio'
@@ -34,13 +33,13 @@ gem 'redcarpet'
 gem 'simple_form'
 gem 'slim-rails'
 
-gem 'json', '>= 2.3.0'
+gem 'json', '~> 2.7'
 
 # gem "importmap-rails"
 gem 'turbo-rails', '~> 1.4'
 
 # Use Redis for Action Cable
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 5.2'
 
 gem 'cssbundling-rails', '~> 1.1'
 gem 'jsbundling-rails', '~> 1.1'
