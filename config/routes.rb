@@ -1,29 +1,34 @@
 Rabel::Application.routes.draw do
   resources :checkins
 
-  root 'welcome#index'
-  devise_for :users, controllers: { sessions: 'sessions', registrations: 'registrations' }
-  get 'settings' => 'users#edit'
-  get 'member/:nickname' => 'users#show', :as => :member
-  get 'member/:nickname/topics' => 'users#topics', :as => :member_topics
-  post 'member/:nickname/follow' => 'users#follow', :as => :follow_user
-  post 'member/:nickname/unfollow' => 'users#unfollow', :as => :unfollow_user
-  patch 'users/update_account' => 'users#update_account', :as => :update_account
-  patch 'users/update_password' => 'users#update_password', :as => :update_password
-  patch 'users/update_avatar' => 'users#update_avatar', :as => :update_avatar
-  get 't/:id' => 'topics#show', :as => :t
-  get 'topics/:id' => redirect('/t/%<id>s'), :constraints => { id: /\d+/ }
+  root "welcome#index"
 
-  get 'my/topics' => 'users#my_topics', :as => :my_topics
-  get 'my/following' => 'users#my_following', :as => :my_following
-  get 'page/:key' => 'pages#show', :as => :page
-  get 'goodbye' => 'welcome#goodbye'
-  get 'captcha' => 'welcome#captcha'
-  get 'sitemap' => 'welcome#sitemap'
-  get 'new_from_home' => 'topics#new_from_home'
-  post 'create_from_home' => 'topics#create_from_home'
+  resources :registrations
+  resources :sessions
 
-  patch 'upyun_images' => 'upyun_images#create'
+  delete "/sign_out", to: "sessions#destroy", as: :sign_out
+
+  get "settings" => "users#edit"
+  get "member/:nickname" => "users#show", :as => :member
+  get "member/:nickname/topics" => "users#topics", :as => :member_topics
+  post "member/:nickname/follow" => "users#follow", :as => :follow_user
+  post "member/:nickname/unfollow" => "users#unfollow", :as => :unfollow_user
+  patch "users/update_account" => "users#update_account", :as => :update_account
+  patch "users/update_password" => "users#update_password", :as => :update_password
+  patch "users/update_avatar" => "users#update_avatar", :as => :update_avatar
+  get "t/:id" => "topics#show", :as => :t
+  get "topics/:id" => redirect("/t/%<id>s"), :constraints => { id: /\d+/ }
+
+  get "my/topics" => "users#my_topics", :as => :my_topics
+  get "my/following" => "users#my_following", :as => :my_following
+  get "page/:key" => "pages#show", :as => :page
+  get "goodbye" => "welcome#goodbye"
+  get "captcha" => "welcome#captcha"
+  get "sitemap" => "welcome#sitemap"
+  get "new_from_home" => "topics#new_from_home"
+  post "create_from_home" => "topics#create_from_home"
+
+  patch "upyun_images" => "upyun_images#create"
 
   resources :channels do
     resources :topics do
@@ -89,8 +94,8 @@ Rabel::Application.routes.draw do
       delete :clear, on: :collection
     end
 
-    get 'appearance' => 'site_settings#appearance'
+    get "appearance" => "site_settings#appearance"
 
-    root 'welcome_admin#index'
+    root "welcome_admin#index"
   end
 end
