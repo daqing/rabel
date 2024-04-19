@@ -13,14 +13,14 @@
       </div>
     </div>
   </div>
-  <nav class="w-2/3 mx-auto">
-    <div class="border-t border-b border-zinc-200 mt-4 py-2">
-      <div class="flex gap-6 text-zinc-500">
-        <%= link_to_active '首页', root_path, request.path %>
-        <% NavLink.sorted.each do |link| %>
-          <%= link_to_active link.title, link.url, request.path %>
-        <% end %>
-      </div>
-    </div>
-  </nav>
 </header>
+<div class="border-t border-b border-zinc-200 mt-4 py-2">
+  <div class="w-2/3 mx-auto">
+    <div class="flex gap-6 text-zinc-500">
+      <%= link_to_active '首页', root_path, request.path %>
+      <% NavLink.sorted.each do |link| %>
+        <%= link_to_active link.title, link.url, request.path %>
+      <% end %>
+    </div>
+  </div>
+</div>
