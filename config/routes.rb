@@ -62,6 +62,10 @@ Rabel::Application.routes.draw do
     root "home#index"
   end
 
+  namespace :feed do
+    root "home#index"
+  end
+
   namespace :admin do
     resources :side_blocks do
       post :sort, on: :collection
