@@ -11,6 +11,7 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 
 group :development do
   gem 'awesome_print'
+  gem 'dotenv'
   gem 'rubocop', require: false
 end
 
@@ -23,7 +24,7 @@ gem 'carrierwave-upyun'
 gem 'coderay'
 gem 'dalli'
 gem 'devise', '~> 4.9'
-gem 'figaro'
+# gem 'figaro'
 gem 'haml'
 gem 'kaminari', '~> 1.2.1'
 gem 'kgio'

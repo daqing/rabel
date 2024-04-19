@@ -2,7 +2,7 @@ class UpyunImagesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    redirect_to root_path and return if Figaro.env.RABEL_UPYUN_SWITCH != 'on'
+    redirect_to root_path and return if ENV['RABEL_UPYUN_SWITCH'] != 'on'
 
     respond_to do |f|
       f.json {
