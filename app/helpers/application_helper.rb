@@ -213,4 +213,8 @@ module ApplicationHelper
       link_to title, path
     end
   end
+
+  def rand_char
+    ("a".."z").to_a.sample
+  end
 end
