@@ -1,10 +1,23 @@
-header nav a {
+// body {
+//   background-image: url("/assets/bg.jpg");
+//   background-size: cover;
+//   background-position: center top;
+// }
+
+.brand {
+  &:hover {
+    background-color: rgb(194, 65, 12);
+    color: white;
+  }
+}
+
+#navbar a {
   &.active {
-    color: black;
+    color: rgb(194, 65, 12);
   }
 
   &:hover {
-    color: black;
+    color: rgb(194, 65, 12);
   }
 }
 

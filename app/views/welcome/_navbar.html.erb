@@ -1,5 +1,5 @@
 <header class="pt-4">
-  <div class="w-2/3 mx-auto">
+  <div class="w-2/3 mx-auto max-w-[860px]">
     <div class="flex justify-between items-baseline">
       <div><%= link_to Siteconf.site_name, root_path, class: 'brand' %></div>
       <div class="flex gap-4">
@@ -14,8 +14,8 @@
     </div>
   </div>
 </header>
-<div class="border-t border-b border-zinc-200 mt-4 py-2">
-  <div class="w-2/3 mx-auto">
+<div id="navbar" class="border-t border-b border-zinc-200 mt-6 mb-6 py-2">
+  <div class="w-2/3 mx-auto max-w-[860px]">
     <div class="flex gap-6 text-zinc-500">
       <%= link_to_active '首页', root_path, request.path %>
       <% NavLink.sorted.each do |link| %>
