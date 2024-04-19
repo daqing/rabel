@@ -4,9 +4,7 @@ class WelcomeController < ApplicationController
     @topics = HomeTopicsQuery.new.get!(@num)
     @sticky_topics = StickyTopicsQuery.new.get!(10)
 
-    @title = site_intro
-
-    render layout: 'single-column'
+    @title = Siteconf.homepage_title
   end
 
   def goodbye

@@ -1,23 +1,8 @@
 module ApplicationHelper
-  def site_intro
-    append_notification_count([Siteconf.site_name, Siteconf.slogan].compact.join('-'))
-  end
-
   def append_notification_count(title)
     return title if @unread_count.zero?
 
     title + " (#{@unread_count})"
-  end
-
-  def title
-    return @full_title if @full_title.present?
-
-    add_title_item @title if @title.present?
-    @title_items.join(' - ')
-  end
-
-  def add_title_item(item)
-    @title_items.unshift item unless request.format.to_sym == :js
   end
 
   def build_navigation(items, _class_name = 'gray')

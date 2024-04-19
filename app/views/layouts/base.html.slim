@@ -1,7 +1,8 @@
-doctype html
 html
   head
     = render 'shared/meta'
+    title= @title
+    = Siteconf.custom_head_tags&.html_safe
     = yield :head
 
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
