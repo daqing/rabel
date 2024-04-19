@@ -1,9 +1,9 @@
-<div class="md:p-4 hidden md:block md:border-l md:border-stone-200 md:h-screen md:overflow-scroll">
+<div class="md:p-4 hidden md:block md:border-l md:border-stone-200 dark:border-stone-600 md:h-screen md:overflow-scroll">
   <div>
     <div class="flex gap-4 items-baseline mb-2">
-      <div class="mb-2 text-zinc-700 font-bold dark:text-zinc-500">最新成员</div>
-      <div class="mb-2 text-zinc-400 dark:text-zinc-500">活跃成员</div>
-      <div class="mb-2 text-zinc-400 dark:text-zinc-500">聊天室</div>
+      <div class="mb-2 text-zinc-700 font-bold dark:text-zinc-300">最新成员</div>
+      <div class="mb-2 text-zinc-400 dark:text-zinc-400">活跃成员</div>
+      <div class="mb-2 text-zinc-400 dark:text-zinc-400">聊天室</div>
     </div>
     <div class="md:mb-4">
       <div class="flex gap-2">
@@ -33,17 +33,17 @@
     </div>
   </div>
   <div>
-    <div class="mb-2 text-zinc-700 font-bold dark:text-zinc-500">成员动态</div>
+    <div class="mb-2 text-zinc-700 font-bold dark:text-zinc-300">成员动态</div>
     <div class="flex flex-col gap-2">
-      <div class="flex gap-2 hover:bg-stone-100 p-2">
+      <div class="flex gap-2 hover:bg-stone-100 dark:hover:bg-stone-500 p-2">
         <div class="w-[48px]"><%= image_tag '/assets/zed.jpg', class: 'rounded-full' %></div>
         <div>
           <div class="flex gap-2">
-            <span class="font-bold text-black">Zed</span>
-            <span class="text-zinc-500">&middot;</span>
-            <span class="text-zinc-500">Apr 8</span>
+            <span class="font-bold text-black dark:text-zinc-300">Zed</span>
+            <span class="text-zinc-500 dark:text-zinc-300">&middot;</span>
+            <span class="text-zinc-500 dark:text-zinc-300">Apr 8</span>
           </div>
-          <div>
+          <div class="dark:text-zinc-400 dark:hover:text-zinc-300">
             <div>Zed Preview v0.132 is here as well. Here's a glimpse of what's new in Preview:</div>
             <div class="mb-2"></div>
             <div>- Preview tabs</div>
@@ -53,7 +53,7 @@
             <div>- Improved ordering and organization of context menus in the project panel</div>
             <div class="mb-2"></div>
           </div>
-          <div class="flex gap-2 text-zinc-500">
+          <div class="flex gap-2 text-zinc-500 dark:text-zinc-300">
             <div>2 Comments</div>
             <div>2 Repost</div>
             <div>28 Likes</div>
@@ -61,24 +61,24 @@
           </div>
         </div>
       </div>
-      <div class="flex gap-2 hover:bg-stone-100 p-2">
+      <div class="flex gap-2 hover:bg-stone-100 dark:hover:bg-stone-500 p-2">
         <div class="w-[48px]">
           <div class="bg-sky-500 w-[48px] h-[48px] flex justify-center items-center text-white rounded-full">JT</div>
         </div>
         <div>
-          <div class="flex gap-2 ">
-            <span class="font-bold text-black">Justine Tunney</span>
-            <span class="text-zinc-500">&middot;</span>
-            <span class="text-zinc-500">6h</span>
+          <div class="flex gap-2">
+            <span class="font-bold text-black dark:text-zinc-300">Justine Tunney</span>
+            <span class="text-zinc-500 dark:text-zinc-300">&middot;</span>
+            <span class="text-zinc-500 dark:text-zinc-300">6h</span>
           </div>
-          <div>
+          <div class="dark:text-zinc-400 dark:hover:text-zinc-300">
             <div>I built a C library that lets you compile 12kb static binaries that run natively on Linux, Mac, Windows, FreeBSD, OpenBSD, NetBSD and BIOS using just GCC/Clang.</div>
             <div class="mb-2"></div>
             <div>
               <%= image_tag '/assets/code.png' %>
             </div>
           </div>
-          <div class="flex gap-2 text-zinc-500">
+          <div class="flex gap-2 text-zinc-500 dark:text-zinc-300">
             <div>2 Comments</div>
             <div>2 Repost</div>
             <div>28 Likes</div>
