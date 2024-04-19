@@ -43,7 +43,7 @@ Rabel::Application.routes.draw do
     patch :toggle_sticky
   end
 
-  resources :comments, :bookmarks, :upyun_images, :qiniu_images
+  resources :comments, :bookmarks, :upyun_images
 
   resources :notifications do
     get :read, :on => :member

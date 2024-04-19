@@ -93,9 +93,6 @@ GEM
       image_processing (~> 1.1)
       marcel (~> 1.0.0)
       ssrf_filter (~> 1.0)
-    carrierwave-qiniu (1.2.2)
-      carrierwave (>= 1)
-      qiniu (~> 6.9, >= 6.9.0)
     carrierwave-upyun (2.0.0)
       carrierwave (>= 1.0.0)
       faraday (>= 2.0)
@@ -113,7 +110,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    domain_name (0.6.20240107)
     dotenv (3.1.0)
     drb (2.2.1)
     erubi (1.12.0)
@@ -128,9 +124,6 @@ GEM
       temple (>= 0.8.2)
       thor
       tilt
-    http-accept (1.7.0)
-    http-cookie (1.0.5)
-      domain_name (~> 0.5)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -185,7 +178,6 @@ GEM
       timeout
     net-smtp (0.4.0.1)
       net-protocol
-    netrc (0.11.0)
     nio4r (2.7.1)
     nokogiri (1.16.3)
       mini_portile2 (~> 2.8.2)
@@ -201,10 +193,6 @@ GEM
     public_suffix (5.0.4)
     puma (6.4.2)
       nio4r (~> 2.0)
-    qiniu (6.9.1)
-      mime-types (~> 3.1)
-      rest-client (~> 2.0)
-      rexml (~> 3.2)
     racc (1.7.3)
     rack (3.0.10)
     rack-session (2.0.0)
@@ -257,11 +245,6 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rest-client (2.1.0)
-      http-accept (>= 1.7.0, < 2.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 4.0)
-      netrc (~> 0.8)
     rexml (3.2.6)
     rubocop (1.63.2)
       json (~> 2.3)
@@ -326,7 +309,6 @@ DEPENDENCIES
   awesome_print
   cancancan (~> 1.8.4)
   carrierwave (>= 1.3.2)
-  carrierwave-qiniu
   carrierwave-upyun
   coderay
   cssbundling-rails (~> 1.1)

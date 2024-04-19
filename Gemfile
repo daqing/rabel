@@ -19,7 +19,6 @@ gem 'acts_as_list'
 
 gem 'cancancan', '~> 1.8.4'
 gem 'carrierwave', '>= 1.3.2'
-gem 'carrierwave-qiniu'
 gem 'carrierwave-upyun'
 gem 'coderay'
 gem 'dalli'

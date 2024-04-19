@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_04_17_145059) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_19_045033) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -160,16 +160,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_04_17_145059) do
     t.datetime "updated_at", precision: nil
     t.integer "position", default: 0, null: false
     t.index ["updated_at"], name: "index_planes_on_updated_at"
-  end
-
-  create_table "qiniu_images", id: :serial, force: :cascade do |t|
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.integer "size"
-    t.string "filename"
-    t.string "content_type"
-    t.integer "user_id"
-    t.string "asset"
   end
 
   create_table "rewards", id: :serial, force: :cascade do |t|
