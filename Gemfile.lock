@@ -102,7 +102,6 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
-    dalli (3.2.8)
     date (3.3.4)
     devise (4.9.3)
       bcrypt (~> 3.0)
@@ -312,7 +311,6 @@ DEPENDENCIES
   carrierwave-upyun
   coderay
   cssbundling-rails (~> 1.1)
-  dalli
   devise (~> 4.9)
   dotenv
   haml

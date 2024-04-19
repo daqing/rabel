@@ -28,7 +28,7 @@ source ~/.rvm/scripts/rvm
 rvm install 1.9.3-p327
 rvm use 1.9.3-p327 --default
 
-sudo yum install -y postfix ImageMagick ImageMagick-perl nginx memcached
+sudo yum install -y postfix ImageMagick ImageMagick-perl nginx
 
 # Install MySQL Server
 sudo yum install -y mysql-server

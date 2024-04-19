@@ -39,7 +39,7 @@ sudo apt-get install -y libmagickwand-dev
 echo "$source_rvm" | bash
 rvm use $RUBY_VERSION --default
 
-sudo aptitude install -y memcached imagemagick nodejs nginx
+sudo aptitude install -y imagemagick nodejs nginx
 
 cat <<MYSQL_PRESEED | sudo su -c debconf-set-selections
 mysql-server-5.5 mysql-server/root_password password $MYSQL_PASSWD
