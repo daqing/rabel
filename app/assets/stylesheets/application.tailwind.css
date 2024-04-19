@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply px-6 text-orange-700 border border-orange-700 rounded-md hover:bg-orange-700 hover:text-white;
+  }
+
+  a.brand {
+    @apply text-2xl no-underline text-black;
+  }
+}

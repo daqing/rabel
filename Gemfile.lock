@@ -283,6 +283,8 @@ GEM
       sprockets (>= 3.0.0)
     ssrf_filter (1.1.2)
     stringio (3.1.0)
+    tailwindcss-rails (2.4.0)
+      railties (>= 6.0.0)
     temple (0.10.3)
     thor (1.3.1)
     tilt (2.3.0)
@@ -333,6 +335,7 @@ DEPENDENCIES
   simple_form
   slim-rails
   sprockets-rails
+  tailwindcss-rails (~> 2.4)
   turbo-rails (~> 1.4)
 
 RUBY VERSION

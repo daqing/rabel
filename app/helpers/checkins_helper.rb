@@ -1,2 +1,0 @@
-module CheckinsHelper
-end
