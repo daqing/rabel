@@ -5,7 +5,7 @@ module ApplicationHelper
     title + " (#{@unread_count})"
   end
 
-  def build_navigation(items, _class_name = 'gray')
+  def build_navigation(items, _class_name = "gray")
     items.unshift(link_to(Siteconf.site_name, root_path, class: :rabel))
     items.join(' <span class="chevron">&nbsp;›&nbsp;</span> ').html_safe
   end
@@ -18,15 +18,15 @@ module ApplicationHelper
     result_html =
       case @breadcrumbs.length
       when 1
-        ''
+        ""
       else
-        @breadcrumbs.join('&nbsp;›&nbsp;')
+        @breadcrumbs.join("&nbsp;\u203A&nbsp;")
       end
     result_html.html_safe
   end
 
-  def build_admin_navigation(items, class_name = 'fade')
-    items.unshift(link_to('管理后台', admin_root_path))
+  def build_admin_navigation(items, class_name = "fade")
+    items.unshift(link_to("\u7BA1\u7406\u540E\u53F0", admin_root_path))
     build_navigation(items, class_name)
   end
 
@@ -34,8 +34,8 @@ module ApplicationHelper
     build_navigation([
                        link_to(channel.name, channel),
                        link_to(topic.title, t_path(topic.id)),
-                       '编辑'
-                     ], 'bigger')
+                       "\u7F16\u8F91"
+                     ], "bigger")
   end
 
   def format_page(page_content)
@@ -76,7 +76,7 @@ module ApplicationHelper
   end
 
   def nl_to_br(text)
-    text.gsub("\r\n", '<br/>').gsub("\r", '<br/>').gsub("\n", '<br/>')
+    text.gsub("\r\n", "<br/>").gsub("\r", "<br/>").gsub("\n", "<br/>")
   end
 
   def parse_markdown(text)
@@ -98,7 +98,7 @@ module ApplicationHelper
     flash_messages.each do |type, message|
       result << content_tag(:span, message, class: "#{type}-message")
     end
-    result.join('<br/>').html_safe
+    result.join("<br/>").html_safe
   end
 
   def show_mobile_messages
@@ -109,9 +109,9 @@ module ApplicationHelper
 
   def search_engines
     {
-      google: 'http://www.google.com.hk/search?q=',
-      bing: 'http://cn.bing.com/search?q=',
-      baidu: 'http://www.baidu.com/s?wd='
+      google: "http://www.google.com.hk/search?q=",
+      bing: "http://cn.bing.com/search?q=",
+      baidu: "http://www.baidu.com/s?wd="
     }
   end
 
@@ -140,10 +140,10 @@ module ApplicationHelper
   end
 
   def nickname_profile_link(nickname, options = {})
-    return '#' if nickname.blank?
+    return "#" if nickname.blank?
 
     options[:title] = nickname
-    hash_key_append(options, :class, 'rabel profile_link')
+    hash_key_append(options, :class, "rabel profile_link")
 
     link_to nickname, member_path(nickname), options
   end
@@ -156,15 +156,15 @@ module ApplicationHelper
     avatar_method = "#{avatar_size}_avatar"
 
     options[:title] = user.nickname
-    hash_key_append(options, :class, 'profile_link')
+    hash_key_append(options, :class, "profile_link")
 
     link_to(member_path(user.nickname), options) { send(avatar_method, user) }
   end
 
   def page_real_url(page)
-    if page.content.start_with?('http')
+    if page.content.start_with?("http")
       page.content
-    elsif page.content.start_with?('/')
+    elsif page.content.start_with?("/")
       page.content
     else
       page_path(page.key)
@@ -178,31 +178,39 @@ module ApplicationHelper
                 class: :snow)
   end
 
-  def auth_admin(error_tip = 'tips.no_permission')
+  def auth_admin(error_tip = "tips.no_permission")
     redirect_to root_path, notice: t(error_tip) unless current_user.can_manage_site?
   end
 
   def cannonical_url(url)
-    return '' if url.nil? || url.length.zero?
+    return "" if url.nil? || url.length.zero?
 
-    url.start_with?('http://') ? url : 'http://' + url
+    url.start_with?("http://") ? url : "http://" + url
   end
 
   def weibo_icon_for(weibo_link)
-    if weibo_link.include?('weibo.com')
-      'sina_weibo'
-    elsif weibo_link.include?('t.qq.com')
-      'tx_weibo'
+    if weibo_link.include?("weibo.com")
+      "sina_weibo"
+    elsif weibo_link.include?("t.qq.com")
+      "tx_weibo"
     else
-      'twitter'
+      "twitter"
     end
   end
 
   def proper_length(str, len)
     if str.size > len
-      str[0..len] + ' ...'
+      str[0..len] + " ..."
     else
       str
+    end
+  end
+
+  def link_to_active(title, path, current)
+    if path == current
+      link_to title, path, class: "active"
+    else
+      link_to title, path
     end
   end
 end

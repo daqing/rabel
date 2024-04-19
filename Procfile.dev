@@ -1,3 +1,4 @@
 web: bin/rails server -p 1986
 js: yarn build --watch
 css: yarn build:css --watch
+tw: bin/rails tailwindcss:watch

@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <%= render 'shared/meta' %>
+    <title><%= @title %></title>
+    <%= Siteconf.custom_head_tags&.html_safe %>
+    <%= yield :head %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <% if Siteconf.custom_css.present? %>
+      <style type="text/css">
+        <%= Siteconf.custom_css.html_safe %>
+      </style>
+    <% end %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= yield :final_head %>
+  </head>
+  <body class="bg-white">
+    <%= render 'layouts/navbar' %>
+    <%= content_for?(:content) ? yield(:content) : yield %>
+  </body>
+</html>
