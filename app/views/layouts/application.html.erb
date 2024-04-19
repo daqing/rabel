@@ -15,8 +15,11 @@
     <%= yield :final_head %>
   </head>
   <body class="bg-white">
-    <%= render 'layouts/navbar' %>
-    <%= content_for?(:content) ? yield(:content) : yield %>
+    <% if content_for?(:app) %>
+      <%= yield :app %>
+    <% else %>
+      <%= yield %>
+    <% end %>
     <%= render 'modals/sign_in' %>
     <%= render 'modals/sign_up' %>
   </body>

@@ -126,7 +126,7 @@ class User < ApplicationRecord
   end
 
   def can_manage_site?
-    root? || admin?
+    IsAdmin.call(self)
   end
 
   def unread_notification_count

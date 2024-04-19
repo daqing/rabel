@@ -1,24 +1,21 @@
-# encoding: utf-8
 class Admin::BaseController < ApplicationController
   include Admin::BaseHelper
-  before_action :authenticate_user!
-  before_action do |c|
+
+  before_action do |_c|
+    raise CanCan::AccessDenied unless user_signed_in?
     raise CanCan::AccessDenied unless current_user.can_manage_site?
   end
 
-  before_action do |c|
-    add_title_item '管理后台'
-  end
+  layout "admin"
 
-  layout 'admin'
-
-  def method_missing(method)
+  def method_missing(method, _x)
     if method =~ /^find_parent_(.*)$/
-      model = $1.classify.constantize
-      instance_variable_set("@#{$1}".to_sym, model.find(params["#{$1}_id".to_sym]))
+      model = ::Regexp.last_match(1).classify.constantize
+      instance_variable_set("@#{::Regexp.last_match(1)}".to_sym,
+                            model.find(params["#{::Regexp.last_match(1)}_id".to_sym]))
     elsif method =~ /^find_(.*)$/
-      model = $1.classify.constantize
-      instance_variable_set("@#{$1}".to_sym, model.find(params[:id]))
+      model = ::Regexp.last_match(1).classify.constantize
+      instance_variable_set("@#{::Regexp.last_match(1)}".to_sym, model.find(params[:id]))
     else
       super
     end

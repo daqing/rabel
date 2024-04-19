@@ -10,7 +10,7 @@
         th 标题
         th 链接
         th
-      - NavLink.default_order.all.each do |link|
+      - NavLink.sorted.all.each do |link|
         tr id=link.html_id
           td= link.title
           td= link.url

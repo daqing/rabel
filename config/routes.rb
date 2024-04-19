@@ -63,11 +63,7 @@ Rabel::Application.routes.draw do
       post :sort, on: :collection
     end
 
-    resources :planes do
-      resources :nodes
-      post :sort, on: :collection
-      get :sort, on: :collection
-    end
+    resources :nodes
 
     resources :channels do
       post :sort, on: :collection

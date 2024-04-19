@@ -1,15 +1,14 @@
-# encoding: utf-8
 class Admin::NavLinksController < Admin::BaseController
   def index
-    @nav_links = NavLink.default_order.all
+    @nav_links = NavLink.sorted.all
 
-    @title = '导航链接'
+    @title = "\u5BFC\u822A\u94FE\u63A5"
   end
 
   def new
     @nav_link = NavLink.new
 
-    @title = '添加导航链接'
+    @title = "\u6DFB\u52A0\u5BFC\u822A\u94FE\u63A5"
 
     render :action
   end
@@ -20,7 +19,7 @@ class Admin::NavLinksController < Admin::BaseController
     if @nav_link.save
       redirect_to admin_nav_links_path
     else
-      @title = '添加导航链接'
+      @title = "\u6DFB\u52A0\u5BFC\u822A\u94FE\u63A5"
 
       render :action
     end
@@ -28,7 +27,7 @@ class Admin::NavLinksController < Admin::BaseController
 
   def edit
     @nav_link = NavLink.find(params[:id])
-    @title = '修改导航链接'
+    @title = "\u4FEE\u6539\u5BFC\u822A\u94FE\u63A5"
 
     render :action
   end
@@ -39,7 +38,7 @@ class Admin::NavLinksController < Admin::BaseController
     if @nav_link.update(nav_link_params)
       redirect_to admin_nav_links_path
     else
-      @title = '修改导航链接'
+      @title = "\u4FEE\u6539\u5BFC\u822A\u94FE\u63A5"
       render :action
     end
   end
@@ -50,13 +49,13 @@ class Admin::NavLinksController < Admin::BaseController
     if @nav_link.destroy
       redirect_to admin_nav_links_path
     else
-      redirect_to admin_root_path, notice: '无法删除导航链接'
+      redirect_to admin_root_path, notice: "\u65E0\u6CD5\u5220\u9664\u5BFC\u822A\u94FE\u63A5"
     end
   end
 
   def sort
     params[:position].each_with_index do |id, pos|
-      NavLink.update(id, :position => pos)
+      NavLink.update(id, position: pos)
     end
 
     head :ok

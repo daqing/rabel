@@ -1,0 +1,18 @@
+<%= content_for :app do %>
+  <div class="flex">
+    <aside class="border-r border-zinc-200 p-4 mr-4 h-screen">
+      <nav class="flex flex-col gap-2 items-end">
+        <%= link_to 'Dashboard', admin_root_path %>
+        <%= link_to '用户', admin_users_path %>
+        <%= link_to '导航链接', admin_nav_links_path %>
+        <%= link_to '设置', admin_site_settings_path %>
+        <%= link_to '讨论区', admin_channels_path %>
+        <%= link_to '页面', admin_pages_path %>
+        <%= link_to '话题', admin_topics_path %>
+        <%= link_to '文件上传', admin_cloud_files_path %>
+      </nav>
+    </aside>
+    <div class="p-4"><%= yield %></div>
+  </div>
+<% end %>
+<%= render template: "layouts/application" %>
