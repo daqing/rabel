@@ -6,3 +6,6 @@ Style/Documentation:
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+Metrics/MethodLength:
+  Max: 60

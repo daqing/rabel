@@ -82,7 +82,6 @@ GEM
     ast (2.4.2)
     awesome_print (1.9.2)
     base64 (0.2.0)
-    bcrypt (3.1.20)
     bigdecimal (3.1.7)
     builder (3.2.4)
     cancancan (1.8.4)
@@ -103,12 +102,6 @@ GEM
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
     date (3.3.4)
-    devise (4.9.4)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
     dotenv (3.1.0)
     drb (2.2.1)
     erubi (1.12.0)
@@ -181,7 +174,6 @@ GEM
     nokogiri (1.16.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    orm_adapter (0.5.0)
     parallel (1.24.0)
     parser (3.3.0.5)
       ast (~> 2.4.1)
@@ -244,9 +236,6 @@ GEM
     regexp_parser (2.9.0)
     reline (0.5.2)
       io-console (~> 0.5)
-    responders (3.1.1)
-      actionpack (>= 5.2)
-      railties (>= 5.2)
     rexml (3.2.6)
     rubocop (1.63.2)
       json (~> 2.3)
@@ -297,8 +286,6 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
     uri (0.13.0)
-    warden (1.2.9)
-      rack (>= 2.0.9)
     webrick (1.8.1)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -316,7 +303,6 @@ DEPENDENCIES
   carrierwave-upyun
   coderay
   cssbundling-rails (~> 1.1)
-  devise (~> 4.9)
   dotenv
   haml
   jsbundling-rails (~> 1.1)

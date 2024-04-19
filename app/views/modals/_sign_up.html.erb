@@ -1,0 +1,20 @@
+<div id="sign-up-modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="text-right">
+      <span class="close">&times;</span>
+    </div>
+    <div>注册账号</div>
+    <%= form_for :sign_up do |f| %>
+      <div>
+        <%= f.text_field :email %>
+      </div>
+      <div>
+        <%= f.password_field :password %>
+      </div>
+      <div>
+        <%= f.submit '加入社区' %>
+      </div>
+    <% end %>
+  </div>
+</div>
