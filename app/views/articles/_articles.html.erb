@@ -35,60 +35,29 @@
   </div>
   <div>
     <div class="flex gap-4 items-baseline mb-2">
-      <div class="mb-2 text-zinc-700 dark:text-zinc-300">
+      <div class="mb-2 text-zinc-700 font-bold dark:text-zinc-300">
         <a href="/articles">最新文章</a>
       </div>
-      <div class="mb-2 text-zinc-700 font-bold dark:text-zinc-300">成员动态</div>
+      <div class="mb-2 text-zinc-700  dark:text-zinc-300">成员动态</div>
     </div>
     <div class="flex flex-col gap-2">
-      <div class="flex gap-2 hover:bg-stone-100 dark:hover:bg-stone-500 p-2">
-        <div class="w-[32px]"><%= image_tag '/assets/zed.jpg', class: 'rounded-full' %></div>
-        <div>
-          <div class="flex gap-2">
-            <span class="font-bold text-black dark:text-zinc-300">Zed</span>
-            <span class="text-zinc-500 dark:text-zinc-300">&middot;</span>
-            <span class="text-zinc-500 dark:text-zinc-300">Apr 8</span>
-          </div>
-          <div class="dark:text-zinc-400 dark:hover:text-zinc-300">
-            <div>Zed Preview v0.132 is here as well. Here's a glimpse of what's new in Preview:</div>
-            <div class="mb-2"></div>
-            <div>- Preview tabs</div>
-            <div>- Inline Git blame</div>
-            <div>- Task summary output in terminal</div>
-            <div>- Improved search UI</div>
-            <div>- Improved ordering and organization of context menus in the project panel</div>
-            <div class="mb-2"></div>
-          </div>
-          <div class="flex gap-2 text-zinc-500 dark:text-zinc-300">
-            <div>2 Comments</div>
-            <div>2 Repost</div>
-            <div>28 Likes</div>
-            <div>4.8K Views</div>
+      <div class="flex gap-4">
+        <div class="w-1/2" style="max-width: 396px; overflow: auto;">
+          <%= image_tag '/assets/articles/1.jpg.avif', class: 'rounded-md', style: "max-height: 198px; overflow: hidden;" %>
+          <div class="text-lg font-bold mt-2"><a>Ditch your free plan</a></div>
+          <div class="text-zinc-500 mt-2">3% of users upgrade to paid plans. So If you have a $5/month plan, your average user is worth $0.15.</div>
+          <div class="flex items-center text-orange-600 mt-2">
+            <%= image_tag '/assets/avatar/fun.png', class: 'rounded-full', style: 'width: 32px;' %>
+            <span class="ml-2">Marc Lou</span>
           </div>
         </div>
-      </div>
-      <div class="flex gap-2 hover:bg-stone-100 dark:hover:bg-stone-500 p-2">
-        <div class="w-[32px]">
-          <div class="bg-sky-500 w-[32px] h-[32px] flex justify-center items-center text-white rounded-full">JT</div>
-        </div>
-        <div>
-          <div class="flex gap-2">
-            <span class="font-bold text-black dark:text-zinc-300">Justine Tunney</span>
-            <span class="text-zinc-500 dark:text-zinc-300">&middot;</span>
-            <span class="text-zinc-500 dark:text-zinc-300">6h</span>
-          </div>
-          <div class="dark:text-zinc-400 dark:hover:text-zinc-300">
-            <div>I built a C library that lets you compile 12kb static binaries that run natively on Linux, Mac, Windows, FreeBSD, OpenBSD, NetBSD and BIOS using just GCC/Clang.</div>
-            <div class="mb-2"></div>
-            <div>
-              <%= image_tag '/assets/code.png' %>
-            </div>
-          </div>
-          <div class="flex gap-2 text-zinc-500 dark:text-zinc-300">
-            <div>2 Comments</div>
-            <div>2 Repost</div>
-            <div>28 Likes</div>
-            <div>4.8K Views</div>
+        <div class="w-1/2" style="max-width: 396px; overflow: auto;">
+          <%= image_tag '/assets/articles/2.png.avif', class: 'rounded-md', style: "max-height: 198px; overflow: hidden;" %>
+          <div class="text-lg font-bold mt-2"><a>My solopreneur story: $0 to $65,000/month in 2 years</a></div>
+          <div class="text-zinc-500 mt-2">After being fired by Tai Lopez in November 2021, I launched startups like a madman to buy freedom.</div>
+          <div class="flex items-center text-orange-600 mt-2">
+            <%= image_tag '/assets/avatar/fun.png', class: 'rounded-full', style: 'width: 32px;' %>
+            <span class="ml-2">Marc Lou</span>
           </div>
         </div>
       </div>

@@ -8,6 +8,8 @@ Rabel::Application.routes.draw do
 
   delete "/sign_out", to: "sessions#destroy", as: :sign_out
 
+  resources :articles
+
   get "settings" => "users#edit"
   get "member/:nickname" => "users#show", :as => :member
   get "member/:nickname/topics" => "users#topics", :as => :member_topics
