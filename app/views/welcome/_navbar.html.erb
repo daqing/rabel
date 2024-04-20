@@ -1,7 +1,12 @@
-<nav class="md:w-[128px] border-r border-stone-200 dark:border-stone-600">
+<nav class="md:w-[196px] border-r border-stone-200 dark:border-stone-600">
   <div class="flex md:flex-col md:justify-between md:h-screen">
     <div class="md:text-right md:p-4">
-      <div class=""><%= link_to Siteconf.site_name, root_path, class: 'brand' %></div>
+      <div class="">
+        <%= link_to root_path, class: 'brand' do %>
+          <h1><%= Siteconf.site_name %></h1>
+        <% end %>
+        <h2 class="text-zinc-400"><%= Siteconf.slogan %></h2>
+      </div>
       <div id="navbar" class="flex md:flex-col md:mt-12 gap-2 md:gap-4 text-zinc-400 dark:text-zinc-500">
         <%= link_to_active '首页', root_path, request.path %>
         <% NavLink.sorted.each do |link| %>
