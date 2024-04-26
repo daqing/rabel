@@ -1,13 +1,23 @@
 <div class="md:flex">
-  <div>
+  <div style="">
     <%= render 'navbar' %>
   </div>
-  <div class="md:flex md:gap-2">
-    <div class="flex-grow">
-      <%= render 'feed' %>
+  <div class="">
+    <div style="margin-left: 200px; width: 100%;">
+      <div class="flex gap-4 items-baseline border-b border-b-stone-200 px-4 py-2">
+        <div class=" text-zinc-700 dark:text-zinc-300">
+          <a href="/articles">最新文章</a>
+        </div>
+        <div class=" text-zinc-700 font-bold dark:text-zinc-300">成员动态</div>
+      </div>
     </div>
-    <div class="">
-      <%= render 'topics' %>
+    <div class="flex">
+      <div class="flex-grow">
+        <%= render 'feed' %>
+      </div>
+      <div class="" style="width: 580px;">
+        <%= render 'topics' %>
+      </div>
     </div>
   </div>
 </div>
