@@ -1,0 +1,40 @@
+<div class="md:flex">
+  <div>
+    <%= render 'welcome/navbar' %>
+  </div>
+  <div class="w-full">
+    <div style="margin-left: 200px; width: 100%;">
+      <div class="flex gap-4 items-baseline border-b border-b-stone-200 px-4 py-2">
+        <div class="text-zinc-700 dark:text-zinc-300 font-bold">
+          <a href="/articles">最新文章</a>
+        </div>
+        <div class="text-zinc-700 dark:text-zinc-300">
+          <a href="/">成员动态</a>
+        </div>
+      </div>
+    </div>
+    <div class="p-12" style="margin-left: 200px;">
+      <div class="mx-auto w-1/2">
+        <h1 class="text-4xl mb-2">Ditch your free plan</h1>
+        <div class="text-zinc-400 my-2">3% of users upgrade to paid plans. So If you have a $5/month plan, your average user is worth $0.15.</div>
+        <div class="flex items-center text-orange-600 my-4">
+          <%= image_tag '/assets/avatar/fun.png', class: 'rounded-full', style: 'width: 32px;' %>
+          <span class="ml-2">Marc Lou</span>
+        </div>
+        <%= image_tag '/assets/articles/1.jpg.avif' %>
+        <div class="my-2">Hey, it’s Marc. Last week, my solopreneur journey hit an all-time high:</div>
+        <ol class="p-4 list-disc">
+          <li>5,000 readers on this newsletter (thank you)</li>
+          <li>50,000 followers on 𝕏</li>
+          <li>$100,000 of revenue in 2.5 months for ShipFast</li>
+        </ol>
+        <div class="my-2">Most of the recent growth can be attributed to removing free plans. I was skeptical at first.</div>
+        <div class="font-bold mt-4 text-xl">“Grow first, monetize later”</div>
+        <div class="my-4">Facebook, Spotify… All the startup success stories we’ve heard started in the same fashion: Get millions of users then make money.</div>
+        <div class="my-4">But as solopreneurs who value freedom over unicorns. We won’t raise money and hire a team of growth hackers.</div>
+        <div class="my-4">We operate with fewer resources and there’s a major downside.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

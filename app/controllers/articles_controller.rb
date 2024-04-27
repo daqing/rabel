@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
   def index
-    @title = "#{Siteconf.site_name} - 最新文章"
+    @title = "最新文章 - #{Siteconf.site_name} "
+  end
+
+  def show
+    @title = "Ditch your free plan"
   end
 end
