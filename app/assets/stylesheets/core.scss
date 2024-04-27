@@ -30,15 +30,14 @@
 }
 
 .close {
-  color: #999;
+  color: #eee;
   font-size: 20px;
   font-weight: bold;
-  cursor: pointer;
 }
 
-// .close:hover,
-// .close:focus {
-//   color: #999;
-//   text-decoration: none;
-//   cursor: pointer;
-// }
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
