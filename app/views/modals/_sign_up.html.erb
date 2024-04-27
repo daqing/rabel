@@ -1,10 +1,12 @@
 <div id="sign-up-modal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
-    <div class="text-right">
-      <span class="close">&times;</span>
+    <div class="flex justify-between items-center">
+      <div class="text-zinc-600">注册账号</div>
+      <div class="text-right">
+        <span class="close">&times;</span>
+      </div>
     </div>
-    <div class="text-zinc-400">注册账号</div>
     <%= form_for :sign_up, url: registrations_path do |f| %>
       <div class="mb-4">
         <div class="mt-4">

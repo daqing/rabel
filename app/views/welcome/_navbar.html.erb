@@ -1,32 +1,30 @@
-<nav class="border-r border-stone-200 dark:border-stone-600 fixed" style="width: 200px;">
-  <div class="flex md:flex-col md:justify-between md:h-screen">
-    <div class="md:text-right md:p-4">
-      <div class="">
-        <%= link_to root_path, class: 'brand' do %>
-          <h1><%= Siteconf.site_name %></h1>
-        <% end %>
-        <h2 class="text-zinc-400"><%= Siteconf.slogan %></h2>
-      </div>
-      <div id="navbar" class="flex md:flex-col md:mt-12 gap-2 md:gap-4 text-zinc-400 dark:text-zinc-500">
-        <%= link_to_active '首页', root_path, request.path %>
-        <% NavLink.sorted.each do |link| %>
-          <%= link_to_active link.title, link.url, request.path %>
-        <% end %>
-      </div>
-      <% unless user_signed_in? %>
-        <div class="flex flex-col mt-8 gap-2">
-          <%= link_to '登录', '#', class: 'modal-btn hover:text-orange-700 dark:hover:text-orange-500', data: {'modal-id': 'sign-in-modal'} %>
-          <%= link_to '注册', '#', class: 'modal-btn hover:text-orange-700 dark:hover:text-orange-500', data: {'modal-id': 'sign-up-modal'} %>
-        </div>
+<div class="flex md:flex-col md:justify-between md:h-screen border-r border-stone-200" style="width: 200px;">
+  <div class="md:text-right md:p-4">
+    <div class="">
+      <%= link_to root_path, class: 'brand' do %>
+        <h1><%= Siteconf.site_name %></h1>
+      <% end %>
+      <h2 class="text-zinc-400"><%= Siteconf.slogan %></h2>
+    </div>
+    <div id="navbar" class="flex md:flex-col md:mt-12 gap-2 md:gap-4 text-zinc-400 dark:text-zinc-500">
+      <%= link_to_active '首页', root_path, request.path %>
+      <% NavLink.sorted.each do |link| %>
+        <%= link_to_active link.title, link.url, request.path %>
       <% end %>
     </div>
-    <div class="md:px-4 md:pb-2">
-      <% if user_signed_in? %>
-        <div class="text-right">
-          <span><%= current_user.nickname %></span>
-          <%= link_to '退出', sign_out_path, class: 'hover:text-orange-700 dark:hover:text-orange-500 md:hidden', data: {turbo_method: :delete} %>
-        </div>
-      <% end %>
-    </div>
+    <% unless user_signed_in? %>
+      <div class="flex flex-col mt-8 gap-2">
+        <%= link_to '登录', '#', class: 'modal-btn hover:text-orange-700 dark:hover:text-orange-500', data: {'modal-id': 'sign-in-modal'} %>
+        <%= link_to '注册', '#', class: 'modal-btn hover:text-orange-700 dark:hover:text-orange-500', data: {'modal-id': 'sign-up-modal'} %>
+      </div>
+    <% end %>
   </div>
-</nav>
+  <div class="md:px-4 md:pb-2">
+    <% if user_signed_in? %>
+      <div class="text-right">
+        <span><%= current_user.nickname %></span>
+        <%= link_to '退出', sign_out_path, class: 'hover:text-orange-700 dark:hover:text-orange-500 md:hidden', data: {turbo_method: :delete} %>
+      </div>
+    <% end %>
+  </div>
+</div>

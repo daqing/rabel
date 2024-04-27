@@ -20,22 +20,25 @@
 
 .modal-content {
   margin: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 10px;
   border-radius: 5px;
+
+  form {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .close {
-  color: #e0e0e0;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
   color: #999;
-  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
   cursor: pointer;
 }
+
+// .close:hover,
+// .close:focus {
+//   color: #999;
+//   text-decoration: none;
+//   cursor: pointer;
+// }

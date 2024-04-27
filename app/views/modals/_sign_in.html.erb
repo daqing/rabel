@@ -1,9 +1,11 @@
 <div id="sign-in-modal" class="modal">
   <div class="modal-content">
-    <div class="text-right">
-      <span class="close">&times;</span>
+    <div class="flex justify-between items-center">
+      <div class="text-zinc-600">用户登录</div>
+      <div class="text-right">
+        <span class="close">&times;</span>
+      </div>
     </div>
-    <div class="text-zinc-400">用户登录</div>
     <%= form_for :session, url: sessions_path do |f| %>
       <div class="mb-4">
         <div class="mt-4">
