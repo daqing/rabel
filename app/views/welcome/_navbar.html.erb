@@ -9,7 +9,11 @@
     <div id="navbar" class="flex md:flex-col md:mt-12 gap-2 md:gap-4 text-zinc-400 dark:text-zinc-500">
       <%= link_to_active '首页', root_path, request.path %>
       <% NavLink.sorted.each do |link| %>
-        <%= link_to_active link.title, link.url, request.path %>
+        <% if link.url.start_with?("http") %>
+          <%= link_to link.title, link.url, target: '_blank' %>
+        <% else %>
+          <%= link_to_active link.title, link.url, request.path %>
+        <% end %>
       <% end %>
     </div>
     <% unless user_signed_in? %>
