@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: https://gems.ruby-china.com/
   specs:
     actioncable (7.1.3.2)
       actionpack (= 7.1.3.2)
@@ -84,6 +84,8 @@ GEM
     base64 (0.2.0)
     bcrypt (3.1.20)
     bigdecimal (3.1.7)
+    bootsnap (1.18.3)
+      msgpack (~> 1.2)
     builder (3.2.4)
     cancancan (1.8.4)
     carrierwave (3.0.7)
@@ -159,6 +161,7 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.6)
     minitest (5.22.3)
+    msgpack (1.7.2)
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
@@ -300,6 +303,7 @@ DEPENDENCIES
   acts_as_list
   awesome_print
   bcrypt
+  bootsnap
   cancancan (~> 1.8.4)
   carrierwave (>= 1.3.2)
   carrierwave-upyun
@@ -330,4 +334,4 @@ RUBY VERSION
    ruby 3.3.0p0
 
 BUNDLED WITH
-   2.4.19
+   2.5.9

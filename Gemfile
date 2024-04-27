@@ -1,4 +1,5 @@
-source "https://rubygems.org"
+# source "https://rubygems.org"
+source "https://gems.ruby-china.com"
 
 ruby "3.3.0"
 
@@ -46,3 +47,5 @@ gem "jsbundling-rails", "~> 1.1"
 gem "tailwindcss-rails", "~> 2.4"
 
 gem "bcrypt"
+
+gem "bootsnap", require: false

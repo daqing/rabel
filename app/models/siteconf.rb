@@ -2,7 +2,7 @@ class Siteconf < RailsSettings::CachedSettings
   REWARD_TITLE = "\u94F6\u5E01".freeze
 
   def self.homepage_title
-    "#{site_name} - #{slogan}"
+    "#{slogan} - #{site_name}"
   end
 
   def self.site_name
@@ -10,7 +10,7 @@ class Siteconf < RailsSettings::CachedSettings
   end
 
   def self.slogan
-    ENV.fetch("RABEL_SLOGAN", "简洁社区软件")
+    ENV.fetch("RABEL_SLOGAN", "帮你更好的运营在线社区")
   end
 
   def self.boolean_attributes(*args)
