@@ -1,57 +1,7 @@
 <div class="" style="">
   <div>
     <div class="flex flex-col gap-2 p-4">
-      <div class="flex gap-2 p-2">
-        <div class="w-[32px]"><%= image_tag '/assets/zed.jpg', class: 'rounded-full' %></div>
-        <div>
-          <div class="flex gap-2">
-            <span class="font-bold text-black dark:text-zinc-300">Zed</span>
-            <span class="text-zinc-500 dark:text-zinc-300">&middot;</span>
-            <span class="text-zinc-500 dark:text-zinc-300">Apr 8</span>
-          </div>
-          <div class="dark:text-zinc-400 dark:hover:text-zinc-300">
-            <div>Zed Preview v0.132 is here as well. Here's a glimpse of what's new in Preview:</div>
-            <div class="mb-2"></div>
-            <div>- Preview tabs</div>
-            <div>- Inline Git blame</div>
-            <div>- Task summary output in terminal</div>
-            <div>- Improved search UI</div>
-            <div>- Improved ordering and organization of context menus in the project panel</div>
-            <div class="mb-2"></div>
-          </div>
-          <div class="flex gap-2 text-zinc-500 dark:text-zinc-300">
-            <div>2 Comments</div>
-            <div>2 Repost</div>
-            <div>28 Likes</div>
-            <div>4.8K Views</div>
-          </div>
-        </div>
-      </div>
-      <div class="flex gap-2 p-2">
-        <div class="w-[32px]">
-          <div class="bg-sky-500 w-[32px] h-[32px] flex justify-center items-center text-white rounded-full">JT</div>
-        </div>
-        <div>
-          <div class="flex gap-2">
-            <span class="font-bold text-black dark:text-zinc-300">Justine Tunney</span>
-            <span class="text-zinc-500 dark:text-zinc-300">&middot;</span>
-            <span class="text-zinc-500 dark:text-zinc-300">6h</span>
-          </div>
-          <div class="dark:text-zinc-400 dark:hover:text-zinc-300">
-            <div>I built a C library that lets you compile 12kb static binaries that run natively on Linux, Mac, Windows, FreeBSD, OpenBSD, NetBSD and BIOS using just GCC/Clang.</div>
-            <div class="mb-2"></div>
-            <div>
-              <%= image_tag '/assets/code.png', width: '40%' %>
-            </div>
-          </div>
-          <div class="flex gap-2 text-zinc-500 dark:text-zinc-300">
-            <div>2 Comments</div>
-            <div>2 Repost</div>
-            <div>28 Likes</div>
-            <div>4.8K Views</div>
-          </div>
-        </div>
-      </div>
+      <%= render @mini_logs %>
     </div>
   </div>
 </div>

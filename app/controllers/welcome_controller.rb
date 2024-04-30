@@ -1,8 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @num = 20
-    @topics = HomeTopicsQuery.new.get!(@num)
-    @sticky_topics = StickyTopicsQuery.new.get!(10)
+    @mini_logs = MiniLog.includes(:user).order(created_at: :desc).limit(10)
 
     @title = Siteconf.homepage_title
   end
