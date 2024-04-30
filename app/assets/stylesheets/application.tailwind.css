@@ -27,4 +27,11 @@
     @apply border border-gray-300 dark:border-gray-400 dark:bg-zinc-800;
   }
 
+  a.active {
+    @apply font-bold;
+  }
+
+  .header a.active {
+    @apply text-orange-700;
+  }
 }

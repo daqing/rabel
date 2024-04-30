@@ -14,7 +14,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true, type: "module" %>
     <%= yield :final_head %>
   </head>
-  <body class="bg-white dark:text-zinc-400 dark:bg-zinc-700">
+  <body class="dark:text-zinc-400 dark:bg-zinc-700">
     <% if content_for?(:app) %>
       <%= yield :app %>
     <% else %>

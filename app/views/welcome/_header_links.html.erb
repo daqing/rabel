@@ -1,5 +1,5 @@
 <% NavLink.header.each do |link| %>
-  <div class=" text-zinc-700 dark:text-zinc-300">
+  <div class="text-zinc-700 hover:text-orange-700">
     <%= link_to_active link.title, link.url, request.path, @navbar_name %>
   </div>
 <% end %>

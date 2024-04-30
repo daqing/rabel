@@ -1,13 +1,8 @@
 <%= content_for :app do %>
   <div class="flex">
-    <div class="">
-      <%= render 'layouts/navbar' %>
-    </div>
-    <div class="flex flex-col w-full h-screen" style="margin-left: 260px;">
-      <%= yield :nav_links %>
-      <div class="bg-stone-100">
-        <%= yield %>
-      </div>
+    <%= render 'layouts/navbar' %>
+    <div class="w-full h-screen" style="margin-left: 260px;">
+      <%= yield %>
     </div>
   </div>
 <% end %>
