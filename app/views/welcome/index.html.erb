@@ -1,8 +1,9 @@
 <%= content_for :nav_links do %>
-  <div class=" text-zinc-700 dark:text-zinc-300">
-    <a href="/articles">最新文章</a>
-  </div>
-  <div class=" text-zinc-700 font-bold dark:text-zinc-300">成员动态</div>
+  <% NavLink.header.each do |link| %>
+    <div class=" text-zinc-700 dark:text-zinc-300">
+      <%= link_to_active link.title, link.url, request.path %>
+    </div>
+  <% end %>
 <% end %>
 <div class="flex-grow">
   <%= render 'feed' %>
