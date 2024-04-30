@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_30_032858) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_30_090856) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,12 +48,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_032858) do
     t.datetime "updated_at", precision: nil
     t.index ["bookmarkable_id", "bookmarkable_type"], name: "index_bookmarks_on_bookmarkable_id_and_bookmarkable_type"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
-  end
-
-  create_table "channels", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "checkins", force: :cascade do |t|
@@ -115,15 +109,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_032858) do
     t.text "custom_html"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-    t.integer "plane_id"
+    t.integer "section_id"
     t.integer "position"
-    t.integer "topics_count", default: 0, null: false
-    t.boolean "quiet", default: false, null: false
     t.text "custom_css"
     t.index ["key"], name: "index_nodes_on_key", unique: true
-    t.index ["plane_id"], name: "index_nodes_on_plane_id"
     t.index ["position"], name: "index_nodes_on_position"
-    t.index ["quiet"], name: "index_nodes_on_quiet"
+    t.index ["section_id"], name: "index_nodes_on_section_id"
     t.index ["updated_at"], name: "index_nodes_on_updated_at"
   end
 
@@ -171,6 +162,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_032858) do
     t.text "reason"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
+  end
+
+  create_table "sections", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.integer "position", default: 0
+    t.string "key"
   end
 
   create_table "settings", id: :serial, force: :cascade do |t|

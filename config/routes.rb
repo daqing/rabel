@@ -30,6 +30,8 @@ Rabel::Application.routes.draw do
   get "new_from_home" => "topics#new_from_home"
   post "create_from_home" => "topics#create_from_home"
 
+  get "/section/:key" => "sections#show", as: :section
+
   patch "upyun_images" => "upyun_images#create"
 
   resources :channels do

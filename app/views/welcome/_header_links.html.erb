@@ -1,0 +1,5 @@
+<% NavLink.header.each do |link| %>
+  <div class=" text-zinc-700 dark:text-zinc-300">
+    <%= link_to_active link.title, link.url, request.path %>
+  </div>
+<% end %>
