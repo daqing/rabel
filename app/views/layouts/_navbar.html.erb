@@ -2,9 +2,9 @@
   <div class="md:text-right md:p-4">
     <div class="">
       <%= link_to root_path, class: 'brand' do %>
-        <h1><%= Siteconf.site_name %></h1>
+        <div><%= Siteconf.site_name %></div>
       <% end %>
-      <h2 class="text-zinc-400 text-sm"><%= Siteconf.slogan %></h2>
+      <div class="text-zinc-400 text-sm"><%= Siteconf.slogan %></div>
     </div>
     <div id="navbar" class="flex md:flex-col md:mt-12 gap-2 md:gap-4 text-zinc-400 dark:text-zinc-500">
       <%= link_to_active '首页', root_path, request.path, @navbar_name %>
@@ -23,11 +23,13 @@
       </div>
     <% end %>
   </div>
-  <div class="px-4 py-2 border-t border-stone-200">
+  <div class=" ">
     <% if user_signed_in? %>
-      <div class="text-right">
-        <span><%= current_user.nickname %></span>
-        <%= link_to '退出', sign_out_path, class: 'hover:text-orange-700 dark:hover:text-orange-500', data: {turbo_method: :delete} %>
+      <div class=" px-4 py-2 border-t border-stone-200">
+        <div class="text-right">
+          <span><%= current_user.nickname %></span>
+          <%= link_to '退出', sign_out_path, class: 'hover:text-orange-700 dark:hover:text-orange-500', data: {turbo_method: :delete} %>
+        </div>
       </div>
     <% end %>
   </div>

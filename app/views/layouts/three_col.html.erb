@@ -4,9 +4,7 @@
       <%= render 'layouts/navbar' %>
     </div>
     <div class="flex flex-col w-full h-screen" style="margin-left: 260px;">
-      <div class="flex gap-4 items-baseline border-b border-stone-200 px-4 py-2">
-        <%= yield :nav_links %>
-      </div>
+      <%= yield :nav_links %>
       <div class="bg-stone-100">
         <%= yield %>
       </div>

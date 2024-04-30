@@ -1,9 +1,11 @@
 <%= content_for :nav_links do %>
-  <div class="text-zinc-700 dark:text-zinc-300 font-bold">
-    <a href="/articles">最新文章</a>
-  </div>
-  <div class="text-zinc-700 dark:text-zinc-300">
-    <a href="/">成员动态</a>
+  <div class="flex gap-4 items-baseline border-b border-stone-200 px-4 py-2">
+    <div class="text-zinc-700 dark:text-zinc-300 font-bold">
+      <a href="/articles">最新文章</a>
+    </div>
+    <div class="text-zinc-700 dark:text-zinc-300">
+      <a href="/">成员动态</a>
+    </div>
   </div>
 <% end %>
 <div class="flex-grow">

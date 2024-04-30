@@ -1,5 +1,7 @@
 <%= content_for :nav_links do %>
-  <%= render 'welcome/header_links' %>
+  <div class="flex gap-4 items-baseline border-b border-stone-200 px-4 py-2">
+    <%= render 'welcome/header_links' %>
+  </div>
 <% end %>
 <h1 class="hidden"><%= @section.name %></h1>
 <div class="h-screen">
