@@ -1,23 +1,12 @@
-<div class="flex">
-  <div class="">
-    <%= render 'navbar' %>
+<%= content_for :nav_links do %>
+  <div class=" text-zinc-700 dark:text-zinc-300">
+    <a href="/articles">最新文章</a>
   </div>
-  <div class="flex flex-col w-full" style="margin-left: 200px;">
-    <div style="">
-      <div class="flex gap-4 items-baseline border-b border-stone-200 px-4 py-2">
-        <div class=" text-zinc-700 dark:text-zinc-300">
-          <a href="/articles">最新文章</a>
-        </div>
-        <div class=" text-zinc-700 font-bold dark:text-zinc-300">成员动态</div>
-      </div>
-    </div>
-    <div class="flex">
-      <div class="flex-grow">
-        <%= render 'feed' %>
-      </div>
-      <div class="w-1/3" style="">
-        <%= render 'topics' %>
-      </div>
-    </div>
-  </div>
+  <div class=" text-zinc-700 font-bold dark:text-zinc-300">成员动态</div>
+<% end %>
+<div class="flex-grow">
+  <%= render 'feed' %>
+</div>
+<div class="w-1/3" style="">
+  <%= render 'topics' %>
 </div>

@@ -1,0 +1,16 @@
+<%= content_for :app do %>
+  <div class="flex">
+    <div class="">
+      <%= render 'layouts/navbar' %>
+    </div>
+    <div class="flex flex-col w-full" style="margin-left: 200px;">
+      <div class="flex gap-4 items-baseline border-b border-stone-200 px-4 py-2">
+        <%= yield :nav_links %>
+      </div>
+      <div class="flex">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= render template: 'layouts/application' %>

@@ -1,22 +1,11 @@
-<div class="md:flex">
-  <div>
-    <%= render 'welcome/navbar' %>
-  </div>
-  <div class="flex flex-col w-full" style="margin-left: 200px;">
-    <div style="">
-      <div class="flex gap-4 items-baseline border-b border-b-stone-200 px-4 py-2">
-        <div class="text-zinc-700 font-bold dark:text-zinc-300">所有成员</div>
-        <div class="text-zinc-400 dark:text-zinc-400">金牌会员</div>
-        <div class="text-zinc-400 dark:text-zinc-400">钻石会员</div>
-      </div>
-    </div>
-    <div class="md:flex">
-      <div class="flex-grow">
-        <%= render 'explore' %>
-      </div>
-      <div class="">
-        <%= render 'detail' %>
-      </div>
-    </div>
-  </div>
+<%= content_for :nav_links do %>
+  <div class="text-zinc-700 font-bold dark:text-zinc-300">所有成员</div>
+  <div class="text-zinc-400 dark:text-zinc-400">金牌会员</div>
+  <div class="text-zinc-400 dark:text-zinc-400">钻石会员</div>
+<% end %>
+<div class="flex-grow">
+  <%= render 'explore' %>
+</div>
+<div class="">
+  <%= render 'detail' %>
 </div>

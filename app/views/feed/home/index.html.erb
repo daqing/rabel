@@ -1,13 +1,10 @@
-<div class="md:flex">
-  <div>
-    <%= render 'welcome/navbar' %>
-  </div>
-  <div class="md:flex" style="margin-left: 200px;">
-    <div class="" style="max-width: 60%;">
-      <%= render 'explore' %>
-    </div>
-    <div class="">
-      <%= render 'detail' %>
-    </div>
-  </div>
+<%= content_for :nav_links do %>
+  <div class="text-zinc-700 font-bold">最新动态</div>
+  <div class="text-zinc-400">热门动态</div>
+<% end %>
+<div class="" style="max-width: 60%;">
+  <%= render 'explore' %>
+</div>
+<div class="">
+  <%= render 'detail' %>
 </div>
