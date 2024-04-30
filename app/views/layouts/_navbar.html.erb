@@ -25,10 +25,12 @@
   </div>
   <div class=" ">
     <% if user_signed_in? %>
-      <div class=" px-4 py-2 border-t border-stone-200">
-        <div class="text-right">
-          <span><%= current_user.nickname %></span>
+      <div class="flex justify-between px-4 py-2 border-t border-stone-200">
+        <div>
           <%= link_to '退出', sign_out_path, class: 'hover:text-orange-700 dark:hover:text-orange-500', data: {turbo_method: :delete} %>
+        </div>
+        <div class="">
+          <%= current_user.nickname %>
         </div>
       </div>
     <% end %>
