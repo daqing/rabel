@@ -1,9 +1,11 @@
 <%= content_for :nav_links do %>
   <%= render 'header_links' %>
 <% end %>
-<div class="flex-grow">
-  <%= render 'feed' %>
-</div>
-<div class="w-1/3" style="">
-  <%= render 'topics' %>
+<div class="flex">
+  <div class="flex-grow">
+    <%= render 'feed' %>
+  </div>
+  <div class="w-1/3" style="">
+    <%= render 'topics' %>
+  </div>
 </div>

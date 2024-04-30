@@ -206,8 +206,8 @@ module ApplicationHelper
     end
   end
 
-  def link_to_active(title, path, current)
-    if path == current
+  def link_to_active(title, path, current, name)
+    if path == current || title == name
       link_to title, path, class: "active"
     else
       link_to title, path

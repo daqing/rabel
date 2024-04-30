@@ -1,4 +1,4 @@
-<div class="flex md:flex-col md:justify-between md:h-screen border-r border-stone-200 fixed" style="width: 200px;">
+<div class="flex md:flex-col md:justify-between md:h-screen border-r border-stone-200 fixed" style="width: 260px;">
   <div class="md:text-right md:p-4">
     <div class="">
       <%= link_to root_path, class: 'brand' do %>
@@ -7,12 +7,12 @@
       <h2 class="text-zinc-400 text-sm"><%= Siteconf.slogan %></h2>
     </div>
     <div id="navbar" class="flex md:flex-col md:mt-12 gap-2 md:gap-4 text-zinc-400 dark:text-zinc-500">
-      <%= link_to_active '首页', root_path, request.path %>
+      <%= link_to_active '首页', root_path, request.path, @navbar_name %>
       <% NavLink.navbar.each do |link| %>
         <% if link.url.start_with?("http") %>
           <%= link_to link.title, link.url, target: '_blank' %>
         <% else %>
-          <%= link_to_active link.title, link.url, request.path %>
+          <%= link_to_active link.title, link.url, request.path, @navbar_name %>
         <% end %>
       <% end %>
     </div>
@@ -23,11 +23,11 @@
       </div>
     <% end %>
   </div>
-  <div class="md:px-4 md:pb-2">
+  <div class="px-4 py-2 border-t border-stone-200">
     <% if user_signed_in? %>
       <div class="text-right">
         <span><%= current_user.nickname %></span>
-        <%= link_to '退出', sign_out_path, class: 'hover:text-orange-700 dark:hover:text-orange-500 md:hidden', data: {turbo_method: :delete} %>
+        <%= link_to '退出', sign_out_path, class: 'hover:text-orange-700 dark:hover:text-orange-500', data: {turbo_method: :delete} %>
       </div>
     <% end %>
   </div>

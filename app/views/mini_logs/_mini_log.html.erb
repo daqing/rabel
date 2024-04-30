@@ -1,14 +1,13 @@
-<div class="flex gap-2 p-2">
-  <div class="w-[32px]">
+<div class="flex gap-2 p-2 rounded-lg bg-white shadow-md border-stone-200">
+  <div style="width: 32px;">
     <div class="border border-zinc-200 rounded-full flex items-center justify-center text-orange-500" style="width: 32px; height: 32px;">
       <%= mini_log.user.nickname[0] %>
     </div>
   </div>
-  <div>
-    <div class="flex gap-2">
+  <div class="w-full">
+    <div class="flex gap-2 items-center justify-between w-full">
       <span class="text-zinc-700 dark:text-zinc-300 font-bold"><%= mini_log.user.nickname %></span>
-      <span class="text-zinc-500 dark:text-zinc-300">&middot;</span>
-      <span class="text-zinc-500 dark:text-zinc-300"><%= time_ago_in_words(mini_log.created_at) %></span>
+      <span class="text-zinc-400 text-xs"><%= time_ago_in_words(mini_log.created_at) %></span>
     </div>
     <div class="dark:text-zinc-400 dark:hover:text-zinc-300 text-zinc-600 mt-2 markdown">
       <%= parse_markdown(mini_log.content) %>
