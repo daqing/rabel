@@ -12,7 +12,6 @@ ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development test" \
-    SECRET_KEY_BASE="2ce3dc6fa95cdf7aa2ae24b47c8f4bf937a" \
     PORT="1986" \
     RAILS_SERVE_STATIC_FILES="true" \
     RAILS_LOG_TO_STDOUT="true"
