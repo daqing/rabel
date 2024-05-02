@@ -5,14 +5,9 @@
     </div>
     <div class="md:mb-4">
       <div class="flex flex-col gap-4 text-stone-500">
-        <div class=""><%= link_to '公告', '#' %></div>
-        <div class=" "><%= link_to '项目进展', '#' %></div>
-        <div class=" "><%= link_to '支付与合规', '#' %></div>
-        <div class=" "><%= link_to '外包专区', '#' %></div>
-        <div class=" "><%= link_to 'SEO', '#' %></div>
-        <div class=" "><%= link_to 'ProductHunt 发布', '#' %></div>
-        <div class=" "><%= link_to 'AI 工作流', '#' %></div>
-        <div class=" "><%= link_to '工具专区', '#' %></div>
+        <% Section.sorted.find_each do |section| %>
+          <div><%= link_to section.name, "/forum/section/#{section.key}" %></div>
+        <% end %>
       </div>
     </div>
   </div>

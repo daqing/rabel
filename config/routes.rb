@@ -60,6 +60,8 @@ Rabel::Application.routes.draw do
 
   namespace :forum do
     root "home#index"
+
+    get "/section/:key" => "home#index", as: :section
   end
 
   namespace :people do
