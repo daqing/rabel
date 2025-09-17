@@ -264,7 +264,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rexml (3.3.9)
+    rexml (3.4.2)
     ruby-vips (2.2.1)
       ffi (~> 1.12)
     securerandom (0.4.1)
