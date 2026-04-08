@@ -76,8 +76,8 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
     acts_as_list (1.0.3)
       activerecord (>= 4.2)
-    addressable (2.8.6)
-      public_suffix (>= 2.0.2, < 6.0)
+    addressable (2.9.0)
+      public_suffix (>= 2.0.2, < 8.0)
     awesome_print (1.9.2)
     base64 (0.3.0)
     bcrypt (3.1.22)
@@ -202,7 +202,7 @@ GEM
     psych (5.3.1)
       date
       stringio
-    public_suffix (5.0.4)
+    public_suffix (7.0.5)
     puma (5.6.9)
       nio4r (~> 2.0)
     qiniu (6.9.1)
