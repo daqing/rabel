@@ -108,7 +108,7 @@ GEM
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
     dalli (3.2.3)
-    date (3.4.1)
+    date (3.5.1)
     devise (5.0.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -179,7 +179,7 @@ GEM
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (5.27.0)
-    net-imap (0.4.20)
+    net-imap (0.4.24)
       date
       net-protocol
     net-pop (0.1.2)
