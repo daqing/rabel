@@ -4,7 +4,6 @@
     = build_navigation([@title])
   .inner
     = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-      = devise_error_messages!
       = f.hidden_field :reset_password_token
       .form-group
         = f.label :password, '新密码'
@@ -14,4 +13,3 @@
         = f.password_field :password_confirmation, :class => 'form-control'
       .form-group
         = f.submit '继续', :class => 'btn btn-sm btn-primary'
-

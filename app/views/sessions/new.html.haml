@@ -2,7 +2,6 @@
   .row
     .col-md-6.offset-3
       = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-        = devise_error_messages!
         = f.input :nickname, :label => '用户名', :input_html => {:autofocus => true}
         = f.input :password, :label => '密码'
         - if devise_mapping.rememberable?
