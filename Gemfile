@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '3.2.1'
+ruby '4.0.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7'
+gem 'rails', '8.1.3'
 
 gem 'pg'
 
@@ -49,3 +49,6 @@ gem 'redis', '~> 4.0'
 
 gem 'cssbundling-rails', '~> 1.1'
 gem 'jsbundling-rails', '~> 1.1'
+
+gem 'ostruct'
+gem 'benchmark'
