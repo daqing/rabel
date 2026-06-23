@@ -8,7 +8,8 @@
     #latest_topics.topics_heading= Siteconf.latest_topics_heading
 
   = render @topics
-  .inner
-    - if Topic.count > @num
+
+  - if Topic.count > @num
+    .inner
       span.chevron »
       = link_to '更多新主题', topics_path + '?page=2', :class => :rabel
