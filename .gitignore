@@ -39,3 +39,4 @@ config/application.yml
 !/app/assets/builds/.keep
 
 /node_modules
+/tmp
