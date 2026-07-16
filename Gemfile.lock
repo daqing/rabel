@@ -195,8 +195,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
-    nokogiri (1.19.3-x86_64-linux-gnu)
-      racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
     pg (1.4.1)
@@ -317,7 +315,8 @@ GEM
     useragent (0.16.11)
     warden (1.2.9)
       rack (>= 2.0.9)
-    websocket-driver (0.7.6)
+    websocket-driver (0.8.1)
+      base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     zeitwerk (2.7.5)
